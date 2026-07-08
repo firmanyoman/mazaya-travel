@@ -1,20 +1,40 @@
 @import 'tailwindcss';
 
-:root {
-  --background: #f7f3e8;
-  --surface: #ffffff;
-  --foreground: #123434;
-  --muted: #647a77;
-  --border: #c9ded9;
-  --primary: #0f5b5b;
-  --primary-hover: #0c4c4c;
-  --primary-soft: #dcefed;
-  --brand-teal: #61c7c3;
-  --brand-yellow: #f0eb20;
-  --radius-card: 20px;
-  --radius-control: 12px;
+@theme {
+  --color-primary: #0F5B5B;
+  --color-primary-hover: #0C4C4C;
+  --color-primary-soft: #DCEFED;
+  --color-brand-teal: #61C7C3;
+  --color-brand-yellow: #F0EB20;
+  --color-warm-ivory: #F7F3E8;
+  --color-surface: #FFFFFF;
+  --color-text: #123434;
+  --color-muted: #647A77;
+  --color-border: #C9DED9;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
   --radius-pill: 999px;
-  --container: 1200px;
+
+  --width-container: 1200px;
+}
+
+:root {
+  --background: var(--color-warm-ivory);
+  --surface: var(--color-surface);
+  --foreground: var(--color-text);
+  --muted: var(--color-muted);
+  --border: var(--color-border);
+  --primary: var(--color-primary);
+  --primary-hover: var(--color-primary-hover);
+  --primary-soft: var(--color-primary-soft);
+  --brand-teal: var(--color-brand-teal);
+  --brand-yellow: var(--color-brand-yellow);
+  --radius-card: var(--radius-md);
+  --radius-control: var(--radius-sm);
+  --radius-pill: var(--radius-pill);
+  --container: var(--width-container);
 }
 
 * {

@@ -19,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={plusJakartaSans.variable}>
-      <body>{children}</body>
+      <body className="bg-warm-ivory text-text">
+        <div className="mx-auto max-w-[var(--container)] w-full px-4 sm:px-6 lg:px-8">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
