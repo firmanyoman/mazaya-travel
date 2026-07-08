@@ -1,9 +1,62 @@
 import Image from 'next/image'
+import { db } from '@/db'
+import { packages } from '@/db/schema'
+import { eq, and } from 'drizzle-orm'
 
-export default function Home() {
+interface DbPackage {
+  title: string
+  slug: string
+  category: string
+  tier: string | null
+  shortLabel: string | null
+  departureDate: string
+  durationDays: number
+  departureCity: string
+  airline: string | null
+  makkahHotel: string | null
+  madinahHotel: string | null
+  priceMode: string
+  price: number | null
+  minimumDeposit: number | null
+  totalSeats: number | null
+  remainingSeats: number | null
+  packageStatus: string
+  featuredOnHomepage: boolean
+  brochureFile: string | null
+  packageSummary: string
+  inclusions: string[] | null
+  exclusions: string[] | null
+  requirements: string[] | null
+  itinerarySummary: string | null
+  paymentNotes: string | null
+  badgeText: string | null
+  seoTitle: string | null
+  seoDescription: string | null
+  ogImage: string | null
+  publishedAt: Date | null
+  createdAt: Date
+  updatedAt: Date
+}
+
+export default async function Home() {
   const whatsappUrl = 'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20tertarik%20dengan%20info%20paket%20Umrah'
 
-  const packages = [
+  // Fetch dynamic packages from database
+  let dbPackages: DbPackage[] = [] as DbPackage[]
+  try {
+    const results = await db.query.packages.findMany({
+      where: and(
+        eq(packages.packageStatus, 'active'),
+        eq(packages.featuredOnHomepage, true)
+      ),
+      limit: 3
+    })
+    dbPackages = results as unknown as DbPackage[]
+  } catch (e) {
+    console.error('Failed to fetch packages from DB, using fallback.', e)
+  }
+
+  const defaultPackages = [
     {
       title: 'Umrah Premium Akhir Tahun (Desember 2025)',
       tier: 'Gold',
@@ -14,7 +67,8 @@ export default function Home() {
       hotel: "Al-Ansar / Setaraf (Madinah) & Safwat Al-Batlah (Makkah)",
       seats: 'Sisa 8 Kursi',
       image: '/assets/mazaya_travel_rebuild_inventory/assets/brosur_desember_png.png',
-      badge: 'Favorit Keluarga'
+      badge: 'Favorit Keluarga',
+      slug: 'umrah-premium-akhir-tahun-desember-2025'
     },
     {
       title: 'Umrah Januari Awal Tahun (Januari 2026)',
@@ -26,7 +80,8 @@ export default function Home() {
       hotel: "Rawabi Al-Majd (Makkah) & Golden Al-Ansar (Madinah)",
       seats: 'Sisa 12 Kursi',
       image: '/assets/mazaya_travel_rebuild_inventory/assets/Biru_Hijau_Putih_Modern_Ibadah_Umroh_plus_Turki_Instagram_Story__12__png.png',
-      badge: 'Promo Hemat'
+      badge: 'Promo Hemat',
+      slug: 'umrah-januari-awal-tahun-januari-2026'
     },
     {
       title: 'Umrah Awal Musim (Oktober/November 2025)',
@@ -38,9 +93,24 @@ export default function Home() {
       hotel: "Anjum Makkah (Makkah) & Front Taiba (Madinah)",
       seats: 'Sisa 5 Kursi',
       image: '/assets/mazaya_travel_rebuild_inventory/assets/oktober_png.png',
-      badge: 'Fasilitas Bintang 5'
+      badge: 'Fasilitas Bintang 5',
+      slug: 'umrah-awal-musim-oktober-november-2025'
     }
   ]
+
+  const displayPackages = dbPackages.length > 0 ? dbPackages.map((pkg) => ({
+    title: pkg.title,
+    tier: pkg.tier || 'Silver',
+    price: pkg.price ? `Rp ${(pkg.price / 1000000).toFixed(1)} Jt` : 'Hubungi CS',
+    duration: `${pkg.durationDays} Hari`,
+    departure: pkg.departureDate ? new Date(pkg.departureDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : '',
+    city: pkg.departureCity,
+    hotel: `${pkg.madinahHotel || 'Setaraf'} (Madinah) & ${pkg.makkahHotel || 'Setaraf'} (Makkah)`,
+    seats: pkg.remainingSeats ? `Sisa ${pkg.remainingSeats} Kursi` : 'Hubungi CS',
+    image: pkg.ogImage || '/assets/mazaya_travel_rebuild_inventory/assets/No Image.jpg.jpeg',
+    badge: pkg.badgeText || 'Paket Pilihan',
+    slug: pkg.slug
+  })) : defaultPackages
 
   const benefits = [
     {
@@ -189,7 +259,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {packages.map((pkg, i) => (
+            {displayPackages.map((pkg, i) => (
               <div key={i} className="bg-surface rounded-radius-card overflow-hidden border border-border flex flex-col h-full shadow-md hover:shadow-lg transition-shadow">
                 <div className="relative h-64 w-full">
                   <Image
@@ -209,7 +279,9 @@ export default function Home() {
                       <span className="text-xs font-bold text-primary uppercase tracking-wider">Keberangkatan {pkg.departure}</span>
                       <span className="px-2.5 py-1 bg-brand-yellow/30 text-text text-xs font-black rounded-radius-pill">{pkg.tier} Class</span>
                     </div>
-                    <h3 className="text-xl font-extrabold text-text line-clamp-2 leading-snug">{pkg.title}</h3>
+                    <a href={`/paket/${pkg.slug}`} className="hover:text-primary transition-colors block">
+                      <h3 className="text-xl font-extrabold text-text line-clamp-2 leading-snug">{pkg.title}</h3>
+                    </a>
                     <div className="grid grid-cols-2 gap-3 text-xs text-muted border-t border-b border-border/60 py-3">
                       <div>🕒 Durasi: <strong className="text-text">{pkg.duration}</strong></div>
                       <div>✈️ Rute: <strong className="text-text">{pkg.city}</strong></div>
@@ -226,14 +298,20 @@ export default function Home() {
                         {pkg.seats}
                       </span>
                     </div>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full inline-flex justify-center items-center py-3 bg-primary text-white font-bold rounded-radius-control hover:bg-primary-hover transition-colors shadow-md text-sm"
-                    >
-                      Hubungi CS / Amankan Kursi
-                    </a>
+                    <div className="grid grid-cols-2 gap-2">
+                      <a
+                        href={`/paket/${pkg.slug}`}
+                        className="inline-flex justify-center items-center py-3 bg-surface text-primary border border-primary font-bold rounded-radius-control hover:bg-primary-soft transition-colors text-xs"
+                      >
+                        Detail Paket
+                      </a>
+                      <a
+                        href={`/daftar?package=${pkg.slug}`}
+                        className="inline-flex justify-center items-center py-3 bg-primary text-white font-bold rounded-radius-control hover:bg-primary-hover transition-colors text-xs shadow-md"
+                      >
+                        Daftar Online
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
