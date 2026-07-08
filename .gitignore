@@ -1,0 +1,6 @@
+# next-agents-md
+.next-docs/
+.venv-graphify/
+graphify-out/
+.graphify_analysis.json
+.graphify_labels.json
