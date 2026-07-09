@@ -667,8 +667,7 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   variant="secondary"
                   size="lg"
-                  className="border-white bg-white text-primary hover:bg-primary-soft lg:flex-1"
-                  style={{ color: '#0F5B5B' }}
+                  className="border-white bg-white text-primary hover:bg-white/92 lg:flex-1"
                 >
                   Chat WhatsApp
                 </Button>

@@ -156,7 +156,7 @@ export function ContentCta({ eyebrow, title, summary, primaryHref, primaryLabel,
           <p className="max-w-2xl text-base leading-8 text-white/76">{summary}</p>
         </div>
         <div className="grid gap-3 rounded-[24px] border border-white/10 bg-white/8 p-5 backdrop-blur-sm">
-          <Button href={primaryHref} size="lg" className="border-white bg-white text-primary hover:bg-primary-soft" target={primaryHref.startsWith('http') ? '_blank' : undefined} rel={primaryHref.startsWith('http') ? 'noopener noreferrer' : undefined}>
+          <Button href={primaryHref} variant="secondary" size="lg" className="border-white bg-white text-primary hover:bg-white/92" target={primaryHref.startsWith('http') ? '_blank' : undefined} rel={primaryHref.startsWith('http') ? 'noopener noreferrer' : undefined}>
             {primaryLabel}
           </Button>
           {secondaryHref && secondaryLabel ? (

@@ -137,7 +137,7 @@ export default function ContactPage() {
                   </div>
                 ))}
               </div>
-              <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg" className="mt-5 border-white bg-white text-primary hover:bg-primary-soft">
+              <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg" className="mt-5 border-white bg-white text-primary hover:bg-white/92">
                 Chat via WhatsApp
               </Button>
             </div>

@@ -36,6 +36,7 @@ export function Button({
   return (
     <a
       href={href}
+      data-button="true"
       className={[
         'focus-ring inline-flex items-center justify-center gap-2 rounded-radius-control font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-150',
         variantClassName[variant],
@@ -43,7 +44,7 @@ export function Button({
         fullWidth ? 'w-full' : '',
         className,
       ].filter(Boolean).join(' ')}
-      style={variant === 'primary' ? { color: '#ffffff', ...style } : style}
+      style={style}
       {...props}
     >
       {children}

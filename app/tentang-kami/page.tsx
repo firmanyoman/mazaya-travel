@@ -121,7 +121,7 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-              <Button href="/legalitas" variant="secondary" size="lg" className="mt-5 border-white bg-white text-primary hover:bg-primary-soft">
+              <Button href="/legalitas" variant="secondary" size="lg" className="mt-5 border-white bg-white text-primary hover:bg-white/92">
                 Lihat halaman legalitas
               </Button>
             </div>
