@@ -61,13 +61,13 @@ export default function ArtikelPage() {
         <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
           <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
             <div className="space-y-4">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-brand-yellow/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-text">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-yellow/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-text">
                 Pilihan editor
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               </div>
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-muted">
-                  <span className="rounded-radius-pill bg-primary-soft px-3 py-1 text-primary">{featuredArticle.category}</span>
+                  <span className="rounded-full bg-primary-soft px-3 py-1 text-primary">{featuredArticle.category}</span>
                   <span>{formatDate(featuredArticle.publishedAt)}</span>
                   <span>{featuredArticle.readTime}</span>
                 </div>
@@ -86,7 +86,7 @@ export default function ArtikelPage() {
                 <div className="text-sm font-semibold text-primary">Topik yang banyak dicari</div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {articleCategories.map((category) => (
-                    <span key={category} className="rounded-radius-pill border border-border bg-surface px-3 py-2 text-sm font-medium text-text-secondary">
+                    <span key={category} className="rounded-full border border-border bg-surface px-3 py-2 text-sm font-medium text-text-secondary">
                       {category}
                     </span>
                   ))}
@@ -112,12 +112,12 @@ export default function ArtikelPage() {
           {latestArticles.map((article) => (
             <article key={article.slug} className="flex h-full flex-col rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.12em]">
-                <span className="rounded-radius-pill bg-primary-soft px-3 py-1 text-primary">{article.category}</span>
+                <span className="rounded-full bg-primary-soft px-3 py-1 text-primary">{article.category}</span>
                 <span className="text-muted">{formatDate(article.publishedAt)}</span>
               </div>
               <h2 className="mt-4 text-xl font-semibold leading-snug text-text">{article.title}</h2>
               <p className="mt-3 text-sm leading-7 text-muted">{article.excerpt}</p>
-              <div className="mt-5 rounded-radius-lg border border-border bg-surface-subtle px-4 py-3 text-sm text-text-secondary">
+              <div className="mt-5 rounded-[16px] border border-border bg-surface-subtle px-4 py-3 text-sm text-text-secondary">
                 {article.readTime}
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">

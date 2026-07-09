@@ -109,7 +109,7 @@ export default function FaqPage() {
               <div className="text-sm font-semibold text-primary">Topik utama</div>
               <div className="mt-4 grid gap-3">
                 {faqGroups.map((group) => (
-                  <div key={group.title} className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                  <div key={group.title} className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-base font-semibold text-text">{group.title}</div>
                     <div className="mt-1 text-sm leading-7 text-muted">{group.items.length} pertanyaan yang paling sering dipindai lebih dulu.</div>
                   </div>

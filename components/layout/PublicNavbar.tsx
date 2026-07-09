@@ -27,7 +27,7 @@ export function PublicNavbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="focus-ring rounded-radius-pill px-4 py-2 text-sm font-semibold text-text transition-colors hover:bg-primary-soft/50 hover:text-primary"
+                className="focus-ring rounded-full px-4 py-2 text-sm font-semibold text-text transition-colors hover:bg-primary-soft/50 hover:text-primary"
               >
                 {link.label}
               </Link>

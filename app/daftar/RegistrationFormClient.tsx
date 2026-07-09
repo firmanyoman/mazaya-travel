@@ -90,7 +90,7 @@ function FieldLabel({
   )
 }
 
-const inputClassName = 'focus-ring min-h-13 w-full rounded-radius-control border border-border bg-surface px-4 py-3 text-[15px] text-text placeholder:text-icon-muted shadow-[var(--shadow-1)] transition-[border-color,box-shadow] duration-150 focus:border-primary focus:outline-none'
+const inputClassName = 'focus-ring min-h-13 w-full rounded-[12px] border border-border bg-surface px-4 py-3 text-[15px] text-text placeholder:text-icon-muted shadow-[var(--shadow-1)] transition-[border-color,box-shadow] duration-150 focus:border-primary focus:outline-none'
 const panelClassName = 'rounded-[24px] border border-border bg-surface p-6 shadow-[var(--shadow-1)] md:p-8'
 
 export default function RegistrationFormClient({
@@ -233,10 +233,10 @@ export default function RegistrationFormClient({
               ) : null}
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-radius-pill border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+              <span className="rounded-full border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
                 Guided intake
               </span>
-              <span className="rounded-radius-pill bg-brand-yellow/70 px-3 py-1 text-xs font-bold text-text">
+              <span className="rounded-full bg-brand-yellow/70 px-3 py-1 text-xs font-bold text-text">
                 Tenang & terarah
               </span>
             </div>
@@ -249,15 +249,15 @@ export default function RegistrationFormClient({
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+              <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                 <div className="text-sm text-muted">Estimasi waktu isi</div>
                 <div className="mt-1 text-base font-semibold text-text">± 3 menit</div>
               </div>
-              <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+              <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                 <div className="text-sm text-muted">Tindak lanjut</div>
                 <div className="mt-1 text-base font-semibold text-text">Via WhatsApp aktif</div>
               </div>
-              <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+              <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                 <div className="text-sm text-muted">Privasi data</div>
                 <div className="mt-1 text-base font-semibold text-text">Dipakai untuk administrasi</div>
               </div>
@@ -274,7 +274,7 @@ export default function RegistrationFormClient({
               </div>
               <div className="mt-5 grid gap-3">
                 {packageGuidance.map((item) => (
-                  <div key={item.label} className="rounded-radius-lg border border-white/12 bg-white/10 px-4 py-3 backdrop-blur-sm">
+                  <div key={item.label} className="rounded-[16px] border border-white/12 bg-white/10 px-4 py-3 backdrop-blur-sm">
                     <div className="text-xs font-semibold uppercase tracking-[0.14em] text-white/68">{item.label}</div>
                     <div className="mt-1 text-sm leading-7 text-white">{item.value}</div>
                   </div>
@@ -323,7 +323,7 @@ export default function RegistrationFormClient({
 
       {errorMessage ? (
         <SectionShell surface="card" className="px-6 py-5 md:px-8 md:py-6">
-          <div className="rounded-radius-lg border border-danger/15 bg-danger-soft px-5 py-4 text-sm leading-7 text-danger">
+          <div className="rounded-[16px] border border-danger/15 bg-danger-soft px-5 py-4 text-sm leading-7 text-danger">
             <div className="font-semibold">Pendaftaran belum dapat dikirim.</div>
             <div className="mt-1">{errorMessage}</div>
           </div>
@@ -334,7 +334,7 @@ export default function RegistrationFormClient({
         <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div className="rounded-[24px] border border-success/20 bg-success-soft p-6 md:p-8">
-              <div className="inline-flex rounded-radius-pill bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-success">
+              <div className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-success">
                 Pendaftaran terkirim
               </div>
               <h2 className="mt-4 text-3xl font-bold leading-tight text-text sm:text-4xl">
@@ -344,11 +344,11 @@ export default function RegistrationFormClient({
                 {successMessage}
               </p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-radius-lg border border-success/15 bg-white/75 px-4 py-4">
+                <div className="rounded-[16px] border border-success/15 bg-white/75 px-4 py-4">
                   <div className="text-sm text-muted">Langkah berikutnya</div>
                   <div className="mt-1 text-base font-semibold text-text">Tunggu konfirmasi admin</div>
                 </div>
-                <div className="rounded-radius-lg border border-success/15 bg-white/75 px-4 py-4">
+                <div className="rounded-[16px] border border-success/15 bg-white/75 px-4 py-4">
                   <div className="text-sm text-muted">Jalur komunikasi</div>
                   <div className="mt-1 text-base font-semibold text-text">WhatsApp yang Anda isi</div>
                 </div>
@@ -377,7 +377,7 @@ export default function RegistrationFormClient({
               <section className={panelClassName}>
                 <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="space-y-2">
-                    <div className="inline-flex rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                    <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                       1. Paket selection
                     </div>
                     <h2 className="text-2xl font-bold text-text">Tentukan paket yang ingin didaftarkan</h2>
@@ -385,7 +385,7 @@ export default function RegistrationFormClient({
                       Pilihan paket membantu tim Mazaya memahami jadwal, estimasi biaya, dan langkah lanjutan yang perlu dijelaskan lebih dulu.
                     </p>
                   </div>
-                  <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-3 text-sm text-text-secondary">
+                  <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-3 text-sm text-text-secondary">
                     {isPackageLocked ? 'Paket datang dari halaman detail paket.' : 'Bisa diisi umum atau spesifik paket.'}
                   </div>
                 </div>
@@ -417,7 +417,7 @@ export default function RegistrationFormClient({
                 </FieldShell>
 
                 <div className="mt-6 grid gap-4 lg:grid-cols-2">
-                  <div className="rounded-radius-lg border border-primary/10 bg-primary-soft/60 px-5 py-5">
+                  <div className="rounded-[16px] border border-primary/10 bg-primary-soft/60 px-5 py-5">
                     <div className="text-sm font-semibold text-primary">Ringkasan pilihan</div>
                     <div className="mt-2 text-lg font-bold leading-snug text-text">
                       {selectedPackage ? selectedPackage.title : 'Belum ada paket terpilih'}
@@ -441,7 +441,7 @@ export default function RegistrationFormClient({
                       </div>
                     </div>
                   </div>
-                  <div className="rounded-radius-lg border border-border bg-surface-subtle px-5 py-5">
+                  <div className="rounded-[16px] border border-border bg-surface-subtle px-5 py-5">
                     <div className="text-sm font-semibold text-primary">Catatan penting</div>
                     <ul className="mt-3 grid gap-2 text-sm leading-7 text-text-secondary">
                       <li>Form ini membantu intake awal, bukan finalisasi seluruh dokumen perjalanan.</li>
@@ -454,7 +454,7 @@ export default function RegistrationFormClient({
 
               <section className={panelClassName}>
                 <div className="mb-6 space-y-2">
-                  <div className="inline-flex rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                  <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                     2. Personal identity
                   </div>
                   <h2 className="text-2xl font-bold text-text">Lengkapi identitas jemaah</h2>
@@ -545,7 +545,7 @@ export default function RegistrationFormClient({
 
               <section className={panelClassName}>
                 <div className="mb-6 space-y-2">
-                  <div className="inline-flex rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                  <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                     3. Contact & domisili
                   </div>
                   <h2 className="text-2xl font-bold text-text">Nomor aktif dan kota domisili</h2>
@@ -592,7 +592,7 @@ export default function RegistrationFormClient({
 
               <section className={panelClassName}>
                 <div className="mb-6 space-y-2">
-                  <div className="inline-flex rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                  <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                     4. Document upload
                   </div>
                   <h2 className="text-2xl font-bold text-text">Unggah metadata KTP untuk verifikasi awal</h2>
@@ -613,7 +613,7 @@ export default function RegistrationFormClient({
                         accept=".jpg,.jpeg,.png,.pdf"
                         required
                         onChange={(e) => setKtpFile(e.target.files?.[0] ?? null)}
-                        className="focus-ring w-full rounded-radius-control border border-border bg-surface px-4 py-3 text-sm text-text file:mr-4 file:rounded-radius-control file:border-0 file:bg-primary file:px-4 file:py-2 file:font-semibold file:text-white"
+                        className="focus-ring w-full rounded-[12px] border border-border bg-surface px-4 py-3 text-sm text-text file:mr-4 file:rounded-[12px] file:border-0 file:bg-primary file:px-4 file:py-2 file:font-semibold file:text-white"
                       />
                       <div className="mt-3 text-xs leading-6 text-muted">
                         Format yang diterima: JPG, PNG, atau PDF. Ukuran maksimal 2 MB.
@@ -621,7 +621,7 @@ export default function RegistrationFormClient({
                     </div>
                   </FieldShell>
 
-                  <div className="rounded-radius-lg border border-border bg-surface-subtle px-5 py-5">
+                  <div className="rounded-[16px] border border-border bg-surface-subtle px-5 py-5">
                     <div className="text-sm font-semibold text-primary">Yang perlu diperhatikan</div>
                     <ul className="mt-3 grid gap-2 text-sm leading-7 text-text-secondary">
                       <li>Pastikan file dapat dibaca dengan jelas.</li>
@@ -634,7 +634,7 @@ export default function RegistrationFormClient({
 
               <section className={panelClassName}>
                 <div className="mb-6 space-y-2">
-                  <div className="inline-flex rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                  <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                     5. Consent & confirmation
                   </div>
                   <h2 className="text-2xl font-bold text-text">Persetujuan penggunaan data</h2>
@@ -643,7 +643,7 @@ export default function RegistrationFormClient({
                   </p>
                 </div>
 
-                <div className="rounded-radius-lg border border-border bg-surface-subtle px-5 py-5">
+                <div className="rounded-[16px] border border-border bg-surface-subtle px-5 py-5">
                   <label htmlFor="privacyConsent" className="flex items-start gap-3 text-sm leading-7 text-text-secondary">
                     <input
                       id="privacyConsent"
@@ -664,7 +664,7 @@ export default function RegistrationFormClient({
                   <button
                     type="submit"
                     disabled={isSubmitting || !isPackageChosen}
-                    className="focus-ring inline-flex min-h-14 items-center justify-center rounded-radius-control border border-primary bg-primary px-6 text-base font-semibold text-white shadow-[var(--shadow-1)] transition-[background-color,border-color,box-shadow,opacity] duration-150 hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+                    className="focus-ring inline-flex min-h-14 items-center justify-center rounded-[12px] border border-primary bg-primary px-6 text-base font-semibold text-white shadow-[var(--shadow-1)] transition-[background-color,border-color,box-shadow,opacity] duration-150 hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {isSubmitting ? 'Mengirim...' : 'Kirim pendaftaran'}
                   </button>
@@ -695,15 +695,15 @@ export default function RegistrationFormClient({
                   <h2 className="mt-2 text-2xl font-bold text-text">Agar pengisian terasa lebih ringan</h2>
                 </div>
                 <div className="grid gap-3">
-                  <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                  <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-sm font-semibold text-text">Siapkan KTP lebih dulu</div>
                     <div className="mt-1 text-sm leading-7 text-muted">Membantu Anda menyelesaikan pengisian dalam satu alur tanpa bolak-balik.</div>
                   </div>
-                  <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                  <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-sm font-semibold text-text">Gunakan nomor WhatsApp pribadi</div>
                     <div className="mt-1 text-sm leading-7 text-muted">Nomor aktif mempercepat verifikasi dan penjelasan langkah berikutnya.</div>
                   </div>
-                  <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                  <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-sm font-semibold text-text">Belum yakin paketnya?</div>
                     <div className="mt-1 text-sm leading-7 text-muted">Konsultasi singkat tetap terbuka sebelum Anda mengirim form.</div>
                   </div>
@@ -733,13 +733,13 @@ export default function RegistrationFormClient({
               <div className="space-y-4">
                 <div className="text-sm font-semibold text-primary">Privasi & proses</div>
                 <ul className="grid gap-3 text-sm leading-7 text-text-secondary">
-                  <li className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-3">
+                  <li className="rounded-[16px] border border-border bg-surface-subtle px-4 py-3">
                     Data dipakai untuk kebutuhan administrasi pendaftaran dan koordinasi layanan.
                   </li>
-                  <li className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-3">
+                  <li className="rounded-[16px] border border-border bg-surface-subtle px-4 py-3">
                     Tim akan meninjau ulang data yang masuk sebelum meminta dokumen lanjutan.
                   </li>
-                  <li className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-3">
+                  <li className="rounded-[16px] border border-border bg-surface-subtle px-4 py-3">
                     Jika ada hal yang belum lengkap, follow-up dilakukan secara personal agar tidak membingungkan.
                   </li>
                 </ul>

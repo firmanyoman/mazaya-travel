@@ -52,7 +52,7 @@ export function TrustHero({ eyebrow, title, summary, stats = [], panelTitle, pan
       <div className="absolute right-8 top-8 hidden h-16 w-16 rounded-full bg-brand-yellow/20 blur-2xl lg:block" />
       <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
         <div className="space-y-5">
-          <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
             {eyebrow}
             <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
           </div>
@@ -66,7 +66,7 @@ export function TrustHero({ eyebrow, title, summary, stats = [], panelTitle, pan
           {stats.length > 0 ? (
             <div className="grid gap-3 border-t border-border pt-6 sm:grid-cols-2 xl:grid-cols-3">
               {stats.map((item) => (
-                <div key={item.label} className="rounded-radius-lg bg-surface-subtle px-4 py-4">
+                <div key={item.label} className="rounded-[16px] bg-surface-subtle px-4 py-4">
                   <div className="text-2xl font-bold text-primary">{item.value}</div>
                   <div className="text-sm text-muted">{item.label}</div>
                 </div>
@@ -79,7 +79,7 @@ export function TrustHero({ eyebrow, title, summary, stats = [], panelTitle, pan
             <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">{panelTitle}</div>
             <div className="mt-5 grid gap-3">
               {panelItems.map((item) => (
-                <div key={item.label} className="rounded-radius-lg border border-white/12 bg-white/8 px-4 py-4 backdrop-blur-sm">
+                <div key={item.label} className="rounded-[16px] border border-white/12 bg-white/8 px-4 py-4 backdrop-blur-sm">
                   <div className="text-sm text-white/70">{item.label}</div>
                   <div className="mt-1 text-base font-semibold leading-7 text-white">{item.value}</div>
                 </div>
@@ -107,7 +107,7 @@ export function TrustSection({ eyebrow, title, summary, children }: TrustSection
       <div className="space-y-6">
         <div className="space-y-3">
           {eyebrow ? (
-            <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
               {eyebrow}
               <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
             </div>
@@ -145,7 +145,7 @@ export function TrustChecklist({ items }: { items: string[] }) {
   return (
     <div className="grid gap-3">
       {items.map((item) => (
-        <div key={item} className="flex items-start gap-3 rounded-radius-lg border border-border bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
+        <div key={item} className="flex items-start gap-3 rounded-[16px] border border-border bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
           <span className="mt-2 h-2.5 w-2.5 rounded-full bg-brand-yellow" />
           <span>{item}</span>
         </div>
@@ -164,7 +164,7 @@ export function TrustCta({ eyebrow, title, summary, primaryHref, primaryLabel, s
       <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_center,rgba(240,235,32,0.18),transparent_62%)] lg:block" />
       <div className="relative grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div className="space-y-4">
-          <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-white/14 bg-white/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/14 bg-white/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
             {eyebrow}
             <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
           </div>

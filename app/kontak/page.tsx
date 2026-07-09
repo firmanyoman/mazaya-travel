@@ -132,7 +132,7 @@ export default function ContactPage() {
               </p>
               <div className="mt-5 grid gap-3">
                 {['Nomor utama: 0852 9875 1997', 'Email: info@mazaya-travel.id', 'Layanan lokal Bone dan sekitarnya'].map((item) => (
-                  <div key={item} className="rounded-radius-lg border border-white/12 bg-white/8 px-4 py-4 text-sm leading-7 text-white/88">
+                  <div key={item} className="rounded-[16px] border border-white/12 bg-white/8 px-4 py-4 text-sm leading-7 text-white/88">
                     {item}
                   </div>
                 ))}

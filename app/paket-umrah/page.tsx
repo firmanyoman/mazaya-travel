@@ -108,7 +108,7 @@ export default async function PaketUmrahPage() {
                   Kembali ke Beranda
                 </Link>
               </div>
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
                 Paket Umrah Mazaya
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
@@ -156,7 +156,7 @@ export default async function PaketUmrahPage() {
                     <div className="text-sm text-muted">Sold out</div>
                   </div>
                 </div>
-                <div className="mt-5 rounded-radius-lg bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
+                <div className="mt-5 rounded-[16px] bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
                   Prioritaskan membaca jadwal keberangkatan, kelas paket, dan status kursi lebih dulu. Setelah itu baru nilai kecocokan harga dan fasilitas.
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default async function PaketUmrahPage() {
                 label: 'Saat ragu, jalur WhatsApp tersedia tanpa mengganggu fokus membaca detail paket.',
               },
             ].map((item) => (
-              <div key={item.value} className="rounded-radius-lg border border-border/80 bg-surface-subtle px-4 py-4">
+              <div key={item.value} className="rounded-[16px] border border-border/80 bg-surface-subtle px-4 py-4">
                 <div className="text-lg font-bold text-primary">{item.value}</div>
                 <div className="mt-1 text-sm leading-7 text-muted">{item.label}</div>
               </div>
@@ -207,7 +207,7 @@ export default async function PaketUmrahPage() {
           <SectionShell className="px-1">
             <div className="mb-8 flex flex-col gap-4 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl space-y-3">
-                <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                   Discovery grid
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                 </div>
@@ -231,18 +231,18 @@ export default async function PaketUmrahPage() {
                     <div className="relative overflow-hidden border-b border-border bg-primary px-6 py-5 text-white">
                       <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top_left,rgba(97,199,195,0.32),transparent_58%)]" />
                       <div className="relative flex flex-wrap items-center gap-3">
-                        <span className="rounded-radius-pill bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                        <span className="rounded-full bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                           {pkg.badgeText || 'Paket Umrah'}
                         </span>
                         {pkg.tier ? (
-                          <span className="rounded-radius-pill bg-brand-yellow/85 px-3 py-1 text-xs font-bold text-text">
+                          <span className="rounded-full bg-brand-yellow/85 px-3 py-1 text-xs font-bold text-text">
                             {pkg.tier} Class
                           </span>
                         ) : null}
                         <span
                           className={isSoldOut
-                            ? 'rounded-radius-pill border border-white/10 bg-danger px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'
-                            : 'rounded-radius-pill border border-white/15 bg-white/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'}
+                            ? 'rounded-full border border-white/10 bg-danger px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'
+                            : 'rounded-full border border-white/15 bg-white/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'}
                         >
                           {isSoldOut ? 'Sold out' : 'Tersedia'}
                         </span>
@@ -263,7 +263,7 @@ export default async function PaketUmrahPage() {
                     </div>
 
                     <div className="flex h-full flex-col gap-5 p-6">
-                      <div className="grid gap-3 rounded-radius-lg border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
+                      <div className="grid gap-3 rounded-[16px] border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
                         <div className="flex items-start justify-between gap-4">
                           <span className="text-muted">Harga paket</span>
                           <span className="text-right text-lg font-bold text-primary">{priceLabel}</span>
@@ -282,7 +282,7 @@ export default async function PaketUmrahPage() {
                         ) : null}
                       </div>
 
-                      <div className={`rounded-radius-lg border px-4 py-4 ${seatState.className}`}>
+                      <div className={`rounded-[16px] border px-4 py-4 ${seatState.className}`}>
                         <div className="flex items-center justify-between gap-3 text-sm font-semibold">
                           <span>Kondisi kursi</span>
                           <span>{seatState.label}</span>
@@ -317,7 +317,7 @@ export default async function PaketUmrahPage() {
           <SectionShell surface="card" className="px-6 py-8 md:px-8 md:py-10">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="space-y-4">
-                <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-warning-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#8A6911]">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full bg-warning-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#8A6911]">
                   Jadwal sedang diperbarui
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                 </div>
@@ -344,7 +344,7 @@ export default async function PaketUmrahPage() {
           <div className="absolute inset-y-0 right-0 hidden w-56 bg-[radial-gradient(circle_at_center,rgba(240,235,32,0.18),transparent_62%)] lg:block" />
           <div className="relative grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="space-y-4">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
                 Konsultasi yang menenangkan
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>

@@ -87,7 +87,7 @@ export default async function ArticleDetailPage({ params }: Props) {
           <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8 lg:px-10">
             <article className="mx-auto max-w-3xl">
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-muted">
-                <span className="rounded-radius-pill bg-primary-soft px-3 py-1 text-primary">{article.category}</span>
+                <span className="rounded-full bg-primary-soft px-3 py-1 text-primary">{article.category}</span>
                 <span>{formatDate(article.publishedAt)}</span>
                 <span>{article.readTime}</span>
               </div>
@@ -117,7 +117,7 @@ export default async function ArticleDetailPage({ params }: Props) {
                   Tanya via WhatsApp
                 </Button>
               </div>
-              <div className="mt-4 rounded-radius-lg border border-border bg-surface-subtle px-4 py-3 text-sm leading-7 text-muted">
+              <div className="mt-4 rounded-[16px] border border-border bg-surface-subtle px-4 py-3 text-sm leading-7 text-muted">
                 Cocok dipakai saat Anda sudah paham konteks artikel dan ingin menanyakan jadwal, dokumen, atau kesiapan daftar.
               </div>
             </SectionShell>
@@ -127,7 +127,7 @@ export default async function ArticleDetailPage({ params }: Props) {
                 <div className="text-sm font-semibold text-primary">Bacaan terkait</div>
                 <div className="mt-4 grid gap-3">
                   {relatedArticles.map((item) => (
-                    <Link key={item.slug} href={`/artikel/${item.slug}`} className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4 transition-colors hover:border-primary/30 hover:bg-primary-soft/30">
+                    <Link key={item.slug} href={`/artikel/${item.slug}`} className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4 transition-colors hover:border-primary/30 hover:bg-primary-soft/30">
                       <div className="text-xs font-bold uppercase tracking-[0.12em] text-muted">{item.category}</div>
                       <div className="mt-2 text-sm font-semibold leading-7 text-text">{item.title}</div>
                     </Link>

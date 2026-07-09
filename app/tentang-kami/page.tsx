@@ -116,7 +116,7 @@ export default function AboutPage() {
               <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">Ringkasan legalitas</div>
               <div className="mt-5 grid gap-3">
                 {['PT Mazaya Amanah Wisata', 'PPIU resmi Kemenag RI', 'NIB: 13052200161160002', 'Kantor layanan di Bone, Sulawesi Selatan'].map((item) => (
-                  <div key={item} className="rounded-radius-lg border border-white/12 bg-white/8 px-4 py-4 text-sm leading-7 text-white/88">
+                  <div key={item} className="rounded-[16px] border border-white/12 bg-white/8 px-4 py-4 text-sm leading-7 text-white/88">
                     {item}
                   </div>
                 ))}

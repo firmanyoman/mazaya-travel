@@ -143,18 +143,18 @@ export default async function PackageDetailPage({ params }: Props) {
                 <span className="text-muted">{pkg.shortLabel || pkg.title}</span>
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-radius-pill border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                <span className="rounded-full border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
                   Detail Paket
                 </span>
                 {pkg.tier ? (
-                  <span className="rounded-radius-pill bg-brand-yellow/80 px-3 py-1 text-xs font-bold text-text">
+                  <span className="rounded-full bg-brand-yellow/80 px-3 py-1 text-xs font-bold text-text">
                     {pkg.tier} Class
                   </span>
                 ) : null}
                 <span
                   className={isSoldOut
-                    ? 'rounded-radius-pill border border-danger/15 bg-danger-soft px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-danger'
-                    : 'rounded-radius-pill border border-success/20 bg-success-soft px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-success'}
+                    ? 'rounded-full border border-danger/15 bg-danger-soft px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-danger'
+                    : 'rounded-full border border-success/20 bg-success-soft px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-success'}
                 >
                   {isSoldOut ? 'Sold out' : 'Tersedia'}
                 </span>
@@ -169,7 +169,7 @@ export default async function PackageDetailPage({ params }: Props) {
               </div>
               <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {infoBlocks.map((item) => (
-                  <div key={item.label} className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                  <div key={item.label} className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-sm text-muted">{item.label}</div>
                     <div className="mt-1 text-sm font-semibold leading-7 text-text-secondary">{item.value}</div>
                   </div>
@@ -194,7 +194,7 @@ export default async function PackageDetailPage({ params }: Props) {
               <div className="absolute inset-0 bg-gradient-to-t from-primary/72 via-primary/10 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5 text-white md:p-6">
                 {pkg.badgeText ? (
-                  <div className="mb-3 inline-flex items-center gap-2 rounded-radius-pill border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
                     {pkg.badgeText}
                   </div>
                 ) : null}
@@ -213,12 +213,12 @@ export default async function PackageDetailPage({ params }: Props) {
               <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
                 <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
                   <div className="space-y-5">
-                    <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                       Ringkasan utama
                       <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <div className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                      <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                         <div className="text-sm text-muted">Harga paket</div>
                         <div className="mt-2 text-3xl font-bold leading-tight text-primary">
                           {pkg.priceMode === 'public' ? formatPrice(pkg.price) : 'Hubungi Admin'}
@@ -227,7 +227,7 @@ export default async function PackageDetailPage({ params }: Props) {
                           {pkg.minimumDeposit ? `DP minimum ${formatPrice(pkg.minimumDeposit)}` : 'Skema pembayaran dijelaskan saat konsultasi.'}
                         </div>
                       </div>
-                      <div className={`rounded-radius-lg border px-4 py-4 ${seatState.className}`}>
+                      <div className={`rounded-[16px] border px-4 py-4 ${seatState.className}`}>
                         <div className="text-sm font-semibold opacity-90">Status kursi</div>
                         <div className="mt-2 text-xl font-bold leading-snug">{seatState.label}</div>
                         <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/70">
@@ -237,15 +237,15 @@ export default async function PackageDetailPage({ params }: Props) {
                       </div>
                     </div>
                     <div className="grid gap-4 sm:grid-cols-3">
-                      <div className="rounded-radius-lg border border-border bg-surface px-4 py-4 shadow-[var(--shadow-1)]">
+                      <div className="rounded-[16px] border border-border bg-surface px-4 py-4 shadow-[var(--shadow-1)]">
                         <div className="text-sm text-muted">Tanggal berangkat</div>
                         <div className="mt-1 text-base font-semibold text-text">{pkg.departureDate ? formatDate(pkg.departureDate) : 'Jadwal menyusul'}</div>
                       </div>
-                      <div className="rounded-radius-lg border border-border bg-surface px-4 py-4 shadow-[var(--shadow-1)]">
+                      <div className="rounded-[16px] border border-border bg-surface px-4 py-4 shadow-[var(--shadow-1)]">
                         <div className="text-sm text-muted">Durasi</div>
                         <div className="mt-1 text-base font-semibold text-text">{pkg.durationDays} Hari</div>
                       </div>
-                      <div className="rounded-radius-lg border border-border bg-surface px-4 py-4 shadow-[var(--shadow-1)]">
+                      <div className="rounded-[16px] border border-border bg-surface px-4 py-4 shadow-[var(--shadow-1)]">
                         <div className="text-sm text-muted">Kota berangkat</div>
                         <div className="mt-1 text-base font-semibold text-text">{pkg.departureCity}</div>
                       </div>
@@ -283,7 +283,7 @@ export default async function PackageDetailPage({ params }: Props) {
                 <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
                   <div className="space-y-5">
                     <div>
-                      <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                      <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                         Fasilitas inti
                         <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                       </div>
@@ -331,7 +331,7 @@ export default async function PackageDetailPage({ params }: Props) {
                       <h2 className="text-2xl font-bold text-text">Harga termasuk</h2>
                       <ul className="grid gap-3 text-sm text-text-secondary">
                         {pkg.inclusions.map((item, index) => (
-                          <li key={index} className="rounded-radius-lg border border-success/15 bg-success-soft/70 px-4 py-3 leading-7">
+                          <li key={index} className="rounded-[16px] border border-success/15 bg-success-soft/70 px-4 py-3 leading-7">
                             {item}
                           </li>
                         ))}
@@ -344,7 +344,7 @@ export default async function PackageDetailPage({ params }: Props) {
                       <h2 className="text-2xl font-bold text-text">Belum termasuk</h2>
                       <ul className="grid gap-3 text-sm text-text-secondary">
                         {pkg.exclusions.map((item, index) => (
-                          <li key={index} className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-3 leading-7">
+                          <li key={index} className="rounded-[16px] border border-border bg-surface-subtle px-4 py-3 leading-7">
                             {item}
                           </li>
                         ))}
@@ -362,7 +362,7 @@ export default async function PackageDetailPage({ params }: Props) {
                         <h2 className="text-2xl font-bold text-text">Persyaratan dokumen</h2>
                         <ol className="grid gap-3 text-sm text-text-secondary">
                           {pkg.requirements.map((item, index) => (
-                            <li key={index} className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-3 leading-7">
+                            <li key={index} className="rounded-[16px] border border-border bg-surface-subtle px-4 py-3 leading-7">
                               <span className="mr-2 font-bold text-primary">{index + 1}.</span>
                               {item}
                             </li>
@@ -386,7 +386,7 @@ export default async function PackageDetailPage({ params }: Props) {
               {pkg.itinerarySummary ? (
                 <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
                   <div className="space-y-4">
-                    <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                       Itinerary ringkas
                       <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                     </div>
@@ -417,7 +417,7 @@ export default async function PackageDetailPage({ params }: Props) {
               <SectionShell surface="primary" className="relative overflow-hidden px-6 py-6">
                 <div className="absolute inset-y-0 right-0 hidden w-40 bg-[radial-gradient(circle_at_center,rgba(240,235,32,0.18),transparent_62%)] lg:block" />
                 <div className="relative space-y-4">
-                  <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
+                  <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
                     Final CTA
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                   </div>

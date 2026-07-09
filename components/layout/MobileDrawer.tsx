@@ -53,7 +53,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                 key={link.href}
                 href={link.href}
                 onClick={onClose}
-                className="focus-ring rounded-radius-control px-4 py-3 text-base font-semibold text-text transition-colors hover:bg-primary-soft/50"
+                className="focus-ring rounded-[12px] px-4 py-3 text-base font-semibold text-text transition-colors hover:bg-primary-soft/50"
               >
                 {link.label}
               </Link>

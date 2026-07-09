@@ -108,7 +108,7 @@ export default function DocumentationPage() {
                 'Memudahkan keluarga menilai trust sebelum masuk ke pembicaraan jadwal, harga, atau dokumen.',
                 'Menjadi jembatan yang lebih halus menuju paket aktif dan konsultasi, tanpa mendorong terlalu cepat.',
               ].map((item) => (
-                <div key={item} className="rounded-radius-lg border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
+                <div key={item} className="rounded-[16px] border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
                   {item}
                 </div>
               ))}

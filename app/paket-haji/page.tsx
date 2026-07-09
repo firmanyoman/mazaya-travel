@@ -120,17 +120,17 @@ export default async function PaketHajiPage() {
                   <article key={pkg.id} className="flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-surface shadow-[var(--shadow-2)]">
                     <div className="border-b border-border bg-primary px-6 py-5 text-white">
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="rounded-radius-pill bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                        <span className="rounded-full bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                           {pkg.badgeText || 'Paket Haji'}
                         </span>
                         {pkg.tier ? (
-                          <span className="rounded-radius-pill bg-brand-yellow/85 px-3 py-1 text-xs font-bold text-text">
+                          <span className="rounded-full bg-brand-yellow/85 px-3 py-1 text-xs font-bold text-text">
                             {pkg.tier} Class
                           </span>
                         ) : null}
                         <span className={isSoldOut
-                          ? 'rounded-radius-pill border border-white/12 bg-danger px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'
-                          : 'rounded-radius-pill border border-white/12 bg-white/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'}>
+                          ? 'rounded-full border border-white/12 bg-danger px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'
+                          : 'rounded-full border border-white/12 bg-white/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white'}>
                           {isSoldOut ? 'Sold out' : 'Tersedia'}
                         </span>
                       </div>
@@ -146,7 +146,7 @@ export default async function PaketHajiPage() {
                     </div>
 
                     <div className="flex h-full flex-col gap-5 p-6">
-                      <div className="grid gap-3 rounded-radius-lg border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
+                      <div className="grid gap-3 rounded-[16px] border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
                         <div className="flex items-start justify-between gap-4">
                           <span className="text-muted">Harga paket</span>
                           <span className="text-right text-lg font-bold text-primary">
@@ -164,7 +164,7 @@ export default async function PaketHajiPage() {
                         </div>
                       </div>
 
-                      <div className={`rounded-radius-lg border px-4 py-4 ${seatState.className}`}>
+                      <div className={`rounded-[16px] border px-4 py-4 ${seatState.className}`}>
                         <div className="text-sm font-semibold">Kondisi kursi</div>
                         <div className="mt-2 text-base font-bold leading-snug">{seatState.label}</div>
                         <p className="mt-3 text-sm leading-7 opacity-90">{seatState.detail}</p>
@@ -207,7 +207,7 @@ export default async function PaketHajiPage() {
                   description: 'Saat butuh arahan lebih spesifik, WhatsApp dan pendaftaran tetap tersedia dengan konteks yang jelas.',
                 },
               ].map((item) => (
-                <div key={item.title} className="rounded-radius-lg border border-border bg-surface-subtle px-5 py-5">
+                <div key={item.title} className="rounded-[16px] border border-border bg-surface-subtle px-5 py-5">
                   <div className="text-lg font-semibold text-text">{item.title}</div>
                   <p className="mt-2 text-sm leading-7 text-muted">{item.description}</p>
                 </div>
@@ -219,7 +219,7 @@ export default async function PaketHajiPage() {
         <SectionShell surface="card" className="px-6 py-8 md:px-8 md:py-10">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div className="space-y-4">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-warning-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#8A6911]">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-warning-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#8A6911]">
                 Jadwal sedang diperbarui
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
@@ -235,7 +235,7 @@ export default async function PaketHajiPage() {
                   'Tanyakan estimasi jadwal, skema pembayaran, dan dokumen yang biasanya disiapkan lebih dulu.',
                   'Gunakan WhatsApp untuk respons tercepat dari tim Mazaya mengenai paket Haji.',
                 ].map((item) => (
-                  <div key={item} className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                  <div key={item} className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     {item}
                   </div>
                 ))}

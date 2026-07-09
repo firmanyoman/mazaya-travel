@@ -38,7 +38,7 @@ export function Button({
       href={href}
       data-button="true"
       className={[
-        'focus-ring inline-flex items-center justify-center gap-2 rounded-radius-control font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-150',
+        'focus-ring inline-flex items-center justify-center gap-2 rounded-[12px] font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-150',
         variantClassName[variant],
         sizeClassName[size],
         fullWidth ? 'w-full' : '',

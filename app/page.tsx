@@ -297,7 +297,7 @@ export default async function Home() {
           <div className="absolute right-8 top-8 hidden h-16 w-16 rounded-full bg-brand-yellow/25 blur-2xl lg:block" />
           <div className="relative grid items-center gap-10 lg:min-h-[620px] lg:grid-cols-12 lg:gap-8">
             <div className="space-y-6 lg:col-span-5">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
                 Amanah Teal Experience
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
@@ -328,15 +328,15 @@ export default async function Home() {
                 </Button>
               </div>
               <div className="grid gap-3 border-t border-border pt-6 sm:grid-cols-3">
-                <div className="rounded-radius-lg bg-surface-subtle px-4 py-4">
+                <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
                   <div className="text-2xl font-bold text-primary">Resmi</div>
                   <div className="text-sm text-muted">PPIU dan legalitas perusahaan terbuka</div>
                 </div>
-                <div className="rounded-radius-lg bg-surface-subtle px-4 py-4">
+                <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
                   <div className="text-2xl font-bold text-primary">Terarah</div>
                   <div className="text-sm text-muted">Bimbingan sebelum daftar hingga berangkat</div>
                 </div>
-                <div className="rounded-radius-lg bg-surface-subtle px-4 py-4">
+                <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
                   <div className="text-2xl font-bold text-primary">Nyaman</div>
                   <div className="text-sm text-muted">Fokus pada ritme ibadah dan kebutuhan keluarga</div>
                 </div>
@@ -355,7 +355,7 @@ export default async function Home() {
                     priority
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white md:p-6">
-                    <div className="mb-3 inline-flex items-center gap-2 rounded-radius-pill border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
+                    <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
                       Visual perjalanan Mazaya
                     </div>
                     <h2 className="max-w-md text-xl font-bold leading-snug md:text-2xl">
@@ -365,7 +365,7 @@ export default async function Home() {
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
                   <div className="rounded-[20px] border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
-                    <div className="mb-4 inline-flex rounded-radius-pill bg-brand-yellow/30 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-text">
+                    <div className="mb-4 inline-flex rounded-full bg-brand-yellow/30 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-text">
                       Trust first
                     </div>
                     <div className="space-y-4">
@@ -379,7 +379,7 @@ export default async function Home() {
                           Jl. Lapawawoi Kr. Sigeri, Kel. Biru, Kec. Tanete Riattang, Bone
                         </div>
                       </div>
-                      <div className="rounded-radius-lg bg-primary-soft/60 px-4 py-3 text-sm text-text-secondary">
+                      <div className="rounded-[16px] bg-primary-soft/60 px-4 py-3 text-sm text-text-secondary">
                         Ruang konsultasi yang lebih nyaman untuk calon jemaah dan keluarga yang ingin bertanya lebih dulu.
                       </div>
                     </div>
@@ -400,7 +400,7 @@ export default async function Home() {
         <SectionShell surface="card" className="px-5 py-4 md:px-6 md:py-5">
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
             {trustItems.map((item) => (
-              <div key={item.label} className="rounded-radius-lg border border-border/80 bg-surface-subtle px-4 py-4">
+              <div key={item.label} className="rounded-[16px] border border-border/80 bg-surface-subtle px-4 py-4">
                 <div className="text-lg font-bold text-primary">{item.value}</div>
                 <div className="mt-1 text-sm font-semibold text-text-secondary">{item.label}</div>
                 <div className="mt-2 text-sm leading-6 text-muted">{item.detail}</div>
@@ -412,7 +412,7 @@ export default async function Home() {
         <SectionShell className="px-1">
           <div className="mb-8 flex flex-col gap-4 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                 Featured packages
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
@@ -443,10 +443,10 @@ export default async function Home() {
                       className="aspect-[4/3] w-full object-cover"
                     />
                     <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-4">
-                      <span className="rounded-radius-pill bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary shadow-[var(--shadow-1)]">
+                      <span className="rounded-full bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary shadow-[var(--shadow-1)]">
                         {pkg.badge}
                       </span>
-                      <span className={`rounded-radius-pill border px-3 py-1 text-xs font-bold ${statusBadge.className}`}>
+                      <span className={`rounded-full border px-3 py-1 text-xs font-bold ${statusBadge.className}`}>
                         {statusBadge.label}
                       </span>
                     </div>
@@ -464,7 +464,7 @@ export default async function Home() {
                       <p className="text-sm leading-7 text-muted line-clamp-3">{pkg.packageSummary}</p>
                     </div>
 
-                    <div className="grid gap-3 rounded-radius-lg border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
+                    <div className="grid gap-3 rounded-[16px] border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
                       <div className="flex items-start justify-between gap-4">
                         <span className="text-muted">Durasi</span>
                         <span className="text-right font-semibold text-text">{pkg.duration}</span>
@@ -498,7 +498,7 @@ export default async function Home() {
                           <div className="font-semibold text-text">{formatRupiahCompact(pkg.minimumDeposit)}</div>
                         </div>
                       </div>
-                      <div className={`rounded-radius-lg border px-4 py-3 ${seatState.tone}`}>
+                      <div className={`rounded-[16px] border px-4 py-3 ${seatState.tone}`}>
                         <div className="flex items-center justify-between gap-3 text-sm font-semibold">
                           <span>Ketersediaan</span>
                           <span>{seatState.label}</span>
@@ -531,7 +531,7 @@ export default async function Home() {
         <SectionShell surface="soft" className="px-6 py-8 md:px-8 lg:px-12">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="max-w-xl space-y-4">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-surface px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary shadow-[var(--shadow-1)]">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-surface px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary shadow-[var(--shadow-1)]">
                 Why Mazaya
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
@@ -559,7 +559,7 @@ export default async function Home() {
         <SectionShell className="px-1">
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div className="space-y-4">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                 Alur pendampingan
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
@@ -589,7 +589,7 @@ export default async function Home() {
         <SectionShell surface="card" className="overflow-hidden px-6 py-8 md:px-8 lg:px-12">
           <div className="grid gap-8 lg:grid-cols-[1fr_1.02fr] lg:items-center">
             <div className="space-y-5">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                 Legalitas & kredibilitas
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
@@ -601,7 +601,7 @@ export default async function Home() {
               </p>
               <div className="grid gap-3">
                 {legalProof.map((item) => (
-                  <div key={item} className="flex items-start gap-3 rounded-radius-lg bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
+                  <div key={item} className="flex items-start gap-3 rounded-[16px] bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
                     <span className="mt-1 h-2.5 w-2.5 rounded-full bg-brand-yellow" />
                     <span>{item}</span>
                   </div>
@@ -640,7 +640,7 @@ export default async function Home() {
           <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_center,rgba(240,235,32,0.18),transparent_62%)] lg:block" />
           <div className="relative grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="space-y-4">
-              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-white/14 bg-white/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/14 bg-white/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
                 Konsultasi yang tenang
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>

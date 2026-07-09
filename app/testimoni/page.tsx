@@ -104,7 +104,7 @@ export default function TestimonialsPage() {
                 'Rasa aman keluarga saat memverifikasi travel dan memahami alur proses.',
                 'Pendampingan yang terasa dekat selama persiapan dokumen dan manasik.',
               ].map((item) => (
-                <div key={item} className="rounded-radius-lg border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
+                <div key={item} className="rounded-[16px] border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
                   {item}
                 </div>
               ))}

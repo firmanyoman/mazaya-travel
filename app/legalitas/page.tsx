@@ -97,7 +97,7 @@ export default function LegalPage() {
               </div>
               <h3 className="text-xl font-semibold text-text">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-muted">{item.summary}</p>
-              <div className="mt-5 rounded-radius-lg border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
+              <div className="mt-5 rounded-[16px] border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
                 <div>
                   <div className="text-xs uppercase tracking-[0.12em] text-muted">Jenis legal</div>
                   <div className="mt-1 font-semibold text-text">{item.type}</div>
