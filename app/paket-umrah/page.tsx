@@ -258,7 +258,7 @@ export default async function PaketUmrahPage() {
                         <Link href={`/paket/${pkg.slug}`} className="block transition-colors hover:text-brand-yellow">
                           <h3 className="text-2xl font-bold leading-snug text-white line-clamp-2">{pkg.title}</h3>
                         </Link>
-                        <p className="text-sm leading-7 text-white/78 line-clamp-3">{pkg.packageSummary}</p>
+                        <p className="text-sm leading-7 text-white/78">{pkg.packageSummary}</p>
                       </div>
                     </div>
 
