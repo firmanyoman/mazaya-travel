@@ -75,7 +75,7 @@ export function TrustHero({ eyebrow, title, summary, stats = [], panelTitle, pan
           ) : null}
         </div>
         <div className="grid gap-4">
-          <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+          <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
             <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">{panelTitle}</div>
             <div className="mt-5 grid gap-3">
               {panelItems.map((item) => (
@@ -86,7 +86,7 @@ export function TrustHero({ eyebrow, title, summary, stats = [], panelTitle, pan
               ))}
             </div>
           </div>
-          <div className="rounded-radius-card border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
+          <div className="rounded-[20px] border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
             <div className="text-sm font-semibold text-text-secondary">Butuh arahan cepat?</div>
             <p className="mt-3 text-sm leading-7 text-muted">
               Tim Mazaya membantu dengan bahasa yang rapi, tenang, dan mudah dipahami keluarga sebelum melangkah ke pendaftaran.
@@ -129,7 +129,7 @@ export function TrustCardGrid({ children, columns = 'two' }: { children: React.R
 
 export function TrustCard({ title, description, accent }: { title: string; description: string; accent?: string }) {
   return (
-    <article className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+    <article className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
       {accent ? (
         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
           {accent}
@@ -171,7 +171,7 @@ export function TrustCta({ eyebrow, title, summary, primaryHref, primaryLabel, s
           <h2 className="max-w-2xl text-3xl font-bold leading-tight text-white sm:text-4xl">{title}</h2>
           <p className="max-w-2xl text-base leading-8 text-white/76">{summary}</p>
         </div>
-        <div className="grid gap-3 rounded-radius-card border border-white/10 bg-white/8 p-5 backdrop-blur-sm">
+        <div className="grid gap-3 rounded-[20px] border border-white/10 bg-white/8 p-5 backdrop-blur-sm">
           <Button href={primaryHref} variant="secondary" size="lg" className="border-white bg-white text-primary hover:bg-white/92" target={primaryHref.startsWith('http') ? '_blank' : undefined} rel={primaryHref.startsWith('http') ? 'noopener noreferrer' : undefined}>
             {primaryLabel}
           </Button>

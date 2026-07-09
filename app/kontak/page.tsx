@@ -91,7 +91,7 @@ export default function ContactPage() {
       >
         <TrustCardGrid>
           {contactMethods.map((item) => (
-            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <article key={item.title} className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
                 {item.accent}
               </div>
@@ -110,7 +110,7 @@ export default function ContactPage() {
       >
         <TrustSplitPanel
           left={
-            <div className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <div className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <h3 className="text-2xl font-bold text-text">Alamat kantor</h3>
               <p className="mt-4 text-sm leading-7 text-text-secondary">
                 PT Mazaya Amanah Wisata<br />
@@ -125,7 +125,7 @@ export default function ContactPage() {
             </div>
           }
           right={
-            <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+            <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
               <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">Butuh respon cepat?</div>
               <p className="mt-4 text-sm leading-7 text-white/82">
                 WhatsApp tetap menjadi jalur paling nyaman untuk cek paket aktif, menanyakan jadwal keberangkatan, dan meminta arahan langkah pendaftaran.

@@ -176,7 +176,7 @@ export default async function PackageDetailPage({ params }: Props) {
                 ))}
               </div>
             </div>
-            <div className="relative overflow-hidden rounded-radius-card border border-border bg-primary shadow-[var(--shadow-3)]">
+            <div className="relative overflow-hidden rounded-[20px] border border-border bg-primary shadow-[var(--shadow-3)]">
               {pkg.ogImage ? (
                 <Image
                   src={pkg.ogImage}
@@ -251,7 +251,7 @@ export default async function PackageDetailPage({ params }: Props) {
                       </div>
                     </div>
                   </div>
-                  <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+                  <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
                     <div className="text-sm font-semibold text-white/72">Langkah berikutnya</div>
                     <div className="mt-3 text-2xl font-bold leading-snug">
                       {isSoldOut ? 'Jadwal ini penuh, tetapi konsultasi tetap terbuka.' : 'Jika paket ini terasa cocok, Anda bisa lanjut dengan tenang.'}
@@ -293,7 +293,7 @@ export default async function PackageDetailPage({ params }: Props) {
                     </div>
                     <div className="grid gap-4 md:grid-cols-3">
                       {pkg.airline ? (
-                        <div className="rounded-radius-card border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
+                        <div className="rounded-[20px] border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
                           <div className="text-sm font-semibold text-primary">Maskapai</div>
                           <div className="mt-3 text-xl font-semibold leading-snug text-text">{pkg.airline}</div>
                           <p className="mt-2 text-sm leading-7 text-muted">
@@ -302,7 +302,7 @@ export default async function PackageDetailPage({ params }: Props) {
                         </div>
                       ) : null}
                       {pkg.makkahHotel ? (
-                        <div className="rounded-radius-card border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
+                        <div className="rounded-[20px] border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
                           <div className="text-sm font-semibold text-primary">Hotel Makkah</div>
                           <div className="mt-3 text-xl font-semibold leading-snug text-text">{pkg.makkahHotel}</div>
                           <p className="mt-2 text-sm leading-7 text-muted">
@@ -311,7 +311,7 @@ export default async function PackageDetailPage({ params }: Props) {
                         </div>
                       ) : null}
                       {pkg.madinahHotel ? (
-                        <div className="rounded-radius-card border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
+                        <div className="rounded-[20px] border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
                           <div className="text-sm font-semibold text-primary">Hotel Madinah</div>
                           <div className="mt-3 text-xl font-semibold leading-snug text-text">{pkg.madinahHotel}</div>
                           <p className="mt-2 text-sm leading-7 text-muted">
@@ -374,7 +374,7 @@ export default async function PackageDetailPage({ params }: Props) {
                     {pkg.paymentNotes ? (
                       <div className="space-y-4">
                         <h2 className="text-2xl font-bold text-text">Catatan pembayaran</h2>
-                        <div className="rounded-radius-card border border-primary/10 bg-primary-soft/50 px-5 py-5 text-sm leading-8 whitespace-pre-line text-text-secondary">
+                        <div className="rounded-[20px] border border-primary/10 bg-primary-soft/50 px-5 py-5 text-sm leading-8 whitespace-pre-line text-text-secondary">
                           {pkg.paymentNotes}
                         </div>
                       </div>
@@ -393,7 +393,7 @@ export default async function PackageDetailPage({ params }: Props) {
                     <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
                       Gambaran perjalanan untuk membantu keluarga memahami ritme keberangkatan.
                     </h2>
-                    <div className="rounded-radius-card border border-border bg-surface-subtle px-5 py-5 text-sm leading-8 whitespace-pre-line text-text-secondary">
+                    <div className="rounded-[20px] border border-border bg-surface-subtle px-5 py-5 text-sm leading-8 whitespace-pre-line text-text-secondary">
                       {pkg.itinerarySummary}
                     </div>
                   </div>

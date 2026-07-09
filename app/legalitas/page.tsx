@@ -91,7 +91,7 @@ export default function LegalPage() {
       >
         <TrustCardGrid columns="three">
           {legalDocuments.map((item) => (
-            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <article key={item.title} className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
                 {item.accent}
               </div>
@@ -119,7 +119,7 @@ export default function LegalPage() {
       >
         <TrustSplitPanel
           left={
-            <div className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <div className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <h3 className="text-2xl font-bold text-text">Catatan verifikasi</h3>
               <div className="mt-5">
                 <TrustChecklist items={verificationNotes} />

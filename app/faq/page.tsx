@@ -134,7 +134,7 @@ export default function FaqPage() {
                   </div>
                   <div className="grid gap-4">
                     {group.items.map((item) => (
-                      <details key={item.question} className="group rounded-radius-card border border-border bg-surface-subtle px-5 py-4 open:bg-surface open:shadow-[var(--shadow-1)]">
+                      <details key={item.question} className="group rounded-[20px] border border-border bg-surface-subtle px-5 py-4 open:bg-surface open:shadow-[var(--shadow-1)]">
                         <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-semibold text-text">
                           <span>{item.question}</span>
                           <span className="mt-1 text-primary transition-transform group-open:rotate-45">+</span>

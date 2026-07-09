@@ -140,7 +140,7 @@ export default async function PaketUmrahPage() {
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              <div className="rounded-radius-card border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
+              <div className="rounded-[20px] border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
                 <div className="text-sm font-semibold text-muted">Ringkasan discovery</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-3 lg:grid-cols-3">
                   <div>
@@ -160,7 +160,7 @@ export default async function PaketUmrahPage() {
                   Prioritaskan membaca jadwal keberangkatan, kelas paket, dan status kursi lebih dulu. Setelah itu baru nilai kecocokan harga dan fasilitas.
                 </div>
               </div>
-              <div className="rounded-radius-card border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
+              <div className="rounded-[20px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
                 <div className="text-sm font-semibold text-white/72">Panduan singkat memilih</div>
                 <div className="mt-3 text-xl font-bold leading-snug">
                   Cocok untuk calon jemaah yang ingin keputusan terasa aman, bukan terburu-buru.
@@ -227,7 +227,7 @@ export default async function PaketUmrahPage() {
                 const facilitySummary = [pkg.airline, pkg.makkahHotel, pkg.madinahHotel].filter(Boolean)
 
                 return (
-                  <article key={pkg.id} className="group flex h-full flex-col overflow-hidden rounded-radius-card border border-border bg-surface shadow-[var(--shadow-2)] transition-transform duration-150 hover:-translate-y-1">
+                  <article key={pkg.id} className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-surface shadow-[var(--shadow-2)] transition-transform duration-150 hover:-translate-y-1">
                     <div className="relative overflow-hidden border-b border-border bg-primary px-6 py-5 text-white">
                       <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top_left,rgba(97,199,195,0.32),transparent_58%)]" />
                       <div className="relative flex flex-wrap items-center gap-3">

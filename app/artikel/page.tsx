@@ -82,7 +82,7 @@ export default function ArtikelPage() {
               </div>
             </div>
             <div className="grid gap-4">
-              <div className="rounded-radius-card border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
+              <div className="rounded-[20px] border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
                 <div className="text-sm font-semibold text-primary">Topik yang banyak dicari</div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {articleCategories.map((category) => (
@@ -92,7 +92,7 @@ export default function ArtikelPage() {
                   ))}
                 </div>
               </div>
-              <div className="rounded-radius-card border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
+              <div className="rounded-[20px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
                 <div className="text-sm font-semibold text-white/72">Tujuan editorial</div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
                   Membantu pengunjung memahami hal penting lebih dulu, sehingga percakapan konsultasi menjadi lebih fokus dan tidak mengulang pertanyaan dasar.
@@ -110,7 +110,7 @@ export default function ArtikelPage() {
       >
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {latestArticles.map((article) => (
-            <article key={article.slug} className="flex h-full flex-col rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <article key={article.slug} className="flex h-full flex-col rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.12em]">
                 <span className="rounded-radius-pill bg-primary-soft px-3 py-1 text-primary">{article.category}</span>
                 <span className="text-muted">{formatDate(article.publishedAt)}</span>

@@ -6,9 +6,9 @@ interface SectionShellProps {
 
 const surfaceClassName = {
   default: '',
-  soft: 'rounded-radius-card bg-primary-soft/10',
-  card: 'rounded-radius-card border border-border bg-surface shadow-[var(--shadow-1)]',
-  primary: 'rounded-radius-card bg-primary text-white',
+  soft: 'rounded-[20px] bg-primary-soft/10',
+  card: 'rounded-[20px] border border-border bg-surface shadow-[var(--shadow-1)]',
+  primary: 'rounded-[20px] bg-primary text-white',
 }
 
 export function SectionShell({ children, className = '', surface = 'default' }: SectionShellProps) {

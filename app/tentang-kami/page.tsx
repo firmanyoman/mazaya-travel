@@ -104,7 +104,7 @@ export default function AboutPage() {
       >
         <TrustSplitPanel
           left={
-            <div className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <div className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <h3 className="text-2xl font-bold text-text">Komitmen layanan</h3>
               <div className="mt-5">
                 <TrustChecklist items={serviceCommitments} />
@@ -112,7 +112,7 @@ export default function AboutPage() {
             </div>
           }
           right={
-            <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+            <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
               <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">Ringkasan legalitas</div>
               <div className="mt-5 grid gap-3">
                 {['PT Mazaya Amanah Wisata', 'PPIU resmi Kemenag RI', 'NIB: 13052200161160002', 'Kantor layanan di Bone, Sulawesi Selatan'].map((item) => (

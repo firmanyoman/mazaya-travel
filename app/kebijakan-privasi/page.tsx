@@ -86,7 +86,7 @@ export default function PrivacyPolicyPage() {
       >
         <div className="grid gap-4">
           {privacyPoints.map((item, index) => (
-            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <article key={item.title} className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <div className="grid gap-4 md:grid-cols-[auto_1fr] md:items-start">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
                   {index + 1}
@@ -108,7 +108,7 @@ export default function PrivacyPolicyPage() {
       >
         <TrustSplitPanel
           left={
-            <div className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <div className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <h3 className="text-2xl font-bold text-text">Konteks data saat ini</h3>
               <div className="mt-5">
                 <TrustChecklist items={privacyContext} />
