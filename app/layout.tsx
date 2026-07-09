@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { PublicFooter } from '@/components/layout/PublicFooter'
+import { PublicNavbar } from '@/components/layout/PublicNavbar'
+import { StickyMobileCTA } from '@/components/layout/StickyMobileCTA'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -20,9 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={plusJakartaSans.variable}>
-      <body className="bg-warm-ivory text-text">
-        <div className="mx-auto max-w-[var(--container)] w-full px-4 sm:px-6 lg:px-8">
-          {children}
+      <body className="bg-warm-ivory text-text antialiased">
+        <a href="#main-content" className="skip-link">Lewati ke konten utama</a>
+        <div className="min-h-screen bg-warm-ivory">
+          <PublicNavbar />
+          <main id="main-content">{children}</main>
+          <PublicFooter />
+          <StickyMobileCTA />
         </div>
       </body>
     </html>

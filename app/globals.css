@@ -3,37 +3,70 @@
 @theme {
   --color-primary: #0F5B5B;
   --color-primary-hover: #0C4C4C;
-  --color-primary-soft: #DCEFED;
+  --color-primary-soft: #DDF2F1;
   --color-brand-teal: #61C7C3;
   --color-brand-yellow: #F0EB20;
   --color-warm-ivory: #F7F3E8;
   --color-surface: #FFFFFF;
+  --color-surface-subtle: #F8FBFA;
+  --color-surface-soft: #E8F0EE;
   --color-text: #123434;
+  --color-text-secondary: #294947;
   --color-muted: #647A77;
+  --color-icon-muted: #98ABA8;
+  --color-border-strong: #B8CCC8;
   --color-border: #C9DED9;
+  --color-success: #168E62;
+  --color-success-soft: #DDF4E9;
+  --color-warning: #C69516;
+  --color-warning-soft: #FFF1C9;
+  --color-danger: #C94B4B;
+  --color-danger-soft: #FCE3E3;
+  --color-info: #2B7A78;
+  --color-info-soft: #DDF2F1;
 
-  --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 24px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
   --radius-pill: 999px;
+  --radius-control: var(--radius-md);
+  --radius-card: var(--radius-xl);
+
+  --shadow-1: 0 2px 8px rgba(15, 91, 91, 0.08);
+  --shadow-2: 0 8px 24px rgba(15, 91, 91, 0.12);
+  --shadow-3: 0 16px 40px rgba(15, 91, 91, 0.16);
 
   --width-container: 1200px;
+  --spacing-section-mobile: 48px;
+  --spacing-section-tablet: 72px;
+  --spacing-section-desktop: 96px;
 }
 
 :root {
   --background: var(--color-warm-ivory);
   --surface: var(--color-surface);
+  --surface-subtle: var(--color-surface-subtle);
+  --surface-soft: var(--color-surface-soft);
   --foreground: var(--color-text);
+  --text-secondary: var(--color-text-secondary);
   --muted: var(--color-muted);
+  --border-strong: var(--color-border-strong);
   --border: var(--color-border);
   --primary: var(--color-primary);
   --primary-hover: var(--color-primary-hover);
   --primary-soft: var(--color-primary-soft);
   --brand-teal: var(--color-brand-teal);
   --brand-yellow: var(--color-brand-yellow);
-  --radius-card: var(--radius-md);
-  --radius-control: var(--radius-sm);
-  --radius-pill: var(--radius-pill);
+  --success: var(--color-success);
+  --success-soft: var(--color-success-soft);
+  --warning: var(--color-warning);
+  --warning-soft: var(--color-warning-soft);
+  --danger: var(--color-danger);
+  --danger-soft: var(--color-danger-soft);
+  --info: var(--color-info);
+  --info-soft: var(--color-info-soft);
   --container: var(--width-container);
 }
 
@@ -43,14 +76,27 @@
 
 html {
   background: var(--background);
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--background);
+  background:
+    radial-gradient(circle at top, rgba(97, 199, 195, 0.08), transparent 32%),
+    var(--background);
   color: var(--foreground);
-  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-family:
+    var(--font-plus-jakarta-sans),
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 img {
@@ -61,4 +107,74 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(97, 199, 195, 0.3);
+  color: var(--foreground);
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible,
+.focus-ring:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 2px rgba(247, 243, 232, 0.98),
+    0 0 0 4px rgba(15, 91, 91, 0.34),
+    0 0 0 7px rgba(97, 199, 195, 0.22);
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  z-index: 60;
+  transform: translateY(-200%);
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: white;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.section-shell {
+  padding-block: var(--spacing-section-mobile);
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding-block: var(--spacing-section-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-shell {
+    padding-block: var(--spacing-section-desktop);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

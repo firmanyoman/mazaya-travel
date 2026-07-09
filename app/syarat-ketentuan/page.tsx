@@ -1,7 +1,14 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
-import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
+import {
+  TrustCard,
+  TrustChecklist,
+  TrustCta,
+  TrustHero,
+  TrustPageLayout,
+  TrustSection,
+  TrustSplitPanel,
+} from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
   title: 'Syarat & Ketentuan - Mazaya Travel',
@@ -53,82 +60,78 @@ const registrationNotes = [
 
 export default function TermsPage() {
   return (
-    <div className="flex min-h-screen flex-col py-8">
-      <header className="mb-8 flex items-center justify-between border-b border-border pb-4">
-        <Link href="/">
-          <Image
-            src={logoImage}
-            alt="Logo Mazaya Travel"
-            className="h-auto w-[120px] object-contain"
-            priority
-          />
-        </Link>
-        <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-          ← Kembali ke Beranda
-        </Link>
-      </header>
+    <TrustPageLayout>
+      <TrustHero
+        eyebrow="Syarat & ketentuan"
+        title="Ketentuan dasar yang dibuat lebih jelas agar penggunaan website dan pendaftaran awal terasa tenang."
+        summary="Halaman ini merangkum ketentuan dasar saat Anda memakai website Mazaya Travel, mengirim pertanyaan, atau memulai pendaftaran awal paket Umrah."
+        stats={[
+          { value: 'Jelas', label: 'Ketentuan inti dipisah per topik agar mudah dipindai' },
+          { value: 'Tenang', label: 'Bahasa dibuat ringkas tanpa nuansa birokratis berlebihan' },
+          { value: 'Terkait', label: 'Selaras dengan alur konsultasi, pendaftaran, dan privasi' },
+        ]}
+        panelTitle="Ringkasan ketentuan"
+        panelItems={[
+          { label: 'Cakupan', value: 'Website, konsultasi, dan pendaftaran awal' },
+          { label: 'Sifat pendaftaran', value: 'Pendaftaran awal, bukan konfirmasi final keberangkatan' },
+          { label: 'Tanggung jawab pengguna', value: 'Memberikan data yang benar dan aktif' },
+          { label: 'Kebijakan terkait', value: 'Mengikuti kebijakan privasi website' },
+        ]}
+      />
 
-      <main className="mx-auto flex-1 w-full max-w-4xl space-y-8">
-        <section className="rounded-radius-card border border-border bg-primary-soft/20 px-6 py-10 sm:px-10">
-          <span className="inline-block rounded-radius-pill bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
-            Syarat & Ketentuan
-          </span>
-          <h1 className="mt-5 text-3xl font-extrabold text-text sm:text-4xl">
-            Ketentuan Dasar Penggunaan Website dan Pendaftaran Awal Mazaya Travel
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-            Halaman ini merangkum ketentuan dasar yang berlaku saat Anda memakai website Mazaya Travel,
-            mengirim pertanyaan, atau memulai pendaftaran awal paket Umrah. Tujuannya agar informasi
-            lebih jelas, tenang, dan mudah dipahami sejak awal.
-          </p>
-        </section>
-
-        <section className="space-y-6">
-          {termsSections.map((item) => (
-            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-              <h2 className="text-xl font-bold text-text">{item.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
+      <TrustSection
+        eyebrow="Pokok ketentuan"
+        title="Bagian-bagian yang paling perlu dibaca sebelum melanjutkan"
+        summary="Struktur baru ini membantu calon jemaah memahami poin penting tanpa harus menelusuri paragraf panjang yang terasa berat."
+      >
+        <div className="grid gap-4">
+          {termsSections.map((item, index) => (
+            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <div className="grid gap-4 md:grid-cols-[auto_1fr] md:items-start">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
+                  {index + 1}
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold text-text">{item.title}</h2>
+                  <p className="mt-3 text-sm leading-7 text-muted">{item.body}</p>
+                </div>
+              </div>
             </article>
           ))}
-        </section>
+        </div>
+      </TrustSection>
 
-        <section className="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
-          <article className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-            <h2 className="text-2xl font-extrabold text-text">Sebelum melanjutkan pendaftaran</h2>
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted">
-              {registrationNotes.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <Link href="/kebijakan-privasi" className="mt-5 inline-flex font-semibold text-primary hover:underline">
-              Baca Kebijakan Privasi
-            </Link>
-          </article>
-          <article className="rounded-radius-card border border-border bg-primary p-6 text-white shadow-sm">
-            <h2 className="text-2xl font-extrabold">Siap lanjut lihat paket atau konsultasi?</h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/85">
-              Setelah memahami ketentuan dasar ini, Anda bisa melanjutkan ke jalur pendaftaran atau
-              menghubungi tim kami lewat WhatsApp resmi untuk pertanyaan paket.
-            </p>
-            <div className="mt-6 flex flex-col gap-3">
-              <Link
-                href="/daftar"
-                className="inline-flex items-center justify-center rounded-radius-control bg-white px-6 py-3 font-bold text-primary transition-opacity hover:opacity-90"
-              >
-                Daftar Sekarang
+      <TrustSection
+        eyebrow="Sebelum mendaftar"
+        title="Beberapa hal yang sebaiknya disiapkan lebih dulu"
+        summary="Checklist singkat ini membantu calon jemaah melanjutkan proses dengan ekspektasi yang lebih realistis dan rapi."
+      >
+        <TrustSplitPanel
+          left={
+            <div className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <h3 className="text-2xl font-bold text-text">Checklist pendaftaran awal</h3>
+              <div className="mt-5">
+                <TrustChecklist items={registrationNotes} />
+              </div>
+              <Link href="/kebijakan-privasi" className="mt-5 inline-flex text-sm font-semibold text-primary transition-colors hover:text-primary-hover">
+                Baca kebijakan privasi
               </Link>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-radius-control border border-white/20 bg-white/10 px-6 py-3 font-bold text-white transition-colors hover:bg-white/15"
-              >
-                WhatsApp Konsultasi
-              </a>
             </div>
-          </article>
-        </section>
-      </main>
-    </div>
+          }
+          right={<TrustCard title="Lanjut dengan lebih mantap" description="Setelah memahami ketentuan dasar ini, Anda bisa lanjut ke jalur pendaftaran atau berkonsultasi lebih dulu agar kebutuhan paket dan dokumen terasa lebih jelas." />}
+        />
+      </TrustSection>
+
+      <TrustCta
+        eyebrow="Langkah berikutnya"
+        title="Siap lanjut melihat paket atau berkonsultasi lebih dulu?"
+        summary="Setelah memahami ketentuan dasar ini, Anda dapat melanjutkan dengan ritme yang nyaman sesuai kebutuhan keluarga dan kesiapan dokumen."
+        primaryHref="/daftar"
+        primaryLabel="Daftar sekarang"
+        secondaryHref={whatsappUrl}
+        secondaryLabel="WhatsApp konsultasi"
+        secondaryExternal
+      />
+    </TrustPageLayout>
   )
 }

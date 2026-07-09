@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation'
+import { Container } from '@/components/layout/Container'
 import { db } from '@/db'
 import RegistrationFormClient from './RegistrationFormClient'
 
@@ -25,7 +26,7 @@ export default async function RegisterPage({ searchParams }: Props) {
   const initialPackage = allPackages.find((pkg) => pkg.slug === selectedSlug)
 
   return (
-    <div className="flex flex-col min-h-screen py-8">
+    <Container className="pb-12 pt-4 md:pt-6">
       <RegistrationFormClient
         allPackages={allPackages.map((p) => ({
           id: p.id,
@@ -37,6 +38,6 @@ export default async function RegisterPage({ searchParams }: Props) {
         }))}
         initialPackageId={initialPackage?.id || null}
       />
-    </div>
+    </Container>
   )
 }

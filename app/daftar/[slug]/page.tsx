@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { Container } from '@/components/layout/Container'
 import { db } from '@/db'
 import RegistrationFormClient from '../RegistrationFormClient'
 
@@ -22,7 +23,7 @@ export default async function RegisterPackagePage({ params }: Props) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col py-8">
+    <Container className="pb-12 pt-4 md:pt-6">
       <RegistrationFormClient
         allPackages={allPackages.map((p) => ({
           id: p.id,
@@ -34,6 +35,6 @@ export default async function RegisterPackagePage({ params }: Props) {
         }))}
         initialPackageId={initialPackage.id}
       />
-    </div>
+    </Container>
   )
 }

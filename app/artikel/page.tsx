@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
+import { ContentCta, ContentHero, ContentPageLayout, ContentSection } from '@/components/content/ContentPage'
+import { SectionShell } from '@/components/layout/SectionShell'
+import { Button } from '@/components/ui/Button'
 import { articles } from './articles'
 
 export const metadata: Metadata = {
@@ -20,104 +20,129 @@ const formatDate = (date: string) =>
     year: 'numeric',
   })
 
+const categoryCount = new Set(articles.map((article) => article.category)).size
+const latestArticles = [...articles].sort((a, b) => a.publishedAt.localeCompare(b.publishedAt)).reverse()
+const featuredArticle = latestArticles[0]
+const articleCategories = Array.from(new Set(latestArticles.map((article) => article.category)))
+
 export default function ArtikelPage() {
   return (
-    <div className="flex min-h-screen flex-col py-8">
-      <header className="mb-8 flex items-center justify-between border-b border-border pb-4">
-        <Link href="/">
-          <Image
-            src={logoImage}
-            alt="Logo Mazaya Travel"
-            className="h-auto w-[120px] object-contain"
-            priority
-          />
-        </Link>
-        <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-          ← Kembali ke Beranda
-        </Link>
-      </header>
+    <ContentPageLayout>
+      <ContentHero
+        eyebrow="Editorial Mazaya"
+        backHref="/"
+        backLabel="Kembali ke Beranda"
+        title="Artikel edukasi yang membantu calon jemaah membaca trust, kesiapan, dan langkah berikutnya dengan lebih tenang."
+        summary="Kumpulan artikel ini disusun sebagai ruang baca yang rapi untuk calon jemaah dan keluarga: cukup informatif untuk discovery, tetapi tetap ringan dipindai di mobile sebelum lanjut ke paket atau konsultasi."
+        actions={
+          <>
+            <Button href={featuredArticle ? `/artikel/${featuredArticle.slug}` : '/paket-umrah'} size="lg">
+              {featuredArticle ? 'Baca artikel terbaru' : 'Lihat paket Umrah'}
+            </Button>
+            <Button href="/paket-umrah" variant="secondary" size="lg">
+              Lihat paket Umrah
+            </Button>
+          </>
+        }
+        metrics={[
+          { value: `${articles.length} artikel`, label: 'Panduan ringkas untuk trust, dokumen, dan keputusan awal' },
+          { value: `${categoryCount} topik`, label: 'Dikelompokkan agar lebih mudah menemukan bacaan yang relevan' },
+          { value: 'Mobile-first', label: 'Ritme baca dibuat lebih nyaman untuk layar kecil' },
+        ]}
+        panelTitle="Cara memakai halaman ini"
+        panelItems={[
+          { label: 'Mulai dari', value: featuredArticle ? featuredArticle.title : 'Artikel yang paling relevan dengan pertanyaan Anda' },
+          { label: 'Lanjut ke', value: 'Paket aktif jika sudah punya gambaran jadwal atau budget' },
+          { label: 'Gunakan WhatsApp', value: 'Saat butuh klarifikasi yang lebih spesifik setelah membaca' },
+        ]}
+      />
 
-      <main className="mx-auto flex-1 w-full max-w-6xl space-y-8">
-        <section className="rounded-radius-card border border-border bg-primary-soft/20 px-6 py-10 sm:px-10">
-          <span className="inline-block rounded-radius-pill bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
-            Artikel Mazaya Travel
-          </span>
-          <h1 className="mt-5 text-3xl font-extrabold text-text sm:text-4xl">
-            Artikel Edukasi Umrah untuk Membantu Calon Jemaah Menilai dan Menyiapkan Langkah
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-            Halaman ini berisi artikel edukatif yang dibuat untuk kebutuhan discovery, SEO, dan penguatan trust. Fokusnya sederhana: membantu calon jemaah memahami hal penting sebelum lanjut melihat paket atau membuka konsultasi.
-          </p>
-        </section>
+      {featuredArticle ? (
+        <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
+          <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
+            <div className="space-y-4">
+              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-brand-yellow/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-text">
+                Pilihan editor
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              </div>
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-muted">
+                  <span className="rounded-radius-pill bg-primary-soft px-3 py-1 text-primary">{featuredArticle.category}</span>
+                  <span>{formatDate(featuredArticle.publishedAt)}</span>
+                  <span>{featuredArticle.readTime}</span>
+                </div>
+                <h2 className="max-w-3xl text-3xl font-bold leading-tight text-text sm:text-4xl">{featuredArticle.title}</h2>
+                <p className="max-w-2xl text-base leading-8 text-muted">{featuredArticle.excerpt}</p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button href={`/artikel/${featuredArticle.slug}`}>Baca artikel ini</Button>
+                <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary">
+                  Konsultasi setelah membaca
+                </Button>
+              </div>
+            </div>
+            <div className="grid gap-4">
+              <div className="rounded-[24px] border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
+                <div className="text-sm font-semibold text-primary">Topik yang banyak dicari</div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {articleCategories.map((category) => (
+                    <span key={category} className="rounded-radius-pill border border-border bg-surface px-3 py-2 text-sm font-medium text-text-secondary">
+                      {category}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-[24px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
+                <div className="text-sm font-semibold text-white/72">Tujuan editorial</div>
+                <p className="mt-3 text-sm leading-7 text-white/78">
+                  Membantu pengunjung memahami hal penting lebih dulu, sehingga percakapan konsultasi menjadi lebih fokus dan tidak mengulang pertanyaan dasar.
+                </p>
+              </div>
+            </div>
+          </div>
+        </SectionShell>
+      ) : null}
 
-        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {articles.map((article) => (
-            <article
-              key={article.slug}
-              className="flex h-full flex-col rounded-radius-card border border-border bg-surface p-6 shadow-sm"
-            >
-              <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-wide">
-                <span className="rounded-radius-pill bg-primary-soft px-3 py-1 text-primary">
-                  {article.category}
-                </span>
+      <ContentSection
+        eyebrow="Semua artikel"
+        title="Bacaan yang lebih terkurasi untuk tahap awal penilaian dan persiapan"
+        summary="Setiap kartu menampilkan sinyal baca yang penting lebih dulu: topik, tanggal publikasi, waktu baca, dan ringkasan manfaatnya."
+      >
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {latestArticles.map((article) => (
+            <article key={article.slug} className="flex h-full flex-col rounded-[24px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.12em]">
+                <span className="rounded-radius-pill bg-primary-soft px-3 py-1 text-primary">{article.category}</span>
                 <span className="text-muted">{formatDate(article.publishedAt)}</span>
               </div>
-              <h2 className="mt-4 text-xl font-bold leading-snug text-text">{article.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{article.excerpt}</p>
-              <div className="mt-5 rounded-radius-card border border-border bg-primary-soft/10 p-4 text-sm text-text">
-                <p>{article.readTime}</p>
+              <h2 className="mt-4 text-xl font-semibold leading-snug text-text">{article.title}</h2>
+              <p className="mt-3 text-sm leading-7 text-muted">{article.excerpt}</p>
+              <div className="mt-5 rounded-radius-lg border border-border bg-surface-subtle px-4 py-3 text-sm text-text-secondary">
+                {article.readTime}
               </div>
-              <div className="mt-6 flex gap-3">
-                <Link
-                  href={`/artikel/${article.slug}`}
-                  className="inline-flex items-center justify-center rounded-radius-control bg-primary px-5 py-3 font-bold text-white transition-colors hover:bg-primary-hover"
-                >
-                  Baca Artikel
-                </Link>
-                <Link
-                  href="/paket-umrah"
-                  className="inline-flex items-center justify-center rounded-radius-control border border-primary bg-surface px-5 py-3 font-bold text-primary transition-colors hover:bg-primary-soft"
-                >
-                  Lihat Paket
-                </Link>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <Button href={`/artikel/${article.slug}`} variant="secondary" fullWidth>
+                  Baca artikel
+                </Button>
+                <Button href="/paket-umrah" fullWidth>
+                  Lihat paket
+                </Button>
               </div>
             </article>
           ))}
-        </section>
+        </div>
+      </ContentSection>
 
-        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <article className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-            <h2 className="text-2xl font-extrabold text-text">Apa yang bisa dibaca di sini?</h2>
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted">
-              <li>Artikel ringkas tentang trust, legalitas, konsultasi, dan persiapan awal Umrah.</li>
-              <li>Bahasa dibuat mudah dipindai untuk pembaca mobile dan user discovery dari Google.</li>
-              <li>Setelah membaca, user diarahkan secara wajar ke paket aktif atau WhatsApp.</li>
-            </ul>
-          </article>
-          <article className="rounded-radius-card border border-border bg-primary p-6 text-white shadow-sm">
-            <h2 className="text-2xl font-extrabold">Butuh langkah berikutnya yang lebih praktis?</h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/85">
-              Setelah membaca artikel, Anda bisa lanjut cek paket Umrah yang tersedia atau konsultasi singkat untuk menanyakan jadwal, dokumen, dan kesiapan daftar.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/paket-umrah"
-                className="inline-flex items-center justify-center rounded-radius-control bg-white px-6 py-3 font-bold text-primary transition-opacity hover:opacity-90"
-              >
-                Lihat Paket
-              </Link>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-radius-control border border-white/20 bg-white/10 px-6 py-3 font-bold text-white transition-colors hover:bg-white/15"
-              >
-                WhatsApp Konsultasi
-              </a>
-            </div>
-          </article>
-        </section>
-      </main>
-    </div>
+      <ContentCta
+        eyebrow="Langkah tenang berikutnya"
+        title="Sudah menemukan bacaan yang relevan? Lanjutkan dengan langkah yang paling ringan dulu."
+        summary="Anda bisa membuka paket aktif untuk membandingkan jadwal dan harga, atau langsung bertanya via WhatsApp jika ingin arahan yang lebih spesifik."
+        primaryHref="/paket-umrah"
+        primaryLabel="Lihat paket Umrah"
+        secondaryHref={whatsappUrl}
+        secondaryLabel="WhatsApp konsultasi"
+        secondaryExternal
+      />
+    </ContentPageLayout>
   )
 }

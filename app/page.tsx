@@ -1,8 +1,10 @@
 import Image from 'next/image'
-import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
+import { and, eq } from 'drizzle-orm'
+import { Container } from '@/components/layout/Container'
+import { SectionShell } from '@/components/layout/SectionShell'
+import { Button } from '@/components/ui/Button'
 import { db } from '@/db'
 import { packages } from '@/db/schema'
-import { eq, and } from 'drizzle-orm'
 
 interface DbPackage {
   title: string
@@ -39,10 +41,79 @@ interface DbPackage {
   updatedAt: Date
 }
 
+function formatRupiahMillions(price: number | null) {
+  if (!price) return 'Hubungi CS'
+
+  return `Rp ${(price / 1000000).toFixed(1)} Jt`
+}
+
+function formatRupiahCompact(price: number | null) {
+  if (!price) return 'Konsultasikan kebutuhan Anda'
+
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    maximumFractionDigits: 0,
+  }).format(price)
+}
+
+function formatDate(value: string) {
+  if (!value) return 'Jadwal menyusul'
+
+  return new Date(value).toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
+function getSeatState(remainingSeats: number | null, totalSeats: number | null) {
+  if (!remainingSeats || !totalSeats) {
+    return {
+      label: 'Konfirmasi ketersediaan kursi',
+      tone: 'bg-info-soft text-info border-info/10',
+      width: '40%',
+      barTone: 'bg-info',
+    }
+  }
+
+  const percentage = Math.max(0, Math.min(100, Math.round((remainingSeats / totalSeats) * 100)))
+
+  if (percentage <= 20) {
+    return {
+      label: `Sisa ${remainingSeats} dari ${totalSeats} kursi`,
+      tone: 'bg-warning-soft text-[#8A6911] border-warning/20',
+      width: `${percentage}%`,
+      barTone: 'bg-warning',
+    }
+  }
+
+  return {
+    label: `Sisa ${remainingSeats} dari ${totalSeats} kursi`,
+    tone: 'bg-success-soft text-success border-success/20',
+    width: `${percentage}%`,
+    barTone: 'bg-success',
+  }
+}
+
+function getStatusBadge(packageStatus: string) {
+  if (packageStatus === 'active') {
+    return {
+      label: 'Tersedia',
+      className: 'bg-success-soft text-success border-success/20',
+    }
+  }
+
+  return {
+    label: 'Info paket',
+    className: 'bg-surface-soft text-text-secondary border-border',
+  }
+}
+
 export default async function Home() {
   const whatsappUrl = 'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20tertarik%20dengan%20info%20paket%20Umrah'
+  const consultationUrl = 'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20rencana%20Umrah'
 
-  // Fetch dynamic packages from database
   let dbPackages: DbPackage[] = [] as DbPackage[]
   try {
     const results = await db.query.packages.findMany({
@@ -61,393 +132,541 @@ export default async function Home() {
     {
       title: 'Umrah Premium Akhir Tahun (Desember 2025)',
       tier: 'Gold',
-      price: 'Rp 34,9 Jt',
-      duration: '12 Hari',
-      departure: '25 Desember 2025',
-      city: 'Makassar',
-      hotel: "Al-Ansar / Setaraf (Madinah) & Safwat Al-Batlah (Makkah)",
-      seats: 'Sisa 8 Kursi',
+      price: 34900000,
+      durationDays: 12,
+      departureDate: '2025-12-25',
+      departureCity: 'Makassar',
+      airline: 'Penerbangan langsung',
+      makkahHotel: 'Safwat Al-Batlah',
+      madinahHotel: 'Al-Ansar',
+      minimumDeposit: 5000000,
+      totalSeats: 45,
+      remainingSeats: 8,
+      packageStatus: 'active',
       image: '/assets/mazaya_travel_rebuild_inventory/assets/brosur_desember_png.png',
       badge: 'Favorit Keluarga',
-      slug: 'umrah-premium-akhir-tahun-desember-2025'
+      slug: 'umrah-premium-akhir-tahun-desember-2025',
+      packageSummary: 'Paket akhir tahun dengan ritme perjalanan yang nyaman untuk keluarga dan jemaah senior.'
     },
     {
       title: 'Umrah Januari Awal Tahun (Januari 2026)',
       tier: 'Silver',
-      price: 'Rp 28,8 Jt',
-      duration: '9 Hari',
-      departure: '19 Januari 2026',
-      city: 'Makassar',
-      hotel: "Rawabi Al-Majd (Makkah) & Golden Al-Ansar (Madinah)",
-      seats: 'Sisa 12 Kursi',
+      price: 28800000,
+      durationDays: 9,
+      departureDate: '2026-01-19',
+      departureCity: 'Makassar',
+      airline: 'Penerbangan langsung',
+      makkahHotel: 'Rawabi Al-Majd',
+      madinahHotel: 'Golden Al-Ansar',
+      minimumDeposit: 4000000,
+      totalSeats: 45,
+      remainingSeats: 12,
+      packageStatus: 'active',
       image: '/assets/mazaya_travel_rebuild_inventory/assets/Biru_Hijau_Putih_Modern_Ibadah_Umroh_plus_Turki_Instagram_Story__12__png.png',
-      badge: 'Promo Hemat',
-      slug: 'umrah-januari-awal-tahun-januari-2026'
+      badge: 'Pilihan Hemat',
+      slug: 'umrah-januari-awal-tahun-januari-2026',
+      packageSummary: 'Rencana keberangkatan awal tahun dengan susunan fasilitas yang ringkas dan tetap nyaman.'
     },
     {
       title: 'Umrah Awal Musim (Oktober/November 2025)',
       tier: 'Platinum',
-      price: 'Rp 38,5 Jt',
-      duration: '12 Hari',
-      departure: 'Oktober 2025',
-      city: 'Makassar',
-      hotel: "Anjum Makkah (Makkah) & Front Taiba (Madinah)",
-      seats: 'Sisa 5 Kursi',
+      price: 38500000,
+      durationDays: 12,
+      departureDate: '2025-10-15',
+      departureCity: 'Makassar',
+      airline: 'Penerbangan langsung',
+      makkahHotel: 'Anjum Makkah',
+      madinahHotel: 'Front Taiba',
+      minimumDeposit: 7000000,
+      totalSeats: 45,
+      remainingSeats: 5,
+      packageStatus: 'active',
       image: '/assets/mazaya_travel_rebuild_inventory/assets/oktober_png.png',
-      badge: 'Fasilitas Bintang 5',
-      slug: 'umrah-awal-musim-oktober-november-2025'
+      badge: 'Fasilitas Utama',
+      slug: 'umrah-awal-musim-oktober-november-2025',
+      packageSummary: 'Pilihan fasilitas premium dengan hotel strategis untuk jemaah yang mengutamakan kenyamanan.'
     }
   ]
 
   const displayPackages = dbPackages.length > 0 ? dbPackages.map((pkg) => ({
     title: pkg.title,
     tier: pkg.tier || 'Silver',
-    price: pkg.price ? `Rp ${(pkg.price / 1000000).toFixed(1)} Jt` : 'Hubungi CS',
+    price: pkg.price,
+    priceLabel: formatRupiahMillions(pkg.price),
     duration: `${pkg.durationDays} Hari`,
-    departure: pkg.departureDate ? new Date(pkg.departureDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : '',
+    departure: formatDate(pkg.departureDate),
     city: pkg.departureCity,
-    hotel: `${pkg.madinahHotel || 'Setaraf'} (Madinah) & ${pkg.makkahHotel || 'Setaraf'} (Makkah)`,
-    seats: pkg.remainingSeats ? `Sisa ${pkg.remainingSeats} Kursi` : 'Hubungi CS',
+    airline: pkg.airline || 'Jadwal maskapai dikonfirmasi saat konsultasi',
+    makkahHotel: pkg.makkahHotel || 'Setaraf sesuai paket',
+    madinahHotel: pkg.madinahHotel || 'Setaraf sesuai paket',
+    minimumDeposit: pkg.minimumDeposit,
+    totalSeats: pkg.totalSeats,
+    remainingSeats: pkg.remainingSeats,
+    packageStatus: pkg.packageStatus,
     image: pkg.ogImage || '/assets/mazaya_travel_rebuild_inventory/assets/No Image.jpg.jpeg',
     badge: pkg.badgeText || 'Paket Pilihan',
-    slug: pkg.slug
-  })) : defaultPackages
+    slug: pkg.slug,
+    packageSummary: pkg.packageSummary,
+  })) : defaultPackages.map((pkg) => ({
+    title: pkg.title,
+    tier: pkg.tier,
+    price: pkg.price,
+    priceLabel: formatRupiahMillions(pkg.price),
+    duration: `${pkg.durationDays} Hari`,
+    departure: formatDate(pkg.departureDate),
+    city: pkg.departureCity,
+    airline: pkg.airline,
+    makkahHotel: pkg.makkahHotel,
+    madinahHotel: pkg.madinahHotel,
+    minimumDeposit: pkg.minimumDeposit,
+    totalSeats: pkg.totalSeats,
+    remainingSeats: pkg.remainingSeats,
+    packageStatus: pkg.packageStatus,
+    image: pkg.image,
+    badge: pkg.badge,
+    slug: pkg.slug,
+    packageSummary: pkg.packageSummary,
+  }))
 
-  const benefits = [
+  const trustItems = [
+    { value: 'PPIU resmi', label: 'Terdaftar dan terbuka soal legalitas', detail: 'Kemenag RI & NIB perusahaan' },
+    { value: 'Makassar langsung', label: 'Rute dibuat senyaman mungkin', detail: 'Meminimalkan transit yang melelahkan' },
+    { value: 'Pendampingan hangat', label: 'Konsultasi sejak sebelum daftar', detail: 'Ramah untuk keluarga & jemaah senior' },
+    { value: 'Bone, Sulsel', label: 'Kantor fisik yang bisa dikunjungi', detail: 'Lebih mudah verifikasi dan tanya langsung' },
+  ]
+
+  const advantages = [
     {
-      title: 'Izin Resmi Kemenag',
-      description: 'Mazaya Amanah Wisata mengantongi izin resmi PPIU Kemenag RI (NIB: 13052200161160002) menjamin keberangkatan aman.',
-      icon: '🕌'
+      title: 'Informasi lebih jelas sejak awal',
+      description: 'Harga mulai, gambaran fasilitas, dan jalur konsultasi ditampilkan rapi agar keluarga bisa menilai dengan tenang.',
+      accent: '01',
     },
     {
-      title: 'Pembimbing Berpengalaman',
-      description: 'Dibimbing langsung oleh Muthawwif & Asatidz berpengalaman untuk ibadah sesuai tuntunan Sunnah.',
-      icon: '📖'
+      title: 'Pendampingan yang tidak terasa menekan',
+      description: 'Mazaya membantu calon jemaah memahami pilihan paket, dokumen, dan alur daftar tanpa gaya hard-sell.',
+      accent: '02',
     },
     {
-      title: 'Penerbangan Langsung',
-      description: 'Penerbangan rute Makassar langsung ke Jeddah / Madinah untuk meminimalkan kelelahan fisik jemaah.',
-      icon: '✈️'
+      title: 'Berangkat dengan struktur perjalanan yang nyaman',
+      description: 'Rute, hotel, dan ritme perjalanan disusun untuk menjaga fokus ibadah, terutama bagi jemaah yang ingin lebih tenang.',
+      accent: '03',
     },
     {
-      title: 'Hotel Dekat Masjid',
-      description: 'Akomodasi bintang 3 hingga 5 dengan lokasi strategis yang memudahkan jemaah ibadah harian.',
-      icon: '🏢'
-    }
+      title: 'Legalitas dan kantor mudah diverifikasi',
+      description: 'Calon jemaah dapat memeriksa legalitas perusahaan dan datang langsung ke kantor pelayanan di Bone.',
+      accent: '04',
+    },
+  ]
+
+  const processSteps = [
+    {
+      title: 'Konsultasi kebutuhan perjalanan',
+      description: 'Cerita dulu soal target waktu berangkat, kenyamanan yang dicari, dan siapa saja yang akan ikut.',
+    },
+    {
+      title: 'Pilih paket yang paling sesuai',
+      description: 'Tim Mazaya membantu membandingkan fasilitas, jadwal, dan estimasi biaya agar keputusan terasa mantap.',
+    },
+    {
+      title: 'Lengkapi pendaftaran & dokumen',
+      description: 'Setelah cocok, proses administrasi dibimbing langkah demi langkah dengan penjelasan yang mudah dipahami.',
+    },
+    {
+      title: 'Persiapan manasik hingga keberangkatan',
+      description: 'Jemaah mendapat arahan menjelang perjalanan supaya lebih siap secara ibadah maupun teknis keberangkatan.',
+    },
+  ]
+
+  const legalProof = [
+    'PT Mazaya Amanah Wisata',
+    'NIB: 13052200161160002',
+    'Melayani dari kantor pusat di Kabupaten Bone, Sulawesi Selatan',
+    'Konsultasi langsung via WhatsApp atau kunjungan ke kantor',
   ]
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-border">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center gap-3">
-            <Image
-              src={logoImage}
-              alt="Logo Mazaya Travel"
-              className="h-auto w-[140px] object-contain"
-              priority
-            />
-          </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-text">
-            <a href="#hero" className="hover:text-primary transition-colors">Beranda</a>
-            <a href="#paket" className="hover:text-primary transition-colors">Paket Umrah</a>
-            <a href="#tentang" className="hover:text-primary transition-colors">Tentang Kami</a>
-            <a href="#kontak" className="hover:text-primary transition-colors">Kontak</a>
-          </nav>
-          <div>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex justify-center items-center px-5 py-2.5 bg-primary text-white font-bold rounded-radius-control hover:bg-primary-hover transition-colors text-sm shadow-md"
-            >
-              Konsultasi Gratis
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section id="hero" className="relative py-20 lg:py-32 overflow-hidden bg-primary-soft/30 rounded-radius-card mt-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center px-6 lg:px-12">
-            <div className="lg:col-span-7 flex flex-col space-y-6">
-              <span className="inline-block px-4 py-1.5 bg-primary text-white text-xs font-bold tracking-widest uppercase rounded-radius-pill w-fit">
-                PPIU Resmi Kemenag RI
-              </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-text leading-tight">
-                Perjalanan Umrah Nyaman, Ibadah Tenang Bersama <span className="text-primary">Mazaya Travel</span>
-              </h1>
-              <p className="text-lg text-muted max-w-2xl leading-relaxed">
-                Penyelenggara Perjalanan Ibadah Umrah resmi yang berbasis di Bone, Sulawesi Selatan. Komitmen kami melayani jemaah se-Amanah mungkin dengan layanan bintang lima.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a
-                  href={whatsappUrl}
+    <Container className="pb-12 pt-4 md:pt-6">
+      <div className="flex flex-col gap-4 md:gap-6">
+        <SectionShell surface="card" className="relative overflow-hidden px-6 py-8 md:px-8 lg:px-12 lg:py-12">
+          <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top_left,rgba(97,199,195,0.22),transparent_56%)]" />
+          <div className="absolute right-8 top-8 hidden h-16 w-16 rounded-full bg-brand-yellow/25 blur-2xl lg:block" />
+          <div className="relative grid items-center gap-10 lg:min-h-[620px] lg:grid-cols-12 lg:gap-8">
+            <div className="space-y-6 lg:col-span-5">
+              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                Amanah Teal Experience
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+              </div>
+              <div className="space-y-4">
+                <p className="max-w-xl text-sm font-semibold text-text-secondary">
+                  Travel Umrah resmi dari Kabupaten Bone untuk keluarga yang ingin perjalanan lebih tenang, jelas, dan terarah.
+                </p>
+                <h1 className="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-[56px] lg:leading-[1.14]">
+                  Perjalanan ibadah yang hangat dalam layanan, rapi dalam proses, dan menenangkan sejak awal.
+                </h1>
+                <p className="max-w-2xl text-[17px] leading-8 text-muted lg:text-lg">
+                  Mazaya Travel membantu calon jemaah memahami pilihan paket, legalitas, dan alur pendaftaran dengan cara yang lebih nyaman dibaca keluarga—tanpa janji berlebihan dan tanpa tekanan yang tidak perlu.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button href="/paket-umrah" size="lg" className="sm:min-w-52">
+                  Lihat Paket Umrah
+                </Button>
+                <Button
+                  href={consultationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex justify-center items-center px-8 py-4 bg-primary text-white text-lg font-bold rounded-radius-control hover:bg-primary-hover transition-colors shadow-lg"
+                  variant="secondary"
+                  size="lg"
+                  className="sm:min-w-52"
                 >
-                  Daftar Umrah Sekarang
-                </a>
-                <a
-                  href="#paket"
-                  className="inline-flex justify-center items-center px-8 py-4 bg-surface text-primary border border-primary text-lg font-bold rounded-radius-control hover:bg-primary-soft transition-colors"
-                >
-                  Lihat Jadwal Keberangkatan
-                </a>
+                  Konsultasi Gratis
+                </Button>
               </div>
-              <div className="grid grid-cols-3 gap-6 border-t border-border pt-8 mt-6">
-                <div>
-                  <div className="text-3xl font-black text-primary">100%</div>
-                  <div className="text-xs text-muted font-medium mt-1">Jaminan Berangkat</div>
+              <div className="grid gap-3 border-t border-border pt-6 sm:grid-cols-3">
+                <div className="rounded-radius-lg bg-surface-subtle px-4 py-4">
+                  <div className="text-2xl font-bold text-primary">Resmi</div>
+                  <div className="text-sm text-muted">PPIU dan legalitas perusahaan terbuka</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-black text-primary">Official</div>
-                  <div className="text-xs text-muted font-medium mt-1">Izin PPIU Kemenag</div>
+                <div className="rounded-radius-lg bg-surface-subtle px-4 py-4">
+                  <div className="text-2xl font-bold text-primary">Terarah</div>
+                  <div className="text-sm text-muted">Bimbingan sebelum daftar hingga berangkat</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-black text-primary">Bintang 5</div>
-                  <div className="text-xs text-muted font-medium mt-1">Ulasan Layanan</div>
+                <div className="rounded-radius-lg bg-surface-subtle px-4 py-4">
+                  <div className="text-2xl font-bold text-primary">Nyaman</div>
+                  <div className="text-sm text-muted">Fokus pada ritme ibadah dan kebutuhan keluarga</div>
                 </div>
               </div>
             </div>
-            <div className="lg:col-span-5 relative w-full h-[400px] lg:h-[500px] rounded-radius-card overflow-hidden shadow-2xl">
-              <Image
-                src="/assets/mazaya_travel_rebuild_inventory/assets/1760146127_hero.jpeg"
-                alt="Jemaah Mazaya Travel didepan Ka'bah"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                priority
-              />
+            <div className="lg:col-span-7 lg:pl-6">
+              <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
+                <div className="relative overflow-hidden rounded-[24px] border border-border bg-primary shadow-[var(--shadow-3)]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/78 via-primary/10 to-transparent" />
+                  <Image
+                    src="/assets/mazaya_travel_rebuild_inventory/assets/1760146127_hero.jpeg"
+                    alt="Jemaah Mazaya Travel di depan Ka'bah"
+                    width={1200}
+                    height={900}
+                    className="aspect-[4/5] w-full object-cover lg:aspect-[3/2]"
+                    priority
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-white md:p-6">
+                    <div className="mb-3 inline-flex items-center gap-2 rounded-radius-pill border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
+                      Visual perjalanan Mazaya
+                    </div>
+                    <h2 className="max-w-md text-xl font-bold leading-snug md:text-2xl">
+                      Pendampingan yang terasa personal, dari konsultasi awal sampai hari keberangkatan.
+                    </h2>
+                  </div>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                  <div className="rounded-[24px] border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
+                    <div className="mb-4 inline-flex rounded-radius-pill bg-brand-yellow/30 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-text">
+                      Trust first
+                    </div>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="text-sm text-muted">Konsultasi utama</div>
+                        <div className="text-lg font-bold text-text">0852 9875 1997</div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-muted">Kantor pelayanan</div>
+                        <div className="text-sm font-medium leading-7 text-text-secondary">
+                          Jl. Lapawawoi Kr. Sigeri, Kel. Biru, Kec. Tanete Riattang, Bone
+                        </div>
+                      </div>
+                      <div className="rounded-radius-lg bg-primary-soft/60 px-4 py-3 text-sm text-text-secondary">
+                        Ruang konsultasi yang lebih nyaman untuk calon jemaah dan keluarga yang ingin bertanya lebih dulu.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="rounded-[24px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
+                    <div className="text-sm font-semibold text-white/72">Legalitas perusahaan</div>
+                    <div className="mt-3 text-2xl font-bold">NIB 13052200161160002</div>
+                    <p className="mt-3 text-sm leading-7 text-white/78">
+                      Informasi legal ditampilkan lebih awal agar calon jemaah bisa merasa aman sebelum membahas pilihan paket.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </SectionShell>
 
-        {/* Benefits Section */}
-        <section className="py-24">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text">
-              Mengapa Memilih Mazaya Travel?
-            </h2>
-            <p className="text-muted leading-relaxed">
-              Kami mendampingi langkah Anda menuju Baitullah dengan rasa tanggung jawab penuh dan transparansi layanan.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, i) => (
-              <div key={i} className="bg-surface p-8 rounded-radius-card border border-border flex flex-col space-y-4 shadow-sm hover:shadow-md transition-shadow">
-                <span className="text-4xl">{benefit.icon}</span>
-                <h3 className="text-xl font-bold text-text">{benefit.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{benefit.description}</p>
+        <SectionShell surface="card" className="px-5 py-4 md:px-6 md:py-5">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
+            {trustItems.map((item) => (
+              <div key={item.label} className="rounded-radius-lg border border-border/80 bg-surface-subtle px-4 py-4">
+                <div className="text-lg font-bold text-primary">{item.value}</div>
+                <div className="mt-1 text-sm font-semibold text-text-secondary">{item.label}</div>
+                <div className="mt-2 text-sm leading-6 text-muted">{item.detail}</div>
               </div>
             ))}
           </div>
-        </section>
+        </SectionShell>
 
-        {/* Packages Section */}
-        <section id="paket" className="py-24 bg-primary-soft/10 rounded-radius-card px-6 lg:px-12">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text">
-              Paket Umrah Unggulan 2025 - 2026
-            </h2>
-            <p className="text-muted leading-relaxed">
-              Pilihan paket Umrah terbaik dengan jadwal kepastian berangkat langsung dari bandara Sultan Hasanuddin Makassar.
-            </p>
+        <SectionShell className="px-1">
+          <div className="mb-8 flex flex-col gap-4 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl space-y-3">
+              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                Featured packages
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+              </div>
+              <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
+                Paket unggulan yang lebih mudah dipindai, dibandingkan, lalu didiskusikan bersama keluarga.
+              </h2>
+              <p className="max-w-2xl text-base leading-8 text-muted">
+                Data paket tetap menggunakan sumber yang sama, tetapi kini disusun dengan hirarki informasi yang lebih tenang: jadwal, hotel, harga mulai, dan ketersediaan kursi terlihat lebih cepat.
+              </p>
+            </div>
+            <Button href="/paket-umrah" variant="ghost" className="w-fit">
+              Lihat semua paket
+            </Button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayPackages.map((pkg, i) => (
-              <div key={i} className="bg-surface rounded-radius-card overflow-hidden border border-border flex flex-col h-full shadow-md hover:shadow-lg transition-shadow">
-                <div className="relative h-64 w-full">
-                  <Image
-                    src={pkg.image}
-                    alt={pkg.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-radius-pill uppercase shadow-sm">
-                    {pkg.badge}
-                  </div>
-                </div>
-                <div className="p-6 flex flex-col flex-1 justify-between space-y-6">
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold text-primary uppercase tracking-wider">Keberangkatan {pkg.departure}</span>
-                      <span className="px-2.5 py-1 bg-brand-yellow/30 text-text text-xs font-black rounded-radius-pill">{pkg.tier} Class</span>
-                    </div>
-                    <a href={`/paket/${pkg.slug}`} className="hover:text-primary transition-colors block">
-                      <h3 className="text-xl font-extrabold text-text line-clamp-2 leading-snug">{pkg.title}</h3>
-                    </a>
-                    <div className="grid grid-cols-2 gap-3 text-xs text-muted border-t border-b border-border/60 py-3">
-                      <div>🕒 Durasi: <strong className="text-text">{pkg.duration}</strong></div>
-                      <div>✈️ Rute: <strong className="text-text">{pkg.city}</strong></div>
-                      <div className="col-span-2">🏢 Hotel: <span className="text-text font-medium">{pkg.hotel}</span></div>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-end">
-                      <div>
-                        <div className="text-xs text-muted">Mulai Dari</div>
-                        <div className="text-2xl font-black text-primary">{pkg.price}</div>
-                      </div>
-                      <span className="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-radius-pill border border-red-100">
-                        {pkg.seats}
+          <div className="grid gap-6 lg:grid-cols-3">
+            {displayPackages.map((pkg) => {
+              const seatState = getSeatState(pkg.remainingSeats, pkg.totalSeats)
+              const statusBadge = getStatusBadge(pkg.packageStatus)
+
+              return (
+                <article key={pkg.slug} className="group overflow-hidden rounded-[24px] border border-border bg-surface shadow-[var(--shadow-2)] transition-transform duration-150 hover:-translate-y-1">
+                  <div className="relative">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.title}
+                      width={1200}
+                      height={900}
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                    <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-4">
+                      <span className="rounded-radius-pill bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary shadow-[var(--shadow-1)]">
+                        {pkg.badge}
+                      </span>
+                      <span className={`rounded-radius-pill border px-3 py-1 text-xs font-bold ${statusBadge.className}`}>
+                        {statusBadge.label}
                       </span>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
-                      <a
-                        href={`/paket/${pkg.slug}`}
-                        className="inline-flex justify-center items-center py-3 bg-surface text-primary border border-primary font-bold rounded-radius-control hover:bg-primary-soft transition-colors text-xs"
-                      >
-                        Detail Paket
+                  </div>
+                  <div className="flex h-full flex-col gap-5 p-6">
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-text-secondary">
+                        <span>{pkg.departure}</span>
+                        <span className="h-1 w-1 rounded-full bg-brand-yellow" />
+                        <span>{pkg.tier} class</span>
+                      </div>
+                      <a href={`/paket/${pkg.slug}`} className="block transition-colors hover:text-primary">
+                        <h3 className="text-2xl font-bold leading-snug text-text line-clamp-2">{pkg.title}</h3>
                       </a>
-                      <a
-                        href={`/daftar/${pkg.slug}`}
-                        className="inline-flex justify-center items-center py-3 bg-primary text-white font-bold rounded-radius-control hover:bg-primary-hover transition-colors text-xs shadow-md"
-                      >
-                        Daftar Online
-                      </a>
+                      <p className="text-sm leading-7 text-muted line-clamp-3">{pkg.packageSummary}</p>
+                    </div>
+
+                    <div className="grid gap-3 rounded-radius-lg border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="text-muted">Durasi</span>
+                        <span className="text-right font-semibold text-text">{pkg.duration}</span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="text-muted">Kota berangkat</span>
+                        <span className="text-right font-semibold text-text">{pkg.city}</span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="text-muted">Maskapai</span>
+                        <span className="text-right font-semibold text-text">{pkg.airline}</span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="text-muted">Hotel Makkah</span>
+                        <span className="text-right font-semibold text-text">{pkg.makkahHotel}</span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="text-muted">Hotel Madinah</span>
+                        <span className="text-right font-semibold text-text">{pkg.madinahHotel}</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 border-t border-border pt-5">
+                      <div className="flex items-end justify-between gap-4">
+                        <div>
+                          <div className="text-sm text-muted">Harga mulai</div>
+                          <div className="text-3xl font-bold leading-none text-primary">{pkg.priceLabel}</div>
+                        </div>
+                        <div className="text-right text-sm text-muted">
+                          <div>DP minimum</div>
+                          <div className="font-semibold text-text">{formatRupiahCompact(pkg.minimumDeposit)}</div>
+                        </div>
+                      </div>
+                      <div className={`rounded-radius-lg border px-4 py-3 ${seatState.tone}`}>
+                        <div className="flex items-center justify-between gap-3 text-sm font-semibold">
+                          <span>Ketersediaan</span>
+                          <span>{seatState.label}</span>
+                        </div>
+                        <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/70">
+                          <div className={`h-full rounded-full ${seatState.barTone}`} style={{ width: seatState.width }} />
+                        </div>
+                      </div>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <Button href={`/paket/${pkg.slug}`} variant="secondary" fullWidth>
+                          Detail paket
+                        </Button>
+                        <Button
+                          href={`https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20paket%20${encodeURIComponent(pkg.title)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          fullWidth
+                        >
+                          Konsultasi paket
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </article>
+              )
+            })}
           </div>
-        </section>
+        </SectionShell>
 
-        {/* Legalities & About Section */}
-        <section id="tentang" className="py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-text leading-tight">
-                Penyelenggara Resmi & Berizin Keberangkatan Terjamin
+        <SectionShell surface="soft" className="px-6 py-8 md:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="max-w-xl space-y-4">
+              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-surface px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary shadow-[var(--shadow-1)]">
+                Why Mazaya
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+              </div>
+              <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
+                Amanah lebih terasa saat informasi, pendampingan, dan suasana layanan sama-sama menenangkan.
               </h2>
-              <p className="text-muted leading-relaxed">
-                Mazaya Travel dikelola oleh **PT Mazaya Amanah Wisata**, sebuah biro perjalanan terpercaya yang fokus pada penyediaan paket ibadah Umrah dan Haji Khusus. Berpusat di Kabupaten Bone, kami memiliki perwakilan resmi yang melayani jemaah di seluruh penjuru Sulawesi Selatan.
+              <p className="text-base leading-8 text-muted">
+                Homepage ini menjadi acuan visual bahwa Mazaya bukan sekadar menampilkan paket, tetapi membangun rasa percaya lewat struktur yang rapi dan copy yang lebih manusiawi.
               </p>
-              <div className="bg-primary-soft/20 p-6 rounded-radius-card border border-border/80">
-                <h4 className="font-bold text-text mb-3">Informasi Izin Operasional:</h4>
-                <ul className="space-y-2 text-sm text-text">
-                  <li>📄 <strong>Nama Badan Hukum:</strong> PT Mazaya Amanah Wisata</li>
-                  <li>🔑 <strong>Izin PPIU Kemenag RI:</strong> Terdaftar Resmi</li>
-                  <li>📋 <strong>Nomor Induk Berusaha (NIB):</strong> 13052200161160002</li>
-                  <li>🏢 <strong>Kantor Pusat:</strong> Kab. Bone, Sulawesi Selatan</li>
-                </ul>
-              </div>
             </div>
-            <div className="relative w-full h-[400px] rounded-radius-card overflow-hidden shadow-lg border border-border">
-              <Image
-                src="/assets/mazaya_travel_rebuild_inventory/assets/WhatsApp_Image_2025_08_20_at_15_52_42_jpeg.jpeg"
-                alt="Jemaah Rombongan Mazaya Travel membawa spanduk resmi"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
+            <div className="grid gap-4 sm:grid-cols-2">
+              {advantages.map((item) => (
+                <div key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                    {item.accent}
+                  </div>
+                  <h3 className="text-xl font-semibold leading-snug text-text">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-muted">{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
+        </SectionShell>
 
-        {/* Contact & Map Section */}
-        <section id="kontak" className="py-24 bg-primary-soft/10 rounded-radius-card px-6 lg:px-12 mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-3xl font-extrabold text-text">Hubungi Kantor Kami</h2>
-              <p className="text-muted leading-relaxed">
-                Pintu kami selalu terbuka untuk melayani konsultasi rencana ibadah Anda dan keluarga. Hubungi melalui WhatsApp atau kunjungi kantor pelayanan kami.
-              </p>
-              <div className="space-y-4 text-sm text-text">
-                <div className="flex items-start gap-3">
-                  <span className="text-xl">📍</span>
-                  <div>
-                    <strong className="block text-base">Alamat Kantor:</strong>
-                    Jl. Lapawawoi Kr. Sigeri, Kel. Biru, Kec. Tanete Riattang, Bone, Sulawesi Selatan
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">📞</span>
-                  <div>
-                    <strong>Telepon / WA:</strong> 0852 9875 1997
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">✉️</span>
-                  <div>
-                    <strong>Email:</strong> info@mazaya-travel.id
-                  </div>
-                </div>
+        <SectionShell className="px-1">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+            <div className="space-y-4">
+              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                Alur pendampingan
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
-              <div className="pt-4">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex justify-center items-center px-8 py-3 bg-primary text-white font-bold rounded-radius-control hover:bg-primary-hover transition-colors shadow-md text-sm"
-                >
-                  💬 Chat Customer Service Kami
-                </a>
+              <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
+                Proses yang membantu calon jemaah bergerak mantap, bukan tergesa-gesa.
+              </h2>
+              <p className="max-w-xl text-base leading-8 text-muted">
+                Dari konsultasi awal sampai manasik, alur ini dirancang supaya keluarga tahu apa yang akan terjadi berikutnya dan dokumen apa yang perlu dipersiapkan.
+              </p>
+            </div>
+            <div className="grid gap-4">
+              {processSteps.map((step, index) => (
+                <div key={step.title} className="grid gap-4 rounded-radius-card border border-border bg-surface p-5 shadow-[var(--shadow-1)] md:grid-cols-[auto_1fr] md:items-start">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-text">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-muted">{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </SectionShell>
+
+        <SectionShell surface="card" className="overflow-hidden px-6 py-8 md:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.02fr] lg:items-center">
+            <div className="space-y-5">
+              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                Legalitas & kredibilitas
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+              </div>
+              <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
+                Rasa aman dibangun lewat bukti yang mudah dicek, bukan lewat klaim yang terlalu ramai.
+              </h2>
+              <p className="text-base leading-8 text-muted">
+                Mazaya melayani perjalanan Umrah dengan fondasi perusahaan yang jelas, alamat kantor yang dapat dikunjungi, dan jalur komunikasi yang mudah dihubungi keluarga.
+              </p>
+              <div className="grid gap-3">
+                {legalProof.map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-radius-lg bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-brand-yellow" />
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="lg:col-span-7 h-[350px] lg:h-full min-h-[350px] rounded-radius-card overflow-hidden border border-border shadow-inner relative bg-surface">
-              {/* Fallback mockup peta untuk Bone, Sulsel */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-surface">
-                <span className="text-5xl mb-4">🗺️</span>
-                <h4 className="font-extrabold text-text">Lokasi PT Mazaya Amanah Wisata</h4>
-                <p className="text-xs text-muted max-w-sm mt-2">
-                  Jl. Lapawawoi Kr. Sigeri, Kel. Biru, Kec. Tanete Riattang, Bone, Sulawesi Selatan.
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[24px] border border-border bg-surface-subtle p-6">
+                <div className="text-sm font-semibold text-muted">Nama badan usaha</div>
+                <div className="mt-3 text-2xl font-bold leading-snug text-text">PT Mazaya Amanah Wisata</div>
+                <p className="mt-3 text-sm leading-7 text-muted">
+                  Struktur perusahaan ditampilkan jelas agar calon jemaah dapat menilai dengan dasar yang lebih kuat.
                 </p>
-                <a
-                  href="https://maps.google.com/?q=PT+Mazaya+Amanah+Wisata+Bone"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 px-4 py-2 bg-primary/10 text-primary font-bold text-xs rounded-radius-pill border border-primary/20 hover:bg-primary/20 transition-colors"
-                >
-                  Buka di Google Maps
-                </a>
+              </div>
+              <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white">
+                <div className="text-sm font-semibold text-white/72">Nomor Induk Berusaha</div>
+                <div className="mt-3 text-3xl font-bold leading-tight">13052200161160002</div>
+                <p className="mt-3 text-sm leading-7 text-white/78">
+                  Informasi legal diletakkan dekat area keputusan supaya trust hadir lebih awal di homepage.
+                </p>
+              </div>
+              <div className="relative overflow-hidden rounded-[24px] border border-border sm:col-span-2">
+                <Image
+                  src="/assets/mazaya_travel_rebuild_inventory/assets/WhatsApp_Image_2025_08_20_at_15_52_42_jpeg.jpeg"
+                  alt="Rombongan jemaah Mazaya Travel bersama identitas perusahaan"
+                  width={1200}
+                  height={800}
+                  className="aspect-[16/9] w-full object-cover"
+                />
               </div>
             </div>
           </div>
-        </section>
-      </main>
+        </SectionShell>
 
-      {/* Footer */}
-      <footer className="bg-primary text-white py-12 rounded-t-radius-card">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-white/10 pb-8 mb-8 px-6">
-          <div className="space-y-4">
-            <Image
-              src={logoImage}
-              alt="Logo Mazaya Travel"
-              className="h-auto w-[140px] object-contain brightness-0 invert"
-            />
-            <p className="text-xs text-white/70 leading-relaxed">
-              PT Mazaya Amanah Wisata - Mitra tepercaya perjalanan ibadah Umrah & Haji Khusus Anda. Memberikan kepastian keberangkatan dengan bimbingan sesuai Sunnah.
-            </p>
+        <SectionShell surface="primary" className="relative overflow-hidden px-6 py-8 md:px-8 lg:px-12 lg:py-10">
+          <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_center,rgba(240,235,32,0.18),transparent_62%)] lg:block" />
+          <div className="relative grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="space-y-4">
+              <div className="inline-flex w-fit items-center gap-2 rounded-radius-pill border border-white/14 bg-white/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
+                Konsultasi yang tenang
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+              </div>
+              <h2 className="max-w-2xl text-3xl font-bold leading-tight text-white sm:text-4xl">
+                Ingin menilai paket dengan lebih tenang sebelum memutuskan?
+              </h2>
+              <p className="max-w-2xl text-base leading-8 text-white/76">
+                Silakan hubungi tim Mazaya untuk bertanya soal jadwal, fasilitas, atau kesiapan dokumen. Kami bantu jelaskan dengan bahasa yang ringan dan tidak terburu-buru.
+              </p>
+            </div>
+            <div className="grid gap-3 rounded-[24px] border border-white/10 bg-white/8 p-5 backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-1">
+              <div>
+                <div className="text-sm text-white/70">WhatsApp utama</div>
+                <div className="mt-1 text-xl font-bold text-white">0852 9875 1997</div>
+              </div>
+              <div>
+                <div className="text-sm text-white/70">Email</div>
+                <div className="mt-1 text-base font-semibold text-white">info@mazaya-travel.id</div>
+              </div>
+              <div className="flex flex-col gap-3 sm:col-span-2 lg:flex-row">
+                <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" size="lg" className="bg-white text-primary hover:bg-primary-soft border-white lg:flex-1">
+                  Chat WhatsApp
+                </Button>
+                <Button href="/kontak" variant="secondary" size="lg" className="border-white bg-transparent text-white hover:bg-white/10 lg:flex-1">
+                  Lihat kontak lengkap
+                </Button>
+              </div>
+            </div>
           </div>
-          <div>
-            <h4 className="font-bold text-sm tracking-wider uppercase mb-4">Navigasi Halaman</h4>
-            <ul className="space-y-2 text-xs text-white/70">
-              <li><a href="#hero" className="hover:text-white transition-colors">Beranda</a></li>
-              <li><a href="#paket" className="hover:text-white transition-colors">Paket Umrah</a></li>
-              <li><a href="#tentang" className="hover:text-white transition-colors">Tentang Kami</a></li>
-              <li><a href="#kontak" className="hover:text-white transition-colors">Kontak</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold text-sm tracking-wider uppercase mb-4">Izin Operasional</h4>
-            <p className="text-xs text-white/70 leading-relaxed">
-              Resmi Terdaftar PPIU Kemenag RI<br />
-              NIB: 13052200161160002<br />
-              Kab. Bone, Sulawesi Selatan
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 px-6">
-          <p>© 2026 PT Mazaya Amanah Wisata. Hak Cipta Dilindungi.</p>
-          <p className="mt-2 sm:mt-0">Didesain dengan ❤️ oleh Mazaya Dev Team</p>
-        </div>
-      </footer>
-    </div>
+        </SectionShell>
+      </div>
+    </Container>
   )
 }

@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
+import {
+  TrustCard,
+  TrustChecklist,
+  TrustCta,
+  TrustHero,
+  TrustPageLayout,
+  TrustSection,
+  TrustSplitPanel,
+} from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
   title: 'Kebijakan Privasi - Mazaya Travel',
@@ -45,79 +51,83 @@ const privacyPoints = [
   },
 ]
 
+const privacyContext = [
+  'Form pendaftaran meminta data identitas dasar dan persetujuan privasi sebelum submit.',
+  'Nomor WhatsApp dipakai untuk koordinasi lanjutan dan arahan langkah berikutnya.',
+  'File KTP, bila diunggah, diperlakukan sebagai data sensitif untuk kebutuhan administrasi awal.',
+  'Halaman ini dapat berubah bila alur pengumpulan data atau operasional layanan berubah pada fase berikutnya.',
+]
+
 export default function PrivacyPolicyPage() {
   return (
-    <div className="flex min-h-screen flex-col py-8">
-      <header className="mb-8 flex items-center justify-between border-b border-border pb-4">
-        <Link href="/">
-          <Image
-            src={logoImage}
-            alt="Logo Mazaya Travel"
-            className="h-auto w-[120px] object-contain"
-            priority
-          />
-        </Link>
-        <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-          ← Kembali ke Beranda
-        </Link>
-      </header>
+    <TrustPageLayout>
+      <TrustHero
+        eyebrow="Privasi pengguna"
+        title="Penjelasan privasi yang lebih rapi agar penggunaan data terasa jelas sejak awal."
+        summary="Halaman ini menjelaskan praktik privasi pada website launch saat ini, terutama untuk data yang dikirim melalui form pendaftaran dan jalur konsultasi."
+        stats={[
+          { value: 'Seperlunya', label: 'Data dipakai sesuai konteks layanan dan pendaftaran' },
+          { value: 'Internal', label: 'Akses dibatasi untuk kebutuhan operasional yang relevan' },
+          { value: 'Terbuka', label: 'Pengguna tetap dapat menghubungi kami untuk klarifikasi' },
+        ]}
+        panelTitle="Ringkasan cepat"
+        panelItems={[
+          { label: 'Sumber data utama', value: 'Form pendaftaran dan jalur konsultasi' },
+          { label: 'Penggunaan inti', value: 'Tindak lanjut pendaftaran dan administrasi awal' },
+          { label: 'Akses internal', value: 'Dibatasi sesuai kebutuhan operasional' },
+          { label: 'Kanal klarifikasi', value: 'WhatsApp resmi Mazaya Travel' },
+        ]}
+      />
 
-      <main className="mx-auto flex-1 w-full max-w-4xl space-y-8">
-        <section className="rounded-radius-card border border-border bg-primary-soft/20 px-6 py-10 sm:px-10">
-          <span className="inline-block rounded-radius-pill bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
-            Kebijakan Privasi
-          </span>
-          <h1 className="mt-5 text-3xl font-extrabold text-text sm:text-4xl">
-            Penjelasan Ringkas Penggunaan Data di Mazaya Travel
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-            Halaman ini menjelaskan praktik privasi pada website launch saat ini, terutama untuk data yang dikirim melalui form pendaftaran dan jalur konsultasi. Kami berusaha memakai data seperlunya untuk proses layanan calon jamaah dan tindak lanjut internal yang relevan.
-          </p>
-        </section>
-
-        <section className="space-y-6">
-          {privacyPoints.map((item) => (
-            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-              <h2 className="text-xl font-bold text-text">{item.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
+      <TrustSection
+        eyebrow="Pokok kebijakan"
+        title="Poin privasi utama yang paling perlu dipahami sebelum mengirim data"
+        summary="Struktur ini dibuat lebih mudah dipindai agar informasi penting terasa jelas, tidak berat, dan tidak membingungkan."
+      >
+        <div className="grid gap-4">
+          {privacyPoints.map((item, index) => (
+            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <div className="grid gap-4 md:grid-cols-[auto_1fr] md:items-start">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
+                  {index + 1}
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold text-text">{item.title}</h2>
+                  <p className="mt-3 text-sm leading-7 text-muted">{item.body}</p>
+                </div>
+              </div>
             </article>
           ))}
-        </section>
+        </div>
+      </TrustSection>
 
-        <section className="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
-          <article className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-            <h2 className="text-2xl font-extrabold text-text">Konteks data pada launch saat ini</h2>
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted">
-              <li>Form pendaftaran meminta data identitas dasar dan persetujuan privasi sebelum submit.</li>
-              <li>Nomor WhatsApp dipakai untuk koordinasi lanjutan dan arahan langkah berikutnya.</li>
-              <li>File KTP, bila diunggah, diperlakukan sebagai data sensitif untuk kebutuhan administrasi awal.</li>
-              <li>Halaman ini dapat berubah bila alur pengumpulan data atau operasional layanan berubah pada fase berikutnya.</li>
-            </ul>
-          </article>
-          <article className="rounded-radius-card border border-border bg-primary text-white p-6 shadow-sm">
-            <h2 className="text-2xl font-extrabold">Butuh klarifikasi?</h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/85">
-              Jika ada pertanyaan soal penggunaan data pribadi atau proses pendaftaran, hubungi tim kami lewat WhatsApp resmi agar Anda mendapat penjelasan langsung.
-            </p>
-            <div className="mt-6 flex flex-col gap-3">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-radius-control bg-white px-6 py-3 font-bold text-primary transition-opacity hover:opacity-90"
-              >
-                WhatsApp Konsultasi
-              </a>
-              <Link
-                href="/daftar"
-                className="inline-flex items-center justify-center rounded-radius-control border border-white/20 bg-white/10 px-6 py-3 font-bold text-white transition-colors hover:bg-white/15"
-              >
-                Buka Form Pendaftaran
-              </Link>
+      <TrustSection
+        eyebrow="Konteks operasional"
+        title="Bagaimana kebijakan ini diterapkan pada website launch saat ini"
+        summary="Penjelasan tambahan ini membantu pengguna mengaitkan kebijakan privasi dengan alur nyata saat mereka mengirim data ke Mazaya."
+      >
+        <TrustSplitPanel
+          left={
+            <div className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <h3 className="text-2xl font-bold text-text">Konteks data saat ini</h3>
+              <div className="mt-5">
+                <TrustChecklist items={privacyContext} />
+              </div>
             </div>
-          </article>
-        </section>
-      </main>
-    </div>
+          }
+          right={<TrustCard title="Butuh klarifikasi?" description="Jika ada pertanyaan soal penggunaan data pribadi atau proses pendaftaran, hubungi tim kami lewat WhatsApp resmi agar Anda mendapat penjelasan langsung." />}
+        />
+      </TrustSection>
+
+      <TrustCta
+        eyebrow="Klarifikasi privasi"
+        title="Masih ada pertanyaan soal penggunaan data pribadi?"
+        summary="Silakan hubungi tim Mazaya untuk meminta penjelasan langsung sebelum atau sesudah Anda mengirim data melalui website."
+        primaryHref={whatsappUrl}
+        primaryLabel="WhatsApp konsultasi"
+        secondaryHref="/daftar"
+        secondaryLabel="Buka form pendaftaran"
+      />
+    </TrustPageLayout>
   )
 }

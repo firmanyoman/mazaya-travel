@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
+import { ContentCta, ContentHero, ContentPageLayout, ContentSection } from '@/components/content/ContentPage'
+import { SectionShell } from '@/components/layout/SectionShell'
+import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'Testimoni - Mazaya Travel',
@@ -41,79 +41,102 @@ const testimonials = [
 
 export default function TestimonialsPage() {
   return (
-    <div className="flex min-h-screen flex-col py-8">
-      <header className="mb-8 flex items-center justify-between border-b border-border pb-4">
-        <Link href="/">
-          <Image
-            src={logoImage}
-            alt="Logo Mazaya Travel"
-            className="h-auto w-[120px] object-contain"
-            priority
-          />
-        </Link>
-        <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-          ← Kembali ke Beranda
-        </Link>
-      </header>
+    <ContentPageLayout>
+      <ContentHero
+        eyebrow="Suara Jamaah"
+        backHref="/"
+        backLabel="Kembali ke Beranda"
+        title="Pengalaman jamaah yang membantu calon jemaah menilai rasa aman, kejelasan, dan pendampingan Mazaya."
+        summary="Testimoni dihadirkan sebagai lapisan trust yang lebih manusiawi. Fokusnya bukan pujian berlebihan, tetapi sinyal pengalaman yang paling sering dicari keluarga sebelum mengambil keputusan."
+        actions={
+          <>
+            <Button href="/paket-umrah" size="lg">
+              Lihat paket Umrah
+            </Button>
+            <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
+              WhatsApp konsultasi
+            </Button>
+          </>
+        }
+        metrics={[
+          { value: `${testimonials.length} testimoni`, label: 'Pengalaman ringkas yang fokus pada kualitas layanan dan rasa aman' },
+          { value: 'Pendampingan', label: 'Tema yang paling sering muncul dari cerita jamaah' },
+          { value: 'Bone & sekitar', label: 'Tetap dekat dengan konteks lokal calon jemaah Mazaya' },
+        ]}
+        panelTitle="Apa yang biasanya dicari"
+        panelItems={[
+          { label: 'Sebelum daftar', value: 'Apakah komunikasi terasa jelas dan tidak membingungkan' },
+          { label: 'Selama proses', value: 'Apakah tim membantu dokumen, manasik, dan keberangkatan dengan rapi' },
+          { label: 'Untuk keluarga', value: 'Apakah trust terasa cukup kuat sebelum membahas pembayaran' },
+        ]}
+      />
 
-      <main className="mx-auto flex-1 w-full max-w-5xl space-y-8">
-        <section className="rounded-radius-card border border-border bg-primary-soft/20 px-6 py-10 sm:px-10">
-          <span className="inline-block rounded-radius-pill bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
-            Testimoni Jamaah
-          </span>
-          <h1 className="mt-5 text-3xl font-extrabold text-text sm:text-4xl">
-            Suara Jamaah yang Membantu Calon Jemaah Menilai Pengalaman Layanan Mazaya Travel
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-            Testimoni dipakai sebagai penguat trust untuk calon jemaah yang masih membandingkan layanan, pendampingan, dan kejelasan proses. Untuk launch saat ini, kami menampilkan testimoni statis yang fokus pada kualitas pengalaman dan rasa aman.
-          </p>
-        </section>
-
-        <section className="grid gap-6 md:grid-cols-2">
-          {testimonials.map((item) => (
-            <article key={item.name + item.city} className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-              <p className="text-base leading-relaxed text-text">“{item.quote}”</p>
-              <div className="mt-5 border-t border-border pt-4">
-                <h2 className="text-lg font-bold text-text">{item.name}</h2>
-                <p className="text-sm text-muted">Jamaah Mazaya Travel • {item.city}</p>
+      <ContentSection
+        eyebrow="Cerita pengalaman"
+        title="Testimoni yang lebih mudah dipindai untuk melihat pola kualitas layanan"
+        summary="Setiap kartu menonjolkan suara jamaah secara sederhana agar pembaca cepat menangkap hal yang paling berulang: amanah, kejelasan, dan pendampingan."
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          {testimonials.map((item, index) => (
+            <article key={item.name + item.city} className="rounded-[24px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold text-text">{item.name}</h2>
+                  <p className="text-sm text-muted">Jamaah Mazaya Travel • {item.city}</p>
+                </div>
               </div>
+              <p className="mt-5 text-base leading-8 text-text-secondary">“{item.quote}”</p>
             </article>
           ))}
-        </section>
+        </div>
+      </ContentSection>
 
-        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <article className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-            <h2 className="text-2xl font-extrabold text-text">Yang paling sering dicari dari testimoni</h2>
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted">
-              <li>Kejelasan komunikasi sebelum daftar dan sebelum berangkat.</li>
-              <li>Rasa aman keluarga saat memverifikasi travel dan prosesnya.</li>
-              <li>Pendampingan selama persiapan, manasik, dan agenda perjalanan.</li>
-            </ul>
-          </article>
-          <article className="rounded-radius-card border border-border bg-primary p-6 text-white shadow-sm">
-            <h2 className="text-2xl font-extrabold">Siap lanjut ke paket aktif?</h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/85">
-              Setelah membaca pengalaman jamaah, Anda bisa langsung cek paket Umrah yang tersedia atau konsultasi via WhatsApp untuk menyesuaikan kebutuhan dan budget.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/paket-umrah"
-                className="inline-flex items-center justify-center rounded-radius-control bg-white px-6 py-3 font-bold text-primary transition-opacity hover:opacity-90"
-              >
-                Lihat Paket
-              </Link>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-radius-control border border-white/20 bg-white/10 px-6 py-3 font-bold text-white transition-colors hover:bg-white/15"
-              >
-                WhatsApp Konsultasi
-              </a>
+      <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
+        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="rounded-[24px] border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
+            <h2 className="text-2xl font-bold text-text">Pola yang paling sering muncul</h2>
+            <div className="mt-5 grid gap-3">
+              {[
+                'Kejelasan komunikasi sebelum daftar dan menjelang keberangkatan.',
+                'Rasa aman keluarga saat memverifikasi travel dan memahami alur proses.',
+                'Pendampingan yang terasa dekat selama persiapan dokumen dan manasik.',
+              ].map((item) => (
+                <div key={item} className="rounded-radius-lg border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
+                  {item}
+                </div>
+              ))}
             </div>
-          </article>
-        </section>
-      </main>
-    </div>
+          </div>
+          <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+            <div className="text-sm font-semibold text-white/72">Setelah membaca pengalaman jamaah</div>
+            <h2 className="mt-3 text-2xl font-bold leading-snug">Langkah berikutnya bisa tetap tenang dan tidak perlu terburu-buru.</h2>
+            <p className="mt-3 text-sm leading-7 text-white/78">
+              Gunakan testimoni ini sebagai penguat awal, lalu lanjutkan ke paket aktif atau buka percakapan WhatsApp untuk menyesuaikan kebutuhan dan budget keluarga.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <Button href="/paket-umrah" variant="secondary" fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
+                Lihat paket
+              </Button>
+              <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
+                WhatsApp konsultasi
+              </Button>
+            </div>
+          </div>
+        </div>
+      </SectionShell>
+
+      <ContentCta
+        eyebrow="Konsultasi yang amanah"
+        title="Masih ingin memastikan pilihan travel, paket, atau kesiapan dokumen?"
+        summary="Tim Mazaya siap membantu menjawab pertanyaan lanjutan dengan ritme yang rapi dan tidak menekan, supaya keputusan tetap terasa matang bersama keluarga."
+        primaryHref={whatsappUrl}
+        primaryLabel="WhatsApp konsultasi"
+        secondaryHref="/paket-umrah"
+        secondaryLabel="Lihat paket aktif"
+      />
+    </ContentPageLayout>
   )
 }

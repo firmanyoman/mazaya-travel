@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
+import { ContentCta, ContentHero, ContentPageLayout } from '@/components/content/ContentPage'
+import { SectionShell } from '@/components/layout/SectionShell'
+import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'FAQ - Mazaya Travel',
@@ -55,68 +55,110 @@ const faqs = [
   },
 ]
 
+const faqGroups = [
+  {
+    title: 'Trust & legalitas',
+    items: faqs.slice(0, 1),
+  },
+  {
+    title: 'Paket & harga',
+    items: faqs.slice(1, 3).concat(faqs.slice(4, 6)),
+  },
+  {
+    title: 'Dokumen & pendampingan',
+    items: [faqs[3], faqs[6], faqs[7]],
+  },
+]
+
 export default function FaqPage() {
   return (
-    <div className="flex min-h-screen flex-col py-8">
-      <header className="mb-8 flex items-center justify-between border-b border-border pb-4">
-        <Link href="/">
-          <Image
-            src={logoImage}
-            alt="Logo Mazaya Travel"
-            className="h-auto w-[120px] object-contain"
-            priority
-          />
-        </Link>
-        <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-          ← Kembali ke Beranda
-        </Link>
-      </header>
+    <ContentPageLayout>
+      <ContentHero
+        eyebrow="FAQ Mazaya"
+        backHref="/"
+        backLabel="Kembali ke Beranda"
+        title="Jawaban yang lebih tenang, ringkas, dan mudah dipindai sebelum konsultasi atau pendaftaran."
+        summary="FAQ ini disusun untuk meredakan pertanyaan awal yang paling sering muncul, dengan urutan baca yang lebih rapi agar pengunjung tidak merasa menelusuri blok teks yang melelahkan."
+        actions={
+          <>
+            <Button href="/daftar" size="lg">
+              Mulai pendaftaran
+            </Button>
+            <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
+              WhatsApp konsultasi
+            </Button>
+          </>
+        }
+        metrics={[
+          { value: `${faqs.length} jawaban`, label: 'Pertanyaan awal yang paling sering dicari calon jemaah' },
+          { value: `${faqGroups.length} kelompok`, label: 'Disusun per tema agar lebih cepat menemukan konteks yang relevan' },
+          { value: 'Ringkas', label: 'Nada jawaban dijaga tetap jelas dan tidak bertele-tele' },
+        ]}
+        panelTitle="Cara membaca FAQ"
+        panelItems={[
+          { label: 'Mulai dari', value: 'Kelompok pertanyaan yang paling dekat dengan kebutuhan Anda saat ini' },
+          { label: 'Gunakan paket aktif', value: 'Saat butuh melihat jadwal, harga, atau seat secara langsung' },
+          { label: 'Beralih ke WhatsApp', value: 'Jika jawaban umum belum cukup untuk situasi Anda' },
+        ]}
+      />
 
-      <main className="mx-auto flex-1 w-full max-w-5xl space-y-8">
-        <section className="rounded-radius-card border border-border bg-primary-soft/20 px-6 py-10 sm:px-10">
-          <span className="inline-block rounded-radius-pill bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
-            FAQ Mazaya Travel
-          </span>
-          <h1 className="mt-5 text-3xl font-extrabold text-text sm:text-4xl">
-            Pertanyaan yang Sering Ditanyakan Sebelum Konsultasi atau Daftar
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-            FAQ ini dirancang untuk mengurangi keraguan awal calon jemaah baru. Jawaban dibuat singkat, mudah dipindai, dan tetap mengarahkan ke tindakan berikutnya bila butuh penjelasan lebih detail.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          {faqs.map((item) => (
-            <article key={item.question} className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-              <h2 className="text-lg font-bold text-text">{item.question}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{item.answer}</p>
-            </article>
-          ))}
-        </section>
-
-        <section className="rounded-radius-card border border-border bg-primary p-6 text-white shadow-sm sm:p-8">
-          <h2 className="text-2xl font-extrabold">Masih ada pertanyaan spesifik?</h2>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/85">
-            Bila jawaban di atas belum cukup, lanjutkan ke konsultasi WhatsApp atau langsung buka form pendaftaran untuk memulai proses dengan arahan tim Mazaya Travel.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/daftar"
-              className="inline-flex items-center justify-center rounded-radius-control bg-white px-6 py-3 font-bold text-primary transition-opacity hover:opacity-90"
-            >
-              Daftar Sekarang
-            </Link>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-radius-control border border-white/20 bg-white/10 px-6 py-3 font-bold text-white transition-colors hover:bg-white/15"
-            >
-              WhatsApp Konsultasi
-            </a>
+      <SectionShell className="px-1">
+        <div className="grid gap-6 xl:grid-cols-[0.82fr_1.18fr] xl:items-start">
+          <div className="grid gap-4 xl:sticky xl:top-6">
+            <SectionShell surface="card" className="px-5 py-5 md:px-6 md:py-6">
+              <div className="text-sm font-semibold text-primary">Topik utama</div>
+              <div className="mt-4 grid gap-3">
+                {faqGroups.map((group) => (
+                  <div key={group.title} className="rounded-radius-lg border border-border bg-surface-subtle px-4 py-4">
+                    <div className="text-base font-semibold text-text">{group.title}</div>
+                    <div className="mt-1 text-sm leading-7 text-muted">{group.items.length} pertanyaan yang paling sering dipindai lebih dulu.</div>
+                  </div>
+                ))}
+              </div>
+            </SectionShell>
+            <SectionShell surface="card" className="px-5 py-5 md:px-6 md:py-6">
+              <div className="text-sm font-semibold text-primary">Butuh jawaban personal?</div>
+              <p className="mt-3 text-sm leading-7 text-muted">
+                FAQ membantu untuk konteks umum. Jika pertanyaan Anda terkait kondisi keluarga, waktu berangkat, atau kesiapan dokumen, WhatsApp biasanya lebih tepat.
+              </p>
+            </SectionShell>
           </div>
-        </section>
-      </main>
-    </div>
+
+          <div className="grid gap-6">
+            {faqGroups.map((group) => (
+              <SectionShell key={group.title} surface="card" className="px-6 py-6 md:px-8 md:py-8">
+                <div className="space-y-5">
+                  <div>
+                    <h2 className="text-2xl font-bold text-text">{group.title}</h2>
+                    <p className="mt-2 text-sm leading-7 text-muted">Jawaban dibuat singkat agar lebih nyaman dibaca satu per satu di mobile.</p>
+                  </div>
+                  <div className="grid gap-4">
+                    {group.items.map((item) => (
+                      <details key={item.question} className="group rounded-[20px] border border-border bg-surface-subtle px-5 py-4 open:bg-surface open:shadow-[var(--shadow-1)]">
+                        <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-semibold text-text">
+                          <span>{item.question}</span>
+                          <span className="mt-1 text-primary transition-transform group-open:rotate-45">+</span>
+                        </summary>
+                        <p className="mt-3 max-w-[70ch] text-sm leading-7 text-text-secondary">{item.answer}</p>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              </SectionShell>
+            ))}
+          </div>
+        </div>
+      </SectionShell>
+
+      <ContentCta
+        eyebrow="Masih ada yang ingin dipastikan?"
+        title="Jika jawaban umum belum cukup, lanjutkan ke percakapan yang lebih spesifik."
+        summary="Tim Mazaya dapat membantu menjelaskan paket, alur daftar, legalitas, atau dokumen sesuai kebutuhan Anda tanpa membuat keputusan terasa tergesa-gesa."
+        primaryHref={whatsappUrl}
+        primaryLabel="WhatsApp konsultasi"
+        secondaryHref="/daftar"
+        secondaryLabel="Buka formulir daftar"
+      />
+    </ContentPageLayout>
   )
 }

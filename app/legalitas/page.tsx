@@ -1,7 +1,15 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
+import { Button } from '@/components/ui/Button'
+import {
+  TrustCard,
+  TrustCardGrid,
+  TrustChecklist,
+  TrustCta,
+  TrustHero,
+  TrustPageLayout,
+  TrustSection,
+  TrustSplitPanel,
+} from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
   title: 'Legalitas - Mazaya Travel',
@@ -14,118 +22,129 @@ const whatsappUrl =
 
 const legalDocuments = [
   {
-    title: 'Identitas Perusahaan',
+    title: 'Identitas perusahaan',
     type: 'Nama badan usaha',
     number: 'PT Mazaya Amanah Wisata',
     summary:
-      'Nama resmi perusahaan yang digunakan sebagai dasar identitas publik dan operasional layanan Mazaya Travel.',
+      'Nama resmi perusahaan yang menjadi dasar identitas publik dan operasional layanan Mazaya Travel.',
+    accent: '01',
   },
   {
     title: 'Izin PPIU Kemenag RI',
     type: 'Legalitas perjalanan ibadah Umrah',
-    number: 'PPIU Resmi Kemenag RI',
+    number: 'PPIU resmi Kemenag RI',
     summary:
-      'Ditampilkan sebagai bukti bahwa layanan perjalanan Umrah dijalankan dengan landasan legal yang jelas dan relevan untuk kebutuhan verifikasi calon jemaah.',
+      'Fondasi legal utama yang relevan untuk kebutuhan verifikasi calon jemaah sebelum melangkah ke konsultasi paket.',
+    accent: '02',
   },
   {
     title: 'Nomor Induk Berusaha',
     type: 'NIB',
     number: '13052200161160002',
     summary:
-      'Nomor identitas usaha yang kami tampilkan terbuka untuk memperkuat transparansi dan memudahkan pengecekan dasar.',
+      'Identitas usaha yang kami tampilkan terbuka untuk memperkuat transparansi dan memudahkan pengecekan dasar.',
+    accent: '03',
   },
+]
+
+const verificationNotes = [
+  'Legalitas membantu calon jemaah menilai apakah identitas perusahaan dan izin dasar ditampilkan secara terbuka.',
+  'Halaman ini disusun agar keluarga bisa melakukan cross-check awal tanpa harus mencari informasi di banyak tempat.',
+  'Untuk pertanyaan lanjutan, tim Mazaya tetap tersedia lewat WhatsApp resmi dan kantor layanan di Bone.',
 ]
 
 export default function LegalPage() {
   return (
-    <div className="flex min-h-screen flex-col py-8">
-      <header className="mb-8 flex items-center justify-between border-b border-border pb-4">
-        <Link href="/">
-          <Image
-            src={logoImage}
-            alt="Logo Mazaya Travel"
-            className="h-auto w-[120px] object-contain"
-            priority
-          />
-        </Link>
-        <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-          ← Kembali ke Beranda
-        </Link>
-      </header>
+    <TrustPageLayout>
+      <TrustHero
+        eyebrow="Legalitas Mazaya"
+        title="Ringkasan legal yang lebih mudah dibaca, dicek, dan dipahami keluarga."
+        summary="Halaman ini membantu calon jemaah melakukan verifikasi dasar dengan lebih tenang melalui informasi legal publik yang paling penting dan relevan."
+        actions={
+          <>
+            <Button href="/daftar" size="lg">
+              Lihat paket / daftar
+            </Button>
+            <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
+              WhatsApp verifikasi
+            </Button>
+          </>
+        }
+        stats={[
+          { value: 'Transparan', label: 'Informasi inti ditampilkan dalam satu halaman' },
+          { value: 'Resmi', label: 'Mudah dikaitkan dengan identitas perusahaan' },
+          { value: 'Bone', label: 'Didukung kantor layanan yang bisa diverifikasi' },
+        ]}
+        panelTitle="Data verifikasi cepat"
+        panelItems={[
+          { label: 'Perusahaan', value: 'PT Mazaya Amanah Wisata' },
+          { label: 'Izin utama', value: 'PPIU resmi Kemenag RI' },
+          { label: 'Nomor usaha', value: '13052200161160002' },
+          { label: 'Lokasi layanan', value: 'Bone, Sulawesi Selatan' },
+        ]}
+      />
 
-      <main className="mx-auto flex-1 w-full max-w-5xl space-y-8">
-        <section className="rounded-radius-card border border-border bg-primary-soft/20 px-6 py-10 sm:px-10">
-          <span className="inline-block rounded-radius-pill bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
-            Legalitas Mazaya Travel
-          </span>
-          <h1 className="mt-5 text-3xl font-extrabold text-text sm:text-4xl">
-            Satu Halaman untuk Melihat Dasar Legal Mazaya Travel
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-            Halaman ini disusun untuk membantu calon jemaah dan keluarga melakukan verifikasi dasar dengan lebih mudah. Untuk launch saat ini, kami menampilkan ringkasan legal publik yang paling penting dan mudah dipahami.
-          </p>
-        </section>
-
-        <section className="grid gap-6">
+      <TrustSection
+        eyebrow="Dokumen inti"
+        title="Legalitas utama yang paling sering dibutuhkan untuk pengecekan awal"
+        summary="Kami menampilkan ringkasan yang mudah dipindai agar calon jemaah tidak harus membaca penjelasan yang terlalu birokratis."
+      >
+        <TrustCardGrid columns="three">
           {legalDocuments.map((item) => (
-            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div className="space-y-2">
-                  <span className="inline-block rounded-radius-pill bg-primary-soft px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary">
-                    Verified Public Summary
-                  </span>
-                  <h2 className="text-xl font-bold text-text">{item.title}</h2>
-                  <p className="text-sm text-muted">{item.summary}</p>
+            <article key={item.title} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                {item.accent}
+              </div>
+              <h3 className="text-xl font-semibold text-text">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-muted">{item.summary}</p>
+              <div className="mt-5 rounded-radius-lg border border-border bg-surface-subtle p-4 text-sm text-text-secondary">
+                <div>
+                  <div className="text-xs uppercase tracking-[0.12em] text-muted">Jenis legal</div>
+                  <div className="mt-1 font-semibold text-text">{item.type}</div>
                 </div>
-                <div className="rounded-radius-card border border-border bg-primary-soft/20 p-4 text-sm text-text sm:min-w-64">
-                  <div>
-                    <span className="block text-xs text-muted">Jenis Legal</span>
-                    <strong>{item.type}</strong>
-                  </div>
-                  <div className="mt-3">
-                    <span className="block text-xs text-muted">Nomor / Identitas</span>
-                    <strong>{item.number}</strong>
-                  </div>
+                <div className="mt-4">
+                  <div className="text-xs uppercase tracking-[0.12em] text-muted">Nomor / identitas</div>
+                  <div className="mt-1 font-semibold text-text">{item.number}</div>
                 </div>
               </div>
             </article>
           ))}
-        </section>
+        </TrustCardGrid>
+      </TrustSection>
 
-        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <article className="rounded-radius-card border border-border bg-surface p-6 shadow-sm">
-            <h2 className="text-2xl font-extrabold text-text">Mengapa legalitas penting?</h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted">
-              Untuk layanan perjalanan ibadah, legalitas membantu calon jemaah menilai apakah identitas perusahaan, izin terkait, dan informasi usaha ditampilkan secara terbuka dan konsisten.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              Halaman ini juga membantu keluarga melakukan cross-check cepat sebelum melanjutkan ke konsultasi atau pendaftaran paket.
-            </p>
-          </article>
-          <article className="rounded-radius-card border border-border bg-primary text-white p-6 shadow-sm">
-            <h2 className="text-2xl font-extrabold">Lanjut cek paket atau konsultasi</h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/85">
-              Setelah verifikasi dasar, Anda bisa langsung melihat paket aktif atau menghubungi tim kami lewat WhatsApp untuk pertanyaan lanjutan.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/daftar"
-                className="inline-flex items-center justify-center rounded-radius-control bg-white px-6 py-3 font-bold text-primary transition-opacity hover:opacity-90"
-              >
-                Daftar Sekarang
-              </Link>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-radius-control border border-white/20 bg-white/10 px-6 py-3 font-bold text-white transition-colors hover:bg-white/15"
-              >
-                WhatsApp Konsultasi
-              </a>
+      <TrustSection
+        eyebrow="Mengapa ini penting"
+        title="Legalitas yang rapi membantu rasa aman hadir lebih awal"
+        summary="Alih-alih menunggu pertanyaan muncul, halaman ini memberi konteks awal agar keputusan untuk lanjut konsultasi terasa lebih mantap."
+      >
+        <TrustSplitPanel
+          left={
+            <div className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+              <h3 className="text-2xl font-bold text-text">Catatan verifikasi</h3>
+              <div className="mt-5">
+                <TrustChecklist items={verificationNotes} />
+              </div>
             </div>
-          </article>
-        </section>
-      </main>
-    </div>
+          }
+          right={
+            <TrustCard
+              title="Siap lanjut cek paket atau konsultasi"
+              description="Setelah verifikasi dasar, Anda bisa langsung melihat paket aktif atau menghubungi tim kami lewat WhatsApp untuk pertanyaan lanjutan."
+            />
+          }
+        />
+      </TrustSection>
+
+      <TrustCta
+        eyebrow="Langkah berikutnya"
+        title="Setelah legalitas terasa jelas, lanjutkan ke paket atau konsultasi pribadi."
+        summary="Tim Mazaya siap membantu menjelaskan jadwal, fasilitas, dan alur pendaftaran dengan penjelasan yang rapi dan mudah dipahami."
+        primaryHref="/daftar"
+        primaryLabel="Daftar sekarang"
+        secondaryHref={whatsappUrl}
+        secondaryLabel="WhatsApp konsultasi"
+        secondaryExternal
+      />
+    </TrustPageLayout>
   )
 }
