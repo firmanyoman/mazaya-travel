@@ -125,7 +125,7 @@ export default function ContactPage() {
             </div>
           }
           right={
-            <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+            <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
               <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">Butuh respon cepat?</div>
               <p className="mt-4 text-sm leading-7 text-white/82">
                 WhatsApp tetap menjadi jalur paling nyaman untuk cek paket aktif, menanyakan jadwal keberangkatan, dan meminta arahan langkah pendaftaran.

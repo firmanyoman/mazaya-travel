@@ -78,7 +78,7 @@ export default function TestimonialsPage() {
       >
         <div className="grid gap-6 md:grid-cols-2">
           {testimonials.map((item, index) => (
-            <article key={item.name + item.city} className="rounded-[24px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
+            <article key={item.name + item.city} className="rounded-radius-card border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
                   {String(index + 1).padStart(2, '0')}
@@ -96,7 +96,7 @@ export default function TestimonialsPage() {
 
       <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="rounded-[24px] border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
+          <div className="rounded-radius-card border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
             <h2 className="text-2xl font-bold text-text">Pola yang paling sering muncul</h2>
             <div className="mt-5 grid gap-3">
               {[
@@ -110,7 +110,7 @@ export default function TestimonialsPage() {
               ))}
             </div>
           </div>
-          <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+          <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
             <div className="text-sm font-semibold text-white/72">Setelah membaca pengalaman jamaah</div>
             <h2 className="mt-3 text-2xl font-bold leading-snug">Langkah berikutnya bisa tetap tenang dan tidak perlu terburu-buru.</h2>
             <p className="mt-3 text-sm leading-7 text-white/78">

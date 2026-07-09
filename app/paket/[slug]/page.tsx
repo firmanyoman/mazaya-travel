@@ -176,7 +176,7 @@ export default async function PackageDetailPage({ params }: Props) {
                 ))}
               </div>
             </div>
-            <div className="relative overflow-hidden rounded-[24px] border border-border bg-primary shadow-[var(--shadow-3)]">
+            <div className="relative overflow-hidden rounded-radius-card border border-border bg-primary shadow-[var(--shadow-3)]">
               {pkg.ogImage ? (
                 <Image
                   src={pkg.ogImage}
@@ -251,7 +251,7 @@ export default async function PackageDetailPage({ params }: Props) {
                       </div>
                     </div>
                   </div>
-                  <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+                  <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
                     <div className="text-sm font-semibold text-white/72">Langkah berikutnya</div>
                     <div className="mt-3 text-2xl font-bold leading-snug">
                       {isSoldOut ? 'Jadwal ini penuh, tetapi konsultasi tetap terbuka.' : 'Jika paket ini terasa cocok, Anda bisa lanjut dengan tenang.'}

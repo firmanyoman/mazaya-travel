@@ -117,7 +117,7 @@ export default async function PaketHajiPage() {
                 const seatState = getSeatState(pkg.remainingSeats, pkg.totalSeats, isSoldOut)
 
                 return (
-                  <article key={pkg.id} className="flex h-full flex-col overflow-hidden rounded-[24px] border border-border bg-surface shadow-[var(--shadow-2)]">
+                  <article key={pkg.id} className="flex h-full flex-col overflow-hidden rounded-radius-card border border-border bg-surface shadow-[var(--shadow-2)]">
                     <div className="border-b border-border bg-primary px-6 py-5 text-white">
                       <div className="flex flex-wrap items-center gap-3">
                         <span className="rounded-radius-pill bg-white/92 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">
@@ -241,7 +241,7 @@ export default async function PaketHajiPage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+            <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
               <div className="text-sm font-semibold text-white/72">Lanjut dari sini</div>
               <h2 className="mt-3 text-2xl font-bold leading-snug">Tim Mazaya siap membantu memetakan langkah berikutnya.</h2>
               <p className="mt-3 text-sm leading-7 text-white/78">

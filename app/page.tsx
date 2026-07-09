@@ -344,7 +344,7 @@ export default async function Home() {
             </div>
             <div className="lg:col-span-7 lg:pl-6">
               <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
-                <div className="relative overflow-hidden rounded-[24px] border border-border bg-primary shadow-[var(--shadow-3)]">
+                <div className="relative overflow-hidden rounded-radius-card border border-border bg-primary shadow-[var(--shadow-3)]">
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/78 via-primary/10 to-transparent" />
                   <Image
                     src="/assets/mazaya_travel_rebuild_inventory/assets/1760146127_hero.jpeg"
@@ -364,7 +364,7 @@ export default async function Home() {
                   </div>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                  <div className="rounded-[24px] border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
+                  <div className="rounded-radius-card border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
                     <div className="mb-4 inline-flex rounded-radius-pill bg-brand-yellow/30 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-text">
                       Trust first
                     </div>
@@ -384,7 +384,7 @@ export default async function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="rounded-[24px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
+                  <div className="rounded-radius-card border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
                     <div className="text-sm font-semibold text-white/72">Legalitas perusahaan</div>
                     <div className="mt-3 text-2xl font-bold">NIB 13052200161160002</div>
                     <p className="mt-3 text-sm leading-7 text-white/78">
@@ -433,7 +433,7 @@ export default async function Home() {
               const statusBadge = getStatusBadge(pkg.packageStatus)
 
               return (
-                <article key={pkg.slug} className="group overflow-hidden rounded-[24px] border border-border bg-surface shadow-[var(--shadow-2)] transition-transform duration-150 hover:-translate-y-1">
+                <article key={pkg.slug} className="group overflow-hidden rounded-radius-card border border-border bg-surface shadow-[var(--shadow-2)] transition-transform duration-150 hover:-translate-y-1">
                   <div className="relative">
                     <Image
                       src={pkg.image}
@@ -609,21 +609,21 @@ export default async function Home() {
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[24px] border border-border bg-surface-subtle p-6">
+              <div className="rounded-radius-card border border-border bg-surface-subtle p-6">
                 <div className="text-sm font-semibold text-muted">Nama badan usaha</div>
                 <div className="mt-3 text-2xl font-bold leading-snug text-text">PT Mazaya Amanah Wisata</div>
                 <p className="mt-3 text-sm leading-7 text-muted">
                   Struktur perusahaan ditampilkan jelas agar calon jemaah dapat menilai dengan dasar yang lebih kuat.
                 </p>
               </div>
-              <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white">
+              <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white">
                 <div className="text-sm font-semibold text-white/72">Nomor Induk Berusaha</div>
                 <div className="mt-3 text-3xl font-bold leading-tight">13052200161160002</div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
                   Informasi legal diletakkan dekat area keputusan supaya trust hadir lebih awal di homepage.
                 </p>
               </div>
-              <div className="relative overflow-hidden rounded-[24px] border border-border sm:col-span-2">
+              <div className="relative overflow-hidden rounded-radius-card border border-border sm:col-span-2">
                 <Image
                   src="/assets/mazaya_travel_rebuild_inventory/assets/WhatsApp_Image_2025_08_20_at_15_52_42_jpeg.jpeg"
                   alt="Rombongan jemaah Mazaya Travel bersama identitas perusahaan"
@@ -651,7 +651,7 @@ export default async function Home() {
                 Silakan hubungi tim Mazaya untuk bertanya soal jadwal, fasilitas, atau kesiapan dokumen. Kami bantu jelaskan dengan bahasa yang ringan dan tidak terburu-buru.
               </p>
             </div>
-            <div className="grid gap-3 rounded-[24px] border border-white/10 bg-white/8 p-5 backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-1">
+            <div className="grid gap-3 rounded-radius-card border border-white/10 bg-white/8 p-5 backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-1">
               <div>
                 <div className="text-sm text-white/70">WhatsApp utama</div>
                 <div className="mt-1 text-xl font-bold text-white">0852 9875 1997</div>

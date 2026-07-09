@@ -85,7 +85,7 @@ export default function DocumentationPage() {
       >
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {galleryItems.map((item) => (
-            <article key={item.title} className="overflow-hidden rounded-[24px] border border-border bg-surface shadow-[var(--shadow-1)]">
+            <article key={item.title} className="overflow-hidden rounded-radius-card border border-border bg-surface shadow-[var(--shadow-1)]">
               <div className="relative aspect-[4/3] w-full bg-primary-soft/30">
                 <Image src={item.src} alt={item.title} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw" />
               </div>
@@ -100,7 +100,7 @@ export default function DocumentationPage() {
 
       <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.95fr] lg:items-start">
-          <div className="rounded-[24px] border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
+          <div className="rounded-radius-card border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
             <h2 className="text-2xl font-bold text-text">Mengapa dokumentasi ini penting?</h2>
             <div className="mt-5 grid gap-3">
               {[
@@ -114,7 +114,7 @@ export default function DocumentationPage() {
               ))}
             </div>
           </div>
-          <div className="rounded-[24px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
+          <div className="rounded-radius-card border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
             <div className="text-sm font-semibold text-white/72">Setelah melihat dokumentasi</div>
             <h2 className="mt-3 text-2xl font-bold leading-snug">Lanjutkan ke langkah yang membantu keputusan terasa lebih jelas.</h2>
             <p className="mt-3 text-sm leading-7 text-white/78">
