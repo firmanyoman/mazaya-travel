@@ -10,7 +10,7 @@ interface LogoProps {
 
 export function Logo({
   variant = 'default',
-  width = 140,
+  width = 116,
   priority = false,
 }: LogoProps) {
   return (

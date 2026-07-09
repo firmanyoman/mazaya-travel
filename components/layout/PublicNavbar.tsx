@@ -20,7 +20,7 @@ export function PublicNavbar() {
   return (
     <>
       <header className="sticky top-0 z-30 border-b border-border/80 bg-surface/92 backdrop-blur-md">
-        <Container className="flex min-h-18 items-center justify-between gap-4 py-3">
+        <Container className="flex min-h-16 items-center justify-between gap-4 py-2.5">
           <Logo priority />
           <nav className="hidden items-center gap-1 md:flex">
             {links.map((link) => (

@@ -11,10 +11,10 @@ interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 const variantClassName: Record<ButtonVariant, string> = {
-  primary: 'bg-primary text-white hover:bg-primary-hover border border-primary shadow-[var(--shadow-1)]',
-  secondary: 'bg-surface text-primary hover:bg-primary-soft border border-primary',
-  soft: 'bg-primary-soft text-primary hover:bg-primary-soft/80 border border-transparent',
-  ghost: 'bg-transparent text-text hover:bg-primary-soft/40 border border-transparent',
+  primary: 'border border-primary bg-primary text-white hover:bg-primary-hover hover:text-white shadow-[var(--shadow-1)]',
+  secondary: 'border border-primary bg-surface text-primary hover:bg-primary-soft',
+  soft: 'border border-transparent bg-primary-soft text-primary hover:bg-primary-soft/80',
+  ghost: 'border border-transparent bg-transparent text-text hover:bg-primary-soft/40',
 }
 
 const sizeClassName: Record<ButtonSize, string> = {
@@ -30,6 +30,7 @@ export function Button({
   fullWidth = false,
   className = '',
   children,
+  style,
   ...props
 }: ButtonProps) {
   return (
@@ -42,6 +43,7 @@ export function Button({
         fullWidth ? 'w-full' : '',
         className,
       ].filter(Boolean).join(' ')}
+      style={variant === 'primary' ? { color: '#ffffff', ...style } : style}
       {...props}
     >
       {children}
