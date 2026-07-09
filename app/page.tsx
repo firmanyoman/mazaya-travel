@@ -113,6 +113,11 @@ function getStatusBadge(packageStatus: string) {
 export default async function Home() {
   const whatsappUrl = 'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20tertarik%20dengan%20info%20paket%20Umrah'
   const consultationUrl = 'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20rencana%20Umrah'
+  const featuredPackageFallbackImages = [
+    '/assets/mazaya_travel_rebuild_inventory/assets/WhatsApp_Image_2025_08_24_at_04_57_58_jpeg.jpeg',
+    '/assets/mazaya_travel_rebuild_inventory/assets/WhatsApp_Image_2025_08_20_at_15_52_42_jpeg.jpeg',
+    '/assets/mazaya_travel_rebuild_inventory/assets/WhatsApp_Image_2024_12_25_at_09_11_57__1__jpeg.jpeg',
+  ]
 
   let dbPackages: DbPackage[] = [] as DbPackage[]
   try {
@@ -188,7 +193,7 @@ export default async function Home() {
     }
   ]
 
-  const displayPackages = dbPackages.length > 0 ? dbPackages.map((pkg) => ({
+  const displayPackages = dbPackages.length > 0 ? dbPackages.map((pkg, index) => ({
     title: pkg.title,
     tier: pkg.tier || 'Silver',
     price: pkg.price,
@@ -203,7 +208,7 @@ export default async function Home() {
     totalSeats: pkg.totalSeats,
     remainingSeats: pkg.remainingSeats,
     packageStatus: pkg.packageStatus,
-    image: pkg.ogImage || '/assets/mazaya_travel_rebuild_inventory/assets/No Image.jpg.jpeg',
+    image: pkg.ogImage || featuredPackageFallbackImages[index % featuredPackageFallbackImages.length],
     badge: pkg.badgeText || 'Paket Pilihan',
     slug: pkg.slug,
     packageSummary: pkg.packageSummary,
@@ -656,7 +661,15 @@ export default async function Home() {
                 <div className="mt-1 text-base font-semibold text-white">info@mazaya-travel.id</div>
               </div>
               <div className="flex flex-col gap-3 sm:col-span-2 lg:flex-row">
-                <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" size="lg" className="bg-white text-primary hover:bg-primary-soft border-white lg:flex-1">
+                <Button
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="secondary"
+                  size="lg"
+                  className="border-white bg-white text-primary hover:bg-primary-soft lg:flex-1"
+                  style={{ color: '#0F5B5B' }}
+                >
                   Chat WhatsApp
                 </Button>
                 <Button href="/kontak" variant="secondary" size="lg" className="border-white bg-transparent text-white hover:bg-white/10 lg:flex-1">

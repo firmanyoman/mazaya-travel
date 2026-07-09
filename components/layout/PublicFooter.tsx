@@ -8,8 +8,17 @@ const footerGroups = [
     links: [
       { href: '/', label: 'Beranda' },
       { href: '/paket-umrah', label: 'Paket Umrah' },
+      { href: '/paket-haji', label: 'Paket Haji' },
+      { href: '/daftar', label: 'Pendaftaran' },
+    ],
+  },
+  {
+    title: 'Perusahaan',
+    links: [
       { href: '/tentang-kami', label: 'Tentang Kami' },
       { href: '/kontak', label: 'Kontak' },
+      { href: '/testimoni', label: 'Testimoni' },
+      { href: '/dokumentasi', label: 'Dokumentasi' },
     ],
   },
   {
@@ -26,7 +35,7 @@ const footerGroups = [
 export function PublicFooter() {
   return (
     <footer className="mt-16 border-t border-primary/10 bg-primary text-white">
-      <Container className="grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
+      <Container className="grid gap-10 py-12 lg:grid-cols-[1.1fr_0.8fr_0.8fr_0.8fr_1fr]">
         <div className="space-y-4">
           <Logo variant="reversed" height={56} />
           <p className="max-w-md text-sm leading-7 text-white/76">
@@ -50,9 +59,20 @@ export function PublicFooter() {
         <div className="space-y-4">
           <h2 className="text-sm font-semibold tracking-[0.01em] text-white">Kantor & legalitas</h2>
           <div className="space-y-3 text-sm leading-7 text-white/76">
-            <p>Jl. Lapawawoi Kr. Sigeri, Kel. Biru, Kec. Tanete Riattang, Bone, Sulawesi Selatan</p>
-            <p>WhatsApp: 0852 9875 1997</p>
-            <p>NIB: 13052200161160002</p>
+            <Link href="/kontak" className="focus-ring block rounded-[var(--radius-sm)] transition-colors hover:text-white">
+              Jl. Lapawawoi Kr. Sigeri, Kel. Biru, Kec. Tanete Riattang, Bone, Sulawesi Selatan
+            </Link>
+            <a
+              href="https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="focus-ring block rounded-[var(--radius-sm)] transition-colors hover:text-white"
+            >
+              WhatsApp: 0852 9875 1997
+            </a>
+            <Link href="/legalitas" className="focus-ring block rounded-[var(--radius-sm)] transition-colors hover:text-white">
+              NIB: 13052200161160002
+            </Link>
           </div>
         </div>
       </Container>
