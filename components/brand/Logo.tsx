@@ -4,13 +4,13 @@ import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Lo
 
 interface LogoProps {
   variant?: 'default' | 'reversed'
-  width?: number
+  height?: number
   priority?: boolean
 }
 
 export function Logo({
   variant = 'default',
-  width = 116,
+  height = 44,
   priority = false,
 }: LogoProps) {
   return (
@@ -18,8 +18,10 @@ export function Logo({
       <Image
         src={logoImage}
         alt="Logo Mazaya Travel"
-        className={variant === 'reversed' ? 'h-auto object-contain brightness-0 invert' : 'h-auto object-contain'}
-        width={width}
+        className={variant === 'reversed' ? 'w-auto object-contain brightness-0 invert' : 'w-auto object-contain'}
+        width={Math.round((logoImage.width / logoImage.height) * height)}
+        height={height}
+        style={{ width: 'auto', height: `${height}px` }}
         priority={priority}
       />
     </Link>
