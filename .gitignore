@@ -7,3 +7,5 @@ graphify-out/
 
 node_modules/
 .next/
+.env
+.hermes/

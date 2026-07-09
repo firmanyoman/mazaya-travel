@@ -8,8 +8,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Mazaya Travel',
-  description: 'Mazaya Travel website foundation',
+  title: 'Mazaya Travel | Travel Umrah Resmi dan Terpercaya di Bone',
+  description:
+    'Mazaya Travel membantu calon jemaah Bone dan sekitarnya memilih paket Umrah dengan informasi yang jelas, legalitas yang terbuka, dan jalur daftar yang menenangkan.',
 }
 
 export default function RootLayout({

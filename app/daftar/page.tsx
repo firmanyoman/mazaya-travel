@@ -1,6 +1,5 @@
+import { redirect } from 'next/navigation'
 import { db } from '@/db'
-import { packages } from '@/db/schema'
-import { eq } from 'drizzle-orm'
 import RegistrationFormClient from './RegistrationFormClient'
 
 interface Props {
@@ -10,6 +9,10 @@ interface Props {
 export default async function RegisterPage({ searchParams }: Props) {
   const resolvedSearchParams = await searchParams
   const selectedSlug = resolvedSearchParams.package
+
+  if (selectedSlug) {
+    redirect(`/daftar/${selectedSlug}`)
+  }
 
   // Fetch all active/sold_out packages for selection dropdown
   const allPackages = await db.query.packages.findMany({

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
 import { db } from '@/db'
 import { packages } from '@/db/schema'
 import { eq, and } from 'drizzle-orm'
@@ -142,11 +143,9 @@ export default async function Home() {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-3">
             <Image
-              src="/assets/mazaya_travel_rebuild_inventory/assets/Logo.png"
+              src={logoImage}
               alt="Logo Mazaya Travel"
-              width={140}
-              height={50}
-              className="object-contain"
+              className="h-auto w-[140px] object-contain"
               priority
             />
           </div>
@@ -306,7 +305,7 @@ export default async function Home() {
                         Detail Paket
                       </a>
                       <a
-                        href={`/daftar?package=${pkg.slug}`}
+                        href={`/daftar/${pkg.slug}`}
                         className="inline-flex justify-center items-center py-3 bg-primary text-white font-bold rounded-radius-control hover:bg-primary-hover transition-colors text-xs shadow-md"
                       >
                         Daftar Online
@@ -418,11 +417,9 @@ export default async function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-white/10 pb-8 mb-8 px-6">
           <div className="space-y-4">
             <Image
-              src="/assets/mazaya_travel_rebuild_inventory/assets/Logo.png"
+              src={logoImage}
               alt="Logo Mazaya Travel"
-              width={140}
-              height={50}
-              className="object-contain brightness-0 invert"
+              className="h-auto w-[140px] object-contain brightness-0 invert"
             />
             <p className="text-xs text-white/70 leading-relaxed">
               PT Mazaya Amanah Wisata - Mitra tepercaya perjalanan ibadah Umrah & Haji Khusus Anda. Memberikan kepastian keberangkatan dengan bimbingan sesuai Sunnah.

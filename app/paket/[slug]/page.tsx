@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { db } from '@/db'
 import { eq } from 'drizzle-orm'
 import { packages } from '@/db/schema'
+import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -57,11 +58,9 @@ export default async function PackageDetailPage({ params }: Props) {
       <header className="mb-8 border-b border-border pb-4 flex justify-between items-center">
         <Link href="/">
           <Image
-            src="/assets/mazaya_travel_rebuild_inventory/assets/Logo.png"
+            src={logoImage}
             alt="Logo Mazaya Travel"
-            width={120}
-            height={44}
-            className="object-contain"
+            className="h-auto w-[120px] object-contain"
             priority
           />
         </Link>
@@ -180,7 +179,7 @@ export default async function PackageDetailPage({ params }: Props) {
                   </button>
                 ) : (
                   <Link
-                    href={`/daftar?package=${pkg.slug}`}
+                    href={`/daftar/${pkg.slug}`}
                     className="w-full sm:w-auto inline-flex justify-center items-center px-6 py-3.5 bg-primary text-white text-base font-bold rounded-radius-control hover:bg-primary-hover transition-colors shadow-md"
                   >
                     Daftar Paket Ini

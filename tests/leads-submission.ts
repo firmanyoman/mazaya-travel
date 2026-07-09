@@ -6,10 +6,20 @@ async function runTest() {
     name: 'Test Lead',
     fullName: 'Test Lead',
     phone: '081234567890',
+    nik: '1234567890123456',
+    fatherName: 'Test Father',
+    city: 'Bone',
+    gender: 'male',
     birthDate: '1995-05-15',
     selectedPackage: '1',
     packageId: '1',
     leadType: 'registration',
+    ktpFile: JSON.stringify({
+      name: 'ktp-test.jpg',
+      type: 'image/jpeg',
+      size: 120000,
+      lastModified: Date.now(),
+    }),
     privacyConsentGiven: true,
   };
 
@@ -30,8 +40,8 @@ async function runTest() {
     assert.ok(response.status === 200 || response.status === 201, `Expected 200 or 201, got ${response.status}`);
     assert.ok(data.success, 'Expected success property to be truthy');
     console.log('Success: Lead submission API test passed.');
-  } catch (err: any) {
-    console.error('Test failed:', err.message);
+  } catch (err: unknown) {
+    console.error('Test failed:', err instanceof Error ? err.message : err);
     process.exit(1);
   }
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import logoImage from '@/public/assets/mazaya_travel_rebuild_inventory/assets/Logo.png'
 
 interface PackageOption {
   id: number
@@ -28,8 +29,11 @@ export default function RegistrationFormClient({
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
   const [nik, setNik] = useState('')
+  const [fatherName, setFatherName] = useState('')
+  const [city, setCity] = useState('')
   const [gender, setGender] = useState('')
   const [birthDate, setBirthDate] = useState('')
+  const [ktpFile, setKtpFile] = useState<File | null>(null)
   const [privacyConsentGiven, setPrivacyConsentGiven] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -46,6 +50,9 @@ export default function RegistrationFormClient({
     }).format(p)
   }
 
+  const allowedKtpTypes = ['image/jpeg', 'image/png', 'application/pdf']
+  const maxKtpFileSize = 2 * 1024 * 1024
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -53,6 +60,18 @@ export default function RegistrationFormClient({
     setSuccessMessage(null)
 
     try {
+      if (!ktpFile) {
+        throw new Error('Unggah file KTP wajib diisi')
+      }
+
+      if (!allowedKtpTypes.includes(ktpFile.type)) {
+        throw new Error('File KTP harus berupa JPG, PNG, atau PDF')
+      }
+
+      if (ktpFile.size > maxKtpFileSize) {
+        throw new Error('Ukuran file KTP maksimal 2 MB')
+      }
+
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -62,13 +81,21 @@ export default function RegistrationFormClient({
           fullName,
           phone,
           nik: nik || null,
+          fatherName,
+          city,
           gender: gender || null,
           birthDate: birthDate || null,
+          ktpFile: JSON.stringify({
+            name: ktpFile.name,
+            type: ktpFile.type,
+            size: ktpFile.size,
+            lastModified: ktpFile.lastModified,
+          }),
           privacyConsentGiven,
         }),
       })
 
-      const data = await response.json()
+      const data: { error?: string } = await response.json()
 
       if (!response.ok) {
         throw new Error(data.error || 'Terjadi kesalahan saat pendaftaran')
@@ -79,11 +106,14 @@ export default function RegistrationFormClient({
       setFullName('')
       setPhone('')
       setNik('')
+      setFatherName('')
+      setCity('')
       setGender('')
       setBirthDate('')
+      setKtpFile(null)
       setPrivacyConsentGiven(false)
-    } catch (err: any) {
-      setErrorMessage(err.message || 'Terjadi kesalahan jaringan')
+    } catch (err: unknown) {
+      setErrorMessage(err instanceof Error ? err.message : 'Terjadi kesalahan jaringan')
     } finally {
       setIsSubmitting(false)
     }
@@ -100,11 +130,9 @@ export default function RegistrationFormClient({
       <header className="border-b border-border pb-4 flex justify-between items-center">
         <Link href="/">
           <Image
-            src="/assets/mazaya_travel_rebuild_inventory/assets/Logo.png"
+            src={logoImage}
             alt="Logo Mazaya Travel"
-            width={120}
-            height={44}
-            className="object-contain"
+            className="h-auto w-[120px] object-contain"
             priority
           />
         </Link>
@@ -229,18 +257,52 @@ export default function RegistrationFormClient({
               </span>
             </div>
 
-            {/* NIK */}
+            {/* Identity Fields */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label htmlFor="nik" className="block text-sm font-bold text-text">
+                  Nomor Induk Kependudukan (NIK) <span className="text-red-600">*</span>
+                </label>
+                <input
+                  id="nik"
+                  type="text"
+                  value={nik}
+                  onChange={(e) => setNik(e.target.value)}
+                  required
+                  maxLength={16}
+                  placeholder="16 Digit NIK KTP Anda"
+                  className="w-full p-3.5 bg-surface border border-border rounded-radius-control text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="fatherName" className="block text-sm font-bold text-text">
+                  Nama Ayah <span className="text-red-600">*</span>
+                </label>
+                <input
+                  id="fatherName"
+                  type="text"
+                  value={fatherName}
+                  onChange={(e) => setFatherName(e.target.value)}
+                  required
+                  placeholder="Contoh: Abdullah"
+                  className="w-full p-3.5 bg-surface border border-border rounded-radius-control text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+            </div>
+
+            {/* Contact Details */}
             <div className="space-y-2">
-              <label htmlFor="nik" className="block text-sm font-bold text-text">
-                Nomor Induk Kependudukan (NIK)
+              <label htmlFor="city" className="block text-sm font-bold text-text">
+                Kota Domisili <span className="text-red-600">*</span>
               </label>
               <input
-                id="nik"
+                id="city"
                 type="text"
-                value={nik}
-                onChange={(e) => setNik(e.target.value)}
-                maxLength={16}
-                placeholder="16 Digit NIK KTP Anda"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+                placeholder="Contoh: Bone"
                 className="w-full p-3.5 bg-surface border border-border rounded-radius-control text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
             </div>
@@ -249,14 +311,16 @@ export default function RegistrationFormClient({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label htmlFor="gender" className="block text-sm font-bold text-text">
-                  Jenis Kelamin
+                  Jenis Kelamin <span className="text-red-600">*</span>
                 </label>
-                <select
-                  id="gender"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  className="w-full p-3.5 bg-surface border border-border rounded-radius-control text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/20"
-                >
+                  <select
+                    id="gender"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    required
+                    className="w-full p-3.5 bg-surface border border-border rounded-radius-control text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  >
+
                   <option value="">-- Pilih Jenis Kelamin --</option>
                   <option value="male">Laki-laki</option>
                   <option value="female">Perempuan</option>
@@ -265,16 +329,35 @@ export default function RegistrationFormClient({
 
               <div className="space-y-2">
                 <label htmlFor="birthDate" className="block text-sm font-bold text-text">
-                  Tanggal Lahir
+                  Tanggal Lahir <span className="text-red-600">*</span>
                 </label>
                 <input
                   id="birthDate"
                   type="date"
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
+                  required
                   className="w-full p-3.5 bg-surface border border-border rounded-radius-control text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
               </div>
+            </div>
+
+            {/* KTP Upload */}
+            <div className="space-y-2">
+              <label htmlFor="ktpFile" className="block text-sm font-bold text-text">
+                Unggah KTP <span className="text-red-600">*</span>
+              </label>
+              <input
+                id="ktpFile"
+                type="file"
+                accept=".jpg,.jpeg,.png,.pdf"
+                required
+                onChange={(e) => setKtpFile(e.target.files?.[0] ?? null)}
+                className="w-full p-3.5 bg-surface border border-border rounded-radius-control text-sm text-text file:mr-4 file:rounded-radius-control file:border-0 file:bg-primary-soft file:px-4 file:py-2 file:font-semibold file:text-primary"
+              />
+              <span className="block text-xs text-muted">
+                Format yang diterima: JPG, PNG, atau PDF. Maksimal 2 MB. Untuk saat ini file disimpan sebagai bukti metadata upload agar admin bisa follow up aman via WhatsApp.
+              </span>
             </div>
 
             {/* Privacy Consent */}
