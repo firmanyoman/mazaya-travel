@@ -663,11 +663,12 @@ export default function RegistrationFormClient({
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <button
                     type="submit"
-                    disabled={isSubmitting || !isPackageChosen}
+                    disabled={!privacyConsentGiven || isSubmitting || !isPackageChosen}
                     className="focus-ring inline-flex min-h-14 items-center justify-center rounded-[12px] border border-primary bg-primary px-6 text-base font-semibold text-white shadow-[var(--shadow-1)] transition-[background-color,border-color,box-shadow,opacity] duration-150 hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {isSubmitting ? 'Mengirim...' : 'Kirim pendaftaran'}
                   </button>
+
                   <Button
                     href={whatsappContactUrl}
                     target="_blank"
