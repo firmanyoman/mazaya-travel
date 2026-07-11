@@ -12,8 +12,15 @@ import {
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
-  passwordHash: text('password_hash').notNull(),
-  role: varchar('role', { length: 50 }).default('admin').notNull(),
+  resetPasswordToken: varchar('reset_password_token', { length: 255 }),
+  resetPasswordExpiration: timestamp('reset_password_expiration', {
+    withTimezone: true,
+    mode: 'date',
+  }),
+  salt: varchar('salt', { length: 255 }),
+  hash: varchar('hash', { length: 2000 }),
+  loginAttempts: integer('login_attempts').default(0),
+  lockUntil: timestamp('lock_until', { withTimezone: true, mode: 'date' }),
   createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
 })

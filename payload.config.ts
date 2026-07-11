@@ -74,7 +74,7 @@ export default buildConfig({
         {
           name: 'priceMode',
           type: 'select',
-          options: ['fixed', 'starting_from'],
+          options: ['public', 'contact'],
           required: true,
         },
         {
@@ -96,7 +96,7 @@ export default buildConfig({
         {
           name: 'packageStatus',
           type: 'select',
-          options: ['draft', 'active', 'archived'],
+          options: ['draft', 'active', 'sold_out', 'archived'],
           required: true,
         },
         {
@@ -105,39 +105,25 @@ export default buildConfig({
           defaultValue: false,
         },
         {
+          name: 'brochureFile',
+          type: 'text',
+        },
+        {
           name: 'packageSummary',
           type: 'textarea',
           required: true,
         },
         {
           name: 'inclusions',
-          type: 'array',
-          fields: [
-            {
-              name: 'item',
-              type: 'text',
-            },
-          ],
+          type: 'json',
         },
         {
           name: 'exclusions',
-          type: 'array',
-          fields: [
-            {
-              name: 'item',
-              type: 'text',
-            },
-          ],
+          type: 'json',
         },
         {
           name: 'requirements',
-          type: 'array',
-          fields: [
-            {
-              name: 'item',
-              type: 'text',
-            },
-          ],
+          type: 'json',
         },
         {
           name: 'itinerarySummary',
@@ -159,6 +145,14 @@ export default buildConfig({
           name: 'seoDescription',
           type: 'textarea',
         },
+        {
+          name: 'ogImage',
+          type: 'text',
+        },
+        {
+          name: 'publishedAt',
+          type: 'date',
+        },
       ],
     },
     {
@@ -167,6 +161,10 @@ export default buildConfig({
         useAsTitle: 'fullName',
       },
       fields: [
+        {
+          name: 'packageId',
+          type: 'number',
+        },
         {
           name: 'leadType',
           type: 'select',
@@ -209,6 +207,18 @@ export default buildConfig({
           type: 'textarea',
         },
         {
+          name: 'ktpFile',
+          type: 'text',
+        },
+        {
+          name: 'sourcePage',
+          type: 'text',
+        },
+        {
+          name: 'sourceCampaign',
+          type: 'text',
+        },
+        {
           name: 'status',
           type: 'select',
           options: ['baru', 'dihubungi', 'proses', 'batal', 'selesai'],
@@ -218,6 +228,19 @@ export default buildConfig({
           name: 'internalNotes',
           type: 'textarea',
         },
+        {
+          name: 'privacyConsentGiven',
+          type: 'checkbox',
+          defaultValue: false,
+        },
+        {
+          name: 'privacyConsentAt',
+          type: 'date',
+        },
+        {
+          name: 'submittedAt',
+          type: 'date',
+        },
       ],
     },
   ],
@@ -226,7 +249,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    push: false,
+    push: true,
   }),
   editor: lexicalEditor({}),
 })

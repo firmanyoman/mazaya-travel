@@ -15,7 +15,7 @@ export default async function RegisterPage({ searchParams }: Props) {
     redirect(`/daftar/${selectedSlug}`)
   }
 
-  const allPackages = getVisiblePackages().sort((a, b) => a.departureDate.localeCompare(b.departureDate))
+  const allPackages = await getVisiblePackages()
   const initialPackage = allPackages.find((pkg) => pkg.slug === selectedSlug)
 
   return (

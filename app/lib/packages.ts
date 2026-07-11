@@ -1,3 +1,7 @@
+import { asc, eq } from 'drizzle-orm'
+import { db } from '@/db'
+import { packages } from '@/db/schema'
+
 export interface LocalPackage {
   id: number
   title: string
@@ -272,22 +276,80 @@ export const localPackages: LocalPackage[] = [
   },
 ]
 
-export function getVisiblePackages() {
+function getVisibleLocalPackages() {
   return localPackages.filter(
     (pkg) => pkg.packageStatus !== 'archived' && pkg.packageStatus !== 'draft'
   )
 }
 
-export function getHomepagePackages() {
-  return getVisiblePackages().filter((pkg) => pkg.featuredOnHomepage).slice(0, 3)
+function mapDbPackage(pkg: typeof packages.$inferSelect): LocalPackage {
+  return {
+    id: pkg.id,
+    title: pkg.title,
+    slug: pkg.slug,
+    category: pkg.category as LocalPackage['category'],
+    tier: pkg.tier,
+    shortLabel: pkg.shortLabel,
+    departureDate: pkg.departureDate,
+    durationDays: pkg.durationDays,
+    departureCity: pkg.departureCity,
+    airline: pkg.airline,
+    makkahHotel: pkg.makkahHotel,
+    madinahHotel: pkg.madinahHotel,
+    priceMode: pkg.priceMode as LocalPackage['priceMode'],
+    price: pkg.price,
+    minimumDeposit: pkg.minimumDeposit,
+    totalSeats: pkg.totalSeats,
+    remainingSeats: pkg.remainingSeats,
+    packageStatus: pkg.packageStatus as LocalPackage['packageStatus'],
+    featuredOnHomepage: pkg.featuredOnHomepage,
+    packageSummary: pkg.packageSummary,
+    inclusions: pkg.inclusions,
+    exclusions: pkg.exclusions,
+    requirements: pkg.requirements,
+    itinerarySummary: pkg.itinerarySummary,
+    paymentNotes: pkg.paymentNotes,
+    badgeText: pkg.badgeText,
+    seoTitle: pkg.seoTitle,
+    seoDescription: pkg.seoDescription,
+    ogImage: pkg.ogImage,
+  }
 }
 
-export function getPackagesByCategory(category: LocalPackage['category']) {
-  return getVisiblePackages()
+async function getVisibleDbPackages() {
+  try {
+    const rows = await db
+      .select()
+      .from(packages)
+      .where(eq(packages.packageStatus, 'active'))
+      .orderBy(asc(packages.departureDate))
+
+    return rows.map(mapDbPackage)
+  } catch {
+    return []
+  }
+}
+
+export async function getVisiblePackages() {
+  const dbPackages = await getVisibleDbPackages()
+  return dbPackages.length > 0
+    ? dbPackages
+    : getVisibleLocalPackages().sort((a, b) => a.departureDate.localeCompare(b.departureDate))
+}
+
+export async function getHomepagePackages() {
+  const visiblePackages = await getVisiblePackages()
+  return visiblePackages.filter((pkg) => pkg.featuredOnHomepage).slice(0, 3)
+}
+
+export async function getPackagesByCategory(category: LocalPackage['category']) {
+  const visiblePackages = await getVisiblePackages()
+  return visiblePackages
     .filter((pkg) => pkg.category === category)
     .sort((a, b) => a.departureDate.localeCompare(b.departureDate))
 }
 
-export function getPackageBySlug(slug: string) {
-  return getVisiblePackages().find((pkg) => pkg.slug === slug)
+export async function getPackageBySlug(slug: string) {
+  const visiblePackages = await getVisiblePackages()
+  return visiblePackages.find((pkg) => pkg.slug === slug)
 }

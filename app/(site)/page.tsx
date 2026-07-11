@@ -142,7 +142,7 @@ export default async function Home() {
     }
   ]
 
-  const homepagePackages = getHomepagePackages()
+  const homepagePackages = await getHomepagePackages()
 
   const displayPackages = homepagePackages.length > 0
     ? homepagePackages.map((pkg, index) => ({

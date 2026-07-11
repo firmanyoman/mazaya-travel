@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { db } from '@/db'
+import { leads } from '@/db/schema'
 
 type LeadRequestBody = {
   leadType?: string
@@ -96,18 +98,42 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    return NextResponse.json({
-      success: true,
-      lead: {
-        id: `local-${Date.now()}`,
+    const normalizedPackageId = typeof packageId === 'number'
+      ? packageId
+      : packageId
+        ? parseInt(String(packageId), 10)
+        : null
+
+    const [lead] = await db
+      .insert(leads)
+      .values({
         leadType: leadType || 'registration',
-        packageId: typeof packageId === 'number' ? packageId : packageId ? parseInt(String(packageId), 10) : null,
+        packageId: Number.isFinite(normalizedPackageId) ? normalizedPackageId : null,
         fullName,
         phone,
-        status: 'baru',
-        submittedAt: new Date().toISOString(),
-        ponytail: 'Local non-persistent lead intake; add real delivery/store when backend is reintroduced.',
-      },
+        nik: nik || null,
+        fatherName: fatherName || null,
+        city: city || null,
+        gender: gender || null,
+        birthDate: birthDate || null,
+        message: null,
+        ktpFile,
+        privacyConsentGiven: true,
+        privacyConsentAt: new Date(),
+      })
+      .returning({
+        id: leads.id,
+        leadType: leads.leadType,
+        packageId: leads.packageId,
+        fullName: leads.fullName,
+        phone: leads.phone,
+        status: leads.status,
+        submittedAt: leads.submittedAt,
+      })
+
+    return NextResponse.json({
+      success: true,
+      lead,
     })
   } catch (error: unknown) {
     return NextResponse.json(

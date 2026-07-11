@@ -73,7 +73,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const pkg = getPackageBySlug(slug)
+  const pkg = await getPackageBySlug(slug)
 
   if (!pkg) {
     return {
@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PackageDetailPage({ params }: Props) {
   const { slug } = await params
-  const pkg = getPackageBySlug(slug)
+  const pkg = await getPackageBySlug(slug)
 
   if (!pkg) {
     notFound()

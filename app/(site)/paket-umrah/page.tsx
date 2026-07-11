@@ -75,7 +75,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
 }
 
 export default async function PaketUmrahPage() {
-  const packageList = getPackagesByCategory('umrah')
+  const packageList = await getPackagesByCategory('umrah')
 
   const activeCount = packageList.filter((pkg) => pkg.packageStatus === 'active').length
   const soldOutCount = packageList.filter(

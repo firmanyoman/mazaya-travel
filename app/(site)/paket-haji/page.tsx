@@ -57,7 +57,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
 }
 
 export default async function PaketHajiPage() {
-  const packageList = getPackagesByCategory('haji')
+  const packageList = await getPackagesByCategory('haji')
 
   const activeCount = packageList.filter((pkg) => pkg.packageStatus === 'active').length
   const departureCities = Array.from(new Set(packageList.map((pkg) => pkg.departureCity).filter(Boolean)))

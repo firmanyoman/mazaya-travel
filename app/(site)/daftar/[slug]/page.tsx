@@ -10,7 +10,7 @@ interface Props {
 export default async function RegisterPackagePage({ params }: Props) {
   const { slug } = await params
 
-  const allPackages = getVisiblePackages().sort((a, b) => a.departureDate.localeCompare(b.departureDate))
+  const allPackages = await getVisiblePackages()
   const initialPackage = allPackages.find((pkg) => pkg.slug === slug)
 
   if (!initialPackage) {
