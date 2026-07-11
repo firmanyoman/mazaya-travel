@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="id" className={plusJakartaSans.variable}>
+    <html lang="id" className={plusJakartaSans.variable} data-scroll-behavior="smooth">
       <body className="bg-warm-ivory text-text antialiased">
         <a href="#main-content" className="skip-link">Lewati ke konten utama</a>
         <div className="min-h-screen bg-warm-ivory">

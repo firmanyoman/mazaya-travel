@@ -208,6 +208,7 @@ export default buildConfig({
         },
         {
           name: 'ktpFile',
+          label: 'KTP File',
           type: 'text',
         },
         {
