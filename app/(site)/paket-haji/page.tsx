@@ -68,7 +68,7 @@ export default async function PaketHajiPage() {
         eyebrow="Paket Haji Mazaya"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Informasi paket Haji yang terasa setara kualitasnya dengan keluarga halaman paket utama Mazaya."
+        title="Informasi paket Haji yang disusun setara kualitasnya dengan halaman paket utama Mazaya."
         summary="Halaman ini membantu calon jemaah dan keluarga membaca pilihan Haji dengan ritme yang lebih rapi: mulai dari gambaran ketersediaan, konteks keputusan, lalu detail setiap paket atau jalur konsultasi saat jadwal belum tampil."
         actions={
           <>

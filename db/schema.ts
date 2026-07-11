@@ -1,4 +1,5 @@
 import {
+  pgEnum,
   pgTable,
   serial,
   text,
@@ -7,6 +8,7 @@ import {
   boolean,
   timestamp,
   date,
+  numeric,
 } from 'drizzle-orm/pg-core'
 
 export const users = pgTable('users', {
@@ -61,26 +63,30 @@ export const packages = pgTable('packages', {
   updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
 })
 
+const leadTypeEnum = pgEnum('enum_leads_lead_type', ['consultation', 'registration'])
+const leadGenderEnum = pgEnum('enum_leads_gender', ['laki-laki', 'perempuan'])
+const leadStatusEnum = pgEnum('enum_leads_status', ['baru', 'dihubungi', 'proses', 'batal', 'selesai'])
+
 export const leads = pgTable('leads', {
   id: serial('id').primaryKey(),
-  leadType: varchar('lead_type', { length: 50 }).notNull(),
-  packageId: integer('package_id').references(() => packages.id),
+  leadType: leadTypeEnum('lead_type').notNull(),
+  packageId: numeric('package_id'),
   fullName: varchar('full_name', { length: 255 }).notNull(),
   phone: varchar('phone', { length: 50 }).notNull(),
   nik: varchar('nik', { length: 50 }),
   fatherName: varchar('father_name', { length: 255 }),
-  gender: varchar('gender', { length: 20 }),
-  birthDate: date('birth_date'),
+  gender: leadGenderEnum('gender'),
+  birthDate: timestamp('birth_date', { withTimezone: true, mode: 'date' }),
   city: varchar('city', { length: 100 }),
-  message: text('message'),
+  message: varchar('message', { length: 255 }),
   ktpFile: varchar('ktp_file', { length: 500 }),
   sourcePage: varchar('source_page', { length: 255 }),
   sourceCampaign: varchar('source_campaign', { length: 255 }),
-  status: varchar('status', { length: 50 }).default('baru').notNull(),
-  internalNotes: text('internal_notes'),
-  privacyConsentGiven: boolean('privacy_consent_given').default(false).notNull(),
+  status: leadStatusEnum('status').default('baru'),
+  internalNotes: varchar('internal_notes', { length: 255 }),
+  privacyConsentGiven: boolean('privacy_consent_given').default(false),
   privacyConsentAt: timestamp('privacy_consent_at', { withTimezone: true, mode: 'date' }),
-  submittedAt: timestamp('submitted_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
+  submittedAt: timestamp('submitted_at', { withTimezone: true, mode: 'date' }),
   createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
 })

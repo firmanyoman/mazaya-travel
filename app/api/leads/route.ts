@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
       city,
       gender,
       birthDate,
+      message,
       ktpFile,
       privacyConsentGiven,
     } = body
@@ -104,23 +105,35 @@ export async function POST(req: NextRequest) {
         ? parseInt(String(packageId), 10)
         : null
 
+    const normalizedBirthDate = birthDate ? new Date(`${birthDate}T00:00:00.000Z`) : null
+
+    if (birthDate && Number.isNaN(normalizedBirthDate?.getTime())) {
+      return NextResponse.json(
+        { error: 'Tanggal lahir tidak valid' },
+        { status: 400 }
+      )
+    }
+
+    const insertLead = {
+      leadType: (leadType || 'registration') as 'consultation' | 'registration',
+      packageId: Number.isFinite(normalizedPackageId) ? String(normalizedPackageId) : null,
+      fullName,
+      phone,
+      nik: nik || null,
+      fatherName: fatherName || null,
+      city: city || null,
+      gender: (gender || null) as 'laki-laki' | 'perempuan' | null,
+      birthDate: normalizedBirthDate,
+      message: message || null,
+      ktpFile,
+      privacyConsentGiven: true,
+      privacyConsentAt: new Date(),
+      submittedAt: new Date(),
+    }
+
     const [lead] = await db
       .insert(leads)
-      .values({
-        leadType: leadType || 'registration',
-        packageId: Number.isFinite(normalizedPackageId) ? normalizedPackageId : null,
-        fullName,
-        phone,
-        nik: nik || null,
-        fatherName: fatherName || null,
-        city: city || null,
-        gender: gender || null,
-        birthDate: birthDate || null,
-        message: null,
-        ktpFile,
-        privacyConsentGiven: true,
-        privacyConsentAt: new Date(),
-      })
+      .values(insertLead)
       .returning({
         id: leads.id,
         leadType: leads.leadType,

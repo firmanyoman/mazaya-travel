@@ -1,7 +1,30 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getVisiblePackages } from '@/app/lib/packages'
 import { Container } from '@/components/layout/Container'
 import RegistrationFormClient from '../RegistrationFormClient'
+
+interface MetadataProps {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+  const { slug } = await params
+  const allPackages = await getVisiblePackages()
+  const selectedPackage = allPackages.find((pkg) => pkg.slug === slug)
+
+  if (!selectedPackage) {
+    return {
+      title: 'Pendaftaran Paket Tidak Ditemukan - Mazaya Travel',
+    }
+  }
+
+  return {
+    title: `Daftar ${selectedPackage.title} - Mazaya Travel`,
+    description:
+      `Lengkapi formulir pendaftaran untuk ${selectedPackage.title}. Tim Mazaya akan meninjau data dan menindaklanjuti via WhatsApp dengan konteks paket yang sudah Anda pilih.`,
+  }
+}
 
 interface Props {
   params: Promise<{ slug: string }>

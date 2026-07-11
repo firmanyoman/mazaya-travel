@@ -522,8 +522,8 @@ export default function RegistrationFormClient({
                       className={inputClassName}
                     >
                       <option value="">Pilih jenis kelamin</option>
-                      <option value="male">Laki-laki</option>
-                      <option value="female">Perempuan</option>
+                      <option value="laki-laki">Laki-laki</option>
+                      <option value="perempuan">Perempuan</option>
                     </select>
                   </FieldShell>
 
