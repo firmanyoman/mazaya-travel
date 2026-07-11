@@ -1,11 +1,16 @@
-const notFoundResponse = () =>
-  new Response(null, {
-    status: 404,
-  })
+import config from '../../../payload.config'
+import {
+  REST_DELETE,
+  REST_GET,
+  REST_OPTIONS,
+  REST_PATCH,
+  REST_POST,
+  REST_PUT,
+} from '@payloadcms/next/routes'
 
-export const GET = notFoundResponse
-export const POST = notFoundResponse
-export const DELETE = notFoundResponse
-export const PATCH = notFoundResponse
-export const OPTIONS = notFoundResponse
-export const PUT = notFoundResponse
+export const GET = REST_GET(config)
+export const POST = REST_POST(config)
+export const DELETE = REST_DELETE(config)
+export const PATCH = REST_PATCH(config)
+export const OPTIONS = REST_OPTIONS(config)
+export const PUT = REST_PUT(config)
