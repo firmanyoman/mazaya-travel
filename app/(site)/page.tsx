@@ -1,45 +1,8 @@
 import Image from 'next/image'
-import { and, eq } from 'drizzle-orm'
 import { Container } from '@/components/layout/Container'
 import { SectionShell } from '@/components/layout/SectionShell'
 import { Button } from '@/components/ui/Button'
-import { db } from '@/db'
-import { packages } from '@/db/schema'
-
-interface DbPackage {
-  title: string
-  slug: string
-  category: string
-  tier: string | null
-  shortLabel: string | null
-  departureDate: string
-  durationDays: number
-  departureCity: string
-  airline: string | null
-  makkahHotel: string | null
-  madinahHotel: string | null
-  priceMode: string
-  price: number | null
-  minimumDeposit: number | null
-  totalSeats: number | null
-  remainingSeats: number | null
-  packageStatus: string
-  featuredOnHomepage: boolean
-  brochureFile: string | null
-  packageSummary: string
-  inclusions: string[] | null
-  exclusions: string[] | null
-  requirements: string[] | null
-  itinerarySummary: string | null
-  paymentNotes: string | null
-  badgeText: string | null
-  seoTitle: string | null
-  seoDescription: string | null
-  ogImage: string | null
-  publishedAt: Date | null
-  createdAt: Date
-  updatedAt: Date
-}
+import { getHomepagePackages } from '@/app/lib/packages'
 
 function formatRupiahMillions(price: number | null) {
   if (!price) return 'Hubungi CS'
@@ -119,20 +82,6 @@ export default async function Home() {
     '/assets/mazaya_travel_rebuild_inventory/assets/WhatsApp_Image_2024_12_25_at_09_11_57__1__jpeg.jpeg',
   ]
 
-  let dbPackages: DbPackage[] = [] as DbPackage[]
-  try {
-    const results = await db.query.packages.findMany({
-      where: and(
-        eq(packages.packageStatus, 'active'),
-        eq(packages.featuredOnHomepage, true)
-      ),
-      limit: 3
-    })
-    dbPackages = results as unknown as DbPackage[]
-  } catch (e) {
-    console.error('Failed to fetch packages from DB, using fallback.', e)
-  }
-
   const defaultPackages = [
     {
       title: 'Umrah Premium Akhir Tahun (Desember 2025)',
@@ -193,45 +142,49 @@ export default async function Home() {
     }
   ]
 
-  const displayPackages = dbPackages.length > 0 ? dbPackages.map((pkg, index) => ({
-    title: pkg.title,
-    tier: pkg.tier || 'Silver',
-    price: pkg.price,
-    priceLabel: formatRupiahMillions(pkg.price),
-    duration: `${pkg.durationDays} Hari`,
-    departure: formatDate(pkg.departureDate),
-    city: pkg.departureCity,
-    airline: pkg.airline || 'Jadwal maskapai dikonfirmasi saat konsultasi',
-    makkahHotel: pkg.makkahHotel || 'Setaraf sesuai paket',
-    madinahHotel: pkg.madinahHotel || 'Setaraf sesuai paket',
-    minimumDeposit: pkg.minimumDeposit,
-    totalSeats: pkg.totalSeats,
-    remainingSeats: pkg.remainingSeats,
-    packageStatus: pkg.packageStatus,
-    image: pkg.ogImage || featuredPackageFallbackImages[index % featuredPackageFallbackImages.length],
-    badge: pkg.badgeText || 'Paket Pilihan',
-    slug: pkg.slug,
-    packageSummary: pkg.packageSummary,
-  })) : defaultPackages.map((pkg) => ({
-    title: pkg.title,
-    tier: pkg.tier,
-    price: pkg.price,
-    priceLabel: formatRupiahMillions(pkg.price),
-    duration: `${pkg.durationDays} Hari`,
-    departure: formatDate(pkg.departureDate),
-    city: pkg.departureCity,
-    airline: pkg.airline,
-    makkahHotel: pkg.makkahHotel,
-    madinahHotel: pkg.madinahHotel,
-    minimumDeposit: pkg.minimumDeposit,
-    totalSeats: pkg.totalSeats,
-    remainingSeats: pkg.remainingSeats,
-    packageStatus: pkg.packageStatus,
-    image: pkg.image,
-    badge: pkg.badge,
-    slug: pkg.slug,
-    packageSummary: pkg.packageSummary,
-  }))
+  const homepagePackages = getHomepagePackages()
+
+  const displayPackages = homepagePackages.length > 0
+    ? homepagePackages.map((pkg, index) => ({
+        title: pkg.title,
+        tier: pkg.tier || 'Silver',
+        price: pkg.price,
+        priceLabel: formatRupiahMillions(pkg.price),
+        duration: `${pkg.durationDays} Hari`,
+        departure: formatDate(pkg.departureDate),
+        city: pkg.departureCity,
+        airline: pkg.airline || 'Jadwal maskapai dikonfirmasi saat konsultasi',
+        makkahHotel: pkg.makkahHotel || 'Setaraf sesuai paket',
+        madinahHotel: pkg.madinahHotel || 'Setaraf sesuai paket',
+        minimumDeposit: pkg.minimumDeposit,
+        totalSeats: pkg.totalSeats,
+        remainingSeats: pkg.remainingSeats,
+        packageStatus: pkg.packageStatus,
+        image: pkg.ogImage || featuredPackageFallbackImages[index % featuredPackageFallbackImages.length],
+        badge: pkg.badgeText || 'Paket Pilihan',
+        slug: pkg.slug,
+        packageSummary: pkg.packageSummary,
+      }))
+    : defaultPackages.map((pkg) => ({
+        title: pkg.title,
+        tier: pkg.tier,
+        price: pkg.price,
+        priceLabel: formatRupiahMillions(pkg.price),
+        duration: `${pkg.durationDays} Hari`,
+        departure: formatDate(pkg.departureDate),
+        city: pkg.departureCity,
+        airline: pkg.airline,
+        makkahHotel: pkg.makkahHotel,
+        madinahHotel: pkg.madinahHotel,
+        minimumDeposit: pkg.minimumDeposit,
+        totalSeats: pkg.totalSeats,
+        remainingSeats: pkg.remainingSeats,
+        packageStatus: pkg.packageStatus,
+        image: pkg.image,
+        badge: pkg.badge,
+        slug: pkg.slug,
+        packageSummary: pkg.packageSummary,
+      }))
 
   const trustItems = [
     { value: 'PPIU resmi', label: 'Terdaftar dan terbuka soal legalitas', detail: 'Kemenag RI & NIB perusahaan' },

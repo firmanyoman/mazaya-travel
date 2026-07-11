@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
+import { getVisiblePackages } from '@/app/lib/packages'
 import { Container } from '@/components/layout/Container'
-import { db } from '@/db'
 import RegistrationFormClient from '../RegistrationFormClient'
 
 interface Props {
@@ -10,12 +10,7 @@ interface Props {
 export default async function RegisterPackagePage({ params }: Props) {
   const { slug } = await params
 
-  const allPackages = await db.query.packages.findMany({
-    where: (pkgs, { or, eq }) =>
-      or(eq(pkgs.packageStatus, 'active'), eq(pkgs.packageStatus, 'sold_out')),
-    orderBy: (pkgs, { asc }) => [asc(pkgs.departureDate)],
-  })
-
+  const allPackages = getVisiblePackages().sort((a, b) => a.departureDate.localeCompare(b.departureDate))
   const initialPackage = allPackages.find((pkg) => pkg.slug === slug)
 
   if (!initialPackage) {

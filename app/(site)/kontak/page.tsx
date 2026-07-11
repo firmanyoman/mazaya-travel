@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { officeMapsUrl } from './mapsUrl'
 import { Button } from '@/components/ui/Button'
 import {
   TrustCardGrid,
@@ -18,7 +19,6 @@ export const metadata: Metadata = {
 
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi'
-const mapsUrl = 'https://maps.google.com/?q=PT+Mazaya+Amanah+Wisata+Bone'
 
 const contactMethods = [
   {
@@ -119,7 +119,7 @@ export default function ContactPage() {
               <div className="mt-5">
                 <TrustChecklist items={visitNotes} />
               </div>
-              <Button href={mapsUrl} target="_blank" rel="noopener noreferrer" variant="soft" size="lg" className="mt-5">
+              <Button href={officeMapsUrl} target="_blank" rel="noopener noreferrer" variant="soft" size="lg" className="mt-5">
                 Buka Google Maps
               </Button>
             </div>

@@ -6,17 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "seed:packages": "tsx scripts/seed-packages.ts"
+    "lint": "eslint"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "^3.85.2",
-    "@payloadcms/next": "^3.85.2",
-    "@payloadcms/richtext-lexical": "^3.85.2",
-    "drizzle-orm": "^0.45.2",
     "next": "16.2.10",
-    "payload": "^3.85.2",
-    "postgres": "^3.4.9",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
@@ -25,11 +18,9 @@
     "@types/node": "^24.3.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "drizzle-kit": "^0.31.10",
     "eslint": "^9.34.0",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4.1.12",
-    "tsx": "^4.23.0",
     "typescript": "^5.9.2"
   }
 }

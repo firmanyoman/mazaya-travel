@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { officeMapsUrl } from '@/app/(site)/kontak/mapsUrl'
 import { Logo } from '@/components/brand/Logo'
 import { Container } from './Container'
 
@@ -59,9 +60,9 @@ export function PublicFooter() {
         <div className="space-y-4">
           <h2 className="text-sm font-semibold tracking-[0.01em] text-white">Kantor & legalitas</h2>
           <div className="space-y-3 text-sm leading-7 text-white/76">
-            <Link href="/kontak" className="focus-ring block rounded-[var(--radius-sm)] transition-colors hover:text-white">
+            <a href={officeMapsUrl} target="_blank" rel="noopener noreferrer" className="focus-ring block rounded-[var(--radius-sm)] transition-colors hover:text-white">
               Jl. Lapawawoi Kr. Sigeri, Kel. Biru, Kec. Tanete Riattang, Bone, Sulawesi Selatan
-            </Link>
+            </a>
             <a
               href="https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi"
               target="_blank"

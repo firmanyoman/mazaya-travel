@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { and, asc, eq, gte, or } from 'drizzle-orm'
 import { Container } from '@/components/layout/Container'
 import { SectionShell } from '@/components/layout/SectionShell'
 import { Button } from '@/components/ui/Button'
-import { db } from '@/db'
-import { packages } from '@/db/schema'
+import { getPackagesByCategory } from '@/app/lib/packages'
 
 export const metadata: Metadata = {
   title: 'Paket Umrah Bone - Mazaya Travel',
@@ -15,8 +13,6 @@ export const metadata: Metadata = {
 
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20paket%20Umrah'
-
-const today = new Date().toISOString().slice(0, 10)
 
 function formatCurrency(price: number | null) {
   if (!price) return 'Hubungi Admin'
@@ -79,14 +75,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
 }
 
 export default async function PaketUmrahPage() {
-  const packageList = await db.query.packages.findMany({
-    where: and(
-      eq(packages.category, 'umrah'),
-      or(eq(packages.packageStatus, 'active'), eq(packages.packageStatus, 'sold_out')),
-      gte(packages.departureDate, today)
-    ),
-    orderBy: [asc(packages.departureDate)],
-  })
+  const packageList = getPackagesByCategory('umrah')
 
   const activeCount = packageList.filter((pkg) => pkg.packageStatus === 'active').length
   const soldOutCount = packageList.filter(

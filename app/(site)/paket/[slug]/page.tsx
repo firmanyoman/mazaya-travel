@@ -2,12 +2,10 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { eq } from 'drizzle-orm'
 import { Container } from '@/components/layout/Container'
 import { SectionShell } from '@/components/layout/SectionShell'
 import { Button } from '@/components/ui/Button'
-import { db } from '@/db'
-import { packages } from '@/db/schema'
+import { getPackageBySlug } from '@/app/lib/packages'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -75,9 +73,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const pkg = await db.query.packages.findFirst({
-    where: eq(packages.slug, slug),
-  })
+  const pkg = getPackageBySlug(slug)
 
   if (!pkg) {
     return {
@@ -93,11 +89,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PackageDetailPage({ params }: Props) {
   const { slug } = await params
-  const pkg = await db.query.packages.findFirst({
-    where: eq(packages.slug, slug),
-  })
+  const pkg = getPackageBySlug(slug)
 
-  if (!pkg || pkg.packageStatus === 'archived' || pkg.packageStatus === 'draft') {
+  if (!pkg) {
     notFound()
   }
 

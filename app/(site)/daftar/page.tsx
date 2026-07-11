@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
+import { getVisiblePackages } from '@/app/lib/packages'
 import { Container } from '@/components/layout/Container'
-import { db } from '@/db'
 import RegistrationFormClient from './RegistrationFormClient'
 
 interface Props {
@@ -15,14 +15,7 @@ export default async function RegisterPage({ searchParams }: Props) {
     redirect(`/daftar/${selectedSlug}`)
   }
 
-  // Fetch all active/sold_out packages for selection dropdown
-  const allPackages = await db.query.packages.findMany({
-    where: (pkgs, { or, eq }) =>
-      or(eq(pkgs.packageStatus, 'active'), eq(pkgs.packageStatus, 'sold_out')),
-    orderBy: (pkgs, { asc }) => [asc(pkgs.departureDate)],
-  })
-
-  // Find initial package from slug query parameter
+  const allPackages = getVisiblePackages().sort((a, b) => a.departureDate.localeCompare(b.departureDate))
   const initialPackage = allPackages.find((pkg) => pkg.slug === selectedSlug)
 
   return (

@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/db'
-import { leads } from '@/db/schema'
 
 type LeadRequestBody = {
   leadType?: string
@@ -30,7 +28,6 @@ export async function POST(req: NextRequest) {
       city,
       gender,
       birthDate,
-      message,
       ktpFile,
       privacyConsentGiven,
     } = body
@@ -92,13 +89,6 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    if (leadType === 'registration' && !packageId) {
-      return NextResponse.json(
-        { error: 'Paket perjalanan harus dipilih untuk pendaftaran' },
-        { status: 400 }
-      )
-    }
-
     if (!privacyConsentGiven) {
       return NextResponse.json(
         { error: 'Persetujuan kebijakan privasi wajib disetujui' },
@@ -106,32 +96,20 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const newLead = await db.insert(leads).values({
-      leadType: leadType || 'registration',
-      packageId:
-        typeof packageId === 'number'
-          ? packageId
-          : packageId
-            ? parseInt(packageId, 10)
-            : null,
-      fullName,
-      phone,
-      nik: nik || null,
-      fatherName: fatherName || null,
-      city: city || null,
-      gender: gender || null,
-      birthDate: birthDate || null,
-      message: message || null,
-      ktpFile: ktpFile || null,
-      privacyConsentGiven: true,
-      privacyConsentAt: new Date(),
-      submittedAt: new Date(),
-      status: 'baru',
-    }).returning()
-
-    return NextResponse.json({ success: true, lead: newLead[0] })
+    return NextResponse.json({
+      success: true,
+      lead: {
+        id: `local-${Date.now()}`,
+        leadType: leadType || 'registration',
+        packageId: typeof packageId === 'number' ? packageId : packageId ? parseInt(String(packageId), 10) : null,
+        fullName,
+        phone,
+        status: 'baru',
+        submittedAt: new Date().toISOString(),
+        ponytail: 'Local non-persistent lead intake; add real delivery/store when backend is reintroduced.',
+      },
+    })
   } catch (error: unknown) {
-    console.error('Error inserting lead:', error)
     return NextResponse.json(
       {
         error:
