@@ -8,6 +8,36 @@ export default buildConfig({
     meta: {
       titleSuffix: 'Mazaya Travel',
     },
+    components: {
+      beforeLogin: [
+        {
+          path: '/app/(payload)/admin/components/MazayaLoginIntro.tsx',
+          exportName: 'MazayaLoginIntro',
+        },
+      ],
+      beforeNavLinks: [
+        {
+          path: '/app/(payload)/admin/components/MazayaNavNote.tsx',
+          exportName: 'MazayaNavNote',
+        },
+      ],
+      header: [
+        {
+          path: '/app/(payload)/admin/components/MazayaHeaderBadge.tsx',
+          exportName: 'MazayaHeaderBadge',
+        },
+      ],
+      graphics: {
+        Icon: {
+          path: '/app/(payload)/admin/components/MazayaIcon.tsx',
+          exportName: 'MazayaIcon',
+        },
+        Logo: {
+          path: '/app/(payload)/admin/components/MazayaLogo.tsx',
+          exportName: 'MazayaLogo',
+        },
+      },
+    },
   },
   collections: [
     {

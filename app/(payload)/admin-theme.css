@@ -17,6 +17,11 @@
   --theme-elevation-1000: #123434;
 }
 
+html,
+body {
+  background: #f5f1e8;
+}
+
 .template-minimal {
   background:
     radial-gradient(circle at top, rgba(195, 164, 112, 0.18), transparent 38%),
@@ -24,13 +29,17 @@
 }
 
 .template-minimal__wrap {
-  width: min(100%, 30rem);
+  width: min(100%, 32rem);
   margin-inline: auto;
   padding: clamp(1.25rem, 4vw, 2rem);
   border: 1px solid rgba(18, 52, 52, 0.08);
   border-radius: 1.25rem;
   background: rgba(255, 253, 248, 0.96);
   box-shadow: 0 20px 60px rgba(18, 52, 52, 0.10);
+}
+
+.login {
+  min-height: 100dvh;
 }
 
 .login__brand {
@@ -40,9 +49,78 @@
   margin-bottom: 1.25rem;
 }
 
-.login__brand .graphic-logo {
-  width: min(100%, 11rem);
-  height: auto;
+.login__brand .graphic-logo,
+.mazaya-admin-logo {
+  width: min(100%, 13rem);
+}
+
+.mazaya-admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.mazaya-admin-logo__mark,
+.mazaya-admin-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.9rem;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #123434 0%, #1f5c57 100%);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 12px 30px rgba(18, 52, 52, 0.2);
+}
+
+.mazaya-admin-logo__text,
+.mazaya-admin-nav-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mazaya-admin-logo__text strong,
+.mazaya-admin-nav-note strong {
+  color: #123434;
+  line-height: 1;
+}
+
+.mazaya-admin-logo__text span,
+.mazaya-admin-nav-note span {
+  color: #6b7280;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+.mazaya-admin-intro {
+  margin-bottom: 1rem;
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid rgba(18, 52, 52, 0.08);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(239,231,216,0.65));
+}
+
+.mazaya-admin-intro__eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #0f766e;
+}
+
+.mazaya-admin-intro__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.45rem);
+  line-height: 1.2;
+  color: #123434;
+}
+
+.mazaya-admin-intro__body {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 .login__form {
@@ -53,21 +131,66 @@
   gap: 0.875rem;
 }
 
-.field-type__wrap input {
+.field-type__wrap input,
+textarea,
+select {
   min-height: 2.875rem;
   border-radius: 0.875rem;
 }
 
-.form-submit .btn {
-  width: 100%;
-  justify-content: center;
+.form-submit .btn,
+.btn--style-primary {
   border-radius: 999px;
   background: linear-gradient(135deg, #123434 0%, #1f5c57 100%);
   border-color: #123434;
 }
 
-.form-submit .btn:hover {
+.form-submit .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.form-submit .btn:hover,
+.btn--style-primary:hover {
   background: linear-gradient(135deg, #0f2c2c 0%, #184945 100%);
+}
+
+.nav,
+.template-default__nav,
+.template-default__wrapper,
+.template-default__content,
+.list,
+.collection-list,
+.doc,
+.dashboard {
+  border-radius: 1rem;
+}
+
+.mazaya-admin-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(18, 52, 52, 0.08);
+  color: #123434;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.mazaya-admin-nav-note {
+  margin: 0.75rem 0 1rem;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background: rgba(255, 253, 248, 0.9);
+  border: 1px solid rgba(18, 52, 52, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .mazaya-admin-header-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.7rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -81,7 +204,23 @@
     border-radius: 1rem;
   }
 
-  .login__brand .graphic-logo {
-    width: min(100%, 8.5rem);
+  .login__brand .graphic-logo,
+  .mazaya-admin-logo {
+    width: min(100%, 10rem);
+  }
+
+  .mazaya-admin-logo__mark,
+  .mazaya-admin-icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 0.8rem;
+  }
+
+  .mazaya-admin-intro {
+    padding: 0.85rem;
+  }
+
+  .mazaya-admin-intro__body {
+    font-size: 0.9rem;
   }
 }
