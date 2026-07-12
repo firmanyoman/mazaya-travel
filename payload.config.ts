@@ -5,6 +5,9 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 export default buildConfig({
   admin: {
     user: 'users',
+    meta: {
+      titleSuffix: 'Mazaya Travel',
+    },
   },
   collections: [
     {

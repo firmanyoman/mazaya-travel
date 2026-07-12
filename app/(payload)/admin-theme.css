@@ -1,0 +1,87 @@
+:root {
+  --theme-success-500: #0f766e;
+  --theme-success-600: #115e59;
+  --theme-bg: #f5f1e8;
+  --theme-elevation-0: #fffdf8;
+  --theme-elevation-50: #f7f3e8;
+  --theme-elevation-100: #efe7d8;
+  --theme-elevation-150: #e6dac4;
+  --theme-elevation-200: #dcccae;
+  --theme-elevation-300: #c8b38c;
+  --theme-elevation-400: #a48b63;
+  --theme-elevation-500: #7b6340;
+  --theme-elevation-600: #5d4a31;
+  --theme-elevation-700: #433524;
+  --theme-elevation-800: #2d2418;
+  --theme-elevation-900: #1c170f;
+  --theme-elevation-1000: #123434;
+}
+
+.template-minimal {
+  background:
+    radial-gradient(circle at top, rgba(195, 164, 112, 0.18), transparent 38%),
+    linear-gradient(180deg, #fcfaf4 0%, #f5f1e8 100%);
+}
+
+.template-minimal__wrap {
+  width: min(100%, 30rem);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid rgba(18, 52, 52, 0.08);
+  border-radius: 1.25rem;
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: 0 20px 60px rgba(18, 52, 52, 0.10);
+}
+
+.login__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.login__brand .graphic-logo {
+  width: min(100%, 11rem);
+  height: auto;
+}
+
+.login__form {
+  gap: 1rem;
+}
+
+.login__form__inputWrap {
+  gap: 0.875rem;
+}
+
+.field-type__wrap input {
+  min-height: 2.875rem;
+  border-radius: 0.875rem;
+}
+
+.form-submit .btn {
+  width: 100%;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #123434 0%, #1f5c57 100%);
+  border-color: #123434;
+}
+
+.form-submit .btn:hover {
+  background: linear-gradient(135deg, #0f2c2c 0%, #184945 100%);
+}
+
+@media (max-width: 640px) {
+  .template-minimal {
+    padding-inline: 1rem;
+  }
+
+  .template-minimal__wrap {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .login__brand .graphic-logo {
+    width: min(100%, 8.5rem);
+  }
+}
