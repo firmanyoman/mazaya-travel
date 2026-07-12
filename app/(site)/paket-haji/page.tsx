@@ -68,8 +68,8 @@ export default async function PaketHajiPage() {
         eyebrow="Paket Haji Mazaya"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Informasi paket Haji yang disusun setara kualitasnya dengan halaman paket utama Mazaya."
-        summary="Halaman ini membantu calon jemaah dan keluarga membaca pilihan Haji dengan ritme yang lebih rapi: mulai dari gambaran ketersediaan, konteks keputusan, lalu detail setiap paket atau jalur konsultasi saat jadwal belum tampil."
+        title="Informasi paket Haji untuk calon jemaah yang ingin memahami pilihan dengan lebih jelas."
+        summary="Halaman ini membantu Anda melihat jadwal Haji, harga, durasi, dan ketersediaan kursi sebelum melanjutkan ke konsultasi atau pendaftaran."
         actions={
           <>
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" size="lg">
@@ -96,9 +96,9 @@ export default async function PaketHajiPage() {
       {packageList.length > 0 ? (
         <>
           <ContentSection
-            eyebrow="Ringkasan keputusan"
-            title="Paket Haji yang lebih mudah dipindai tanpa terasa tertinggal dari keluarga halaman paket lainnya"
-            summary="Setiap kartu memprioritaskan sinyal keputusan yang paling penting lebih dulu, lalu menyediakan langkah lanjut yang tenang."
+            eyebrow="Paket Haji"
+            title="Pilih paket Haji yang paling sesuai dengan jadwal, kebutuhan, dan kesiapan keluarga."
+            summary="Setiap kartu menampilkan informasi penting yang biasanya ingin dipastikan lebih dulu sebelum mengambil keputusan."
           >
             <div className="grid gap-6 md:grid-cols-2">
               {packageList.map((pkg) => {
@@ -184,16 +184,16 @@ export default async function PaketHajiPage() {
             <div className="grid gap-4 md:grid-cols-3">
               {[
                 {
-                  title: 'Ritme baca jelas',
-                  description: 'Jadwal, durasi, harga, dan seat diletakkan di area yang lebih cepat dipindai keluarga.',
+                  title: 'Info inti langsung terlihat',
+                  description: 'Jadwal, durasi, harga, dan kursi ditampilkan agar keluarga lebih cepat memahami pilihan yang tersedia.',
                 },
                 {
-                  title: 'Trust tetap terjaga',
-                  description: 'Nada informasi dijaga tenang agar halaman Haji tidak terasa seperti bagian yang terlupakan.',
+                  title: 'Memudahkan diskusi keluarga',
+                  description: 'Setiap paket diringkas agar lebih mudah dibandingkan sebelum melangkah ke tahap berikutnya.',
                 },
                 {
-                  title: 'Jalur lanjut dekat',
-                  description: 'Saat butuh arahan lebih spesifik, WhatsApp dan pendaftaran tetap tersedia dengan konteks yang jelas.',
+                  title: 'Bisa lanjut konsultasi kapan saja',
+                  description: 'Saat Anda butuh penjelasan tambahan, WhatsApp dan pendaftaran tetap tersedia di halaman yang sama.',
                 },
               ].map((item) => (
                 <div key={item.title} className="rounded-[16px] border border-border bg-surface-subtle px-5 py-5">
@@ -216,7 +216,7 @@ export default async function PaketHajiPage() {
                 Belum ada paket Haji aktif yang ditampilkan saat ini.
               </h2>
               <p className="max-w-3xl text-base leading-8 text-muted">
-                Halaman tetap disiapkan agar calon jemaah tidak berhenti pada layar kosong. Anda masih bisa memakai ruang ini untuk memahami langkah awal, menanyakan proyeksi jadwal, dan membuka konsultasi dengan konteks yang lebih jelas.
+                Jika jadwal belum tampil, Anda tetap bisa bertanya kepada tim Mazaya untuk mengetahui perkiraan keberangkatan, opsi yang sedang disiapkan, dan langkah awal yang perlu dilakukan.
               </p>
               <div className="grid gap-3 text-sm leading-7 text-text-secondary sm:grid-cols-3">
                 {[
@@ -251,8 +251,8 @@ export default async function PaketHajiPage() {
 
       <ContentCta
         eyebrow="Konsultasi Haji"
-        title="Masih menunggu kepastian jadwal atau ingin membandingkan opsi dengan lebih tenang?"
-        summary="Mulai dari percakapan singkat dulu. Tim Mazaya membantu menjelaskan pilihan yang tersedia tanpa membuat keputusan terasa ditekan."
+        title="Masih menunggu kepastian jadwal atau ingin bertanya lebih dulu?"
+        summary="Tim Mazaya siap membantu menjelaskan pilihan Haji yang tersedia, dokumen yang perlu disiapkan, dan langkah berikutnya sesuai kebutuhan Anda."
         primaryHref={whatsappUrl}
         primaryLabel="WhatsApp konsultasi"
         secondaryHref="/daftar"

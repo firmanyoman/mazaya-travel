@@ -103,13 +103,13 @@ export default async function PaketUmrahPage() {
               </div>
               <div className="space-y-4">
                 <p className="max-w-xl text-sm font-semibold text-text-secondary">
-                  Halaman ini dirancang untuk membantu keluarga membandingkan pilihan paket dengan lebih tenang sebelum melangkah ke pendaftaran.
+                  Bandingkan paket Umrah berdasarkan jadwal keberangkatan, fasilitas, harga, dan ketersediaan kursi.
                 </p>
                 <h1 className="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-[56px] lg:leading-[1.14]">
-                  Pilihan paket Umrah yang lebih rapi dipindai, lebih nyaman dibandingkan, dan lebih jelas untuk diputuskan.
+                  Pilih paket Umrah yang paling sesuai dengan kebutuhan, budget, dan kesiapan keluarga.
                 </h1>
                 <p className="max-w-2xl text-[17px] leading-8 text-muted lg:text-lg">
-                  Mazaya menampilkan jadwal, fasilitas inti, harga, dan kondisi kursi dalam susunan yang lebih mudah dibaca agar calon jemaah bisa berdiskusi dengan mantap bersama keluarga.
+                  Mazaya menampilkan informasi penting setiap paket agar Anda lebih mudah menentukan pilihan sebelum mendaftar atau berkonsultasi.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -130,7 +130,7 @@ export default async function PaketUmrahPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               <div className="rounded-[20px] border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
-                <div className="text-sm font-semibold text-muted">Ringkasan discovery</div>
+                <div className="text-sm font-semibold text-muted">Ringkasan paket</div>
                 <div className="mt-4 grid gap-4 sm:grid-cols-3 lg:grid-cols-3">
                   <div>
                     <div className="text-2xl font-bold text-primary">{packageList.length}</div>
@@ -146,18 +146,18 @@ export default async function PaketUmrahPage() {
                   </div>
                 </div>
                 <div className="mt-5 rounded-[16px] bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
-                  Prioritaskan membaca jadwal keberangkatan, kelas paket, dan status kursi lebih dulu. Setelah itu baru nilai kecocokan harga dan fasilitas.
+                  Mulailah dari jadwal keberangkatan, harga, dan sisa kursi. Setelah itu, bandingkan fasilitas dan pilih paket yang paling sesuai.
                 </div>
               </div>
               <div className="rounded-[20px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
-                <div className="text-sm font-semibold text-white/72">Panduan singkat memilih</div>
+                <div className="text-sm font-semibold text-white/72">Panduan memilih paket</div>
                 <div className="mt-3 text-xl font-bold leading-snug">
-                  Cocok untuk calon jemaah yang ingin keputusan terasa aman, bukan terburu-buru.
+                  Pilih paket yang paling sesuai dengan waktu berangkat, kenyamanan perjalanan, dan kemampuan biaya keluarga.
                 </div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
                   {departureCities.length > 0
-                    ? `Keberangkatan saat ini tersedia dari ${departureCities.join(', ')}. Jika butuh bantuan menyesuaikan waktu, budget, atau pendampingan dokumen, tim Mazaya siap membantu.`
-                    : 'Jika butuh bantuan menyesuaikan waktu, budget, atau pendampingan dokumen, tim Mazaya siap membantu.'}
+                    ? `Saat ini tersedia keberangkatan dari ${departureCities.join(', ')}. Jika Anda ingin menyesuaikan jadwal, budget, atau kebutuhan dokumen, tim Mazaya siap membantu.`
+                    : 'Jika Anda ingin menyesuaikan jadwal, budget, atau kebutuhan dokumen, tim Mazaya siap membantu.'}
                 </p>
               </div>
             </div>
@@ -168,20 +168,20 @@ export default async function PaketUmrahPage() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
             {[
               {
-                value: 'Data inti dulu',
-                label: 'Jadwal, kota berangkat, harga, dan seat tampil di area yang cepat dipindai.',
+                value: 'Info utama jelas',
+                label: 'Jadwal, kota berangkat, harga, dan sisa kursi ditampilkan agar keluarga lebih cepat memahami pilihan.',
               },
               {
-                value: 'Tone tenang',
-                label: 'Paket disusun untuk memudahkan pertimbangan, bukan menekan calon jemaah.',
+                value: 'Mudah dibandingkan',
+                label: 'Setiap paket diringkas agar Anda bisa melihat perbedaan fasilitas dan biaya dengan lebih cepat.',
               },
               {
-                value: 'Sold out jelas',
-                label: 'Status habis kursi dibuat lebih tegas agar tidak menimbulkan ekspektasi keliru.',
+                value: 'Status kursi tegas',
+                label: 'Ketersediaan kursi ditampilkan terbuka agar calon jemaah tidak salah memperkirakan peluang berangkat.',
               },
               {
-                value: 'Konsultasi tetap dekat',
-                label: 'Saat ragu, jalur WhatsApp tersedia tanpa mengganggu fokus membaca detail paket.',
+                value: 'Konsultasi selalu terbuka',
+                label: 'Jika masih ragu, Anda bisa langsung menghubungi tim Mazaya untuk meminta penjelasan tambahan.',
               },
             ].map((item) => (
               <div key={item.value} className="rounded-[16px] border border-border/80 bg-surface-subtle px-4 py-4">
@@ -197,14 +197,14 @@ export default async function PaketUmrahPage() {
             <div className="mb-8 flex flex-col gap-4 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl space-y-3">
                 <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                  Discovery grid
+                  Daftar paket Umrah
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                 </div>
                 <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                  Paket yang lebih mudah dipilih berdasarkan ritme perjalanan dan kesiapan keluarga.
+                  Lihat paket yang tersedia, bandingkan, lalu pilih yang paling cocok untuk Anda.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-muted">
-                  Tiap kartu menonjolkan sinyal keputusan yang paling penting: kapan berangkat, berapa durasinya, bagaimana fasilitas intinya, dan bagaimana kondisi kuotanya.
+                  Setiap kartu menampilkan jadwal, durasi, harga, fasilitas, dan kondisi kursi agar Anda lebih mudah mengambil keputusan.
                 </p>
               </div>
             </div>

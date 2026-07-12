@@ -77,7 +77,7 @@ export default async function ArticleDetailPage({ params }: Props) {
         panelTitle="Ringkasan artikel"
         panelItems={[
           { label: 'Kategori', value: article.category },
-          { label: 'Tujuan baca', value: 'Membantu memahami trust, kesiapan, dan langkah lanjut sebelum konsultasi' },
+          { label: 'Tujuan baca', value: 'Membantu memahami kesiapan, pertimbangan paket, dan langkah lanjut sebelum konsultasi' },
           { label: 'Arah setelah membaca', value: 'Cek paket aktif atau gunakan WhatsApp untuk pertanyaan yang lebih spesifik' },
         ]}
       />

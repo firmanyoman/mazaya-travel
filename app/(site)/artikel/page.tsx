@@ -7,7 +7,7 @@ import { articles } from './articles'
 export const metadata: Metadata = {
   title: 'Artikel Umrah Bone - Mazaya Travel',
   description:
-    'Baca artikel edukasi Umrah dari Mazaya Travel untuk membantu calon jamaah Bone memahami trust, dokumen, konsultasi, dan langkah memilih paket.',
+    'Baca artikel Umrah dan Haji dari Mazaya Travel untuk memahami dokumen, biaya, persiapan ibadah, dan cara memilih paket yang sesuai.',
 }
 
 const whatsappUrl =
@@ -29,11 +29,11 @@ export default function ArtikelPage() {
   return (
     <ContentPageLayout>
       <ContentHero
-        eyebrow="Editorial Mazaya"
+        eyebrow="Artikel Umrah & Haji"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Artikel edukasi yang membantu calon jemaah membaca trust, kesiapan, dan langkah berikutnya dengan lebih tenang."
-        summary="Kumpulan artikel ini disusun sebagai ruang baca yang rapi untuk calon jemaah dan keluarga: cukup informatif untuk discovery, tetapi tetap ringan dipindai di mobile sebelum lanjut ke paket atau konsultasi."
+        title="Panduan singkat untuk calon jemaah yang ingin berangkat dengan persiapan lebih matang."
+        summary="Halaman ini berisi artikel yang membantu Anda memahami biaya, dokumen, alur pendaftaran, dan hal penting sebelum memilih paket Umrah atau Haji."
         actions={
           <>
             <Button href={featuredArticle ? `/artikel/${featuredArticle.slug}` : '/paket-umrah'} size="lg">
@@ -45,15 +45,15 @@ export default function ArtikelPage() {
           </>
         }
         metrics={[
-          { value: `${articles.length} artikel`, label: 'Panduan ringkas untuk trust, dokumen, dan keputusan awal' },
-          { value: `${categoryCount} topik`, label: 'Dikelompokkan agar lebih mudah menemukan bacaan yang relevan' },
-          { value: 'Mobile-first', label: 'Ritme baca dibuat lebih nyaman untuk layar kecil' },
+          { value: `${articles.length} artikel`, label: 'Pembahasan ringkas seputar Umrah, Haji, dokumen, dan biaya' },
+          { value: `${categoryCount} topik`, label: 'Memudahkan Anda memilih bacaan sesuai kebutuhan saat ini' },
+          { value: 'Siap dibaca di HP', label: 'Nyaman dibuka saat berdiskusi dengan pasangan atau keluarga' },
         ]}
         panelTitle="Cara memakai halaman ini"
         panelItems={[
-          { label: 'Mulai dari', value: featuredArticle ? featuredArticle.title : 'Artikel yang paling relevan dengan pertanyaan Anda' },
-          { label: 'Lanjut ke', value: 'Paket aktif jika sudah punya gambaran jadwal atau budget' },
-          { label: 'Gunakan WhatsApp', value: 'Saat butuh klarifikasi yang lebih spesifik setelah membaca' },
+          { label: 'Mulai dari', value: featuredArticle ? featuredArticle.title : 'Artikel yang paling sesuai dengan pertanyaan Anda' },
+          { label: 'Lanjut ke', value: 'Halaman paket jika sudah ingin membandingkan jadwal dan harga' },
+          { label: 'Hubungi WhatsApp', value: 'Jika ingin bertanya lebih lanjut setelah membaca artikel' },
         ]}
       />
 
@@ -62,7 +62,7 @@ export default function ArtikelPage() {
           <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
             <div className="space-y-4">
               <div className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-yellow/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-text">
-                Pilihan editor
+                Artikel pilihan
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               </div>
               <div className="space-y-3">
@@ -77,13 +77,13 @@ export default function ArtikelPage() {
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href={`/artikel/${featuredArticle.slug}`}>Baca artikel ini</Button>
                 <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary">
-                  Konsultasi setelah membaca
+                  Tanya admin setelah membaca
                 </Button>
               </div>
             </div>
             <div className="grid gap-4">
               <div className="rounded-[20px] border border-border bg-surface-subtle p-5 shadow-[var(--shadow-1)]">
-                <div className="text-sm font-semibold text-primary">Topik yang banyak dicari</div>
+                <div className="text-sm font-semibold text-primary">Topik yang paling sering dicari</div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {articleCategories.map((category) => (
                     <span key={category} className="rounded-full border border-border bg-surface px-3 py-2 text-sm font-medium text-text-secondary">
@@ -93,9 +93,9 @@ export default function ArtikelPage() {
                 </div>
               </div>
               <div className="rounded-[20px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
-                <div className="text-sm font-semibold text-white/72">Tujuan editorial</div>
+                <div className="text-sm font-semibold text-white/72">Manfaat membaca artikel</div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
-                  Membantu pengunjung memahami hal penting lebih dulu, sehingga percakapan konsultasi menjadi lebih fokus dan tidak mengulang pertanyaan dasar.
+                  Dengan membaca dulu, Anda biasanya lebih mudah memahami paket yang cocok, dokumen yang perlu disiapkan, dan pertanyaan apa yang perlu diajukan saat konsultasi.
                 </p>
               </div>
             </div>
@@ -105,8 +105,8 @@ export default function ArtikelPage() {
 
       <ContentSection
         eyebrow="Semua artikel"
-        title="Bacaan yang lebih terkurasi untuk tahap awal penilaian dan persiapan"
-        summary="Setiap kartu menampilkan sinyal baca yang penting lebih dulu: topik, tanggal publikasi, waktu baca, dan ringkasan manfaatnya."
+        title="Bacaan singkat yang membantu Anda lebih siap sebelum mendaftar."
+        summary="Setiap artikel dibuat untuk menjawab pertanyaan umum calon jemaah, supaya Anda tidak mulai dari nol saat menghubungi admin."
       >
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {latestArticles.map((article) => (
@@ -134,9 +134,9 @@ export default function ArtikelPage() {
       </ContentSection>
 
       <ContentCta
-        eyebrow="Langkah tenang berikutnya"
-        title="Sudah menemukan bacaan yang relevan? Lanjutkan dengan langkah yang paling ringan dulu."
-        summary="Anda bisa membuka paket aktif untuk membandingkan jadwal dan harga, atau langsung bertanya via WhatsApp jika ingin arahan yang lebih spesifik."
+        eyebrow="Langkah berikutnya"
+        title="Sudah dapat gambaran? Lanjutkan ke paket atau konsultasi langsung."
+        summary="Anda bisa melihat paket aktif untuk membandingkan jadwal dan harga, atau langsung bertanya lewat WhatsApp bila ingin arahan yang lebih spesifik."
         primaryHref="/paket-umrah"
         primaryLabel="Lihat paket Umrah"
         secondaryHref={whatsappUrl}

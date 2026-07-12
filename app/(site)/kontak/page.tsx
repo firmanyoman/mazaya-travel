@@ -24,33 +24,33 @@ const contactMethods = [
   {
     title: 'WhatsApp',
     value: '0852 9875 1997',
-    description: 'Jalur tercepat untuk tanya paket, jadwal, dokumen, dan langkah pendaftaran awal.',
+    description: 'Jalur tercepat untuk bertanya soal paket, jadwal keberangkatan, dokumen, dan pendaftaran.',
     accent: '01',
   },
   {
     title: 'Telepon',
     value: '0852 9875 1997',
-    description: 'Dapat digunakan untuk kebutuhan konfirmasi dan konsultasi langsung pada jam operasional.',
+    description: 'Cocok untuk konfirmasi cepat atau percakapan langsung pada jam operasional.',
     accent: '02',
   },
   {
     title: 'Email',
     value: 'info@mazaya-travel.id',
-    description: 'Cocok untuk pertanyaan umum, kebutuhan administrasi dasar, dan tindak lanjut tertulis.',
+    description: 'Bisa digunakan untuk pertanyaan umum, administrasi awal, atau tindak lanjut tertulis.',
     accent: '03',
   },
   {
     title: 'Jam operasional',
     value: 'Senin - Sabtu, 08.00 - 17.00 WITA',
-    description: 'Disarankan menghubungi WhatsApp lebih dulu bila ingin datang ke kantor layanan.',
+    description: 'Jika ingin datang ke kantor, sebaiknya hubungi WhatsApp lebih dulu agar tim bisa menyiapkan waktu.',
     accent: '04',
   },
 ]
 
 const visitNotes = [
-  'Kantor layanan berada di Bone, Sulawesi Selatan, agar calon jemaah lokal lebih mudah melakukan verifikasi.',
-  'Untuk kunjungan, sebaiknya hubungi WhatsApp resmi terlebih dahulu agar tim dapat menyiapkan waktu pendampingan.',
-  'Semua jalur kontak kami susun agar keluarga dapat memilih cara komunikasi yang paling nyaman.',
+  'Kantor layanan berada di Bone, Sulawesi Selatan, sehingga calon jemaah lokal lebih mudah datang langsung.',
+  'Hubungi WhatsApp resmi sebelum berkunjung agar tim dapat menyiapkan waktu konsultasi.',
+  'Semua jalur kontak kami sediakan agar Anda bisa memilih cara komunikasi yang paling nyaman.',
 ]
 
 export default function ContactPage() {
@@ -58,8 +58,8 @@ export default function ContactPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Kontak Mazaya"
-        title="Hubungi Mazaya Travel lewat jalur yang paling nyaman bagi Anda dan keluarga."
-        summary="Kami menyiapkan kanal kontak yang jelas agar pertanyaan paket, kebutuhan dokumen, hingga rencana kunjungan kantor bisa ditangani dengan lebih tenang."
+        title="Hubungi Mazaya Travel dengan cara yang paling nyaman untuk Anda dan keluarga."
+        summary="Silakan pilih jalur komunikasi yang paling sesuai, baik untuk bertanya soal paket, menanyakan dokumen, maupun merencanakan kunjungan ke kantor."
         actions={
           <>
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" size="lg">
@@ -71,8 +71,8 @@ export default function ContactPage() {
           </>
         }
         stats={[
-          { value: 'Cepat', label: 'WhatsApp untuk respon konsultasi paling langsung' },
-          { value: 'Bone', label: 'Kantor layanan mudah ditemukan dan diverifikasi' },
+          { value: 'Cepat', label: 'WhatsApp untuk konsultasi paling responsif' },
+          { value: 'Bone', label: 'Kantor layanan bisa dikunjungi langsung' },
           { value: 'Jelas', label: 'Kontak, jam operasional, dan lokasi ditampilkan terbuka' },
         ]}
         panelTitle="Kontak utama"
@@ -86,8 +86,8 @@ export default function ContactPage() {
 
       <TrustSection
         eyebrow="Pilihan komunikasi"
-        title="Setiap jalur kontak disusun dengan fungsi yang jelas"
-        summary="Tujuannya agar calon jemaah tidak bingung harus mulai dari mana saat ingin bertanya atau membuat rencana keberangkatan."
+        title="Setiap jalur kontak kami siapkan dengan fungsi yang jelas."
+        summary="Tujuannya agar Anda tidak bingung harus mulai dari mana saat ingin bertanya atau merencanakan keberangkatan."
       >
         <TrustCardGrid>
           {contactMethods.map((item) => (
@@ -104,9 +104,9 @@ export default function ContactPage() {
       </TrustSection>
 
       <TrustSection
-        eyebrow="Kunjungan & lokasi"
-        title="Kantor layanan yang mudah diverifikasi memberi rasa aman lebih awal"
-        summary="Bagi calon jemaah lokal, kejelasan alamat dan cara menghubungi tim menjadi bagian penting dari proses membangun trust."
+        eyebrow="Kunjungan kantor"
+        title="Datang langsung ke kantor bisa membantu Anda merasa lebih yakin sebelum mendaftar."
+        summary="Bagi calon jemaah lokal, bertemu langsung dengan tim sering menjadi langkah penting sebelum membahas paket dan pembayaran."
       >
         <TrustSplitPanel
           left={
@@ -128,10 +128,10 @@ export default function ContactPage() {
             <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
               <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">Butuh respon cepat?</div>
               <p className="mt-4 text-sm leading-7 text-white/82">
-                WhatsApp tetap menjadi jalur paling nyaman untuk cek paket aktif, menanyakan jadwal keberangkatan, dan meminta arahan langkah pendaftaran.
+                WhatsApp tetap menjadi jalur tercepat untuk cek paket aktif, menanyakan jadwal keberangkatan, dan meminta arahan langkah pendaftaran.
               </p>
               <div className="mt-5 grid gap-3">
-                {['Nomor utama: 0852 9875 1997', 'Email: info@mazaya-travel.id', 'Layanan lokal Bone dan sekitarnya'].map((item) => (
+                {['Nomor utama: 0852 9875 1997', 'Email: info@mazaya-travel.id', 'Layanan untuk Bone dan sekitarnya'].map((item) => (
                   <div key={item} className="rounded-[16px] border border-white/12 bg-white/8 px-4 py-4 text-sm leading-7 text-white/88">
                     {item}
                   </div>
@@ -146,9 +146,9 @@ export default function ContactPage() {
       </TrustSection>
 
       <TrustCta
-        eyebrow="Mulai percakapan"
-        title="Ingin bertanya dulu sebelum menentukan paket?"
-        summary="Silakan hubungi kami lewat WhatsApp resmi. Tim Mazaya akan membantu dengan penjelasan yang ringan, terarah, dan tidak menekan."
+        eyebrow="Mulai bertanya"
+        title="Ingin bertanya dulu sebelum memilih paket?"
+        summary="Silakan hubungi kami lewat WhatsApp resmi. Tim Mazaya akan membantu menjelaskan pilihan paket dan langkah awal yang perlu Anda siapkan."
         primaryHref={whatsappUrl}
         primaryLabel="WhatsApp konsultasi"
         secondaryHref="/daftar"

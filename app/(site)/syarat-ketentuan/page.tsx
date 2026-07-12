@@ -63,12 +63,12 @@ export default function TermsPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Syarat & ketentuan"
-        title="Ketentuan dasar yang dibuat lebih jelas agar penggunaan website dan pendaftaran awal terasa tenang."
-        summary="Halaman ini merangkum ketentuan dasar saat Anda memakai website Mazaya Travel, mengirim pertanyaan, atau memulai pendaftaran awal paket Umrah."
+        title="Ketentuan dasar penggunaan website, konsultasi, dan pendaftaran awal paket Umrah & Haji."
+        summary="Halaman ini menjelaskan aturan dasar saat Anda memakai website Mazaya Travel, bertanya melalui WhatsApp, atau mengirim data pendaftaran awal."
         stats={[
-          { value: 'Jelas', label: 'Ketentuan inti dipisah per topik agar mudah dipindai' },
-          { value: 'Tenang', label: 'Bahasa dibuat ringkas tanpa nuansa birokratis berlebihan' },
-          { value: 'Terkait', label: 'Selaras dengan alur konsultasi, pendaftaran, dan privasi' },
+          { value: 'Website', label: 'Mencakup penggunaan informasi, konsultasi, dan pendaftaran awal' },
+          { value: 'Pendaftaran', label: 'Form online adalah langkah awal sebelum verifikasi lanjutan' },
+          { value: 'Privasi', label: 'Penggunaan data mengikuti kebijakan privasi Mazaya Travel' },
         ]}
         panelTitle="Ringkasan ketentuan"
         panelItems={[
@@ -81,8 +81,8 @@ export default function TermsPage() {
 
       <TrustSection
         eyebrow="Pokok ketentuan"
-        title="Bagian-bagian yang paling perlu dibaca sebelum melanjutkan"
-        summary="Struktur baru ini membantu calon jemaah memahami poin penting tanpa harus menelusuri paragraf panjang yang terasa berat."
+        title="Bagian penting yang sebaiknya dibaca sebelum Anda melanjutkan"
+        summary="Poin-poin ini membantu Anda memahami batas informasi website, sifat pendaftaran awal, dan tanggung jawab data yang dikirim."
       >
         <div className="grid gap-4">
           {termsSections.map((item, index) => (
@@ -104,7 +104,7 @@ export default function TermsPage() {
       <TrustSection
         eyebrow="Sebelum mendaftar"
         title="Beberapa hal yang sebaiknya disiapkan lebih dulu"
-        summary="Checklist singkat ini membantu calon jemaah melanjutkan proses dengan ekspektasi yang lebih realistis dan rapi."
+        summary="Checklist singkat ini membantu calon jemaah menyiapkan data dan memahami langkah awal sebelum proses administrasi berlanjut."
       >
         <TrustSplitPanel
           left={

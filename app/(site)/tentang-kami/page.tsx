@@ -22,36 +22,36 @@ const whatsappUrl =
 
 const strengths = [
   {
-    title: 'Travel resmi dan terverifikasi',
+    title: 'Travel resmi dan mudah dicek',
     description:
-      'Mazaya Travel membawa identitas PT Mazaya Amanah Wisata dengan legalitas yang ditampilkan terbuka agar calon jemaah dan keluarga mudah melakukan verifikasi dasar.',
+      'Mazaya Travel membawa identitas PT Mazaya Amanah Wisata dengan legalitas yang ditampilkan terbuka agar calon jemaah dan keluarga lebih mudah melakukan verifikasi.',
     accent: '01',
   },
   {
-    title: 'Berbasis di Bone',
+    title: 'Dekat dengan masyarakat Bone',
     description:
-      'Kedekatan lokasi membuat konsultasi, kunjungan kantor, dan komunikasi dengan tim terasa lebih mudah bagi masyarakat Bone dan sekitarnya.',
+      'Keberadaan kantor layanan di Bone memudahkan konsultasi, kunjungan langsung, dan komunikasi yang lebih dekat dengan calon jemaah lokal.',
     accent: '02',
   },
   {
-    title: 'Pendampingan amanah',
+    title: 'Pendampingan dari awal sampai berangkat',
     description:
-      'Dari pertanyaan awal sampai proses keberangkatan, jemaah dibantu dengan alur yang rapi, bahasa yang mudah dipahami, dan ekspektasi yang lebih jelas.',
+      'Tim Mazaya membantu calon jemaah memahami paket, menyiapkan dokumen, mengikuti manasik, hingga menghadapi proses keberangkatan dengan lebih tenang.',
     accent: '03',
   },
   {
-    title: 'Fokus pada ketenangan ibadah',
+    title: 'Fokus pada kenyamanan ibadah',
     description:
-      'Layanan disusun agar keluarga tidak dibebani informasi yang membingungkan, sehingga keputusan berangkat terasa lebih mantap dan tenang.',
+      'Kami ingin jemaah dan keluarga merasa lebih siap, lebih jelas, dan lebih mantap saat mengambil keputusan untuk berangkat Umrah.',
     accent: '04',
   },
 ]
 
 const serviceCommitments = [
-  'Informasi paket, legalitas, dan alur pendaftaran disusun agar mudah dipindai keluarga.',
-  'Jalur konsultasi dibuat langsung dan jelas supaya calon jemaah tahu harus mulai dari mana.',
-  'Kehadiran lokal Bone ditampilkan sebagai bagian dari trust, bukan sekadar pelengkap profil.',
-  'Nada komunikasi dijaga tetap hangat, profesional, dan tidak menekan calon jemaah.',
+  'Informasi paket, legalitas, dan alur pendaftaran kami jelaskan dengan bahasa yang mudah dipahami keluarga.',
+  'Jalur konsultasi dibuat jelas agar calon jemaah tahu harus mulai dari mana.',
+  'Kehadiran lokal di Bone memudahkan calon jemaah yang ingin bertanya atau datang langsung ke kantor.',
+  'Komunikasi dijaga tetap sopan, hangat, dan tidak menekan calon jemaah.',
 ]
 
 export default function AboutPage() {
@@ -59,8 +59,8 @@ export default function AboutPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Tentang Mazaya"
-        title="Travel Umrah resmi dari Bone yang mengutamakan amanah, kejelasan, dan ketenangan jemaah."
-        summary="Mazaya Travel hadir untuk membantu calon jemaah berangkat Umrah dengan proses yang lebih terarah, pendampingan yang lebih manusiawi, dan informasi yang terasa aman dibaca bersama keluarga."
+        title="Travel Umrah resmi dari Bone yang mendampingi calon jemaah dengan amanah dan jelas."
+        summary="Mazaya Travel hadir untuk membantu calon jemaah berangkat Umrah dengan proses yang lebih terarah, pendampingan yang rapi, dan informasi yang nyaman dibaca bersama keluarga."
         actions={
           <>
             <Button href="/daftar" size="lg">
@@ -86,9 +86,9 @@ export default function AboutPage() {
       />
 
       <TrustSection
-        eyebrow="Nilai layanan"
-        title="Kepercayaan dibangun lewat struktur layanan yang rapi dan terasa dekat."
-        summary="Mazaya tidak hanya menjual paket. Kami menata pengalaman awal calon jemaah agar keputusan berangkat bisa diambil dengan informasi yang lebih jernih."
+        eyebrow="Mengapa memilih Mazaya"
+        title="Kepercayaan dibangun lewat pelayanan yang jelas, dekat, dan mudah diikuti."
+        summary="Mazaya tidak hanya menawarkan paket, tetapi juga membantu calon jemaah memahami proses berangkat dengan lebih tenang."
       >
         <TrustCardGrid>
           {strengths.map((item) => (
@@ -98,9 +98,9 @@ export default function AboutPage() {
       </TrustSection>
 
       <TrustSection
-        eyebrow="Komitmen Mazaya"
-        title="Apa yang kami jaga dalam setiap interaksi dengan calon jemaah"
-        summary="Halaman, kontak, dan alur pendaftaran kami susun agar jemaah bisa merasa dituntun dengan baik, bukan didorong terburu-buru."
+        eyebrow="Komitmen layanan"
+        title="Apa yang kami jaga dalam setiap proses pendampingan jemaah"
+        summary="Kami ingin calon jemaah merasa lebih paham, lebih siap, dan tidak merasa dibiarkan bingung saat merencanakan keberangkatan."
       >
         <TrustSplitPanel
           left={
@@ -130,9 +130,9 @@ export default function AboutPage() {
       </TrustSection>
 
       <TrustCta
-        eyebrow="Konsultasi yang tenang"
+        eyebrow="Konsultasi awal"
         title="Ingin menilai paket yang paling sesuai bersama keluarga?"
-        summary="Tim Mazaya siap membantu menjelaskan pilihan paket, proses dokumen, dan langkah pendaftaran dengan bahasa yang ringan dan tidak tergesa-gesa."
+        summary="Tim Mazaya siap membantu menjelaskan pilihan paket, proses dokumen, dan langkah pendaftaran dengan bahasa yang ringan dan mudah dipahami."
         primaryHref={whatsappUrl}
         primaryLabel="WhatsApp konsultasi"
         secondaryHref="/daftar"

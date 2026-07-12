@@ -22,7 +22,7 @@ const privacyPoints = [
   {
     title: 'Data yang kami kumpulkan',
     body:
-      'Untuk launch saat ini, data yang dapat kami terima dari calon jamaah meliputi nama lengkap, nomor WhatsApp, NIK, nama ayah, jenis kelamin, tanggal lahir, kota domisili, pesan tambahan, serta file KTP bila diunggah melalui form pendaftaran.',
+      'Data yang dapat kami terima dari calon jemaah meliputi nama lengkap, nomor WhatsApp, NIK, nama ayah, jenis kelamin, tanggal lahir, kota domisili, pesan tambahan, serta file KTP bila diunggah melalui form pendaftaran.',
   },
   {
     title: 'Tujuan penggunaan data',
@@ -63,8 +63,8 @@ export default function PrivacyPolicyPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Privasi pengguna"
-        title="Penjelasan privasi yang lebih rapi agar penggunaan data terasa jelas sejak awal."
-        summary="Halaman ini menjelaskan praktik privasi pada website launch saat ini, terutama untuk data yang dikirim melalui form pendaftaran dan jalur konsultasi."
+        title="Kebijakan privasi untuk melindungi data calon jemaah sejak tahap konsultasi dan pendaftaran awal."
+        summary="Halaman ini menjelaskan data apa yang dikirim calon jemaah, untuk apa data digunakan, dan bagaimana Mazaya Travel menjaganya selama proses layanan berlangsung."
         stats={[
           { value: 'Seperlunya', label: 'Data dipakai sesuai konteks layanan dan pendaftaran' },
           { value: 'Internal', label: 'Akses dibatasi untuk kebutuhan operasional yang relevan' },
@@ -81,8 +81,8 @@ export default function PrivacyPolicyPage() {
 
       <TrustSection
         eyebrow="Pokok kebijakan"
-        title="Poin privasi utama yang paling perlu dipahami sebelum mengirim data"
-        summary="Struktur ini dibuat lebih mudah dipindai agar informasi penting terasa jelas, tidak berat, dan tidak membingungkan."
+        title="Hal-hal penting yang perlu dipahami sebelum Anda mengirim data pribadi"
+        summary="Silakan baca poin-poin ini agar Anda mengetahui data apa yang kami terima, bagaimana data digunakan, dan kepada siapa Anda dapat meminta klarifikasi."
       >
         <div className="grid gap-4">
           {privacyPoints.map((item, index) => (
@@ -103,8 +103,8 @@ export default function PrivacyPolicyPage() {
 
       <TrustSection
         eyebrow="Konteks operasional"
-        title="Bagaimana kebijakan ini diterapkan pada website launch saat ini"
-        summary="Penjelasan tambahan ini membantu pengguna mengaitkan kebijakan privasi dengan alur nyata saat mereka mengirim data ke Mazaya."
+        title="Bagaimana kebijakan privasi ini diterapkan saat Anda memakai website Mazaya"
+        summary="Penjelasan ini menghubungkan isi kebijakan privasi dengan proses nyata saat Anda mengisi form pendaftaran atau membuka konsultasi."
       >
         <TrustSplitPanel
           left={

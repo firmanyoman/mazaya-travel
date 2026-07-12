@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 export const metadata: Metadata = {
   title: 'FAQ - Mazaya Travel',
   description:
-    'Temukan jawaban ringkas seputar legalitas, harga, dokumen, seat, dan cara daftar Umrah di Mazaya Travel.',
+    'Temukan jawaban singkat seputar legalitas, harga, dokumen, seat, dan cara daftar Umrah di Mazaya Travel.',
 }
 
 const whatsappUrl =
@@ -16,48 +16,48 @@ const faqs = [
   {
     question: 'Apakah Mazaya Travel memiliki legalitas yang jelas?',
     answer:
-      'Ya. Untuk launch saat ini, kami menampilkan ringkasan identitas PT Mazaya Amanah Wisata, status PPIU resmi Kemenag RI, dan NIB di halaman legalitas agar calon jemaah dan keluarga mudah melakukan verifikasi dasar.',
+      'Ya. Kami menampilkan identitas PT Mazaya Amanah Wisata, status PPIU resmi Kemenag RI, dan NIB agar calon jemaah dan keluarga bisa melakukan pengecekan dasar dengan mudah.',
   },
   {
     question: 'Bagaimana cara melihat harga paket Umrah?',
     answer:
-      'Harga paket dapat dilihat dari halaman paket aktif. Jika detail harga belum ditampilkan penuh atau Anda ingin menyesuaikan pilihan, tim Mazaya Travel siap menjelaskan melalui WhatsApp.',
+      'Harga paket dapat dilihat di halaman paket aktif. Jika Anda ingin membandingkan pilihan atau menyesuaikan dengan budget, tim Mazaya siap membantu lewat WhatsApp.',
   },
   {
     question: 'Bagaimana alur daftar di website ini?',
     answer:
-      'Calon jemaah bisa melihat paket lebih dulu, lalu membuka form pendaftaran untuk mengirim data awal. Setelah itu tim akan menghubungi melalui WhatsApp untuk tindak lanjut dan arahan langkah berikutnya.',
+      'Anda bisa melihat paket lebih dulu, lalu mengisi formulir pendaftaran untuk mengirim data awal. Setelah itu tim kami akan menindaklanjuti melalui WhatsApp.',
   },
   {
     question: 'Dokumen apa yang biasanya disiapkan saat pendaftaran awal?',
     answer:
-      'Untuk tahap awal, website meminta data identitas dasar dan dapat menerima upload KTP. Kebutuhan dokumen lanjutan akan dijelaskan tim sesuai paket dan tahap proses jamaah.',
+      'Untuk tahap awal, Anda cukup menyiapkan data identitas dasar dan KTP. Dokumen lanjutan akan dijelaskan tim sesuai paket dan tahap proses keberangkatan.',
   },
   {
     question: 'Keberangkatan umumnya dari kota mana?',
     answer:
-      'Halaman paket menampilkan kota keberangkatan per paket. Untuk launch saat ini, konteks yang paling sering ditampilkan adalah keberangkatan melalui Makassar, tetapi tetap mengikuti detail pada paket aktif.',
+      'Kota keberangkatan tercantum di setiap paket. Banyak jadwal berangkat melalui Makassar, tetapi tetap mengikuti informasi terbaru pada paket yang Anda pilih.',
   },
   {
     question: 'Apakah informasi sisa seat tersedia?',
     answer:
-      'Ya. Jika data seat tersedia, halaman paket menampilkan sisa kursi agar calon jemaah bisa menilai urgensi pendaftaran. Bila belum tersedia, Anda bisa meminta konfirmasi langsung melalui WhatsApp.',
+      'Ya. Jika data seat tersedia, halaman paket menampilkan sisa kursi. Jika belum tampil, Anda bisa meminta konfirmasi langsung melalui WhatsApp resmi Mazaya.',
   },
   {
     question: 'Apakah ada pendampingan sebelum dan selama perjalanan?',
     answer:
-      'Ya. Mazaya Travel menekankan pendampingan amanah sejak konsultasi, penjelasan paket, persiapan dokumen, hingga agenda keberangkatan dan perjalanan sesuai konteks layanan yang dipilih.',
+      'Ya. Mazaya mendampingi calon jemaah mulai dari konsultasi, penjelasan paket, persiapan dokumen, manasik, hingga keberangkatan sesuai layanan yang dipilih.',
   },
   {
     question: 'Kalau masih ragu, apakah bisa konsultasi dulu tanpa langsung daftar?',
     answer:
-      'Bisa. WhatsApp konsultasi disiapkan untuk calon jemaah yang masih ingin tanya soal paket, proses, legalitas, atau kesiapan dokumen sebelum mengisi form pendaftaran.',
+      'Bisa. WhatsApp konsultasi tersedia untuk Anda yang masih ingin bertanya soal paket, proses, legalitas, atau kesiapan dokumen sebelum mengisi formulir.',
   },
 ]
 
 const faqGroups = [
   {
-    title: 'Trust & legalitas',
+    title: 'Legalitas',
     items: faqs.slice(0, 1),
   },
   {
@@ -77,8 +77,8 @@ export default function FaqPage() {
         eyebrow="FAQ Mazaya"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Jawaban yang lebih tenang, ringkas, dan mudah dipindai sebelum konsultasi atau pendaftaran."
-        summary="FAQ ini disusun untuk meredakan pertanyaan awal yang paling sering muncul, dengan urutan baca yang lebih rapi agar pengunjung tidak merasa menelusuri blok teks yang melelahkan."
+        title="Jawaban singkat untuk pertanyaan yang paling sering ditanyakan calon jemaah."
+        summary="Halaman ini membantu Anda memahami hal penting seputar legalitas, paket, dokumen, dan proses pendaftaran sebelum menghubungi admin."
         actions={
           <>
             <Button href="/daftar" size="lg">
@@ -90,15 +90,15 @@ export default function FaqPage() {
           </>
         }
         metrics={[
-          { value: `${faqs.length} jawaban`, label: 'Pertanyaan awal yang paling sering dicari calon jemaah' },
-          { value: `${faqGroups.length} kelompok`, label: 'Disusun per tema agar lebih cepat menemukan konteks yang relevan' },
-          { value: 'Ringkas', label: 'Nada jawaban dijaga tetap jelas dan tidak bertele-tele' },
+          { value: `${faqs.length} jawaban`, label: 'Pertanyaan yang paling sering muncul sebelum daftar' },
+          { value: `${faqGroups.length} kelompok`, label: 'Memudahkan Anda menemukan jawaban yang dibutuhkan' },
+          { value: 'Ringkas', label: 'Langsung ke inti tanpa bahasa yang bertele-tele' },
         ]}
-        panelTitle="Cara membaca FAQ"
+        panelTitle="Cara memakai FAQ"
         panelItems={[
-          { label: 'Mulai dari', value: 'Kelompok pertanyaan yang paling dekat dengan kebutuhan Anda saat ini' },
-          { label: 'Gunakan paket aktif', value: 'Saat butuh melihat jadwal, harga, atau seat secara langsung' },
-          { label: 'Beralih ke WhatsApp', value: 'Jika jawaban umum belum cukup untuk situasi Anda' },
+          { label: 'Mulai dari', value: 'Kelompok pertanyaan yang paling sesuai dengan kebutuhan Anda' },
+          { label: 'Lihat paket', value: 'Jika ingin cek jadwal, harga, atau sisa seat secara langsung' },
+          { label: 'Hubungi admin', value: 'Jika Anda butuh jawaban yang lebih spesifik untuk kondisi pribadi' },
         ]}
       />
 
@@ -111,15 +111,15 @@ export default function FaqPage() {
                 {faqGroups.map((group) => (
                   <div key={group.title} className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-base font-semibold text-text">{group.title}</div>
-                    <div className="mt-1 text-sm leading-7 text-muted">{group.items.length} pertanyaan yang paling sering dipindai lebih dulu.</div>
+                    <div className="mt-1 text-sm leading-7 text-muted">{group.items.length} pertanyaan yang paling sering dicari.</div>
                   </div>
                 ))}
               </div>
             </SectionShell>
             <SectionShell surface="card" className="px-5 py-5 md:px-6 md:py-6">
-              <div className="text-sm font-semibold text-primary">Butuh jawaban personal?</div>
+              <div className="text-sm font-semibold text-primary">Butuh jawaban yang lebih spesifik?</div>
               <p className="mt-3 text-sm leading-7 text-muted">
-                FAQ membantu untuk konteks umum. Jika pertanyaan Anda terkait kondisi keluarga, waktu berangkat, atau kesiapan dokumen, WhatsApp biasanya lebih tepat.
+                Jika pertanyaan Anda terkait kondisi keluarga, target keberangkatan, atau kesiapan dokumen, WhatsApp biasanya menjadi jalur tercepat.
               </p>
             </SectionShell>
           </div>
@@ -130,7 +130,7 @@ export default function FaqPage() {
                 <div className="space-y-5">
                   <div>
                     <h2 className="text-2xl font-bold text-text">{group.title}</h2>
-                    <p className="mt-2 text-sm leading-7 text-muted">Jawaban dibuat singkat agar lebih nyaman dibaca satu per satu di mobile.</p>
+                    <p className="mt-2 text-sm leading-7 text-muted">Jawaban dibuat singkat agar mudah dibaca kapan pun Anda membutuhkannya.</p>
                   </div>
                   <div className="grid gap-4">
                     {group.items.map((item) => (
@@ -151,9 +151,9 @@ export default function FaqPage() {
       </SectionShell>
 
       <ContentCta
-        eyebrow="Masih ada yang ingin dipastikan?"
-        title="Jika jawaban umum belum cukup, lanjutkan ke percakapan yang lebih spesifik."
-        summary="Tim Mazaya dapat membantu menjelaskan paket, alur daftar, legalitas, atau dokumen sesuai kebutuhan Anda tanpa membuat keputusan terasa tergesa-gesa."
+        eyebrow="Masih ingin memastikan?"
+        title="Jika jawaban umum belum cukup, lanjutkan ke konsultasi pribadi."
+        summary="Tim Mazaya siap membantu menjelaskan paket, legalitas, dokumen, dan alur daftar dengan bahasa yang mudah dipahami."
         primaryHref={whatsappUrl}
         primaryLabel="WhatsApp konsultasi"
         secondaryHref="/daftar"

@@ -251,7 +251,7 @@ export default async function Home() {
           <div className="relative grid items-center gap-10 lg:min-h-[620px] lg:grid-cols-12 lg:gap-8">
             <div className="space-y-6 lg:col-span-5">
               <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
-                Amanah Teal Experience
+                Travel Umrah resmi dari Bone
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <div className="space-y-4">
@@ -259,10 +259,10 @@ export default async function Home() {
                   Travel Umrah resmi dari Kabupaten Bone untuk keluarga yang ingin perjalanan lebih tenang, jelas, dan terarah.
                 </p>
                 <h1 className="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-[56px] lg:leading-[1.14]">
-                  Perjalanan ibadah yang hangat dalam layanan, rapi dalam proses, dan menenangkan sejak awal.
+                  Umrah yang lebih jelas sejak konsultasi awal, lebih tenang saat proses berjalan, dan lebih mantap saat hari keberangkatan tiba.
                 </h1>
                 <p className="max-w-2xl text-[17px] leading-8 text-muted lg:text-lg">
-                  Mazaya Travel membantu calon jemaah memahami pilihan paket, legalitas, dan alur pendaftaran dengan cara yang lebih nyaman dibaca keluarga—tanpa janji berlebihan dan tanpa tekanan yang tidak perlu.
+                  Mazaya Travel membantu calon jemaah dan keluarga memahami paket, legalitas, dokumen, dan langkah pendaftaran dengan penjelasan yang rapi dan mudah diikuti.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -309,17 +309,17 @@ export default async function Home() {
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white md:p-6">
                     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
-                      Visual perjalanan Mazaya
+                      Dokumentasi jamaah Mazaya
                     </div>
                     <h2 className="max-w-md text-xl font-bold leading-snug md:text-2xl">
-                      Pendampingan yang terasa personal, dari konsultasi awal sampai hari keberangkatan.
+                      Tim yang mendampingi calon jemaah sejak bertanya, mendaftar, hingga bersiap berangkat.
                     </h2>
                   </div>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
                   <div className="rounded-[20px] border border-border bg-surface p-5 shadow-[var(--shadow-2)]">
                     <div className="mb-4 inline-flex rounded-full bg-brand-yellow/30 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-text">
-                      Trust first
+                      Konsultasi & verifikasi
                     </div>
                     <div className="space-y-4">
                       <div>
@@ -333,7 +333,7 @@ export default async function Home() {
                         </div>
                       </div>
                       <div className="rounded-[16px] bg-primary-soft/60 px-4 py-3 text-sm text-text-secondary">
-                        Ruang konsultasi yang lebih nyaman untuk calon jemaah dan keluarga yang ingin bertanya lebih dulu.
+                        Silakan mulai dari bertanya dulu soal paket, legalitas, dokumen, atau kesiapan keberangkatan bersama keluarga.
                       </div>
                     </div>
                   </div>
@@ -341,7 +341,7 @@ export default async function Home() {
                     <div className="text-sm font-semibold text-white/72">Legalitas perusahaan</div>
                     <div className="mt-3 text-2xl font-bold">NIB 13052200161160002</div>
                     <p className="mt-3 text-sm leading-7 text-white/78">
-                      Informasi legal ditampilkan lebih awal agar calon jemaah bisa merasa aman sebelum membahas pilihan paket.
+                      Legalitas kami tampilkan terbuka agar calon jemaah bisa melakukan pengecekan dasar sebelum memilih paket.
                     </p>
                   </div>
                 </div>
@@ -366,14 +366,14 @@ export default async function Home() {
           <div className="mb-8 flex flex-col gap-4 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl space-y-3">
               <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                Featured packages
+                Paket Umrah pilihan
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                Paket unggulan yang lebih mudah dipindai, dibandingkan, lalu didiskusikan bersama keluarga.
+                Pilihan paket Umrah untuk keluarga yang ingin membandingkan jadwal, fasilitas, dan biaya dengan lebih jelas.
               </h2>
               <p className="max-w-2xl text-base leading-8 text-muted">
-                Data paket tetap menggunakan sumber yang sama, tetapi kini disusun dengan hirarki informasi yang lebih tenang: jadwal, hotel, harga mulai, dan ketersediaan kursi terlihat lebih cepat.
+                Di sini Anda bisa melihat tanggal keberangkatan, hotel, harga mulai, dan sisa kursi agar lebih mudah menentukan paket yang paling sesuai.
               </p>
             </div>
             <Button href="/paket-umrah" variant="ghost" className="w-fit">
@@ -485,14 +485,14 @@ export default async function Home() {
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="max-w-xl space-y-4">
               <div className="inline-flex w-fit items-center gap-2 rounded-full bg-surface px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary shadow-[var(--shadow-1)]">
-                Why Mazaya
+                Mengapa pilih Mazaya
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                Amanah lebih terasa saat informasi, pendampingan, dan suasana layanan sama-sama menenangkan.
+                Mazaya dipilih karena informasi lebih jelas, pendampingan lebih dekat, dan legalitas lebih mudah dicek.
               </h2>
               <p className="text-base leading-8 text-muted">
-                Homepage ini menjadi acuan visual bahwa Mazaya bukan sekadar menampilkan paket, tetapi membangun rasa percaya lewat struktur yang rapi dan copy yang lebih manusiawi.
+                Kami ingin calon jemaah tidak bingung saat menilai paket, menyiapkan dokumen, dan memutuskan kapan waktu terbaik untuk berangkat.
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -566,14 +566,14 @@ export default async function Home() {
                 <div className="text-sm font-semibold text-muted">Nama badan usaha</div>
                 <div className="mt-3 text-2xl font-bold leading-snug text-text">PT Mazaya Amanah Wisata</div>
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Struktur perusahaan ditampilkan jelas agar calon jemaah dapat menilai dengan dasar yang lebih kuat.
+                  Nama badan usaha ditampilkan jelas agar calon jemaah dan keluarga lebih mudah melakukan verifikasi.
                 </p>
               </div>
               <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white">
                 <div className="text-sm font-semibold text-white/72">Nomor Induk Berusaha</div>
                 <div className="mt-3 text-3xl font-bold leading-tight">13052200161160002</div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
-                  Informasi legal diletakkan dekat area keputusan supaya trust hadir lebih awal di homepage.
+                  NIB ditampilkan terbuka agar Anda bisa mengecek legalitas dasar sebelum lanjut ke pembahasan paket.
                 </p>
               </div>
               <div className="relative overflow-hidden rounded-[20px] border border-border sm:col-span-2">

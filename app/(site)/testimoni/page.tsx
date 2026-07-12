@@ -35,7 +35,7 @@ const testimonials = [
     name: 'Bapak Mulyadi',
     city: 'Sinjai',
     quote:
-      'Testimoni saya sederhana: layanan terasa amanah. Jadwal, kebutuhan dokumen, dan arahan keberangkatan disampaikan tanpa membuat jamaah panik.',
+      'Layanan Mazaya terasa amanah. Jadwal, kebutuhan dokumen, dan arahan keberangkatan disampaikan tanpa membuat jamaah panik.',
   },
 ]
 
@@ -43,11 +43,11 @@ export default function TestimonialsPage() {
   return (
     <ContentPageLayout>
       <ContentHero
-        eyebrow="Suara Jamaah"
+        eyebrow="Testimoni Jamaah"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Pengalaman jamaah yang membantu calon jemaah menilai rasa aman, kejelasan, dan pendampingan Mazaya."
-        summary="Testimoni dihadirkan sebagai lapisan trust yang lebih manusiawi. Fokusnya bukan pujian berlebihan, tetapi sinyal pengalaman yang paling sering dicari keluarga sebelum mengambil keputusan."
+        title="Cerita jamaah yang membantu Anda menilai layanan Mazaya sebelum mendaftar."
+        summary="Testimoni ini memberi gambaran tentang cara tim Mazaya mendampingi calon jemaah, menjelaskan proses, dan menjaga komunikasi tetap jelas sejak awal."
         actions={
           <>
             <Button href="/paket-umrah" size="lg">
@@ -59,22 +59,22 @@ export default function TestimonialsPage() {
           </>
         }
         metrics={[
-          { value: `${testimonials.length} testimoni`, label: 'Pengalaman ringkas yang fokus pada kualitas layanan dan rasa aman' },
-          { value: 'Pendampingan', label: 'Tema yang paling sering muncul dari cerita jamaah' },
-          { value: 'Bone & sekitar', label: 'Tetap dekat dengan konteks lokal calon jemaah Mazaya' },
+          { value: `${testimonials.length} testimoni`, label: 'Cerita singkat dari jamaah dan keluarga' },
+          { value: 'Pendampingan', label: 'Hal yang paling sering dirasakan jamaah Mazaya' },
+          { value: 'Bone & sekitar', label: 'Dekat dengan kebutuhan calon jemaah lokal' },
         ]}
-        panelTitle="Apa yang biasanya dicari"
+        panelTitle="Yang biasanya ingin dipastikan"
         panelItems={[
-          { label: 'Sebelum daftar', value: 'Apakah komunikasi terasa jelas dan tidak membingungkan' },
-          { label: 'Selama proses', value: 'Apakah tim membantu dokumen, manasik, dan keberangkatan dengan rapi' },
-          { label: 'Untuk keluarga', value: 'Apakah trust terasa cukup kuat sebelum membahas pembayaran' },
+          { label: 'Sebelum daftar', value: 'Apakah travel ini amanah dan mudah dihubungi' },
+          { label: 'Saat proses berjalan', value: 'Apakah tim membantu dokumen, manasik, dan keberangkatan' },
+          { label: 'Untuk keluarga', value: 'Apakah komunikasi cukup jelas untuk menumbuhkan rasa yakin' },
         ]}
       />
 
       <ContentSection
-        eyebrow="Cerita pengalaman"
-        title="Testimoni yang lebih mudah dipindai untuk melihat pola kualitas layanan"
-        summary="Setiap kartu menonjolkan suara jamaah secara sederhana agar pembaca cepat menangkap hal yang paling berulang: amanah, kejelasan, dan pendampingan."
+        eyebrow="Cerita jamaah"
+        title="Pengalaman nyata yang sering menjadi alasan calon jemaah merasa lebih mantap."
+        summary="Fokus testimoni ini ada pada kejelasan informasi, pendampingan, dan rasa aman yang dirasakan jamaah selama proses berjalan."
       >
         <div className="grid gap-6 md:grid-cols-2">
           {testimonials.map((item, index) => (
@@ -97,12 +97,12 @@ export default function TestimonialsPage() {
       <SectionShell surface="card" className="px-6 py-6 md:px-8 md:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div className="rounded-[20px] border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
-            <h2 className="text-2xl font-bold text-text">Pola yang paling sering muncul</h2>
+            <h2 className="text-2xl font-bold text-text">Hal yang paling sering disebut jamaah</h2>
             <div className="mt-5 grid gap-3">
               {[
-                'Kejelasan komunikasi sebelum daftar dan menjelang keberangkatan.',
-                'Rasa aman keluarga saat memverifikasi travel dan memahami alur proses.',
-                'Pendampingan yang terasa dekat selama persiapan dokumen dan manasik.',
+                'Penjelasan yang jelas sebelum daftar dan menjelang keberangkatan.',
+                'Keluarga merasa lebih tenang karena alur proses mudah dipahami.',
+                'Pendampingan terasa dekat saat mengurus dokumen dan mengikuti manasik.',
               ].map((item) => (
                 <div key={item} className="rounded-[16px] border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
                   {item}
@@ -111,10 +111,10 @@ export default function TestimonialsPage() {
             </div>
           </div>
           <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
-            <div className="text-sm font-semibold text-white/72">Setelah membaca pengalaman jamaah</div>
-            <h2 className="mt-3 text-2xl font-bold leading-snug">Langkah berikutnya bisa tetap tenang dan tidak perlu terburu-buru.</h2>
+            <div className="text-sm font-semibold text-white/72">Setelah membaca testimoni</div>
+            <h2 className="mt-3 text-2xl font-bold leading-snug">Anda bisa lanjut melihat paket atau bertanya langsung kepada admin.</h2>
             <p className="mt-3 text-sm leading-7 text-white/78">
-              Gunakan testimoni ini sebagai penguat awal, lalu lanjutkan ke paket aktif atau buka percakapan WhatsApp untuk menyesuaikan kebutuhan dan budget keluarga.
+              Gunakan halaman ini untuk menilai layanan Mazaya, lalu lanjutkan ke paket aktif atau WhatsApp jika ingin menyesuaikan kebutuhan dan budget keluarga.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <Button href="/paket-umrah" variant="secondary" fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
@@ -129,9 +129,9 @@ export default function TestimonialsPage() {
       </SectionShell>
 
       <ContentCta
-        eyebrow="Konsultasi yang amanah"
-        title="Masih ingin memastikan pilihan travel, paket, atau kesiapan dokumen?"
-        summary="Tim Mazaya siap membantu menjawab pertanyaan lanjutan dengan ritme yang rapi dan tidak menekan, supaya keputusan tetap terasa matang bersama keluarga."
+        eyebrow="Konsultasi Mazaya"
+        title="Masih ingin memastikan pilihan travel, paket, atau dokumen?"
+        summary="Tim Mazaya siap membantu menjawab pertanyaan lanjutan agar keputusan berangkat terasa lebih mantap bersama keluarga."
         primaryHref={whatsappUrl}
         primaryLabel="WhatsApp konsultasi"
         secondaryHref="/paket-umrah"
