@@ -41,7 +41,7 @@ export function PublicFooter() {
         <div className="space-y-4">
           <Logo variant="reversed" height={56} />
           <p className="max-w-md text-sm leading-7 text-white/76">
-            PT Mazaya Amanah Wisata melayani perjalanan Umrah dengan informasi yang jelas, jalur konsultasi yang tenang, dan pendampingan yang lebih mudah dipahami keluarga.
+            PT Mazaya Amanah Wisata melayani perjalanan Umrah dengan pendampingan yang insyaAllah amanah, sopan, dan menenangkan bagi jamaah serta keluarga.
           </p>
         </div>
         {footerGroups.map((group) => (

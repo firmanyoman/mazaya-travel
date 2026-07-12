@@ -100,7 +100,7 @@ export default async function Home() {
       image: '/assets/mazaya_travel_rebuild_inventory/assets/brosur_desember_png.png',
       badge: 'Favorit Keluarga',
       slug: 'umrah-premium-akhir-tahun-desember-2025',
-      packageSummary: 'Paket akhir tahun dengan ritme perjalanan yang nyaman untuk keluarga dan jemaah senior.'
+      packageSummary: 'Pilihan akhir tahun untuk jemaah yang ingin jadwal keberangkatan yang rapi dan fasilitas yang nyaman.'
     },
     {
       title: 'Umrah Januari Awal Tahun (Januari 2026)',
@@ -119,7 +119,7 @@ export default async function Home() {
       image: '/assets/mazaya_travel_rebuild_inventory/assets/Biru_Hijau_Putih_Modern_Ibadah_Umroh_plus_Turki_Instagram_Story__12__png.png',
       badge: 'Pilihan Hemat',
       slug: 'umrah-januari-awal-tahun-januari-2026',
-      packageSummary: 'Rencana keberangkatan awal tahun dengan susunan fasilitas yang ringkas dan tetap nyaman.'
+      packageSummary: 'Pilihan awal tahun dengan biaya yang lebih ringan dan kebutuhan utama perjalanan yang sudah disiapkan.'
     },
     {
       title: 'Umrah Awal Musim (Oktober/November 2025)',
@@ -187,51 +187,51 @@ export default async function Home() {
       }))
 
   const trustItems = [
-    { value: 'PPIU resmi', label: 'Terdaftar dan terbuka soal legalitas', detail: 'Kemenag RI & NIB perusahaan' },
-    { value: 'Makassar langsung', label: 'Rute dibuat senyaman mungkin', detail: 'Meminimalkan transit yang melelahkan' },
-    { value: 'Pendampingan hangat', label: 'Konsultasi sejak sebelum daftar', detail: 'Ramah untuk keluarga & jemaah senior' },
-    { value: 'Bone, Sulsel', label: 'Kantor fisik yang bisa dikunjungi', detail: 'Lebih mudah verifikasi dan tanya langsung' },
+    { value: 'Travel resmi', label: 'Legalitas perusahaan terbuka', detail: 'Dapat diperiksa sebelum memilih paket' },
+    { value: 'Berbasis di Bone', label: 'Kantor dan kontak jelas', detail: 'Dekat untuk jamaah Bone dan sekitarnya' },
+    { value: 'Pendampingan', label: 'Didampingi sejak awal', detail: 'Dari tanya paket sampai persiapan berangkat' },
+    { value: 'Paket aktif', label: 'Informasi inti ditampilkan', detail: 'Jadwal, harga, dan ketersediaan kursi' },
   ]
 
   const advantages = [
     {
-      title: 'Informasi lebih jelas sejak awal',
-      description: 'Harga mulai, gambaran fasilitas, dan jalur konsultasi ditampilkan rapi agar keluarga bisa menilai dengan tenang.',
+      title: 'Informasi paket disampaikan apa adanya',
+      description: 'Jadwal, harga, fasilitas, dan jalur konsultasi kami tampilkan agar jamaah bisa mempertimbangkan dengan lebih tenang.',
       accent: '01',
     },
     {
-      title: 'Pendampingan yang tidak terasa menekan',
-      description: 'Mazaya membantu calon jemaah memahami pilihan paket, dokumen, dan alur daftar tanpa gaya hard-sell.',
+      title: 'Pendampingan yang sabar',
+      description: 'Tim Mazaya membantu menjelaskan pilihan paket, dokumen, dan alur daftar dengan bahasa yang mudah dipahami.',
       accent: '02',
     },
     {
-      title: 'Berangkat dengan struktur perjalanan yang nyaman',
-      description: 'Rute, hotel, dan ritme perjalanan disusun untuk menjaga fokus ibadah, terutama bagi jemaah yang ingin lebih tenang.',
+      title: 'Perjalanan disiapkan untuk kenyamanan ibadah',
+      description: 'Rute, hotel, dan kebutuhan perjalanan diperhatikan agar jemaah bisa lebih fokus menjalani ibadah.',
       accent: '03',
     },
     {
-      title: 'Legalitas dan kantor mudah diverifikasi',
-      description: 'Calon jemaah dapat memeriksa legalitas perusahaan dan datang langsung ke kantor pelayanan di Bone.',
+      title: 'Identitas perusahaan kami terbuka',
+      description: 'Legalitas, alamat, dan jalur komunikasi kami tampilkan agar jamaah dan keluarga bisa memeriksa lebih dulu.',
       accent: '04',
     },
   ]
 
   const processSteps = [
     {
-      title: 'Konsultasi kebutuhan perjalanan',
-      description: 'Cerita dulu soal target waktu berangkat, kenyamanan yang dicari, dan siapa saja yang akan ikut.',
+      title: 'Mulai dari cerita kebutuhan Anda',
+      description: 'Sampaikan dulu rencana keberangkatan, siapa yang ikut, dan kisaran kebutuhan yang sedang dipertimbangkan.',
     },
     {
-      title: 'Pilih paket yang paling sesuai',
-      description: 'Tim Mazaya membantu membandingkan fasilitas, jadwal, dan estimasi biaya agar keputusan terasa mantap.',
+      title: 'Pilih paket yang paling cocok',
+      description: 'Tim Mazaya membantu menjelaskan perbedaan jadwal, fasilitas, dan biaya agar pilihan terasa pas.',
     },
     {
-      title: 'Lengkapi pendaftaran & dokumen',
-      description: 'Setelah cocok, proses administrasi dibimbing langkah demi langkah dengan penjelasan yang mudah dipahami.',
+      title: 'Lengkapi pendaftaran dengan arahan tim',
+      description: 'Setelah paket dipilih, tim kami membantu menjelaskan data dan dokumen yang perlu disiapkan.',
     },
     {
-      title: 'Persiapan manasik hingga keberangkatan',
-      description: 'Jemaah mendapat arahan menjelang perjalanan supaya lebih siap secara ibadah maupun teknis keberangkatan.',
+      title: 'Persiapan menjelang keberangkatan',
+      description: 'Menjelang berangkat, jemaah mendapat arahan agar lebih siap dari sisi ibadah maupun kebutuhan perjalanan.',
     },
   ]
 
@@ -256,18 +256,18 @@ export default async function Home() {
               </div>
               <div className="space-y-4">
                 <p className="max-w-xl text-sm font-semibold text-text-secondary">
-                  Travel Umrah resmi dari Kabupaten Bone untuk keluarga yang ingin perjalanan lebih tenang, jelas, dan terarah.
+                  Travel Umrah resmi untuk jamaah Bone dan sekitarnya.
                 </p>
                 <h1 className="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-[56px] lg:leading-[1.14]">
-                  Umrah yang lebih jelas sejak konsultasi awal, lebih tenang saat proses berjalan, dan lebih mantap saat hari keberangkatan tiba.
+                  Temani langkah ibadah Anda bersama travel Umrah resmi dari Bone
                 </h1>
                 <p className="max-w-2xl text-[17px] leading-8 text-muted lg:text-lg">
-                  Mazaya Travel membantu calon jemaah dan keluarga memahami paket, legalitas, dokumen, dan langkah pendaftaran dengan penjelasan yang rapi dan mudah diikuti.
+                  Mazaya Travel hadir untuk membantu calon jemaah dan keluarga memahami pilihan paket, proses pendaftaran, serta persiapan keberangkatan dengan pendampingan yang insyaAllah amanah.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href="/paket-umrah" size="lg" className="sm:min-w-52">
-                  Lihat Paket Umrah
+                  Daftar Sekarang
                 </Button>
                 <Button
                   href={consultationUrl}
@@ -277,21 +277,21 @@ export default async function Home() {
                   size="lg"
                   className="sm:min-w-52"
                 >
-                  Konsultasi Gratis
+                  WhatsApp Konsultasi
                 </Button>
               </div>
               <div className="grid gap-3 border-t border-border pt-6 sm:grid-cols-3">
                 <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
                   <div className="text-2xl font-bold text-primary">Resmi</div>
-                  <div className="text-sm text-muted">PPIU dan legalitas perusahaan terbuka</div>
+                  <div className="text-sm text-muted">Legalitas perusahaan kami tampilkan terbuka</div>
                 </div>
                 <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
-                  <div className="text-2xl font-bold text-primary">Terarah</div>
-                  <div className="text-sm text-muted">Bimbingan sebelum daftar hingga berangkat</div>
+                  <div className="text-2xl font-bold text-primary">Didampingi</div>
+                  <div className="text-sm text-muted">Dari tanya paket sampai persiapan berangkat</div>
                 </div>
                 <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
-                  <div className="text-2xl font-bold text-primary">Nyaman</div>
-                  <div className="text-sm text-muted">Fokus pada ritme ibadah dan kebutuhan keluarga</div>
+                  <div className="text-2xl font-bold text-primary">Dekat</div>
+                  <div className="text-sm text-muted">Berbasis di Bone dan dekat untuk jamaah sekitar</div>
                 </div>
               </div>
             </div>
@@ -333,7 +333,7 @@ export default async function Home() {
                         </div>
                       </div>
                       <div className="rounded-[16px] bg-primary-soft/60 px-4 py-3 text-sm text-text-secondary">
-                        Silakan mulai dari bertanya dulu soal paket, legalitas, dokumen, atau kesiapan keberangkatan bersama keluarga.
+                        Silakan mulai dengan bertanya soal paket, legalitas, dokumen, atau persiapan keberangkatan.
                       </div>
                     </div>
                   </div>
@@ -341,7 +341,7 @@ export default async function Home() {
                     <div className="text-sm font-semibold text-white/72">Legalitas perusahaan</div>
                     <div className="mt-3 text-2xl font-bold">NIB 13052200161160002</div>
                     <p className="mt-3 text-sm leading-7 text-white/78">
-                      Legalitas kami tampilkan terbuka agar calon jemaah bisa melakukan pengecekan dasar sebelum memilih paket.
+                      Legalitas kami tampilkan terbuka agar calon jemaah dan keluarga bisa memeriksa lebih dulu.
                     </p>
                   </div>
                 </div>
@@ -370,10 +370,10 @@ export default async function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                Pilihan paket Umrah untuk keluarga yang ingin membandingkan jadwal, fasilitas, dan biaya dengan lebih jelas.
+                Pilihan paket Umrah yang bisa Anda lihat, bandingkan, lalu pilih sesuai kebutuhan perjalanan.
               </h2>
               <p className="max-w-2xl text-base leading-8 text-muted">
-                Di sini Anda bisa melihat tanggal keberangkatan, hotel, harga mulai, dan sisa kursi agar lebih mudah menentukan paket yang paling sesuai.
+                Kami menampilkan informasi dasar yang biasa paling dulu ditanyakan: jadwal, hotel, harga, dan ketersediaan kursi.
               </p>
             </div>
             <Button href="/paket-umrah" variant="ghost" className="w-fit">
@@ -489,10 +489,10 @@ export default async function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                Mazaya dipilih karena informasi lebih jelas, pendampingan lebih dekat, dan legalitas lebih mudah dicek.
+                Mazaya ingin menjadi teman perjalanan yang membuat jamaah dan keluarga merasa lebih tenteram sejak awal.
               </h2>
               <p className="text-base leading-8 text-muted">
-                Kami ingin calon jemaah tidak bingung saat menilai paket, menyiapkan dokumen, dan memutuskan kapan waktu terbaik untuk berangkat.
+                Karena memilih travel umrah bukan hanya perkara harga. Jamaah juga ingin tahu siapa yang mendampingi, bagaimana prosesnya, dan ke mana keluarga bisa bertanya dengan nyaman.
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -517,10 +517,10 @@ export default async function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                Proses yang membantu calon jemaah bergerak mantap, bukan tergesa-gesa.
+                Alur yang kami siapkan agar calon jemaah tidak bingung saat mulai mendaftar.
               </h2>
               <p className="max-w-xl text-base leading-8 text-muted">
-                Dari konsultasi awal sampai manasik, alur ini dirancang supaya keluarga tahu apa yang akan terjadi berikutnya dan dokumen apa yang perlu dipersiapkan.
+                Dari konsultasi awal sampai persiapan berangkat, setiap tahap kami jelaskan supaya jemaah dan keluarga sama-sama paham.
               </p>
             </div>
             <div className="grid gap-4">
@@ -547,10 +547,10 @@ export default async function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                Rasa aman dibangun lewat bukti yang mudah dicek, bukan lewat klaim yang terlalu ramai.
+                Bagi kami, rasa tenang tumbuh dari informasi yang terbuka.
               </h2>
               <p className="text-base leading-8 text-muted">
-                Mazaya melayani perjalanan Umrah dengan fondasi perusahaan yang jelas, alamat kantor yang dapat dikunjungi, dan jalur komunikasi yang mudah dihubungi keluarga.
+                Karena itu, identitas perusahaan, alamat kantor, dan jalur komunikasi kami tampilkan dengan terbuka agar bisa diperiksa sebelum lanjut membahas paket.
               </p>
               <div className="grid gap-3">
                 {legalProof.map((item) => (
@@ -566,14 +566,14 @@ export default async function Home() {
                 <div className="text-sm font-semibold text-muted">Nama badan usaha</div>
                 <div className="mt-3 text-2xl font-bold leading-snug text-text">PT Mazaya Amanah Wisata</div>
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Nama badan usaha ditampilkan jelas agar calon jemaah dan keluarga lebih mudah melakukan verifikasi.
+                  Nama badan usaha kami tampilkan apa adanya supaya keluarga bisa melakukan pengecekan dengan tenang.
                 </p>
               </div>
               <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white">
                 <div className="text-sm font-semibold text-white/72">Nomor Induk Berusaha</div>
                 <div className="mt-3 text-3xl font-bold leading-tight">13052200161160002</div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
-                  NIB ditampilkan terbuka agar Anda bisa mengecek legalitas dasar sebelum lanjut ke pembahasan paket.
+                  Nomor ini kami tampilkan agar calon jemaah dan keluarga dapat memeriksanya dengan tenang.
                 </p>
               </div>
               <div className="relative overflow-hidden rounded-[20px] border border-border sm:col-span-2">
@@ -598,10 +598,10 @@ export default async function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="max-w-2xl text-3xl font-bold leading-tight text-white sm:text-4xl">
-                Ingin menilai paket dengan lebih tenang sebelum memutuskan?
+                Bila masih ada yang ingin ditanyakan, silakan hubungi kami.
               </h2>
               <p className="max-w-2xl text-base leading-8 text-white/76">
-                Silakan hubungi tim Mazaya untuk bertanya soal jadwal, fasilitas, atau kesiapan dokumen. Kami bantu jelaskan dengan bahasa yang ringan dan tidak terburu-buru.
+                Silakan hubungi tim Mazaya untuk menanyakan jadwal, fasilitas, dokumen, atau hal lain yang masih ingin dipastikan. Kami akan menjelaskan dengan sabar.
               </p>
             </div>
             <div className="grid gap-3 rounded-[20px] border border-white/10 bg-white/8 p-5 backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-1">

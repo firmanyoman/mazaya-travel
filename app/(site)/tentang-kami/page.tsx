@@ -21,36 +21,36 @@ const whatsappUrl =
 
 const strengths = [
   {
-    title: 'Travel resmi dan mudah dicek',
+    title: 'Berjalan di atas identitas perusahaan yang terbuka',
     description:
-      'Mazaya Travel membawa identitas PT Mazaya Amanah Wisata dengan legalitas yang ditampilkan terbuka agar calon jemaah dan keluarga lebih mudah melakukan verifikasi.',
+      'Mazaya Travel beroperasi dengan nama PT Mazaya Amanah Wisata. Identitas ini kami tampilkan agar calon jemaah dan keluarga dapat memeriksanya dengan tenang.',
     accent: '01',
   },
   {
-    title: 'Dekat dengan masyarakat Bone',
+    title: 'Tumbuh dekat dengan jamaah Bone dan sekitarnya',
     description:
-      'Keberadaan kantor layanan di Bone memudahkan konsultasi, kunjungan langsung, dan komunikasi yang lebih dekat dengan calon jemaah lokal.',
+      'Keberadaan kantor layanan di Bone membuat calon jemaah dapat datang, bertanya, dan mengenal siapa yang akan mendampingi perjalanan mereka.',
     accent: '02',
   },
   {
-    title: 'Pendampingan dari awal sampai berangkat',
+    title: 'Mendampingi sejak bertanya sampai hari berangkat',
     description:
-      'Tim Mazaya membantu calon jemaah memahami paket, menyiapkan dokumen, mengikuti manasik, hingga menghadapi proses keberangkatan dengan lebih tenang.',
+      'Tim Mazaya membantu menjelaskan pilihan paket, menyiapkan dokumen, hingga mengantar proses persiapan keberangkatan dengan pendampingan yang insyaAllah sabar.',
     accent: '03',
   },
   {
-    title: 'Fokus pada kenyamanan ibadah',
+    title: 'Menjaga agar jamaah bisa beribadah dengan lebih tenang',
     description:
-      'Kami ingin jemaah dan keluarga merasa lebih siap, lebih jelas, dan lebih mantap saat mengambil keputusan untuk berangkat Umrah.',
+      'Bagi kami, perjalanan umrah bukan hanya soal berangkat, tetapi juga soal membantu jamaah merasa lebih siap lahir batin saat tiba waktunya beribadah.',
     accent: '04',
   },
 ]
 
 const serviceCommitments = [
-  'Informasi paket, legalitas, dan alur pendaftaran kami jelaskan dengan bahasa yang mudah dipahami keluarga.',
-  'Jalur konsultasi dibuat jelas agar calon jemaah tahu harus mulai dari mana.',
-  'Kehadiran lokal di Bone memudahkan calon jemaah yang ingin bertanya atau datang langsung ke kantor.',
-  'Komunikasi dijaga tetap sopan, hangat, dan tidak menekan calon jemaah.',
+  'Informasi paket, legalitas, dan alur pendaftaran kami sampaikan dengan bahasa yang ringan dan sopan.',
+  'Kami berusaha memberi arahan yang cukup agar calon jemaah tidak merasa berjalan sendiri.',
+  'Kehadiran kantor di Bone memudahkan jamaah yang ingin datang langsung atau bertanya bersama keluarga.',
+  'Komunikasi kami jaga tetap hangat, tidak tergesa-gesa, dan insyaAllah tidak memberatkan.',
 ]
 
 export default function AboutPage() {
@@ -58,36 +58,36 @@ export default function AboutPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Tentang Mazaya"
-        title="Travel Umrah resmi dari Bone yang mendampingi calon jemaah dengan amanah dan jelas."
-        summary="Mazaya Travel hadir untuk membantu calon jemaah berangkat Umrah dengan proses yang lebih terarah, pendampingan yang rapi, dan informasi yang nyaman dibaca bersama keluarga."
+        title="Mazaya Travel, teman perjalanan Umrah untuk jamaah Bone dan sekitarnya."
+        summary="Mazaya Travel hadir untuk membantu calon jemaah dan keluarga memahami perjalanan Umrah dengan pendampingan yang insyaAllah amanah, sopan, dan menenangkan sejak awal."
         actions={
           <>
             <Button href="/daftar" size="lg">
-              Lihat paket / daftar
+              Lihat paket Umrah
             </Button>
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-              WhatsApp konsultasi
+              WhatsApp Konsultasi
             </Button>
           </>
         }
         stats={[
-          { value: 'Resmi', label: 'Beroperasi dengan identitas perusahaan yang jelas' },
-          { value: 'Bone, Sulsel', label: 'Kantor layanan dekat untuk verifikasi langsung' },
-          { value: 'Amanah', label: 'Pendampingan rapi sejak konsultasi awal' },
+          { value: 'Resmi', label: 'Berjalan dengan identitas perusahaan yang terbuka' },
+          { value: 'Bone, Sulsel', label: 'Kantor layanan untuk jamaah sekitar' },
+          { value: 'Amanah', label: 'Pendampingan sejak awal hingga menjelang berangkat' },
         ]}
-        panelTitle="Profil singkat"
+        panelTitle="Sekilas tentang Mazaya"
         panelItems={[
           { label: 'Nama resmi', value: 'PT Mazaya Amanah Wisata' },
           { label: 'Brand publik', value: 'Mazaya Travel' },
           { label: 'Basis operasional', value: 'Bone, Sulawesi Selatan' },
-          { label: 'Fokus layanan', value: 'Perjalanan ibadah Umrah dengan pendampingan amanah' },
+          { label: 'Fokus layanan', value: 'Perjalanan ibadah Umrah dengan pendampingan yang insyaAllah amanah' },
         ]}
       />
 
       <TrustSection
         eyebrow="Mengapa memilih Mazaya"
-        title="Kepercayaan dibangun lewat pelayanan yang jelas, dekat, dan mudah diikuti."
-        summary="Mazaya tidak hanya menawarkan paket, tetapi juga membantu calon jemaah memahami proses berangkat dengan lebih tenang."
+        title="Kepercayaan tumbuh saat jamaah tahu kepada siapa mereka menitipkan perjalanan ini."
+        summary="Karena itu, kami berusaha hadir bukan hanya sebagai penyedia paket, tetapi sebagai tim yang bisa diajak bertanya dan didatangi dengan nyaman."
       >
         <TrustCardGrid>
           {strengths.map((item) => (
@@ -98,13 +98,13 @@ export default function AboutPage() {
 
       <TrustSection
         eyebrow="Komitmen layanan"
-        title="Apa yang kami jaga dalam setiap proses pendampingan jemaah"
-        summary="Kami ingin calon jemaah merasa lebih paham, lebih siap, dan tidak merasa dibiarkan bingung saat merencanakan keberangkatan."
+        title="Hal-hal yang kami jaga dalam mendampingi calon jemaah"
+        summary="Kami ingin setiap calon jemaah merasakan pelayanan yang sopan dan tidak membuat keluarga ikut bingung saat menyiapkan keberangkatan."
       >
         <TrustSplitPanel
           left={
             <div className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
-              <h3 className="text-2xl font-bold text-text">Komitmen layanan</h3>
+              <h3 className="text-2xl font-bold text-text">Yang berusaha kami jaga</h3>
               <div className="mt-5">
                 <TrustChecklist items={serviceCommitments} />
               </div>
@@ -112,7 +112,7 @@ export default function AboutPage() {
           }
           right={
             <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
-              <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">Ringkasan legalitas</div>
+              <div className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">Legalitas Mazaya</div>
               <div className="mt-5 grid gap-3">
                 {['PT Mazaya Amanah Wisata', 'PPIU resmi Kemenag RI', 'NIB: 13052200161160002', 'Kantor layanan di Bone, Sulawesi Selatan'].map((item) => (
                   <div key={item} className="rounded-[16px] border border-white/12 bg-white/8 px-4 py-4 text-sm leading-7 text-white/88">
@@ -121,7 +121,7 @@ export default function AboutPage() {
                 ))}
               </div>
               <Button href="/legalitas" variant="secondary" size="lg" className="mt-5 border-white bg-white text-primary hover:bg-white/92">
-                Lihat halaman legalitas
+                Lihat legalitas lengkap
               </Button>
             </div>
           }
@@ -130,12 +130,12 @@ export default function AboutPage() {
 
       <TrustCta
         eyebrow="Konsultasi awal"
-        title="Ingin menilai paket yang paling sesuai bersama keluarga?"
-        summary="Tim Mazaya siap membantu menjelaskan pilihan paket, proses dokumen, dan langkah pendaftaran dengan bahasa yang ringan dan mudah dipahami."
+        title="Bila masih ingin bertanya sebelum memilih paket, silakan hubungi kami."
+        summary="Tim Mazaya siap membantu menjelaskan pilihan paket, dokumen, dan alur pendaftaran dengan bahasa yang sopan agar keluarga dapat mengikutinya dengan nyaman."
         primaryHref={whatsappUrl}
-        primaryLabel="WhatsApp konsultasi"
+        primaryLabel="WhatsApp Konsultasi"
         secondaryHref="/daftar"
-        secondaryLabel="Daftar sekarang"
+        secondaryLabel="Lihat paket Umrah"
       />
     </TrustPageLayout>
   )

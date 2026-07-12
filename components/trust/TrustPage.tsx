@@ -89,7 +89,7 @@ export function TrustHero({ eyebrow, title, summary, stats = [], panelTitle, pan
           <div className="rounded-[20px] border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
             <div className="text-sm font-semibold text-text-secondary">Butuh arahan cepat?</div>
             <p className="mt-3 text-sm leading-7 text-muted">
-              Tim Mazaya membantu dengan bahasa yang rapi, tenang, dan mudah dipahami keluarga sebelum melangkah ke pendaftaran.
+              Tim Mazaya siap membantu menjawab pertanyaan awal dengan bahasa yang sopan dan menenangkan bagi jamaah maupun keluarga.
             </p>
             <Link href="/kontak" className="mt-4 inline-flex text-sm font-semibold text-primary transition-colors hover:text-primary-hover">
               Lihat kontak lengkap
