@@ -51,7 +51,7 @@ body {
 
 .login__brand .graphic-logo,
 .mazaya-admin-logo {
-  width: min(100%, 13rem);
+  width: min(100%, 16rem);
 }
 
 .mazaya-admin-logo {
@@ -60,17 +60,27 @@ body {
   gap: 0.875rem;
 }
 
-.mazaya-admin-logo__mark,
+.mazaya-admin-logo__image {
+  width: auto;
+  height: 3.25rem;
+  object-fit: contain;
+}
+
 .mazaya-admin-icon {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 0.9rem;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #123434 0%, #1f5c57 100%);
-  color: #fff;
-  font-weight: 800;
-  box-shadow: 0 12px 30px rgba(18, 52, 52, 0.2);
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid rgba(18, 52, 52, 0.08);
+  box-shadow: 0 12px 30px rgba(18, 52, 52, 0.12);
+}
+
+.mazaya-admin-icon__image {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
 }
 
 .mazaya-admin-logo__text,
@@ -206,14 +216,22 @@ select {
 
   .login__brand .graphic-logo,
   .mazaya-admin-logo {
-    width: min(100%, 10rem);
+    width: min(100%, 12rem);
   }
 
-  .mazaya-admin-logo__mark,
+  .mazaya-admin-logo__image {
+    height: 2.7rem;
+  }
+
   .mazaya-admin-icon {
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 0.8rem;
+  }
+
+  .mazaya-admin-icon__image {
+    width: 1.6rem;
+    height: 1.6rem;
   }
 
   .mazaya-admin-intro {

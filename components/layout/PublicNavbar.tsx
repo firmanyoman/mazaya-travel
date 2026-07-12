@@ -10,6 +10,7 @@ import { MobileDrawer } from './MobileDrawer'
 const links = [
   { href: '/', label: 'Beranda' },
   { href: '/paket-umrah', label: 'Paket Umrah' },
+  { href: '/artikel', label: 'Artikel' },
   { href: '/tentang-kami', label: 'Tentang Kami' },
   { href: '/kontak', label: 'Kontak' },
 ]

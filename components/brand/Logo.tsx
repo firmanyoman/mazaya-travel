@@ -13,17 +13,21 @@ export function Logo({
   height = 44,
   priority = false,
 }: LogoProps) {
+  const imageWidth = Math.round((logoImage.width / logoImage.height) * height)
+  const showWordmark = variant !== 'reversed'
+
   return (
-    <Link href="/" aria-label="Mazaya Travel" className="inline-flex items-center focus-ring rounded-[var(--radius-sm)]">
+    <Link href="/" aria-label="Mazaya Travel" className="inline-flex items-center gap-3 focus-ring rounded-[var(--radius-sm)]">
       <Image
         src={logoImage}
         alt="Logo Mazaya Travel"
         className={variant === 'reversed' ? 'w-auto object-contain brightness-0 invert' : 'w-auto object-contain'}
-        width={Math.round((logoImage.width / logoImage.height) * height)}
+        width={imageWidth}
         height={height}
         style={{ width: 'auto', height: `${height}px` }}
         priority={priority}
       />
+      {showWordmark ? <span className="text-lg font-semibold tracking-[0.01em] text-primary">Mazaya</span> : null}
     </Link>
   )
 }

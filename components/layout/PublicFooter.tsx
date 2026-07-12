@@ -10,6 +10,7 @@ const footerGroups = [
       { href: '/', label: 'Beranda' },
       { href: '/paket-umrah', label: 'Paket Umrah' },
       { href: '/paket-haji', label: 'Paket Haji' },
+      { href: '/artikel', label: 'Artikel' },
       { href: '/daftar', label: 'Pendaftaran' },
     ],
   },
