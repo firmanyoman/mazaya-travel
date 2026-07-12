@@ -43,7 +43,7 @@ export const articles: Article[] = [
       {
         heading: 'Lihat bukti layanan, bukan janji besar',
         paragraphs: [
-          'Dokumentasi, testimoni, dan detail paket yang mudah dipindai biasanya lebih berguna daripada klaim yang terlalu besar. Calon jamaah butuh sinyal nyata bahwa travel terbiasa mendampingi perjalanan dengan tenang dan jelas.',
+          'Dokumentasi, testimoni, dan detail paket yang jelas biasanya lebih berguna daripada klaim yang terlalu besar. Calon jemaah butuh bukti nyata bahwa travel terbiasa mendampingi perjalanan dengan rapi dan terbuka.',
           'Gunakan halaman dokumentasi, testimoni, dan FAQ sebagai bahan banding sebelum menghubungi admin. Dengan begitu, pertanyaan saat konsultasi bisa lebih spesifik dan tidak mengulang hal dasar.',
         ],
       },
@@ -159,12 +159,12 @@ export const articles: Article[] = [
     title: 'Mengapa Halaman Legalitas Penting Sebelum Daftar?',
     excerpt:
       'Alasan kenapa calon jamaah dan keluarga perlu melihat legalitas lebih dulu sebelum fokus ke promo atau harga.',
-    category: 'Trust',
+    category: 'Legalitas',
     publishedAt: '2026-06-15',
     readTime: '3 menit baca',
-    ctaTitle: 'Ingin lihat bukti trust dulu?',
+    ctaTitle: 'Ingin cek legalitas dulu sebelum memilih paket?',
     ctaText:
-      'Cek halaman legalitas Mazaya Travel untuk verifikasi dasar, lalu lanjutkan ke paket bila sudah merasa cukup yakin dengan fondasi trust-nya.',
+      'Cek halaman legalitas Mazaya Travel untuk verifikasi dasar, lalu lanjutkan ke paket bila Anda ingin menilai pilihan keberangkatan dengan lebih yakin.',
     sections: [
       {
         heading: 'Legalitas membantu menyaring risiko awal',
@@ -177,7 +177,7 @@ export const articles: Article[] = [
         heading: 'Trust lebih kuat jika bukti mudah diakses',
         paragraphs: [
           'Halaman legalitas yang rapi membuat proses verifikasi terasa wajar, bukan seperti mencari informasi tersembunyi. Ini memberi sinyal bahwa travel siap dinilai secara terbuka.',
-          'Dalam konteks website, halaman ini juga membantu user discovery yang datang dari Google dan belum mengenal brand sama sekali.',
+          'Bagi calon jemaah yang baru mengenal sebuah travel, halaman legalitas membantu memberikan pegangan awal sebelum membahas harga atau promo.',
         ],
       },
       {
@@ -193,7 +193,7 @@ export const articles: Article[] = [
     slug: 'cara-membaca-detail-paket-umrah-dengan-cepat',
     title: 'Cara Membaca Detail Paket Umrah dengan Cepat',
     excerpt:
-      'Tips memindai halaman detail paket agar calon jamaah cepat menangkap informasi penting tanpa tersesat di terlalu banyak detail.',
+      'Panduan sederhana agar calon jemaah bisa memahami informasi paling penting di halaman detail paket tanpa bingung oleh terlalu banyak rincian.',
     category: 'Panduan Paket',
     publishedAt: '2026-06-10',
     readTime: '4 menit baca',

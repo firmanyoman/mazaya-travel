@@ -72,7 +72,7 @@ export default async function ArticleDetailPage({ params }: Props) {
         metrics={[
           { value: formatDate(article.publishedAt), label: 'Tanggal publikasi artikel' },
           { value: article.readTime, label: 'Estimasi waktu baca' },
-          { value: `${article.sections.length} bahasan`, label: 'Disusun bertahap agar lebih nyaman di mobile' },
+          { value: `${article.sections.length} bahasan`, label: 'Poin pembahasan utama dalam artikel ini' },
         ]}
         panelTitle="Ringkasan artikel"
         panelItems={[

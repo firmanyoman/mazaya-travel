@@ -194,7 +194,7 @@ export default async function PackageDetailPage({ params }: Props) {
                 ) : null}
                 <div className="text-sm font-semibold text-white/72">Mazaya Travel</div>
                 <div className="mt-2 text-xl font-bold leading-snug md:text-2xl">
-                  Halaman keputusan yang menampilkan sinyal paket paling penting dengan lebih jelas.
+                  Ringkasan paket untuk membantu Anda menilai kecocokan jadwal, fasilitas, dan biaya sebelum mendaftar.
                 </div>
               </div>
             </div>
@@ -282,7 +282,7 @@ export default async function PackageDetailPage({ params }: Props) {
                         <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                       </div>
                       <h2 className="mt-4 text-3xl font-bold leading-tight text-text sm:text-4xl">
-                        Hotel dan maskapai ditampilkan lebih ringkas agar kualitas paket cepat terbaca.
+                        Lihat maskapai dan hotel utama untuk menilai kenyamanan perjalanan sejak awal.
                       </h2>
                     </div>
                     <div className="grid gap-4 md:grid-cols-3">
@@ -291,7 +291,7 @@ export default async function PackageDetailPage({ params }: Props) {
                           <div className="text-sm font-semibold text-primary">Maskapai</div>
                           <div className="mt-3 text-xl font-semibold leading-snug text-text">{pkg.airline}</div>
                           <p className="mt-2 text-sm leading-7 text-muted">
-                            Informasi penerbangan ditampilkan sebagai bagian dari gambaran ritme perjalanan paket ini.
+                            Maskapai memberi gambaran awal soal kenyamanan perjalanan dan rute keberangkatan yang akan Anda tempuh.
                           </p>
                         </div>
                       ) : null}
@@ -300,7 +300,7 @@ export default async function PackageDetailPage({ params }: Props) {
                           <div className="text-sm font-semibold text-primary">Hotel Makkah</div>
                           <div className="mt-3 text-xl font-semibold leading-snug text-text">{pkg.makkahHotel}</div>
                           <p className="mt-2 text-sm leading-7 text-muted">
-                            Diposisikan sebagai bagian penting dari kenyamanan jemaah selama fase ibadah di Makkah.
+                            Hotel di Makkah penting untuk membantu Anda memperkirakan kenyamanan istirahat dan akses selama fokus beribadah.
                           </p>
                         </div>
                       ) : null}
@@ -309,7 +309,7 @@ export default async function PackageDetailPage({ params }: Props) {
                           <div className="text-sm font-semibold text-primary">Hotel Madinah</div>
                           <div className="mt-3 text-xl font-semibold leading-snug text-text">{pkg.madinahHotel}</div>
                           <p className="mt-2 text-sm leading-7 text-muted">
-                            Membantu calon jemaah menilai kualitas penginapan secara lebih cepat tanpa membaca blok panjang.
+                            Hotel di Madinah membantu Anda menilai kualitas penginapan selama rangkaian ibadah dan ziarah di kota Nabi.
                           </p>
                         </div>
                       ) : null}
@@ -385,7 +385,7 @@ export default async function PackageDetailPage({ params }: Props) {
                       <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                     </div>
                     <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                      Gambaran perjalanan untuk membantu keluarga memahami ritme keberangkatan.
+                      Gambaran perjalanan agar Anda dan keluarga memahami alur ibadah sejak hari berangkat sampai pulang.
                     </h2>
                     <div className="rounded-[20px] border border-border bg-surface-subtle px-5 py-5 text-sm leading-8 whitespace-pre-line text-text-secondary">
                       {pkg.itinerarySummary}
@@ -398,12 +398,12 @@ export default async function PackageDetailPage({ params }: Props) {
             <div className="grid gap-6">
               <SectionShell surface="card" className="px-6 py-6">
                 <div className="space-y-4">
-                  <div className="text-sm font-semibold text-muted">Panduan membaca halaman ini</div>
+                  <div className="text-sm font-semibold text-muted">Panduan memilih paket</div>
                   <h2 className="text-2xl font-bold leading-tight text-text">
-                    Fokus dulu pada jadwal, kursi, dan harga. Setelah itu nilai fasilitas dan kesiapan dokumen.
+                    Mulailah dari jadwal, ketersediaan kursi, dan harga. Setelah itu barulah cocokkan fasilitas serta dokumen yang perlu disiapkan.
                   </h2>
                   <p className="text-sm leading-7 text-muted">
-                    Pendekatan ini membantu keputusan terasa lebih objektif dan tidak terburu-buru, terutama bila paket sedang dibandingkan bersama keluarga.
+                    Urutan ini membantu Anda dan keluarga membandingkan paket dengan lebih jelas sebelum memutuskan daftar atau konsultasi.
                   </p>
                 </div>
               </SectionShell>
@@ -412,7 +412,7 @@ export default async function PackageDetailPage({ params }: Props) {
                 <div className="absolute inset-y-0 right-0 hidden w-40 bg-[radial-gradient(circle_at_center,rgba(240,235,32,0.18),transparent_62%)] lg:block" />
                 <div className="relative space-y-4">
                   <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
-                    Final CTA
+                    Langkah berikutnya
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                   </div>
                   <h2 className="text-2xl font-bold leading-tight text-white">
