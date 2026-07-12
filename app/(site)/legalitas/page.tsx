@@ -12,11 +12,10 @@ import {
 } from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
-  title: 'Legalitas - Mazaya Travel',
+  title: 'Legalitas Mazaya Travel | Cek Identitas dan Izin Dasar',
   description:
-    'Lihat ringkasan legalitas Mazaya Travel dalam satu halaman untuk membantu calon jemaah dan keluarga melakukan verifikasi dasar.',
+    'Periksa identitas perusahaan, PPIU, dan NIB Mazaya Travel untuk membantu calon jemaah dan keluarga melakukan verifikasi dasar sebelum memilih paket.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20verifikasi%20legalitas%20dan%20paket'
 

@@ -258,11 +258,11 @@ export default async function PackageDetailPage({ params }: Props) {
                     <div className="mt-6 grid gap-3">
                       {isSoldOut ? (
                         <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" fullWidth className="bg-white text-primary hover:bg-white/92">
-                          Tanya Jadwal Lain
+                          Tanya jadwal lain
                         </Button>
                       ) : (
                         <Button href={`/daftar/${pkg.slug}`} fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
-                          Daftar Paket Ini
+                          Daftar paket ini
                         </Button>
                       )}
                       <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
@@ -430,14 +430,14 @@ export default async function PackageDetailPage({ params }: Props) {
                       </Button>
                     ) : (
                       <Button href={`/daftar/${pkg.slug}`} fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
-                        Lanjut Pendaftaran
+                        Lanjut pendaftaran
                       </Button>
                     )}
                     <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
                       Konsultasi WhatsApp
                     </Button>
                     <Button href="/paket-umrah" variant="ghost" fullWidth className="border border-white/10 text-white/88 hover:bg-white/8">
-                      Lihat Paket Lain
+                      Lihat paket lain
                     </Button>
                   </div>
                 </div>

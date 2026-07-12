@@ -11,11 +11,10 @@ import {
 } from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
-  title: 'Syarat & Ketentuan - Mazaya Travel',
+  title: 'Syarat & Ketentuan | Website, Konsultasi, dan Pendaftaran',
   description:
-    'Baca syarat dan ketentuan dasar penggunaan website, konsultasi, dan pendaftaran awal paket Umrah bersama Mazaya Travel.',
+    'Baca syarat dan ketentuan dasar penggunaan website, konsultasi, dan pendaftaran awal paket Umrah dan Haji bersama Mazaya Travel.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20bertanya%20tentang%20syarat%20dan%20ketentuan%20pendaftaran'
 

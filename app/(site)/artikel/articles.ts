@@ -174,7 +174,7 @@ export const articles: Article[] = [
         ],
       },
       {
-        heading: 'Trust lebih kuat jika bukti mudah diakses',
+        heading: 'Rasa aman lebih mudah tumbuh saat bukti terbuka',
         paragraphs: [
           'Halaman legalitas yang rapi membuat proses verifikasi terasa wajar, bukan seperti mencari informasi tersembunyi. Ini memberi sinyal bahwa travel siap dinilai secara terbuka.',
           'Bagi calon jemaah yang baru mengenal sebuah travel, halaman legalitas membantu memberikan pegangan awal sebelum membahas harga atau promo.',

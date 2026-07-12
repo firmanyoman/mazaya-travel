@@ -10,11 +10,10 @@ import {
 } from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
-  title: 'Kebijakan Privasi - Mazaya Travel',
+  title: 'Kebijakan Privasi | Data Pendaftaran dan Konsultasi',
   description:
-    'Pelajari bagaimana Mazaya Travel mengumpulkan, menggunakan, dan menjaga data calon jamaah yang dikirim melalui form pendaftaran dan konsultasi.',
+    'Pelajari bagaimana Mazaya Travel mengumpulkan, menggunakan, dan menjaga data calon jemaah yang dikirim melalui formulir pendaftaran dan konsultasi.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20bertanya%20tentang%20kebijakan%20privasi'
 

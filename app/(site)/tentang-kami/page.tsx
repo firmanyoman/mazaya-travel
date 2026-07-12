@@ -12,11 +12,10 @@ import {
 } from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
-  title: 'Tentang Kami - Mazaya Travel',
+  title: 'Tentang Mazaya Travel | Profil, Nilai, dan Pendampingan',
   description:
-    'Kenal lebih dekat dengan Mazaya Travel, travel Umrah resmi berbasis di Bone yang mengutamakan amanah, pendampingan, dan kejelasan layanan.',
+    'Kenali Mazaya Travel lebih dekat, mulai dari profil perusahaan, nilai layanan, legalitas, sampai cara tim mendampingi calon jemaah sebelum berangkat.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20tentang%20paket%20Umrah'
 

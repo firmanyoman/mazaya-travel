@@ -35,7 +35,7 @@ const seedPackages = async () => {
       packageStatus: 'active',
       featuredOnHomepage: true,
       packageSummary:
-        'Paket Umrah Ramadhan spesial dengan hotel bintang 4 dekat Masjidil Haram dan Masjid Nabawi. Termasuk bimbingan ibadah, muthawif berpengalaman, dan city tour Madinah.',
+        'Paket Umrah Ramadhan untuk calon jemaah yang ingin fokus ibadah dengan hotel dekat area haram, pendampingan yang jelas, dan waktu beribadah yang lebih leluasa selama bulan suci.',
       inclusions: [
         'Tiket pesawat PP Makassar - Jeddah (Saudia Airlines)',
         'Visa Umrah',
@@ -69,10 +69,10 @@ const seedPackages = async () => {
         'Hari 1-2: Keberangkatan dari Makassar menuju Madinah. Hari 3-8: Di Madinah untuk shalat di Masjid Nabawi dan ziarah. Hari 9: Perjalanan Madinah-Makkah. Hari 10-15: Pelaksanaan umrah, tawaf, sai, dan ibadah di Masjidil Haram. Hari 16: Kepulangan ke Makassar.',
       paymentNotes:
         'DP minimal Rp 10.000.000 saat pendaftaran. Pelunasan paling lambat 30 hari sebelum keberangkatan. Pembayaran bisa dicicil 3x. Transfer ke rekening resmi PT Mazaya Amanah Wisata.',
-      badgeText: 'Ramadhan Special',
-      seoTitle: 'Paket Umrah Ramadhan 1447H Gold - Travel Umrah Bone Terpercaya',
+      badgeText: 'Umrah Ramadhan',
+      seoTitle: 'Paket Umrah Ramadhan 1447H Gold | Jadwal, Harga, dan Fasilitas',
       seoDescription:
-        'Paket Umrah Ramadhan 1447H dari Bone dengan hotel bintang 4 dekat haram. Harga Rp 42.5 juta sudah termasuk tiket, visa, hotel, makan, dan bimbingan. Seat terbatas!',
+        'Lihat detail Paket Umrah Ramadhan 1447H Gold: keberangkatan dari Makassar, durasi 16 hari, hotel dekat haram, dan pendampingan ibadah yang disiapkan untuk membantu calon jemaah berangkat lebih mantap.',
     },
     {
       title: 'Paket Umrah Reguler Silver - Keberangkatan Agustus 2026',
@@ -94,7 +94,7 @@ const seedPackages = async () => {
       packageStatus: 'active',
       featuredOnHomepage: true,
       packageSummary:
-        'Paket Umrah ekonomis dengan fasilitas nyaman. Hotel bintang 3 dengan jarak tempuh 10-15 menit ke Masjidil Haram dan Masjid Nabawi. Cocok untuk jamaah yang ingin hemat tanpa mengurangi kenyamanan.',
+        'Paket Umrah reguler untuk calon jemaah yang ingin biaya lebih terjangkau namun tetap mendapat fasilitas inti, pendampingan ibadah, dan alur keberangkatan yang jelas sejak awal.',
       inclusions: [
         'Tiket pesawat PP Makassar - Jeddah via Jakarta',
         'Visa Umrah',
@@ -126,9 +126,9 @@ const seedPackages = async () => {
       paymentNotes:
         'DP Rp 8 juta saat daftar. Pelunasan H-30. Bisa dicicil 2-3x. Transfer ke rekening resmi Mazaya Travel.',
       badgeText: 'Hemat',
-      seoTitle: 'Paket Umrah Silver Agustus 2026 - Murah dan Terpercaya dari Bone',
+      seoTitle: 'Paket Umrah Reguler Silver Agustus 2026 | Harga dan Fasilitas',
       seoDescription:
-        'Paket Umrah ekonomis Rp 32 juta dari Bone. Hotel bintang 3, Garuda Indonesia, bimbingan lengkap. Seat tinggal 8. Daftar sekarang!',
+        'Pelajari Paket Umrah Reguler Silver Agustus 2026 dengan keberangkatan Makassar, durasi 12 hari, harga yang lebih terjangkau, dan fasilitas penting yang membantu calon jemaah mengambil keputusan lebih cepat.',
     },
     {
       title: 'Paket Umrah Premium Platinum - Oktober 2026',
@@ -150,7 +150,7 @@ const seedPackages = async () => {
       packageStatus: 'active',
       featuredOnHomepage: true,
       packageSummary:
-        'Paket Umrah premium dengan hotel bintang 5 view Masjidil Haram. Durasi lebih panjang untuk ibadah lebih maksimal. Fasilitas VIP, kamar superior, dan city tour lengkap Jeddah-Thaif.',
+        'Paket Umrah premium untuk calon jemaah yang mengutamakan kenyamanan hotel, durasi ibadah lebih panjang, dan layanan perjalanan yang lebih eksklusif sejak keberangkatan sampai pulang.',
       inclusions: [
         'Tiket pesawat PP Business Class Makassar - Jeddah',
         'Visa Umrah',
@@ -182,10 +182,10 @@ const seedPackages = async () => {
         'Hari 1-2: Penerbangan Business Class ke Madinah. Hari 3-10: Beribadah di Madinah dengan ziarah lengkap. Hari 11: Transfer VIP Madinah-Makkah. Hari 12-17: Umrah, tawaf, dan ibadah di Makkah. Hari 18: City tour Jeddah dan belanja. Hari 19: Tour Thaif. Hari 20: Kepulangan.',
       paymentNotes:
         'DP Rp 20 juta saat booking. Pelunasan H-45. Cicilan bisa diatur hingga 4x. Harga sudah nett tanpa biaya tersembunyi.',
-      badgeText: 'Exclusive',
-      seoTitle: 'Paket Umrah Platinum Premium Oktober 2026 - Hotel Bintang 5 View Haram',
+      badgeText: 'Umrah Premium',
+      seoTitle: 'Paket Umrah Premium Platinum Oktober 2026 | Hotel dan Layanan',
       seoDescription:
-        'Paket Umrah eksklusif dengan hotel bintang 5 view Masjidil Haram. Business class, 20 hari, city tour lengkap. Hanya 5 seat tersisa!',
+        'Cek Paket Umrah Premium Platinum Oktober 2026 dengan hotel bintang 5, durasi 20 hari, dan layanan perjalanan yang lebih eksklusif untuk jemaah yang ingin kenyamanan lebih selama ibadah.',
     },
     {
       title: 'Paket Umrah Plus Turki - November 2026',
@@ -207,7 +207,7 @@ const seedPackages = async () => {
       packageStatus: 'active',
       featuredOnHomepage: true,
       packageSummary:
-        'Paket spesial Umrah plus wisata Turki. Setelah menunaikan umrah, jamaah akan mengunjungi kota-kota bersejarah di Turki: Istanbul, Bursa, dan Cappadocia. Perpaduan ibadah dan wisata religi.',
+        'Paket Umrah Plus Turki untuk calon jemaah yang ingin menyatukan rangkaian ibadah Umrah dengan perjalanan ke kota-kota bersejarah di Turki dalam satu agenda yang lebih praktis.',
       inclusions: [
         'Tiket pesawat PP Makassar - Jeddah - Istanbul - Makassar',
         'Visa Umrah dan Visa Turki',
@@ -245,9 +245,9 @@ const seedPackages = async () => {
       paymentNotes:
         'DP Rp 15 juta saat pendaftaran. Pelunasan paling lambat H-40. Bisa dicicil hingga 4x tanpa bunga. Harga sudah termasuk semua biaya tour.',
       badgeText: 'Umrah + Wisata',
-      seoTitle: 'Paket Umrah Plus Turki November 2026 - Ibadah dan Wisata Religi',
+      seoTitle: 'Paket Umrah Plus Turki November 2026 | Itinerary dan Fasilitas',
       seoDescription:
-        'Paket Umrah + Tour Turki 18 hari. Kunjungi Makkah, Madinah, Istanbul, Bursa, Cappadocia. Harga Rp 52 juta all-in. Travel Bone terpercaya.',
+        'Lihat Paket Umrah Plus Turki November 2026 dengan rangkaian ibadah di Makkah dan Madinah, perjalanan ke Istanbul, Bursa, dan Cappadocia, serta fasilitas yang membantu keluarga menilai paket dengan lebih jelas.',
     },
   ]
 

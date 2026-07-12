@@ -5,11 +5,10 @@ import { Container } from '@/components/layout/Container'
 import RegistrationFormClient from './RegistrationFormClient'
 
 export const metadata: Metadata = {
-  title: 'Pendaftaran Umrah Bone - Mazaya Travel',
+  title: 'Pendaftaran Umrah | Isi Data Awal dan Tunggu Konfirmasi',
   description:
-    'Isi formulir pendaftaran Umrah Mazaya Travel dengan alur yang lebih rapi. Pilih paket, lengkapi data jemaah, lalu tunggu tindak lanjut via WhatsApp.',
+    'Isi formulir pendaftaran Umrah Mazaya Travel untuk mengirim data awal jemaah, memilih paket, dan menunggu tindak lanjut dari tim via WhatsApp.',
 }
-
 interface Props {
   searchParams: Promise<{ package?: string }>
 }

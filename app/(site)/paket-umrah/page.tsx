@@ -6,11 +6,10 @@ import { Button } from '@/components/ui/Button'
 import { getPackagesByCategory } from '@/app/lib/packages'
 
 export const metadata: Metadata = {
-  title: 'Paket Umrah Bone - Mazaya Travel',
+  title: 'Paket Umrah | Jadwal, Harga, dan Kursi Tersedia',
   description:
-    'Lihat daftar paket Umrah aktif Mazaya Travel untuk jamaah Bone dan sekitarnya, lengkap dengan jadwal, durasi, status kursi, dan jalur konsultasi WhatsApp.',
+    'Bandingkan paket Umrah Mazaya Travel berdasarkan jadwal keberangkatan, harga, durasi, fasilitas, dan ketersediaan kursi sebelum Anda mendaftar.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20paket%20Umrah'
 

@@ -114,7 +114,7 @@ export default async function ArticleDetailPage({ params }: Props) {
                   Lihat paket aktif
                 </Button>
                 <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" fullWidth>
-                  Tanya via WhatsApp
+                  WhatsApp konsultasi
                 </Button>
               </div>
               <div className="mt-4 rounded-[16px] border border-border bg-surface-subtle px-4 py-3 text-sm leading-7 text-muted">

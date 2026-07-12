@@ -5,11 +5,10 @@ import { Button } from '@/components/ui/Button'
 import { articles } from './articles'
 
 export const metadata: Metadata = {
-  title: 'Artikel Umrah Bone - Mazaya Travel',
+  title: 'Artikel Umrah & Haji | Panduan Dokumen, Biaya, dan Paket',
   description:
-    'Baca artikel Umrah dan Haji dari Mazaya Travel untuk memahami dokumen, biaya, persiapan ibadah, dan cara memilih paket yang sesuai.',
+    'Baca panduan Umrah dan Haji dari Mazaya Travel tentang dokumen, biaya, legalitas, persiapan ibadah, dan cara memilih paket yang sesuai.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20setelah%20membaca%20artikel'
 

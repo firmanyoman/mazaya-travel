@@ -4,11 +4,10 @@ import { SectionShell } from '@/components/layout/SectionShell'
 import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
-  title: 'Testimoni - Mazaya Travel',
+  title: 'Testimoni Jamaah | Pengalaman Layanan Mazaya Travel',
   description:
-    'Baca testimoni jamaah Mazaya Travel untuk melihat pengalaman layanan, pendampingan, dan rasa aman sebelum berangkat.',
+    'Baca pengalaman jamaah Mazaya Travel untuk melihat bagaimana layanan, pendampingan, dan komunikasi berjalan sebelum keberangkatan.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20setelah%20membaca%20testimoni'
 

@@ -41,7 +41,7 @@ export function PublicNavbar() {
               rel="noopener noreferrer"
               size="sm"
             >
-              Konsultasi Gratis
+              WhatsApp Konsultasi
             </Button>
           </div>
           <button

@@ -12,11 +12,10 @@ import {
 } from '@/components/trust/TrustPage'
 
 export const metadata: Metadata = {
-  title: 'Kontak - Mazaya Travel',
+  title: 'Kontak Mazaya Travel | WhatsApp, Telepon, dan Kantor',
   description:
-    'Hubungi Mazaya Travel melalui WhatsApp, telepon, email, atau kunjungi kantor layanan kami di Bone, Sulawesi Selatan.',
+    'Hubungi Mazaya Travel lewat WhatsApp, telepon, email, atau datang langsung ke kantor untuk bertanya soal paket, dokumen, dan pendaftaran Umrah.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi'
 

@@ -109,7 +109,7 @@ export function ContentHero({
             </div>
           </div>
           <div className="rounded-[20px] border border-border bg-surface-subtle p-6 shadow-[var(--shadow-1)]">
-            <div className="text-sm font-semibold text-text-secondary">Ritme halaman</div>
+            <div className="text-sm font-semibold text-text-secondary">Cara memakai halaman ini</div>
             <p className="mt-3 text-sm leading-7 text-muted">
               Disusun agar pengunjung bisa membaca dulu dengan tenang, lalu memilih langkah lanjut yang paling relevan.
             </p>

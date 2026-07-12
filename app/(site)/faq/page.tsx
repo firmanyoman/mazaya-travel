@@ -4,11 +4,10 @@ import { SectionShell } from '@/components/layout/SectionShell'
 import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
-  title: 'FAQ - Mazaya Travel',
+  title: 'FAQ Umrah | Jawaban Soal Harga, Dokumen, dan Daftar',
   description:
-    'Temukan jawaban singkat seputar legalitas, harga, dokumen, seat, dan cara daftar Umrah di Mazaya Travel.',
+    'Temukan jawaban singkat tentang legalitas, harga paket, dokumen, ketersediaan kursi, dan cara daftar Umrah di Mazaya Travel.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20bertanya%20lebih%20lanjut%20tentang%20paket%20dan%20pendaftaran'
 

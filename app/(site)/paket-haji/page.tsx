@@ -5,11 +5,10 @@ import { Button } from '@/components/ui/Button'
 import { getPackagesByCategory } from '@/app/lib/packages'
 
 export const metadata: Metadata = {
-  title: 'Paket Haji Bone - Mazaya Travel',
+  title: 'Paket Haji | Informasi Jadwal dan Konsultasi Awal',
   description:
-    'Lihat daftar paket Haji Mazaya Travel untuk calon jamaah Bone dan sekitarnya. Jika belum ada jadwal aktif, halaman tetap memberi jalur konsultasi dan langkah lanjut.',
+    'Lihat informasi paket Haji Mazaya Travel untuk memahami jadwal, harga, fasilitas, dan langkah konsultasi awal sebelum menentukan pilihan.',
 }
-
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20paket%20Haji'
 
