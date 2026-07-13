@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 export const metadata: Metadata = {
   title: 'Testimoni Jamaah | Pengalaman Layanan Mazaya Travel',
   description:
-    'Baca pengalaman jamaah Mazaya Travel untuk melihat bagaimana layanan, pendampingan, dan komunikasi berjalan sebelum keberangkatan.',
+    'Baca pengalaman jamaah Mazaya Travel untuk melihat bagaimana pendampingan dan komunikasi berjalan sebelum keberangkatan.',
 }
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20setelah%20membaca%20testimoni'
@@ -16,25 +16,25 @@ const testimonials = [
     name: 'Ibu Rahmawati',
     city: 'Bone',
     quote:
-      'Dari awal tanya sampai berangkat, penjelasan Mazaya Travel terasa rapi dan menenangkan. Keluarga juga lebih yakin karena legalitas dan alur keberangkatannya jelas.',
+      'Dari awal bertanya sampai hari berangkat, tim Mazaya mendampingi dengan sabar. Keluarga juga merasa lebih tenang karena semuanya disampaikan sejak awal.',
   },
   {
     name: 'Bapak Syamsuddin',
     city: 'Watampone',
     quote:
-      'Yang paling membantu adalah pendampingannya. Saat persiapan dokumen dan manasik, kami tidak merasa bingung karena tim cepat merespons dan bahasanya mudah dipahami.',
+      'Yang paling terasa bagi kami adalah pendampingannya. Saat persiapan dokumen dan manasik, tim Mazaya hadir membantu tanpa membuat kami bingung.',
   },
   {
     name: 'Ibu Nurhayati',
     city: 'Bone',
     quote:
-      'Kami mencari travel yang bisa dipercaya dan dekat untuk konsultasi. Mazaya Travel memberi rasa aman karena komunikasinya jelas dan prosesnya terasa tertata.',
+      'Kami mencari travel yang bisa dipercaya dan dekat untuk konsultasi. Mazaya membuat kami merasa lebih tenteram karena komunikasinya baik dan prosesnya terasa dijaga.',
   },
   {
     name: 'Bapak Mulyadi',
     city: 'Sinjai',
     quote:
-      'Layanan Mazaya terasa amanah. Jadwal, kebutuhan dokumen, dan arahan keberangkatan disampaikan tanpa membuat jamaah panik.',
+      'Layanan Mazaya terasa amanah. Jadwal, kebutuhan dokumen, dan arahan keberangkatan disampaikan dengan tenang sehingga jamaah tidak panik.',
   },
 ]
 
@@ -45,35 +45,35 @@ export default function TestimonialsPage() {
         eyebrow="Testimoni Jamaah"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Cerita jamaah yang membantu Anda menilai layanan Mazaya sebelum mendaftar."
-        summary="Testimoni ini memberi gambaran tentang cara tim Mazaya mendampingi calon jemaah, menjelaskan proses, dan menjaga komunikasi tetap jelas sejak awal."
+        title="Cerita jamaah yang dapat membantu Anda mengenal cara Mazaya melayani sebelum mendaftar."
+        summary="Testimoni ini memberi gambaran tentang bagaimana tim Mazaya mendampingi jamaah, menjaga komunikasi, dan menemani proses sejak awal hingga keberangkatan."
         actions={
           <>
             <Button href="/paket-umrah" size="lg">
               Lihat paket Umrah
             </Button>
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-              WhatsApp konsultasi
+              WhatsApp Konsultasi
             </Button>
           </>
         }
         metrics={[
           { value: `${testimonials.length} testimoni`, label: 'Cerita singkat dari jamaah dan keluarga' },
-          { value: 'Pendampingan', label: 'Hal yang paling sering dirasakan jamaah Mazaya' },
+          { value: 'Pendampingan', label: 'Hal yang paling sering disebut dalam pengalaman jamaah' },
           { value: 'Bone & sekitar', label: 'Dekat dengan kebutuhan calon jemaah lokal' },
         ]}
-        panelTitle="Yang biasanya ingin dipastikan"
+        panelTitle="Hal yang biasa ingin diketahui"
         panelItems={[
-          { label: 'Sebelum daftar', value: 'Apakah travel ini amanah dan mudah dihubungi' },
+          { label: 'Sebelum daftar', value: 'Apakah travel ini amanah dan enak diajak bertanya' },
           { label: 'Saat proses berjalan', value: 'Apakah tim membantu dokumen, manasik, dan keberangkatan' },
-          { label: 'Untuk keluarga', value: 'Apakah komunikasi cukup jelas untuk menumbuhkan rasa yakin' },
+          { label: 'Untuk keluarga', value: 'Apakah komunikasi membuat keluarga merasa lebih tenang' },
         ]}
       />
 
       <ContentSection
         eyebrow="Cerita jamaah"
-        title="Pengalaman nyata yang sering menjadi alasan calon jemaah merasa lebih mantap."
-        summary="Fokus testimoni ini ada pada kejelasan informasi, pendampingan, dan rasa aman yang dirasakan jamaah selama proses berjalan."
+        title="Pengalaman nyata yang sering membuat calon jemaah merasa lebih tenang."
+        summary="Yang paling sering muncul dalam cerita mereka adalah pendampingan, komunikasi, dan rasa aman selama proses berjalan."
       >
         <div className="grid gap-6 md:grid-cols-2">
           {testimonials.map((item, index) => (
@@ -99,8 +99,8 @@ export default function TestimonialsPage() {
             <h2 className="text-2xl font-bold text-text">Hal yang paling sering disebut jamaah</h2>
             <div className="mt-5 grid gap-3">
               {[
-                'Penjelasan yang jelas sebelum daftar dan menjelang keberangkatan.',
-                'Keluarga merasa lebih tenang karena alur proses mudah dipahami.',
+                'Penjelasan yang disampaikan sejak awal hingga menjelang keberangkatan.',
+                'Keluarga merasa lebih tenang karena prosesnya dijelaskan dengan sabar.',
                 'Pendampingan terasa dekat saat mengurus dokumen dan mengikuti manasik.',
               ].map((item) => (
                 <div key={item} className="rounded-[16px] border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
@@ -111,16 +111,16 @@ export default function TestimonialsPage() {
           </div>
           <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
             <div className="text-sm font-semibold text-white/72">Setelah membaca testimoni</div>
-            <h2 className="mt-3 text-2xl font-bold leading-snug">Anda bisa lanjut melihat paket atau bertanya langsung kepada admin.</h2>
+            <h2 className="mt-3 text-2xl font-bold leading-snug">Jika Anda merasa cukup cocok, silakan lanjut melihat paket atau bertanya langsung kepada kami.</h2>
             <p className="mt-3 text-sm leading-7 text-white/78">
-              Gunakan halaman ini untuk menilai layanan Mazaya, lalu lanjutkan ke paket aktif atau WhatsApp jika ingin menyesuaikan kebutuhan dan budget keluarga.
+              Setelah membaca pengalaman jamaah lain, Anda dapat lanjut ke paket aktif atau bertanya lewat WhatsApp bila masih ingin menyesuaikan kebutuhan keluarga.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <Button href="/paket-umrah" variant="secondary" fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
                 Lihat paket
               </Button>
               <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
-                WhatsApp konsultasi
+                WhatsApp Konsultasi
               </Button>
             </div>
           </div>
@@ -129,12 +129,12 @@ export default function TestimonialsPage() {
 
       <ContentCta
         eyebrow="Konsultasi Mazaya"
-        title="Masih ingin memastikan pilihan travel, paket, atau dokumen?"
-        summary="Tim Mazaya siap membantu menjawab pertanyaan lanjutan agar keputusan berangkat terasa lebih mantap bersama keluarga."
+        title="Jika masih ada yang ingin ditanyakan soal travel, paket, atau dokumen, silakan hubungi kami."
+        summary="Tim Mazaya siap membantu menjawab pertanyaan lanjutan dengan penjelasan yang sabar agar Anda dan keluarga dapat mempertimbangkannya dengan tenang."
         primaryHref={whatsappUrl}
-        primaryLabel="WhatsApp konsultasi"
+        primaryLabel="WhatsApp Konsultasi"
         secondaryHref="/paket-umrah"
-        secondaryLabel="Lihat paket aktif"
+        secondaryLabel="Lihat paket Umrah"
       />
     </ContentPageLayout>
   )

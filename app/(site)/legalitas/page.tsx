@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: 'Legalitas Mazaya Travel | Cek Identitas dan Izin Dasar',
   description:
-    'Periksa identitas perusahaan, PPIU, dan NIB Mazaya Travel untuk membantu calon jemaah dan keluarga melakukan verifikasi dasar sebelum memilih paket.',
+    'Lihat identitas perusahaan, PPIU, dan NIB Mazaya Travel agar calon jemaah dan keluarga dapat memeriksanya sebelum memilih paket.',
 }
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20verifikasi%20legalitas%20dan%20paket'
@@ -25,7 +25,7 @@ const legalDocuments = [
     type: 'Nama badan usaha',
     number: 'PT Mazaya Amanah Wisata',
     summary:
-      'Nama resmi perusahaan yang menjadi dasar layanan Mazaya Travel dan dapat digunakan sebagai acuan pengecekan.',
+      'Nama resmi perusahaan yang kami gunakan dalam layanan Mazaya Travel.',
     accent: '01',
   },
   {
@@ -33,7 +33,7 @@ const legalDocuments = [
     type: 'Legalitas perjalanan ibadah Umrah',
     number: 'PPIU resmi Kemenag RI',
     summary:
-      'Informasi penting yang biasanya ingin dipastikan calon jemaah sebelum membahas paket dan pembayaran.',
+      'Informasi yang biasa lebih dulu ditanyakan calon jemaah sebelum membahas paket.',
     accent: '02',
   },
   {
@@ -41,15 +41,15 @@ const legalDocuments = [
     type: 'NIB',
     number: '13052200161160002',
     summary:
-      'Data usaha yang kami tampilkan secara terbuka agar keluarga lebih mudah melakukan verifikasi dasar.',
+      'Nomor usaha yang kami tampilkan agar dapat diperiksa oleh calon jemaah dan keluarga.',
     accent: '03',
   },
 ]
 
 const verificationNotes = [
-  'Legalitas membantu calon jemaah memastikan identitas perusahaan dan izin dasar ditampilkan secara terbuka.',
-  'Halaman ini memudahkan keluarga melakukan pengecekan awal tanpa harus bertanya dari nol.',
-  'Jika masih ingin memastikan lebih lanjut, tim Mazaya siap membantu lewat WhatsApp resmi atau kantor layanan di Bone.',
+  'Informasi legal membantu calon jemaah mengenali identitas perusahaan sebelum melanjutkan pembicaraan ke paket.',
+  'Keluarga dapat melihat data dasar ini lebih dulu sebelum bertanya lebih jauh.',
+  'Jika masih ada yang ingin dipastikan, tim Mazaya siap membantu lewat WhatsApp resmi atau kantor layanan di Bone.',
 ]
 
 export default function LegalPage() {
@@ -57,24 +57,24 @@ export default function LegalPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Legalitas Mazaya"
-        title="Legalitas yang jelas membantu calon jemaah merasa lebih yakin sejak awal."
-        summary="Kami menampilkan informasi legal utama agar Anda dan keluarga dapat melakukan pengecekan dasar sebelum melanjutkan ke paket atau konsultasi."
+        title="Legalitas Mazaya kami tampilkan terbuka agar calon jemaah dan keluarga dapat memeriksanya dengan tenang."
+        summary="Di halaman ini kami menampilkan informasi dasar perusahaan yang biasanya ingin dilihat lebih dulu sebelum seseorang membahas paket atau pendaftaran."
         actions={
           <>
             <Button href="/daftar" size="lg">
-              Lihat paket / daftar
+              Lihat paket Umrah
             </Button>
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-              WhatsApp verifikasi
+              WhatsApp Konsultasi
             </Button>
           </>
         }
         stats={[
-          { value: 'Transparan', label: 'Informasi legal utama ditampilkan dalam satu halaman' },
-          { value: 'Resmi', label: 'Terhubung dengan identitas perusahaan yang jelas' },
-          { value: 'Bone', label: 'Didukung kantor layanan yang bisa dikunjungi' },
+          { value: 'Terbuka', label: 'Data legal utama kami tampilkan dalam satu halaman' },
+          { value: 'Resmi', label: 'Berjalan dengan identitas perusahaan yang dapat diperiksa' },
+          { value: 'Bone', label: 'Didukung kantor layanan yang dapat dikunjungi' },
         ]}
-        panelTitle="Data verifikasi cepat"
+        panelTitle="Data legal utama"
         panelItems={[
           { label: 'Perusahaan', value: 'PT Mazaya Amanah Wisata' },
           { label: 'Izin utama', value: 'PPIU resmi Kemenag RI' },
@@ -85,8 +85,8 @@ export default function LegalPage() {
 
       <TrustSection
         eyebrow="Legalitas utama"
-        title="Informasi yang paling sering dicari keluarga sebelum memutuskan lanjut."
-        summary="Kami menyusunnya secara ringkas agar mudah dibaca dan mudah dicocokkan saat Anda ingin melakukan verifikasi."
+        title="Informasi yang paling sering dicari sebelum calon jemaah melanjutkan pembicaraan ke paket."
+        summary="Kami menaruhnya di satu halaman agar calon jemaah dan keluarga dapat melihat data dasarnya tanpa perlu berpindah-pindah halaman."
       >
         <TrustCardGrid columns="three">
           {legalDocuments.map((item) => (
@@ -113,13 +113,13 @@ export default function LegalPage() {
 
       <TrustSection
         eyebrow="Mengapa penting"
-        title="Kepercayaan biasanya dimulai dari informasi legal yang bisa dicek dengan mudah."
-        summary="Saat legalitas terasa jelas, calon jemaah biasanya lebih nyaman untuk melanjutkan ke pembahasan paket, jadwal, dan biaya."
+        title="Banyak keluarga ingin melihat legalitas lebih dulu sebelum membahas hal lain."
+        summary="Itu wajar. Rasa tenang biasanya tumbuh saat identitas perusahaan dapat dilihat sejak awal."
       >
         <TrustSplitPanel
           left={
             <div className="rounded-[20px] border border-border bg-surface p-6 shadow-[var(--shadow-1)]">
-              <h3 className="text-2xl font-bold text-text">Catatan verifikasi</h3>
+              <h3 className="text-2xl font-bold text-text">Catatan singkat</h3>
               <div className="mt-5">
                 <TrustChecklist items={verificationNotes} />
               </div>
@@ -127,21 +127,21 @@ export default function LegalPage() {
           }
           right={
             <TrustCard
-              title="Siap lanjut ke paket atau konsultasi"
-              description="Setelah verifikasi dasar, Anda bisa melihat paket aktif atau langsung bertanya ke tim Mazaya melalui WhatsApp resmi."
+              title="Setelah itu, silakan lanjut ke paket atau konsultasi"
+              description="Jika data dasar ini sudah cukup, Anda dapat melihat paket aktif atau langsung bertanya ke tim Mazaya melalui WhatsApp resmi."
             />
           }
         />
       </TrustSection>
 
       <TrustCta
-        eyebrow="Langkah berikutnya"
-        title="Setelah legalitas terasa jelas, lanjutkan ke paket atau konsultasi pribadi."
-        summary="Tim Mazaya siap membantu menjelaskan jadwal, fasilitas, dan alur pendaftaran dengan bahasa yang mudah dipahami keluarga."
+        eyebrow="Konsultasi lanjutan"
+        title="Bila legalitas sudah Anda lihat, silakan lanjut bertanya soal paket atau pendaftaran."
+        summary="Tim Mazaya siap membantu menjelaskan jadwal, fasilitas, dan kebutuhan awal pendaftaran dengan penjelasan yang tenang dan tidak berbelit."
         primaryHref="/daftar"
-        primaryLabel="Daftar sekarang"
+        primaryLabel="Lihat paket Umrah"
         secondaryHref={whatsappUrl}
-        secondaryLabel="WhatsApp konsultasi"
+        secondaryLabel="WhatsApp Konsultasi"
         secondaryExternal
       />
     </TrustPageLayout>

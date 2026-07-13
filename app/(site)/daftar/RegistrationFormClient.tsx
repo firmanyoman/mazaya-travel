@@ -33,7 +33,7 @@ const progressSteps = [
   {
     id: '03',
     title: 'Kirim & konfirmasi',
-    description: 'Tim Mazaya meninjau lalu melanjutkan follow-up via WhatsApp.',
+    description: 'Tim Mazaya meninjau data lalu menghubungi Anda melalui WhatsApp.',
   },
 ]
 
@@ -139,11 +139,11 @@ export default function RegistrationFormClient({
     : [
         {
           label: 'Belum memilih paket',
-          value: 'Silakan pilih paket dulu agar tim kami menindaklanjuti dengan konteks yang tepat.',
+          value: 'Silakan pilih paket lebih dulu agar tim Mazaya mengetahui keberangkatan yang Anda maksud.',
         },
         {
-          label: 'Butuh bantuan memilih?',
-          value: 'Gunakan tombol WhatsApp di samping untuk konsultasi singkat sebelum mengisi.',
+          label: 'Butuh bantuan?',
+          value: 'Gunakan tombol WhatsApp di samping bila ingin bertanya sebelum mulai mengisi.',
         },
       ]
 
@@ -234,18 +234,18 @@ export default function RegistrationFormClient({
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full border border-primary/10 bg-primary-soft px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
-                Guided intake
+                Form pendaftaran Mazaya
               </span>
               <span className="rounded-full bg-brand-yellow/70 px-3 py-1 text-xs font-bold text-text">
-                Tenang & terarah
+                Untuk data awal jamaah
               </span>
             </div>
             <div className="space-y-4">
               <h1 className="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-[52px] lg:leading-[1.16]">
-                Formulir pendaftaran yang lebih rapi untuk membantu tim Mazaya menindaklanjuti dengan tepat.
+                Formulir pendaftaran untuk membantu tim Mazaya menerima data awal jamaah dengan rapi.
               </h1>
               <p className="max-w-2xl text-[17px] leading-8 text-muted lg:text-lg">
-                Isi data inti jemaah, pilih paket yang ingin didaftarkan, lalu unggah metadata KTP sebagai bahan verifikasi awal. Setelah form masuk, tindak lanjut dilakukan secara personal melalui WhatsApp.
+                Isi data inti jamaah, pilih paket yang ingin didaftarkan, lalu kirimkan form ini. Setelah data masuk, tim Mazaya akan menindaklanjutinya secara personal melalui WhatsApp.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
@@ -270,7 +270,7 @@ export default function RegistrationFormClient({
                 {selectedPackage ? 'Paket yang sedang Anda daftarkan' : 'Panduan sebelum mulai'}
               </div>
               <div className="mt-3 text-2xl font-bold leading-snug">
-                {selectedPackage ? selectedPackage.title : 'Pilih paket lebih dulu agar proses follow-up lebih akurat.'}
+                {selectedPackage ? selectedPackage.title : 'Pilih paket lebih dulu agar tim Mazaya mengetahui keberangkatan yang Anda maksud.'}
               </div>
               <div className="mt-5 grid gap-3">
                 {packageGuidance.map((item) => (
@@ -293,7 +293,7 @@ export default function RegistrationFormClient({
                   variant="ghost"
                   className="border border-white/20 text-white hover:bg-white/10 sm:min-w-44"
                 >
-                  Konsultasi WhatsApp
+                  WhatsApp Konsultasi
                 </Button>
               </div>
             </div>
@@ -595,9 +595,9 @@ export default function RegistrationFormClient({
                   <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                     4. Document upload
                   </div>
-                  <h2 className="text-2xl font-bold text-text">Unggah metadata KTP untuk verifikasi awal</h2>
+                  <h2 className="text-2xl font-bold text-text">Unggah file KTP untuk pemeriksaan awal</h2>
                   <p className="max-w-2xl text-sm leading-7 text-muted">
-                    Untuk alur saat ini, sistem menyimpan metadata file KTP sebagai bukti upload awal. Dokumen final tetap ditindaklanjuti aman oleh admin.
+                    File ini membantu admin memeriksa data awal pendaftar. Dokumen lanjutan tetap akan dibicarakan secara langsung bila diperlukan.
                   </p>
                 </div>
 
@@ -676,7 +676,7 @@ export default function RegistrationFormClient({
                     variant="secondary"
                     size="lg"
                   >
-                    Tanya jawab via WhatsApp
+                    WhatsApp Konsultasi
                   </Button>
                 </div>
                 {!isPackageChosen ? (
@@ -693,7 +693,7 @@ export default function RegistrationFormClient({
               <div className="space-y-5">
                 <div>
                   <div className="text-sm font-semibold text-primary">Bantuan singkat</div>
-                  <h2 className="mt-2 text-2xl font-bold text-text">Agar pengisian terasa lebih ringan</h2>
+                  <h2 className="mt-2 text-2xl font-bold text-text">Hal yang baik disiapkan sebelum mengisi</h2>
                 </div>
                 <div className="grid gap-3">
                   <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
@@ -702,7 +702,7 @@ export default function RegistrationFormClient({
                   </div>
                   <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-sm font-semibold text-text">Gunakan nomor WhatsApp pribadi</div>
-                    <div className="mt-1 text-sm leading-7 text-muted">Nomor aktif mempercepat verifikasi dan penjelasan langkah berikutnya.</div>
+                    <div className="mt-1 text-sm leading-7 text-muted">Nomor aktif membantu admin menghubungi Anda tanpa tertunda.</div>
                   </div>
                   <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-sm font-semibold text-text">Belum yakin paketnya?</div>
@@ -724,7 +724,7 @@ export default function RegistrationFormClient({
                     Hubungi via WhatsApp
                   </Button>
                   <Button href="/paket-umrah" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
-                    Bandingkan paket
+                    Lihat paket Umrah
                   </Button>
                 </div>
               </div>
@@ -741,7 +741,7 @@ export default function RegistrationFormClient({
                     Tim akan meninjau ulang data yang masuk sebelum meminta dokumen lanjutan.
                   </li>
                   <li className="rounded-[16px] border border-border bg-surface-subtle px-4 py-3">
-                    Jika ada hal yang belum lengkap, follow-up dilakukan secara personal agar tidak membingungkan.
+                    Jika ada data yang belum lengkap, admin akan menghubungi Anda secara personal agar penjelasannya tidak terputus.
                   </li>
                 </ul>
               </div>

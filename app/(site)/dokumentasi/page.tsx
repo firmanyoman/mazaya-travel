@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 export const metadata: Metadata = {
   title: 'Dokumentasi Jamaah | Kegiatan dan Pendampingan Mazaya',
   description:
-    'Lihat dokumentasi kegiatan jamaah dan pendampingan tim Mazaya Travel sebagai gambaran suasana layanan sebelum Anda memilih paket.',
+    'Lihat dokumentasi kegiatan jamaah dan pendampingan tim Mazaya Travel sebagai gambaran suasana perjalanan sebelum Anda memilih paket.',
 }
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20tanya%20paket%20setelah%20melihat%20dokumentasi'
@@ -52,35 +52,35 @@ export default function DocumentationPage() {
         eyebrow="Dokumentasi Mazaya"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Dokumentasi yang membantu Anda melihat suasana layanan dan pendampingan jamaah."
-        summary="Melalui halaman ini, Anda bisa mendapat gambaran tentang kegiatan manasik, kebersamaan jamaah, dan cara tim Mazaya mendampingi perjalanan ibadah."
+        title="Dokumentasi yang memberi gambaran tentang suasana perjalanan bersama Mazaya."
+        summary="Melalui halaman ini, Anda dapat melihat manasik, kebersamaan jamaah, dan bagaimana tim Mazaya mendampingi perjalanan ibadah di berbagai momen."
         actions={
           <>
             <Button href="/paket-umrah" size="lg">
               Lihat paket Umrah
             </Button>
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-              WhatsApp konsultasi
+              WhatsApp Konsultasi
             </Button>
           </>
         }
         metrics={[
           { value: `${galleryItems.length} momen`, label: 'Dokumentasi kegiatan jamaah dan pendampingan tim' },
-          { value: 'Suasana nyata', label: 'Membantu keluarga melihat gambaran layanan di lapangan' },
-          { value: 'Mudah dilihat', label: 'Bisa dibuka cepat saat berdiskusi bersama keluarga' },
+          { value: 'Suasana nyata', label: 'Memberi gambaran perjalanan yang dijalani jamaah' },
+          { value: 'Untuk keluarga', label: 'Dapat dilihat bersama saat mempertimbangkan keberangkatan' },
         ]}
-        panelTitle="Yang bisa Anda lihat di sini"
+        panelTitle="Yang dapat Anda lihat"
         panelItems={[
           { label: 'Kegiatan jamaah', value: 'Manasik, keberangkatan, dan momen selama perjalanan' },
           { label: 'Pendampingan tim', value: 'Cara Mazaya mendampingi jamaah di berbagai tahap perjalanan' },
-          { label: 'Langkah lanjut', value: 'Setelah melihat dokumentasi, Anda bisa lanjut ke paket atau konsultasi' },
+          { label: 'Setelah melihatnya', value: 'Anda dapat lanjut ke paket atau konsultasi bila masih ingin bertanya' },
         ]}
       />
 
       <ContentSection
         eyebrow="Galeri kegiatan"
-        title="Dokumentasi yang memberi gambaran lebih nyata tentang perjalanan bersama Mazaya."
-        summary="Foto-foto ini membantu calon jemaah dan keluarga melihat suasana layanan sebelum melangkah ke tahap konsultasi atau pendaftaran."
+        title="Dokumentasi yang membantu calon jemaah melihat suasana perjalanan dengan lebih dekat."
+        summary="Bagi banyak keluarga, melihat dokumentasi seperti ini membantu menghadirkan rasa tenang sebelum lanjut ke tahap berikutnya."
       >
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {galleryItems.map((item) => (
@@ -105,7 +105,7 @@ export default function DocumentationPage() {
               {[
                 'Membantu calon jemaah melihat suasana pendampingan secara visual.',
                 'Memberi gambaran awal kepada keluarga sebelum bertanya soal paket dan keberangkatan.',
-                'Membantu Anda merasa lebih siap saat melanjutkan ke konsultasi atau pendaftaran.',
+                'Sering kali membuat pembicaraan awal terasa lebih tenang karena ada bayangan yang bisa dilihat bersama.',
               ].map((item) => (
                 <div key={item} className="rounded-[16px] border border-border bg-surface px-4 py-4 text-sm leading-7 text-text-secondary">
                   {item}
@@ -115,16 +115,16 @@ export default function DocumentationPage() {
           </div>
           <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
             <div className="text-sm font-semibold text-white/72">Setelah melihat dokumentasi</div>
-            <h2 className="mt-3 text-2xl font-bold leading-snug">Lanjutkan ke langkah yang paling membantu Anda mengambil keputusan.</h2>
+            <h2 className="mt-3 text-2xl font-bold leading-snug">Jika dokumentasi ini sudah cukup memberi gambaran, silakan lanjut ke paket atau konsultasi.</h2>
             <p className="mt-3 text-sm leading-7 text-white/78">
-              Jika dokumentasi ini sudah memberi gambaran yang cukup, Anda bisa melihat paket aktif atau langsung bertanya lewat WhatsApp untuk menyesuaikan jadwal dan kebutuhan keluarga.
+              Anda dapat melihat paket aktif atau langsung bertanya lewat WhatsApp bila masih ingin menyesuaikan jadwal dan kebutuhan keluarga.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <Button href="/paket-umrah" variant="secondary" fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
                 Lihat paket
               </Button>
               <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
-                WhatsApp konsultasi
+                WhatsApp Konsultasi
               </Button>
             </div>
           </div>
@@ -133,12 +133,12 @@ export default function DocumentationPage() {
 
       <ContentCta
         eyebrow="Lanjut bertanya"
-        title="Butuh penjelasan lebih lanjut setelah melihat dokumentasi?"
-        summary="Tim Mazaya siap membantu menjelaskan paket aktif, pendampingan yang tersedia, dan langkah daftar yang perlu Anda siapkan."
+        title="Jika masih ingin bertanya setelah melihat dokumentasi, silakan hubungi kami."
+        summary="Tim Mazaya siap membantu menjelaskan paket aktif, pendampingan yang tersedia, dan kebutuhan awal pendaftaran dengan penjelasan yang sabar."
         primaryHref={whatsappUrl}
-        primaryLabel="WhatsApp konsultasi"
+        primaryLabel="WhatsApp Konsultasi"
         secondaryHref="/paket-umrah"
-        secondaryLabel="Lihat paket aktif"
+        secondaryLabel="Lihat paket Umrah"
       />
     </ContentPageLayout>
   )

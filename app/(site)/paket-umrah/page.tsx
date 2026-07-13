@@ -8,7 +8,7 @@ import { getPackagesByCategory } from '@/app/lib/packages'
 export const metadata: Metadata = {
   title: 'Paket Umrah | Jadwal, Harga, dan Kursi Tersedia',
   description:
-    'Bandingkan paket Umrah Mazaya Travel berdasarkan jadwal keberangkatan, harga, durasi, fasilitas, dan ketersediaan kursi sebelum Anda mendaftar.',
+    'Lihat paket Umrah Mazaya Travel berdasarkan jadwal keberangkatan, harga, durasi, fasilitas, dan ketersediaan kursi sebelum Anda mendaftar.',
 }
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20paket%20Umrah'
@@ -102,18 +102,18 @@ export default async function PaketUmrahPage() {
               </div>
               <div className="space-y-4">
                 <p className="max-w-xl text-sm font-semibold text-text-secondary">
-                  Bandingkan paket Umrah berdasarkan jadwal keberangkatan, fasilitas, harga, dan ketersediaan kursi.
+                  Lihat paket Umrah berdasarkan jadwal keberangkatan, fasilitas, harga, dan ketersediaan kursi.
                 </p>
                 <h1 className="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-[56px] lg:leading-[1.14]">
-                  Pilih paket Umrah yang paling sesuai dengan kebutuhan, budget, dan kesiapan keluarga.
+                  Pilih paket Umrah yang terasa paling cocok dengan rencana keberangkatan Anda dan keluarga.
                 </h1>
                 <p className="max-w-2xl text-[17px] leading-8 text-muted lg:text-lg">
-                  Mazaya menampilkan informasi penting setiap paket agar Anda lebih mudah menentukan pilihan sebelum mendaftar atau berkonsultasi.
+                  Mazaya menampilkan informasi penting setiap paket agar calon jemaah dan keluarga dapat membacanya lebih dulu sebelum mendaftar atau bertanya lebih lanjut.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href="/daftar" size="lg" className="sm:min-w-48">
-                  Mulai Pendaftaran
+                  Lihat form pendaftaran
                 </Button>
                 <Button
                   href={whatsappUrl}
@@ -123,7 +123,7 @@ export default async function PaketUmrahPage() {
                   size="lg"
                   className="sm:min-w-48"
                 >
-                  Konsultasi WhatsApp
+                  WhatsApp Konsultasi
                 </Button>
               </div>
             </div>
@@ -145,18 +145,18 @@ export default async function PaketUmrahPage() {
                   </div>
                 </div>
                 <div className="mt-5 rounded-[16px] bg-surface-subtle px-4 py-3 text-sm leading-7 text-text-secondary">
-                  Mulailah dari jadwal keberangkatan, harga, dan sisa kursi. Setelah itu, bandingkan fasilitas dan pilih paket yang paling sesuai.
+                  Silakan mulai dari jadwal keberangkatan, harga, dan sisa kursi. Setelah itu, lihat fasilitas yang paling dekat dengan kebutuhan perjalanan Anda.
                 </div>
               </div>
               <div className="rounded-[20px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
                 <div className="text-sm font-semibold text-white/72">Panduan memilih paket</div>
                 <div className="mt-3 text-xl font-bold leading-snug">
-                  Pilih paket yang paling sesuai dengan waktu berangkat, kenyamanan perjalanan, dan kemampuan biaya keluarga.
+                  Pilih paket yang paling dekat dengan waktu berangkat, kenyamanan perjalanan, dan kesiapan keluarga.
                 </div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
                   {departureCities.length > 0
-                    ? `Saat ini tersedia keberangkatan dari ${departureCities.join(', ')}. Jika Anda ingin menyesuaikan jadwal, budget, atau kebutuhan dokumen, tim Mazaya siap membantu.`
-                    : 'Jika Anda ingin menyesuaikan jadwal, budget, atau kebutuhan dokumen, tim Mazaya siap membantu.'}
+                    ? `Saat ini tersedia keberangkatan dari ${departureCities.join(', ')}. Jika masih ada yang ingin dipastikan soal jadwal atau dokumen, tim Mazaya siap membantu.`
+                    : 'Jika masih ada yang ingin dipastikan soal jadwal atau dokumen, tim Mazaya siap membantu.'}
                 </p>
               </div>
             </div>
@@ -167,20 +167,20 @@ export default async function PaketUmrahPage() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
             {[
               {
-                value: 'Info utama jelas',
-                label: 'Jadwal, kota berangkat, harga, dan sisa kursi ditampilkan agar keluarga lebih cepat memahami pilihan.',
+                value: 'Info pokok ditampilkan',
+                label: 'Jadwal, kota berangkat, harga, dan sisa kursi kami tampilkan agar keluarga dapat membacanya lebih dulu.',
               },
               {
-                value: 'Mudah dibandingkan',
-                label: 'Setiap paket diringkas agar Anda bisa melihat perbedaan fasilitas dan biaya dengan lebih cepat.',
+                value: 'Bisa dilihat berdampingan',
+                label: 'Setiap paket diringkas agar perbedaan fasilitas dan biaya tidak perlu dicari terlalu jauh.',
               },
               {
                 value: 'Status kursi tegas',
                 label: 'Ketersediaan kursi ditampilkan terbuka agar calon jemaah tidak salah memperkirakan peluang berangkat.',
               },
               {
-                value: 'Konsultasi selalu terbuka',
-                label: 'Jika masih ragu, Anda bisa langsung menghubungi tim Mazaya untuk meminta penjelasan tambahan.',
+                value: 'Tim siap membantu',
+                label: 'Jika masih ada yang ingin ditanyakan, Anda dapat langsung menghubungi tim Mazaya.',
               },
             ].map((item) => (
               <div key={item.value} className="rounded-[16px] border border-border/80 bg-surface-subtle px-4 py-4">
@@ -200,10 +200,10 @@ export default async function PaketUmrahPage() {
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                 </div>
                 <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                  Lihat paket yang tersedia, bandingkan, lalu pilih yang paling cocok untuk Anda.
+                  Lihat paket yang tersedia, lalu pilih yang terasa paling dekat dengan rencana Anda.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-muted">
-                  Setiap kartu menampilkan jadwal, durasi, harga, fasilitas, dan kondisi kursi agar Anda lebih mudah mengambil keputusan.
+                  Setiap kartu memuat jadwal, durasi, harga, fasilitas, dan kondisi kursi agar dapat dibaca lebih dulu bersama keluarga.
                 </p>
               </div>
             </div>
@@ -337,10 +337,10 @@ export default async function PaketUmrahPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
-                Masih membandingkan jadwal, budget, atau kesiapan dokumen?
+                Jika masih ingin memastikan jadwal atau dokumen, silakan hubungi kami.
               </h2>
               <p className="max-w-2xl text-base leading-8 text-white/78">
-                Mulai dari percakapan singkat dulu. Tim Mazaya membantu memetakan opsi yang paling relevan tanpa mendorong calon jemaah mengambil keputusan terlalu cepat.
+                Anda dapat mulai dari percakapan singkat lebih dulu. Tim Mazaya akan membantu menjelaskan pilihan yang tersedia dengan sabar.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 lg:justify-items-end">
@@ -355,7 +355,7 @@ export default async function PaketUmrahPage() {
                 WhatsApp Konsultasi
               </Button>
               <Button href="/daftar" variant="ghost" size="lg" className="w-full border border-white/20 text-white hover:bg-white/10 lg:max-w-72">
-                Mulai Pendaftaran
+                Lihat form pendaftaran
               </Button>
             </div>
           </div>
