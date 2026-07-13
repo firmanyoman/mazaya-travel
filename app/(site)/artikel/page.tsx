@@ -7,7 +7,7 @@ import { articles } from './articles'
 export const metadata: Metadata = {
   title: 'Artikel Umrah & Haji | Panduan Dokumen, Biaya, dan Paket',
   description:
-    'Baca panduan Umrah dan Haji dari Mazaya Travel tentang dokumen, biaya, legalitas, persiapan ibadah, dan cara memilih paket yang sesuai.',
+    'Baca artikel Umrah dan Haji dari Mazaya Travel tentang dokumen, biaya, legalitas, persiapan ibadah, dan hal-hal yang biasa ingin diketahui calon jemaah sebelum berangkat.',
 }
 const whatsappUrl =
   'https://wa.me/6285298751997?text=Assalamualaikum%20Mazaya%20Travel,%20saya%20ingin%20konsultasi%20setelah%20membaca%20artikel'
@@ -31,8 +31,8 @@ export default function ArtikelPage() {
         eyebrow="Artikel Umrah & Haji"
         backHref="/"
         backLabel="Kembali ke Beranda"
-        title="Panduan singkat untuk calon jemaah yang ingin berangkat dengan persiapan lebih matang."
-        summary="Halaman ini berisi artikel yang membantu Anda memahami biaya, dokumen, alur pendaftaran, dan hal penting sebelum memilih paket Umrah atau Haji."
+        title="Bacaan untuk calon jemaah yang ingin mengenal hal-hal penting sebelum berangkat."
+        summary="Di sini Mazaya merangkum artikel tentang dokumen, biaya, legalitas, dan persiapan awal yang biasanya ingin dibaca lebih dulu oleh calon jemaah dan keluarga."
         actions={
           <>
             <Button href={featuredArticle ? `/artikel/${featuredArticle.slug}` : '/paket-umrah'} size="lg">
@@ -45,14 +45,14 @@ export default function ArtikelPage() {
         }
         metrics={[
           { value: `${articles.length} artikel`, label: 'Pembahasan ringkas seputar Umrah, Haji, dokumen, dan biaya' },
-          { value: `${categoryCount} topik`, label: 'Memudahkan Anda memilih bacaan sesuai kebutuhan saat ini' },
-          { value: 'Siap dibaca di HP', label: 'Nyaman dibuka saat berdiskusi dengan pasangan atau keluarga' },
+          { value: `${categoryCount} topik`, label: 'Disusun dari pertanyaan yang paling sering muncul sebelum mendaftar' },
+          { value: 'Siap dibaca di HP', label: 'Dapat dibuka kembali saat dibaca bersama keluarga' },
         ]}
-        panelTitle="Cara memakai halaman ini"
+        panelTitle="Yang bisa Anda lakukan di sini"
         panelItems={[
-          { label: 'Mulai dari', value: featuredArticle ? featuredArticle.title : 'Artikel yang paling sesuai dengan pertanyaan Anda' },
-          { label: 'Lanjut ke', value: 'Halaman paket jika sudah ingin membandingkan jadwal dan harga' },
-          { label: 'Hubungi WhatsApp', value: 'Jika ingin bertanya lebih lanjut setelah membaca artikel' },
+          { label: 'Mulai dari', value: featuredArticle ? featuredArticle.title : 'Artikel yang paling dekat dengan pertanyaan Anda' },
+          { label: 'Setelah membaca', value: 'Lihat halaman paket bila Anda ingin mengecek jadwal dan harga' },
+          { label: 'Hubungi kami', value: 'WhatsApp tetap tersedia jika ada yang ingin ditanyakan' },
         ]}
       />
 
@@ -76,7 +76,7 @@ export default function ArtikelPage() {
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href={`/artikel/${featuredArticle.slug}`}>Baca artikel ini</Button>
                 <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary">
-                  Tanya admin setelah membaca
+                  WhatsApp Konsultasi
                 </Button>
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function ArtikelPage() {
               <div className="rounded-[20px] border border-primary/10 bg-primary p-5 text-white shadow-[var(--shadow-2)]">
                 <div className="text-sm font-semibold text-white/72">Manfaat membaca artikel</div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
-                  Dengan membaca dulu, Anda biasanya lebih mudah memahami paket yang cocok, dokumen yang perlu disiapkan, dan pertanyaan apa yang perlu diajukan saat konsultasi.
+                  Banyak calon jemaah merasa lebih tenang setelah membaca dulu, karena mereka jadi tahu dokumen apa yang perlu disiapkan dan hal apa yang patut ditanyakan saat berbicara dengan admin.
                 </p>
               </div>
             </div>
@@ -104,8 +104,8 @@ export default function ArtikelPage() {
 
       <ContentSection
         eyebrow="Semua artikel"
-        title="Bacaan singkat yang membantu Anda lebih siap sebelum mendaftar."
-        summary="Setiap artikel dibuat untuk menjawab pertanyaan umum calon jemaah, supaya Anda tidak mulai dari nol saat menghubungi admin."
+        title="Artikel singkat yang menjawab pertanyaan yang paling sering muncul."
+        summary="Setiap tulisan di halaman ini dibuat untuk membantu calon jemaah membaca pokok persoalan lebih dulu sebelum bertanya lebih lanjut kepada admin."
       >
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {latestArticles.map((article) => (
@@ -133,13 +133,13 @@ export default function ArtikelPage() {
       </ContentSection>
 
       <ContentCta
-        eyebrow="Langkah berikutnya"
-        title="Sudah dapat gambaran? Lanjutkan ke paket atau konsultasi langsung."
-        summary="Anda bisa melihat paket aktif untuk membandingkan jadwal dan harga, atau langsung bertanya lewat WhatsApp bila ingin arahan yang lebih spesifik."
+        eyebrow="Setelah membaca"
+        title="Jika sudah ingin lanjut, silakan lihat paket atau hubungi kami langsung."
+        summary="Anda dapat membuka paket aktif untuk melihat jadwal dan harga, atau bertanya lewat WhatsApp bila masih ada yang ingin dipastikan."
         primaryHref="/paket-umrah"
         primaryLabel="Lihat paket Umrah"
         secondaryHref={whatsappUrl}
-        secondaryLabel="WhatsApp konsultasi"
+        secondaryLabel="WhatsApp Konsultasi"
         secondaryExternal
       />
     </ContentPageLayout>

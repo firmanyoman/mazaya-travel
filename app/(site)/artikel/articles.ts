@@ -18,32 +18,32 @@ export const articles: Article[] = [
     slug: 'cara-memilih-travel-umrah-yang-amanah',
     title: 'Cara Memilih Travel Umrah yang Amanah Sebelum Bayar DP',
     excerpt:
-      'Panduan ringkas untuk menilai legalitas, komunikasi, alur layanan, dan bukti pendampingan sebelum memutuskan daftar Umrah.',
+      'Catatan singkat untuk melihat legalitas, komunikasi, alur layanan, dan bukti pendampingan sebelum membayar DP.',
     category: 'Edukasi Jamaah',
     publishedAt: '2026-07-01',
     readTime: '4 menit baca',
     ctaTitle: 'Sudah punya shortlist travel?',
     ctaText:
-      'Lihat paket aktif Mazaya Travel atau mulai dari konsultasi WhatsApp bila masih ingin mencocokkan jadwal, budget, dan kesiapan dokumen.',
+      'Lihat paket aktif Mazaya Travel atau hubungi kami lewat WhatsApp bila masih ingin memastikan jadwal, biaya, dan dokumen awal.',
     sections: [
       {
         heading: 'Mulai dari legalitas yang bisa diverifikasi',
         paragraphs: [
           'Sebelum membahas harga, cek dulu identitas usaha dan legalitas dasarnya. Travel yang amanah memudahkan calon jamaah melihat nama perusahaan, status izin, dan data pendukung lain tanpa membuat proses verifikasi terasa rumit.',
-          'Bila legalitas sulit ditemukan atau penjelasannya berubah-ubah, calon jamaah sebaiknya menahan keputusan. Verifikasi awal ini penting untuk membantu keluarga merasa lebih tenang sebelum masuk tahap pembayaran.',
+          'Bila legalitas sulit ditemukan atau penjelasannya berubah-ubah, calon jamaah sebaiknya menahan diri dulu. Pemeriksaan awal seperti ini membantu keluarga merasa lebih tenang sebelum masuk tahap pembayaran.',
         ],
       },
       {
         heading: 'Perhatikan cara travel menjelaskan proses',
         paragraphs: [
           'Travel yang baik tidak hanya menjual jadwal keberangkatan. Mereka juga menjelaskan alur daftar, kebutuhan dokumen, kemungkinan timeline, dan siapa yang akan mendampingi jamaah selama proses berjalan.',
-          'Bahasa yang rapi dan mudah dipahami sering menjadi tanda bahwa operasionalnya juga lebih tertata. Ini sangat membantu calon jamaah baru yang belum pernah berangkat sebelumnya.',
+          'Penjelasan yang sabar dan tidak berbelit sering menjadi tanda bahwa operasionalnya juga dijaga. Ini membantu calon jamaah baru yang belum pernah berangkat sebelumnya.',
         ],
       },
       {
         heading: 'Lihat bukti layanan, bukan janji besar',
         paragraphs: [
-          'Dokumentasi, testimoni, dan detail paket yang jelas biasanya lebih berguna daripada klaim yang terlalu besar. Calon jemaah butuh bukti nyata bahwa travel terbiasa mendampingi perjalanan dengan rapi dan terbuka.',
+          'Dokumentasi, testimoni, dan detail paket yang terbuka biasanya lebih berguna daripada klaim yang terlalu besar. Calon jemaah butuh bukti bahwa travel terbiasa mendampingi perjalanan dengan baik.',
           'Gunakan halaman dokumentasi, testimoni, dan FAQ sebagai bahan banding sebelum menghubungi admin. Dengan begitu, pertanyaan saat konsultasi bisa lebih spesifik dan tidak mengulang hal dasar.',
         ],
       },
@@ -53,18 +53,18 @@ export const articles: Article[] = [
     slug: 'dokumen-awal-yang-perlu-disiapkan-untuk-umrah',
     title: 'Dokumen Awal yang Perlu Disiapkan untuk Pendaftaran Umrah',
     excerpt:
-      'Daftar dokumen dasar yang umumnya ditanyakan lebih awal agar proses konsultasi dan pendaftaran terasa lebih ringan.',
+      'Dokumen dasar yang biasanya ditanyakan pada awal konsultasi dan pendaftaran Umrah.',
     category: 'Persiapan',
     publishedAt: '2026-06-28',
     readTime: '3 menit baca',
     ctaTitle: 'Ingin cek kesiapan berkas sambil lihat jadwal?',
     ctaText:
-      'Buka halaman paket aktif untuk melihat pilihan keberangkatan, lalu lanjutkan ke WhatsApp bila ingin memastikan dokumen apa yang paling relevan untuk kondisi Anda.',
+      'Buka halaman paket aktif untuk melihat pilihan keberangkatan, lalu hubungi kami bila ingin memastikan dokumen awal yang perlu disiapkan.',
     sections: [
       {
         heading: 'Siapkan identitas dasar lebih dulu',
         paragraphs: [
-          'Pada tahap awal, calon jamaah biasanya diminta menyiapkan data identitas dasar seperti nama lengkap dan dokumen pendukung yang mudah diverifikasi. Ini membantu tim travel memberi arahan yang lebih tepat sejak awal.',
+          'Pada tahap awal, calon jamaah biasanya diminta menyiapkan data identitas dasar seperti nama lengkap dan dokumen pendukung. Data ini membantu tim travel membaca kebutuhan awal dengan lebih tepat.',
           'Menyiapkan dokumen dasar lebih cepat bukan berarti semua berkas harus lengkap di hari pertama. Tujuannya agar proses konsultasi menjadi efisien dan calon jamaah tidak bingung saat mulai daftar.',
         ],
       },
@@ -72,14 +72,14 @@ export const articles: Article[] = [
         heading: 'Pisahkan dokumen wajib dan dokumen lanjutan',
         paragraphs: [
           'Ada dokumen yang memang dibutuhkan lebih cepat, dan ada juga yang menyusul mengikuti tahap proses atau kebijakan paket. Memahami perbedaan ini penting supaya jamaah tidak merasa terbebani di awal.',
-          'Saat konsultasi, mintalah daftar prioritas: mana yang perlu segera disiapkan, mana yang bisa menyusul. Struktur seperti ini membuat langkah pendaftaran terasa lebih manusiawi dan terarah.',
+          'Saat konsultasi, mintalah daftar prioritas: mana yang perlu segera disiapkan, mana yang bisa menyusul. Cara ini membuat pendaftaran awal terasa lebih ringan.',
         ],
       },
       {
         heading: 'Simpan salinan digital yang rapi',
         paragraphs: [
           'Untuk kebutuhan online, salinan digital yang jelas dan mudah dibaca akan sangat membantu. File yang rapi mempercepat pengecekan awal dan mengurangi risiko bolak-balik kirim dokumen.',
-          'Jika belum yakin format file seperti apa yang aman dikirim, tanyakan dulu ke admin. Lebih baik jelas di awal daripada salah unggah dan mengulang proses.',
+          'Jika belum yakin format file seperti apa yang aman dikirim, tanyakan dulu ke admin. Lebih baik memastikan dari awal daripada salah unggah dan mengulang proses.',
         ],
       },
     ],
@@ -94,13 +94,13 @@ export const articles: Article[] = [
     readTime: '4 menit baca',
     ctaTitle: 'Mau bandingkan jadwal yang masih relevan?',
     ctaText:
-      'Lihat paket Umrah yang tersedia lalu pilih detail yang paling dekat dengan target keberangkatan Anda. Jika masih ragu, konsultasi singkat sering lebih cepat daripada menunda terlalu lama.',
+      'Lihat paket Umrah yang tersedia, lalu buka detail yang paling dekat dengan rencana keberangkatan Anda. Jika masih ragu, silakan hubungi kami lebih dulu.',
     sections: [
       {
-        heading: 'Daftar lebih awal memberi ruang keputusan',
+        heading: 'Daftar lebih awal memberi ruang untuk menimbang',
         paragraphs: [
           'Saat daftar terlalu mepet, pilihan paket biasanya semakin sempit. Kursi, hotel, atau opsi jadwal bisa berubah lebih cepat sehingga calon jamaah kehilangan ruang untuk membandingkan dengan tenang.',
-          'Mendaftar lebih awal tidak selalu berarti harus langsung bayar penuh. Yang lebih penting adalah membuka komunikasi lebih cepat agar Anda tahu posisi seat, timeline, dan langkah persiapan yang realistis.',
+          'Mendaftar lebih awal tidak selalu berarti harus langsung bayar penuh. Yang lebih penting adalah membuka komunikasi lebih cepat agar Anda tahu posisi kursi, perkiraan waktu, dan persiapan yang realistis.',
         ],
       },
       {
@@ -123,26 +123,26 @@ export const articles: Article[] = [
     slug: 'apa-yang-perlu-ditanyakan-saat-konsultasi-umrah',
     title: 'Apa yang Perlu Ditanyakan Saat Konsultasi Umrah?',
     excerpt:
-      'Pertanyaan inti yang membantu calon jamaah mendapat gambaran jelas tentang paket, proses daftar, dan pendampingan.',
+      'Pertanyaan inti yang biasanya perlu ditanyakan sebelum memilih paket dan mengisi pendaftaran.',
     category: 'Konsultasi',
     publishedAt: '2026-06-20',
     readTime: '5 menit baca',
     ctaTitle: 'Siap lanjut tanya yang spesifik?',
     ctaText:
-      'Gunakan daftar pertanyaan ini saat membuka detail paket atau ketika menghubungi tim lewat WhatsApp agar konsultasi lebih fokus dan tidak melebar ke hal yang belum perlu.',
+      'Gunakan daftar pertanyaan ini saat membuka detail paket atau saat menghubungi tim Mazaya, supaya percakapan tetap fokus pada hal yang memang perlu Anda pastikan.',
     sections: [
       {
         heading: 'Tanyakan hal yang memengaruhi keputusan',
         paragraphs: [
-          'Prioritaskan pertanyaan tentang jadwal, durasi, kota keberangkatan, harga, status seat, dan apa saja yang termasuk dalam paket. Ini adalah informasi yang paling cepat memengaruhi keputusan awal.',
-          'Dengan urutan ini, konsultasi menjadi lebih efisien dan Anda bisa segera tahu apakah paket tersebut memang masuk kriteria atau tidak.',
+          'Prioritaskan pertanyaan tentang jadwal, durasi, kota keberangkatan, harga, status kursi, dan apa saja yang termasuk dalam paket. Informasi seperti ini biasanya paling dibutuhkan di awal.',
+          'Dengan urutan ini, percakapan menjadi lebih terarah dan Anda bisa melihat apakah paket tersebut dekat dengan kebutuhan keluarga.',
         ],
       },
       {
-        heading: 'Pastikan alur daftar dipahami',
+        heading: 'Tanyakan alur pendaftaran sejak awal',
         paragraphs: [
-          'Selain detail paket, tanyakan bagaimana alur setelah mengisi form, siapa yang menghubungi, dan dokumen apa yang biasanya diminta lebih dulu. Banyak calon jamaah merasa lebih tenang setelah mengetahui langkah berikutnya.',
-          'Alur yang jelas membantu mengurangi rasa takut salah langkah, terutama untuk user yang baru pertama kali memakai website pendaftaran.',
+          'Selain detail paket, tanyakan bagaimana alur setelah mengisi form, siapa yang akan menghubungi, dan dokumen apa yang biasanya diminta lebih dulu. Calon jamaah biasanya lebih tenang ketika alurnya dijelaskan sejak awal.',
+          'Penjelasan alur membantu mengurangi rasa takut salah isi, terutama untuk calon jamaah yang baru pertama kali memakai form pendaftaran online.',
         ],
       },
       {

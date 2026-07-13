@@ -47,7 +47,7 @@ export default async function ArticleDetailPage({ params }: Props) {
 
   const whatsappUrl =
     'https://wa.me/6285298751997?text=' +
-    encodeURIComponent(`Assalamualaikum Mazaya Travel, saya ingin konsultasi setelah membaca artikel ${article.title}`)
+    encodeURIComponent(`Assalamualaikum Mazaya Travel, saya ingin bertanya setelah membaca artikel ${article.title}`)
 
   const relatedArticles = articles.filter((item) => item.slug !== article.slug).slice(0, 3)
 
@@ -65,7 +65,7 @@ export default async function ArticleDetailPage({ params }: Props) {
               Lihat paket Umrah
             </Button>
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-              Konsultasi WhatsApp
+              WhatsApp Konsultasi
             </Button>
           </>
         }
@@ -77,8 +77,8 @@ export default async function ArticleDetailPage({ params }: Props) {
         panelTitle="Ringkasan artikel"
         panelItems={[
           { label: 'Kategori', value: article.category },
-          { label: 'Tujuan baca', value: 'Membantu memahami kesiapan, pertimbangan paket, dan langkah lanjut sebelum konsultasi' },
-          { label: 'Arah setelah membaca', value: 'Cek paket aktif atau gunakan WhatsApp untuk pertanyaan yang lebih spesifik' },
+          { label: 'Isi utama', value: 'Membantu pembaca memahami pokok persoalan yang sedang mereka cari' },
+          { label: 'Setelah membaca', value: 'Lihat paket aktif atau hubungi kami bila masih ada yang ingin ditanyakan' },
         ]}
       />
 
@@ -108,17 +108,17 @@ export default async function ArticleDetailPage({ params }: Props) {
 
           <div className="grid gap-4 xl:sticky xl:top-6">
             <SectionShell surface="card" className="px-5 py-5 md:px-6 md:py-6">
-              <div className="text-sm font-semibold text-primary">Setelah selesai membaca</div>
+              <div className="text-sm font-semibold text-primary">Jika ingin lanjut</div>
               <div className="mt-4 grid gap-3">
                 <Button href="/paket-umrah" fullWidth>
-                  Lihat paket aktif
+                  Lihat paket Umrah
                 </Button>
                 <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="secondary" fullWidth>
-                  WhatsApp konsultasi
+                  WhatsApp Konsultasi
                 </Button>
               </div>
               <div className="mt-4 rounded-[16px] border border-border bg-surface-subtle px-4 py-3 text-sm leading-7 text-muted">
-                Cocok dipakai saat Anda sudah paham konteks artikel dan ingin menanyakan jadwal, dokumen, atau kesiapan daftar.
+                Cocok dipakai bila Anda sudah selesai membaca dan ingin menanyakan jadwal, dokumen, atau hal lain yang masih belum jelas.
               </div>
             </SectionShell>
 
@@ -140,13 +140,13 @@ export default async function ArticleDetailPage({ params }: Props) {
       </SectionShell>
 
       <ContentCta
-        eyebrow="Langkah berikutnya"
+        eyebrow="Setelah membaca"
         title={article.ctaTitle}
         summary={article.ctaText}
         primaryHref="/paket-umrah"
-        primaryLabel="Lihat paket"
+        primaryLabel="Lihat paket Umrah"
         secondaryHref={whatsappUrl}
-        secondaryLabel="WhatsApp konsultasi"
+        secondaryLabel="WhatsApp Konsultasi"
         secondaryExternal
       />
     </ContentPageLayout>

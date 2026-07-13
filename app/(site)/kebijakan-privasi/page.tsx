@@ -26,7 +26,7 @@ const privacyPoints = [
   {
     title: 'Tujuan penggunaan data',
     body:
-      'Data digunakan untuk memproses pendaftaran awal Umrah atau Haji, menghubungi calon jamaah untuk tindak lanjut, memverifikasi kebutuhan administrasi dasar, dan membantu tim internal menyiapkan layanan yang relevan dengan paket yang dipilih.',
+      'Data digunakan untuk memproses pendaftaran awal Umrah atau Haji, menghubungi calon jamaah, memeriksa kebutuhan administrasi dasar, dan membantu tim internal menyiapkan layanan yang berkaitan dengan paket yang dipilih.',
   },
   {
     title: 'Persetujuan pengguna',
@@ -36,7 +36,7 @@ const privacyPoints = [
   {
     title: 'Penyimpanan dan akses internal',
     body:
-      'Data lead disimpan untuk kebutuhan tindak lanjut internal Mazaya Travel. Akses data dibatasi untuk keperluan operasional yang relevan, seperti follow up pendaftaran, verifikasi awal, dan koordinasi layanan calon jamaah.',
+      'Data lead disimpan untuk kebutuhan internal Mazaya Travel. Akses data dibatasi untuk keperluan operasional yang relevan, seperti pemeriksaan pendaftaran awal dan koordinasi layanan calon jamaah.',
   },
   {
     title: 'Berbagi data',
@@ -46,15 +46,15 @@ const privacyPoints = [
   {
     title: 'Hak untuk menghubungi kami',
     body:
-      'Jika Anda ingin menanyakan penggunaan data, memperbarui informasi kontak, atau meminta tindak lanjut terkait data yang sudah dikirim, silakan hubungi tim Mazaya Travel melalui WhatsApp resmi yang tercantum di website.',
+      'Jika Anda ingin menanyakan penggunaan data, memperbarui informasi kontak, atau memastikan data yang sudah dikirim, silakan hubungi tim Mazaya Travel melalui WhatsApp resmi yang tercantum di website.',
   },
 ]
 
 const privacyContext = [
   'Form pendaftaran meminta data identitas dasar dan persetujuan privasi sebelum submit.',
-  'Nomor WhatsApp dipakai untuk koordinasi lanjutan dan arahan langkah berikutnya.',
+  'Nomor WhatsApp dipakai untuk koordinasi lanjutan bila ada data yang perlu dipastikan.',
   'File KTP, bila diunggah, diperlakukan sebagai data sensitif untuk kebutuhan administrasi awal.',
-  'Halaman ini dapat berubah bila alur pengumpulan data atau operasional layanan berubah pada fase berikutnya.',
+  'Isi halaman ini dapat diperbarui bila ada perubahan pada alur pengumpulan data atau kebutuhan operasional layanan.',
 ]
 
 export default function PrivacyPolicyPage() {
@@ -62,8 +62,8 @@ export default function PrivacyPolicyPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Privasi pengguna"
-        title="Kebijakan privasi untuk melindungi data calon jemaah sejak tahap konsultasi dan pendaftaran awal."
-        summary="Halaman ini menjelaskan data apa yang dikirim calon jemaah, untuk apa data digunakan, dan bagaimana Mazaya Travel menjaganya selama proses layanan berlangsung."
+        title="Penjelasan tentang bagaimana Mazaya menjaga data calon jemaah yang dikirim melalui website."
+        summary="Di halaman ini, kami menjelaskan jenis data yang masuk, untuk apa data itu dipakai, dan siapa yang dapat membantu jika Anda ingin meminta penjelasan lebih lanjut."
         stats={[
           { value: 'Seperlunya', label: 'Data dipakai sesuai konteks layanan dan pendaftaran' },
           { value: 'Internal', label: 'Akses dibatasi untuk kebutuhan operasional yang relevan' },
@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
         panelTitle="Ringkasan cepat"
         panelItems={[
           { label: 'Sumber data utama', value: 'Form pendaftaran dan jalur konsultasi' },
-          { label: 'Penggunaan inti', value: 'Tindak lanjut pendaftaran dan administrasi awal' },
+          { label: 'Penggunaan inti', value: 'Pendaftaran awal dan pemeriksaan administrasi dasar' },
           { label: 'Akses internal', value: 'Dibatasi sesuai kebutuhan operasional' },
           { label: 'Kanal klarifikasi', value: 'WhatsApp resmi Mazaya Travel' },
         ]}
@@ -80,8 +80,8 @@ export default function PrivacyPolicyPage() {
 
       <TrustSection
         eyebrow="Pokok kebijakan"
-        title="Hal-hal penting yang perlu dipahami sebelum Anda mengirim data pribadi"
-        summary="Silakan baca poin-poin ini agar Anda mengetahui data apa yang kami terima, bagaimana data digunakan, dan kepada siapa Anda dapat meminta klarifikasi."
+        title="Hal-hal penting yang sebaiknya dibaca sebelum Anda mengirim data pribadi"
+        summary="Poin-poin ini menjelaskan data apa yang kami terima, bagaimana data digunakan, dan ke mana Anda dapat bertanya bila ingin klarifikasi."
       >
         <div className="grid gap-4">
           {privacyPoints.map((item, index) => (
@@ -120,12 +120,12 @@ export default function PrivacyPolicyPage() {
 
       <TrustCta
         eyebrow="Klarifikasi privasi"
-        title="Masih ada pertanyaan soal penggunaan data pribadi?"
-        summary="Silakan hubungi tim Mazaya untuk meminta penjelasan langsung sebelum atau sesudah Anda mengirim data melalui website."
+        title="Jika masih ada pertanyaan soal penggunaan data pribadi, silakan hubungi kami."
+        summary="Tim Mazaya siap menjelaskan hal-hal yang ingin Anda pastikan sebelum atau sesudah mengirim data melalui website."
         primaryHref={whatsappUrl}
-        primaryLabel="WhatsApp konsultasi"
+        primaryLabel="WhatsApp Konsultasi"
         secondaryHref="/daftar"
-        secondaryLabel="Buka form pendaftaran"
+        secondaryLabel="Lihat form pendaftaran"
       />
     </TrustPageLayout>
   )

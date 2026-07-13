@@ -42,7 +42,7 @@ const termsSections = [
   {
     title: 'Penggunaan jalur konsultasi',
     body:
-      'WhatsApp konsultasi digunakan untuk tanya jawab awal, klarifikasi paket, dan arahan langkah berikutnya. Jawaban tim akan mengikuti jam operasional dan antrean layanan yang sedang berjalan.',
+      'Jalur WhatsApp digunakan untuk tanya jawab awal, klarifikasi paket, dan penjelasan kebutuhan dasar sebelum pendaftaran. Jawaban tim akan mengikuti jam operasional dan antrean layanan yang sedang berjalan.',
   },
   {
     title: 'Privasi dan pembaruan kebijakan',
@@ -54,7 +54,7 @@ const termsSections = [
 const registrationNotes = [
   'Pastikan nomor WhatsApp aktif agar tim kami bisa menghubungi Anda kembali.',
   'Siapkan identitas dan dokumen dasar sebelum melanjutkan proses administrasi.',
-  'Baca juga kebijakan privasi agar Anda memahami penggunaan data pada pendaftaran awal.',
+  'Baca juga kebijakan privasi agar Anda tahu bagaimana data dipakai pada pendaftaran awal.',
 ]
 
 export default function TermsPage() {
@@ -62,8 +62,8 @@ export default function TermsPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Syarat & ketentuan"
-        title="Ketentuan dasar penggunaan website, konsultasi, dan pendaftaran awal paket Umrah & Haji."
-        summary="Halaman ini menjelaskan aturan dasar saat Anda memakai website Mazaya Travel, bertanya melalui WhatsApp, atau mengirim data pendaftaran awal."
+        title="Ketentuan dasar saat Anda menggunakan website, bertanya kepada admin, atau mengirim pendaftaran awal."
+        summary="Di sini kami menjelaskan batas informasi yang tampil di website, sifat pendaftaran awal, dan hal-hal yang perlu diperhatikan saat Anda memakai layanan kami."
         stats={[
           { value: 'Website', label: 'Mencakup penggunaan informasi, konsultasi, dan pendaftaran awal' },
           { value: 'Pendaftaran', label: 'Form online adalah langkah awal sebelum verifikasi lanjutan' },
@@ -103,7 +103,7 @@ export default function TermsPage() {
       <TrustSection
         eyebrow="Sebelum mendaftar"
         title="Beberapa hal yang sebaiknya disiapkan lebih dulu"
-        summary="Checklist singkat ini membantu calon jemaah menyiapkan data dan memahami langkah awal sebelum proses administrasi berlanjut."
+        summary="Checklist singkat ini membantu calon jemaah menyiapkan data dasar sebelum proses administrasi berjalan lebih jauh."
       >
         <TrustSplitPanel
           left={
@@ -117,18 +117,18 @@ export default function TermsPage() {
               </Link>
             </div>
           }
-          right={<TrustCard title="Lanjut dengan lebih mantap" description="Setelah memahami ketentuan dasar ini, Anda bisa lanjut ke jalur pendaftaran atau berkonsultasi lebih dulu agar kebutuhan paket dan dokumen terasa lebih jelas." />}
+          right={<TrustCard title="Jika masih ingin memastikan sesuatu" description="Setelah membaca ketentuan dasar ini, Anda dapat lanjut ke form pendaftaran atau bertanya lebih dulu bila masih ada hal yang ingin dipastikan." />}
         />
       </TrustSection>
 
       <TrustCta
-        eyebrow="Langkah berikutnya"
-        title="Siap lanjut melihat paket atau berkonsultasi lebih dulu?"
-        summary="Setelah memahami ketentuan dasar ini, Anda dapat melanjutkan dengan ritme yang nyaman sesuai kebutuhan keluarga dan kesiapan dokumen."
+        eyebrow="Jika ingin lanjut"
+        title="Silakan lanjut ke form pendaftaran atau hubungi kami lebih dulu."
+        summary="Bila masih ada hal yang ingin ditanyakan setelah membaca ketentuan ini, tim Mazaya siap membantu menjelaskannya."
         primaryHref="/daftar"
-        primaryLabel="Daftar sekarang"
+        primaryLabel="Lihat form pendaftaran"
         secondaryHref={whatsappUrl}
-        secondaryLabel="WhatsApp konsultasi"
+        secondaryLabel="WhatsApp Konsultasi"
         secondaryExternal
       />
     </TrustPageLayout>
