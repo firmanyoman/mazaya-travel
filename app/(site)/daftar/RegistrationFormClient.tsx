@@ -550,7 +550,7 @@ export default function RegistrationFormClient({
                   </div>
                   <h2 className="text-2xl font-bold text-text">Nomor aktif dan kota domisili</h2>
                   <p className="max-w-2xl text-sm leading-7 text-muted">
-                    Data ini dipakai untuk koordinasi jadwal, pengecekan berkas, dan pengingat langkah berikutnya.
+                    Data ini dipakai untuk koordinasi jadwal, pengecekan berkas, dan pengingat bila ada data yang perlu dilengkapi.
                   </p>
                 </div>
 

@@ -105,7 +105,7 @@ export default function ContactPage() {
       <TrustSection
         eyebrow="Kunjungan kantor"
         title="Bagi banyak calon jemaah, datang ke kantor menjadi cara yang menenangkan sebelum mendaftar."
-        summary="Terutama untuk jamaah Bone dan sekitarnya, bertemu langsung sering terasa lebih mantap sebelum membahas paket lebih jauh."
+        summary="Terutama untuk jamaah Bone dan sekitarnya, bertemu langsung sering membantu sebelum membahas paket lebih jauh."
       >
         <TrustSplitPanel
           left={
