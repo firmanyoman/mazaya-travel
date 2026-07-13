@@ -15,7 +15,7 @@ const faqs = [
   {
     question: 'Apakah Mazaya Travel memiliki legalitas yang jelas?',
     answer:
-      'Ya. Kami menampilkan identitas PT Mazaya Amanah Wisata, status PPIU resmi Kemenag RI, dan NIB agar calon jemaah dan keluarga dapat memeriksanya lebih dulu.',
+      'Ya. Nama PT Mazaya Amanah Wisata, status PPIU resmi Kemenag RI, dan NIB tersedia untuk dicek keluarga sebelum memilih paket.',
   },
   {
     question: 'Bagaimana cara melihat harga paket Umrah?',
@@ -25,7 +25,7 @@ const faqs = [
   {
     question: 'Bagaimana alur daftar di website ini?',
     answer:
-      'Anda bisa melihat paket lebih dulu, lalu mengisi formulir pendaftaran untuk mengirim data awal. Setelah itu tim kami akan menindaklanjuti melalui WhatsApp.',
+      'Anda bisa melihat paket lebih dulu, lalu mengisi formulir pendaftaran untuk mengirim data awal. Setelah itu tim Mazaya menghubungi Anda melalui WhatsApp.',
   },
   {
     question: 'Dokumen apa yang biasanya disiapkan saat pendaftaran awal?',

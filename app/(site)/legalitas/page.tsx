@@ -41,14 +41,14 @@ const legalDocuments = [
     type: 'NIB',
     number: '13052200161160002',
     summary:
-      'Nomor usaha yang kami tampilkan agar dapat diperiksa oleh calon jemaah dan keluarga.',
+      'Nomor usaha yang bisa menjadi pegangan keluarga saat mengecek identitas Mazaya.',
     accent: '03',
   },
 ]
 
 const verificationNotes = [
   'Informasi legal membantu calon jemaah mengenali identitas perusahaan sebelum melanjutkan pembicaraan ke paket.',
-  'Keluarga dapat melihat data dasar ini lebih dulu sebelum bertanya lebih jauh.',
+  'Keluarga tidak perlu menebak nama perusahaan, nomor usaha, atau lokasi layanan.',
   'Jika masih ada yang ingin dipastikan, tim Mazaya siap membantu lewat WhatsApp resmi atau kantor layanan di Bone.',
 ]
 
@@ -57,8 +57,8 @@ export default function LegalPage() {
     <TrustPageLayout>
       <TrustHero
         eyebrow="Legalitas Mazaya"
-        title="Legalitas Mazaya kami tampilkan terbuka agar calon jemaah dan keluarga dapat memeriksanya dengan tenang."
-        summary="Di halaman ini kami menampilkan informasi dasar perusahaan yang biasanya ingin dilihat lebih dulu sebelum seseorang membahas paket atau pendaftaran."
+        title="Legalitas Mazaya dapat Anda lihat sebelum membahas paket atau pendaftaran."
+        summary="Nama perusahaan, izin, nomor usaha, dan lokasi layanan kami satukan di sini agar keluarga punya pegangan sejak awal."
         actions={
           <>
             <Button href="/daftar" size="lg">
@@ -70,7 +70,7 @@ export default function LegalPage() {
           </>
         }
         stats={[
-          { value: 'Terbuka', label: 'Data legal utama kami tampilkan dalam satu halaman' },
+          { value: 'Jelas', label: 'Nama perusahaan, izin, dan NIB berada di satu halaman' },
           { value: 'Resmi', label: 'Berjalan dengan identitas perusahaan yang dapat diperiksa' },
           { value: 'Bone', label: 'Didukung kantor layanan yang dapat dikunjungi' },
         ]}
@@ -86,7 +86,7 @@ export default function LegalPage() {
       <TrustSection
         eyebrow="Legalitas utama"
         title="Informasi yang paling sering dicari sebelum calon jemaah melanjutkan pembicaraan ke paket."
-        summary="Kami menaruhnya di satu halaman agar calon jemaah dan keluarga dapat melihat data dasarnya tanpa perlu berpindah-pindah halaman."
+        summary="Data ini sering diminta keluarga sebelum mereka merasa nyaman membicarakan jadwal, biaya, dan pendaftaran."
       >
         <TrustCardGrid columns="three">
           {legalDocuments.map((item) => (

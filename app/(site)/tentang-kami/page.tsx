@@ -21,9 +21,9 @@ const whatsappUrl =
 
 const strengths = [
   {
-    title: 'Berjalan di atas identitas perusahaan yang terbuka',
+    title: 'Berjalan dengan identitas perusahaan yang jelas',
     description:
-      'Mazaya Travel beroperasi dengan nama PT Mazaya Amanah Wisata. Identitas ini kami tampilkan agar calon jemaah dan keluarga dapat memeriksanya dengan tenang.',
+      'Mazaya Travel beroperasi dengan nama PT Mazaya Amanah Wisata. Nama ini bisa dicocokkan saat keluarga ingin mengecek legalitas layanan.',
     accent: '01',
   },
   {

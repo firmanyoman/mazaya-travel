@@ -187,16 +187,16 @@ export default async function Home() {
       }))
 
   const trustItems = [
-    { value: 'Travel resmi', label: 'Legalitas perusahaan terbuka', detail: 'Dapat diperiksa sebelum memilih paket' },
+    { value: 'Travel resmi', label: 'Berbadan usaha jelas', detail: 'Nama perusahaan dan NIB tercatat sejak awal' },
     { value: 'Berbasis di Bone', label: 'Kantor dan kontak jelas', detail: 'Dekat untuk jamaah Bone dan sekitarnya' },
     { value: 'Pendampingan', label: 'Didampingi sejak awal', detail: 'Dari tanya paket sampai persiapan berangkat' },
-    { value: 'Paket aktif', label: 'Informasi inti ditampilkan', detail: 'Jadwal, harga, dan ketersediaan kursi' },
+    { value: 'Paket aktif', label: 'Jadwalnya bisa langsung dibaca', detail: 'Harga, hotel, dan kursi tidak disembunyikan' },
   ]
 
   const advantages = [
     {
-      title: 'Informasi paket disampaikan apa adanya',
-      description: 'Jadwal, harga, fasilitas, dan jalur konsultasi kami tampilkan agar jamaah bisa mempertimbangkan dengan lebih tenang.',
+      title: 'Detail paket tidak dibuat samar',
+      description: 'Calon jemaah bisa membaca jadwal, harga, fasilitas, dan jalur bertanya sebelum datang ke tahap pendaftaran.',
       accent: '01',
     },
     {
@@ -210,8 +210,8 @@ export default async function Home() {
       accent: '03',
     },
     {
-      title: 'Identitas perusahaan kami terbuka',
-      description: 'Legalitas, alamat, dan jalur komunikasi kami tampilkan agar jamaah dan keluarga bisa memeriksa lebih dulu.',
+      title: 'Nama perusahaan dan alamat kantor jelas',
+      description: 'Keluarga bisa tahu siapa yang mendampingi, di mana kantor Mazaya, dan ke mana harus bertanya bila ada yang perlu dipastikan.',
       accent: '04',
     },
   ]
@@ -283,7 +283,7 @@ export default async function Home() {
               <div className="grid gap-3 border-t border-border pt-6 sm:grid-cols-3">
                 <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
                   <div className="text-2xl font-bold text-primary">Resmi</div>
-                  <div className="text-sm text-muted">Legalitas perusahaan kami tampilkan terbuka</div>
+                  <div className="text-sm text-muted">Nama perusahaan dan NIB bisa dicek sejak awal</div>
                 </div>
                 <div className="rounded-[16px] bg-surface-subtle px-4 py-4">
                   <div className="text-2xl font-bold text-primary">Didampingi</div>
@@ -341,7 +341,7 @@ export default async function Home() {
                     <div className="text-sm font-semibold text-white/72">Legalitas perusahaan</div>
                     <div className="mt-3 text-2xl font-bold">NIB 13052200161160002</div>
                     <p className="mt-3 text-sm leading-7 text-white/78">
-                      Legalitas kami tampilkan terbuka agar calon jemaah dan keluarga bisa memeriksa lebih dulu.
+                      Nama perusahaan dan NIB tersedia sejak awal, supaya keluarga tahu dengan siapa mereka berurusan.
                     </p>
                   </div>
                 </div>
@@ -373,7 +373,7 @@ export default async function Home() {
                 Pilihan paket Umrah yang bisa Anda lihat, bandingkan, lalu pilih sesuai kebutuhan perjalanan.
               </h2>
               <p className="max-w-2xl text-base leading-8 text-muted">
-                Kami menampilkan informasi dasar yang biasa paling dulu ditanyakan: jadwal, hotel, harga, dan ketersediaan kursi.
+                Jadwal, hotel, harga, dan sisa kursi ditaruh di depan karena itu biasanya yang pertama kali ditanyakan keluarga.
               </p>
             </div>
             <Button href="/paket-umrah" variant="ghost" className="w-fit">
@@ -547,10 +547,10 @@ export default async function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
               </div>
               <h2 className="text-3xl font-bold leading-tight text-text sm:text-4xl">
-                Bagi kami, rasa tenang tumbuh dari informasi yang terbuka.
+                Keluarga berhak tahu siapa yang akan mendampingi perjalanan ibadah mereka.
               </h2>
               <p className="text-base leading-8 text-muted">
-                Karena itu, identitas perusahaan, alamat kantor, dan jalur komunikasi kami tampilkan dengan terbuka agar bisa diperiksa sebelum lanjut membahas paket.
+                Nama perusahaan, alamat kantor, dan nomor yang bisa dihubungi kami letakkan jelas agar calon jemaah tidak harus menebak-nebak.
               </p>
               <div className="grid gap-3">
                 {legalProof.map((item) => (
@@ -566,14 +566,14 @@ export default async function Home() {
                 <div className="text-sm font-semibold text-muted">Nama badan usaha</div>
                 <div className="mt-3 text-2xl font-bold leading-snug text-text">PT Mazaya Amanah Wisata</div>
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Nama badan usaha kami tampilkan apa adanya supaya keluarga bisa melakukan pengecekan dengan tenang.
+                  Nama inilah yang dipakai Mazaya saat melayani calon jemaah dan keluarga.
                 </p>
               </div>
               <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white">
                 <div className="text-sm font-semibold text-white/72">Nomor Induk Berusaha</div>
                 <div className="mt-3 text-3xl font-bold leading-tight">13052200161160002</div>
                 <p className="mt-3 text-sm leading-7 text-white/78">
-                  Nomor ini kami tampilkan agar calon jemaah dan keluarga dapat memeriksanya dengan tenang.
+                  Nomor ini menjadi salah satu pegangan keluarga saat ingin mengecek identitas usaha Mazaya.
                 </p>
               </div>
               <div className="relative overflow-hidden rounded-[20px] border border-border sm:col-span-2">

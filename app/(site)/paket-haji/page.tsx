@@ -184,7 +184,7 @@ export default async function PaketHajiPage() {
               {[
                 {
                   title: 'Info pokok langsung terlihat',
-                  description: 'Jadwal, durasi, harga, dan kursi kami tampilkan agar keluarga dapat membacanya lebih dulu.',
+                  description: 'Jadwal, durasi, harga, dan kursi bisa dibaca sebelum keluarga bertanya lebih jauh.',
                 },
                 {
                   title: 'Mudah dilihat berdampingan',

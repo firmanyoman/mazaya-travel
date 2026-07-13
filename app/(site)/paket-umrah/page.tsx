@@ -167,8 +167,8 @@ export default async function PaketUmrahPage() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
             {[
               {
-                value: 'Info pokok ditampilkan',
-                label: 'Jadwal, kota berangkat, harga, dan sisa kursi kami tampilkan agar keluarga dapat membacanya lebih dulu.',
+                value: 'Info pokok tersedia',
+                label: 'Jadwal, kota berangkat, harga, dan sisa kursi bisa dibaca sebelum keluarga bertanya lebih jauh.',
               },
               {
                 value: 'Bisa dilihat berdampingan',
@@ -176,7 +176,7 @@ export default async function PaketUmrahPage() {
               },
               {
                 value: 'Status kursi tegas',
-                label: 'Ketersediaan kursi ditampilkan terbuka agar calon jemaah tidak salah memperkirakan peluang berangkat.',
+                label: 'Sisa kursi dibuat jelas agar calon jemaah tidak salah memperkirakan peluang berangkat.',
               },
               {
                 value: 'Tim siap membantu',

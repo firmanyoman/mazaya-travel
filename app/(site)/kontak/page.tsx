@@ -72,7 +72,7 @@ export default function ContactPage() {
         stats={[
           { value: 'WhatsApp', label: 'Jalur yang paling sering dipakai untuk konsultasi awal' },
           { value: 'Bone', label: 'Kantor layanan dapat dikunjungi langsung' },
-          { value: 'Terbuka', label: 'Kontak, jam operasional, dan lokasi kami tampilkan' },
+          { value: 'Jelas', label: 'Kontak, jam operasional, dan lokasi mudah ditemukan' },
         ]}
         panelTitle="Kontak utama"
         panelItems={[
