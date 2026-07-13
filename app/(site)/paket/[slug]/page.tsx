@@ -43,7 +43,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
   if (!remainingSeats || !totalSeats) {
     return {
       label: 'Perlu konfirmasi seat',
-      detail: 'Silakan konsultasi untuk memastikan kuota kursi terbaru sebelum melanjutkan pendaftaran.',
+      detail: 'Silakan hubungi kami untuk memastikan kuota kursi terbaru sebelum mengisi pendaftaran.',
       className: 'border-info/15 bg-info-soft text-info',
       barClassName: 'bg-info',
       width: '40%',
@@ -55,7 +55,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
   if (percentage <= 20) {
     return {
       label: `Sisa ${remainingSeats} dari ${totalSeats} kursi`,
-      detail: 'Kuota mulai terbatas. Baik untuk segera diklarifikasi jika jadwal ini menjadi prioritas keluarga.',
+      detail: 'Kuota mulai terbatas. Sebaiknya ditanyakan lebih dulu bila jadwal ini menjadi prioritas keluarga.',
       className: 'border-warning/20 bg-warning-soft text-[#8A6911]',
       barClassName: 'bg-warning',
       width: `${percentage}%`,
@@ -64,7 +64,7 @@ function getSeatState(remainingSeats: number | null, totalSeats: number | null, 
 
   return {
     label: `Sisa ${remainingSeats} dari ${totalSeats} kursi`,
-    detail: 'Ketersediaan masih relatif nyaman untuk dipertimbangkan dan didiskusikan lebih lanjut.',
+    detail: 'Ketersediaan masih cukup longgar untuk dibaca dan dibicarakan bersama keluarga.',
     className: 'border-success/20 bg-success-soft text-success',
     barClassName: 'bg-success',
     width: `${percentage}%`,
@@ -194,7 +194,7 @@ export default async function PackageDetailPage({ params }: Props) {
                 ) : null}
                 <div className="text-sm font-semibold text-white/72">Mazaya Travel</div>
                 <div className="mt-2 text-xl font-bold leading-snug md:text-2xl">
-                  Ringkasan paket untuk membantu Anda menilai kecocokan jadwal, fasilitas, dan biaya sebelum mendaftar.
+                  Ringkasan paket agar Anda dapat membaca jadwal, fasilitas, dan biaya dengan lebih tenang sebelum mendaftar.
                 </div>
               </div>
             </div>
@@ -246,14 +246,14 @@ export default async function PackageDetailPage({ params }: Props) {
                     </div>
                   </div>
                   <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
-                    <div className="text-sm font-semibold text-white/72">Langkah berikutnya</div>
+                    <div className="text-sm font-semibold text-white/72">Jika ingin lanjut</div>
                     <div className="mt-3 text-2xl font-bold leading-snug">
-                      {isSoldOut ? 'Jadwal ini penuh, tetapi konsultasi tetap terbuka.' : 'Jika paket ini terasa cocok, Anda bisa lanjut dengan tenang.'}
+                      {isSoldOut ? 'Jadwal ini penuh, tetapi kami tetap bisa membantu mencarikan pilihan lain.' : 'Jika paket ini terasa cocok, silakan lanjut membaca detailnya.'}
                     </div>
                     <p className="mt-3 text-sm leading-7 text-white/78">
                       {isSoldOut
                         ? 'Tim Mazaya dapat membantu mengecek paket serupa, jadwal terdekat, atau opsi keberangkatan lain yang masih tersedia.'
-                        : 'Baca dulu detail fasilitas, persyaratan, dan catatan pembayaran. Setelah itu Anda bisa memilih daftar langsung atau bertanya via WhatsApp.'}
+                        : 'Baca dulu fasilitas, persyaratan, dan catatan pembayaran. Setelah itu Anda bisa mengisi form atau bertanya lewat WhatsApp.'}
                     </p>
                     <div className="mt-6 grid gap-3">
                       {isSoldOut ? (
@@ -262,11 +262,11 @@ export default async function PackageDetailPage({ params }: Props) {
                         </Button>
                       ) : (
                         <Button href={`/daftar/${pkg.slug}`} fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
-                          Daftar paket ini
+                          Lihat form pendaftaran
                         </Button>
                       )}
                       <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
-                        Konsultasi WhatsApp
+                        WhatsApp Konsultasi
                       </Button>
                     </div>
                   </div>
@@ -398,12 +398,12 @@ export default async function PackageDetailPage({ params }: Props) {
             <div className="grid gap-6">
               <SectionShell surface="card" className="px-6 py-6">
                 <div className="space-y-4">
-                  <div className="text-sm font-semibold text-muted">Panduan memilih paket</div>
+                  <div className="text-sm font-semibold text-muted">Cara membaca paket</div>
                   <h2 className="text-2xl font-bold leading-tight text-text">
-                    Mulailah dari jadwal, ketersediaan kursi, dan harga. Setelah itu barulah cocokkan fasilitas serta dokumen yang perlu disiapkan.
+                    Mulai dari jadwal, ketersediaan kursi, dan harga. Setelah itu cocokkan fasilitas serta dokumen yang perlu disiapkan.
                   </h2>
                   <p className="text-sm leading-7 text-muted">
-                    Urutan ini membantu Anda dan keluarga membandingkan paket dengan lebih jelas sebelum memutuskan daftar atau konsultasi.
+                    Urutan ini membantu keluarga membaca paket tanpa terburu-buru sebelum mengisi form atau bertanya kepada admin.
                   </p>
                 </div>
               </SectionShell>
@@ -412,16 +412,16 @@ export default async function PackageDetailPage({ params }: Props) {
                 <div className="absolute inset-y-0 right-0 hidden w-40 bg-[radial-gradient(circle_at_center,rgba(240,235,32,0.18),transparent_62%)] lg:block" />
                 <div className="relative space-y-4">
                   <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white">
-                    Langkah berikutnya
+                    Jika ingin lanjut
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                   </div>
                   <h2 className="text-2xl font-bold leading-tight text-white">
-                    {isSoldOut ? 'Butuh alternatif yang paling mendekati paket ini?' : 'Siap lanjut daftar atau ingin konsultasi lebih dulu?'}
+                    {isSoldOut ? 'Ingin mencari jadwal lain yang mirip?' : 'Ingin lanjut daftar atau bertanya lebih dulu?'}
                   </h2>
                   <p className="text-sm leading-7 text-white/78">
                     {isSoldOut
-                      ? 'Ceritakan kebutuhan waktu berangkat, jumlah jemaah, dan kisaran budget agar tim Mazaya bisa membantu mencarikan opsi yang paling relevan.'
-                      : 'Gunakan pendaftaran online bila sudah mantap. Jika masih ingin memastikan detail fasilitas atau dokumen, mulai dari WhatsApp juga tidak masalah.'}
+                      ? 'Ceritakan rencana waktu berangkat, jumlah jemaah, dan kisaran biaya agar tim Mazaya bisa membantu mencarikan pilihan terdekat.'
+                      : 'Gunakan form pendaftaran bila data awal sudah siap. Jika masih ingin memastikan fasilitas atau dokumen, silakan mulai dari WhatsApp.'}
                   </p>
                   <div className="grid gap-3">
                     {isSoldOut ? (
@@ -430,11 +430,11 @@ export default async function PackageDetailPage({ params }: Props) {
                       </Button>
                     ) : (
                       <Button href={`/daftar/${pkg.slug}`} fullWidth className="bg-white text-primary hover:bg-white/92 border-white">
-                        Lanjut pendaftaran
+                        Lihat form pendaftaran
                       </Button>
                     )}
                     <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="ghost" fullWidth className="border border-white/20 text-white hover:bg-white/10">
-                      Konsultasi WhatsApp
+                      WhatsApp Konsultasi
                     </Button>
                     <Button href="/paket-umrah" variant="ghost" fullWidth className="border border-white/10 text-white/88 hover:bg-white/8">
                       Lihat paket lain

@@ -245,7 +245,7 @@ export default function RegistrationFormClient({
                 Formulir pendaftaran untuk membantu tim Mazaya menerima data awal jamaah dengan rapi.
               </h1>
               <p className="max-w-2xl text-[17px] leading-8 text-muted lg:text-lg">
-                Isi data inti jamaah, pilih paket yang ingin didaftarkan, lalu kirimkan form ini. Setelah data masuk, tim Mazaya akan menindaklanjutinya secara personal melalui WhatsApp.
+                Isi data inti jamaah, pilih paket yang ingin didaftarkan, lalu kirimkan form ini. Setelah data masuk, tim Mazaya akan menghubungi Anda secara personal melalui WhatsApp.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">

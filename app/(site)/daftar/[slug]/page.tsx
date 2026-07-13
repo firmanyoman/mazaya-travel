@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
   return {
     title: `Daftar ${selectedPackage.title} - Mazaya Travel`,
     description:
-      `Lengkapi formulir pendaftaran untuk ${selectedPackage.title}. Tim Mazaya akan meninjau data dan menindaklanjuti via WhatsApp dengan konteks paket yang sudah Anda pilih.`,
+      `Lengkapi formulir pendaftaran untuk ${selectedPackage.title}. Tim Mazaya akan meninjau data awal dan menghubungi Anda lewat WhatsApp sesuai paket yang dipilih.`,
   }
 }
 
