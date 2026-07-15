@@ -1,4 +1,4 @@
-import { asc, eq } from 'drizzle-orm'
+import { and, asc, eq, gte } from 'drizzle-orm'
 import { db } from '@/db'
 import { packages } from '@/db/schema'
 
@@ -32,6 +32,7 @@ export interface LocalPackage {
   seoTitle: string | null
   seoDescription: string | null
   ogImage: string | null
+  updatedAt?: Date | null
 }
 
 export const localPackages: LocalPackage[] = [
@@ -278,7 +279,7 @@ export const localPackages: LocalPackage[] = [
 
 function getVisibleLocalPackages() {
   return localPackages.filter(
-    (pkg) => pkg.packageStatus !== 'archived' && pkg.packageStatus !== 'draft'
+    (pkg) => pkg.packageStatus !== 'archived' && pkg.packageStatus !== 'draft' && pkg.departureDate >= new Date().toISOString().slice(0, 10)
   )
 }
 
@@ -313,6 +314,7 @@ function mapDbPackage(pkg: typeof packages.$inferSelect): LocalPackage {
     seoTitle: pkg.seoTitle,
     seoDescription: pkg.seoDescription,
     ogImage: pkg.ogImage,
+    updatedAt: pkg.updatedAt,
   }
 }
 
@@ -321,7 +323,7 @@ async function getVisibleDbPackages() {
     const rows = await db
       .select()
       .from(packages)
-      .where(eq(packages.packageStatus, 'active'))
+      .where(and(eq(packages.packageStatus, 'active'), gte(packages.departureDate, new Date().toISOString().slice(0, 10))))
       .orderBy(asc(packages.departureDate))
 
     return rows.map(mapDbPackage)

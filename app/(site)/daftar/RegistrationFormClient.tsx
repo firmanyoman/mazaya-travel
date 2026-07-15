@@ -102,12 +102,9 @@ export default function RegistrationFormClient({
   )
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
-  const [nik, setNik] = useState('')
-  const [fatherName, setFatherName] = useState('')
   const [city, setCity] = useState('')
-  const [gender, setGender] = useState('')
-  const [birthDate, setBirthDate] = useState('')
-  const [ktpFile, setKtpFile] = useState<File | null>(null)
+  const [message, setMessage] = useState('')
+  const [website, setWebsite] = useState('')
   const [privacyConsentGiven, setPrivacyConsentGiven] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -116,8 +113,6 @@ export default function RegistrationFormClient({
   const selectedPackage = allPackages.find((pkg) => pkg.id === Number(packageId))
   const isPackageLocked = initialPackageId !== null
   const isPackageChosen = Boolean(selectedPackage)
-  const allowedKtpTypes = ['image/jpeg', 'image/png', 'application/pdf']
-  const maxKtpFileSize = 2 * 1024 * 1024
 
   const whatsappContactUrl = useMemo(() => {
     const message = `Assalamualaikum Mazaya Travel, saya sudah mengisi form pendaftaran atas nama ${fullName || '[Nama Anda]'}${selectedPackage ? ` untuk paket ${selectedPackage.title}` : ''}.`
@@ -154,17 +149,11 @@ export default function RegistrationFormClient({
     setSuccessMessage(null)
 
     try {
-      if (!ktpFile) {
-        throw new Error('Unggah file KTP wajib diisi')
-      }
-
-      if (!allowedKtpTypes.includes(ktpFile.type)) {
-        throw new Error('File KTP harus berupa JPG, PNG, atau PDF')
-      }
-
-      if (ktpFile.size > maxKtpFileSize) {
-        throw new Error('Ukuran file KTP maksimal 2 MB')
-      }
+      const search = new URLSearchParams(window.location.search)
+      const campaign = ['utm_source', 'utm_medium', 'utm_campaign']
+        .map((key) => search.get(key))
+        .filter(Boolean)
+        .join(' / ')
 
       const response = await fetch('/api/leads', {
         method: 'POST',
@@ -174,17 +163,11 @@ export default function RegistrationFormClient({
           packageId: packageId ? Number(packageId) : null,
           fullName,
           phone,
-          nik: nik || null,
-          fatherName,
           city,
-          gender: gender || null,
-          birthDate: birthDate || null,
-          ktpFile: JSON.stringify({
-            name: ktpFile.name,
-            type: ktpFile.type,
-            size: ktpFile.size,
-            lastModified: ktpFile.lastModified,
-          }),
+          message,
+          sourcePage: window.location.pathname,
+          sourceCampaign: campaign || null,
+          website,
           privacyConsentGiven,
         }),
       })
@@ -198,12 +181,9 @@ export default function RegistrationFormClient({
       setSuccessMessage('Pendaftaran Anda berhasil dikirim. Tim Mazaya akan meninjau data dan segera menghubungi Anda.')
       setFullName('')
       setPhone('')
-      setNik('')
-      setFatherName('')
       setCity('')
-      setGender('')
-      setBirthDate('')
-      setKtpFile(null)
+      setMessage('')
+      setWebsite('')
       setPrivacyConsentGiven(false)
     } catch (err: unknown) {
       setErrorMessage(err instanceof Error ? err.message : 'Terjadi kesalahan jaringan')
@@ -455,18 +435,18 @@ export default function RegistrationFormClient({
               <section className={panelClassName}>
                 <div className="mb-6 space-y-2">
                   <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                    2. Personal identity
+                    2. Kontak jamaah
                   </div>
-                  <h2 className="text-2xl font-bold text-text">Lengkapi identitas jemaah</h2>
+                  <h2 className="text-2xl font-bold text-text">Nama dan nomor yang bisa dihubungi</h2>
                   <p className="max-w-2xl text-sm leading-7 text-muted">
-                    Mohon isi sesuai data resmi agar proses pencocokan dokumen dan komunikasi berikutnya berjalan lebih lancar.
+                    Cukup isi data untuk membicarakan paket. Dokumen identitas baru diminta setelah jadwal dan proses administrasi dikonfirmasi bersama.
                   </p>
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2">
                   <FieldShell className="md:col-span-2">
                     <FieldLabel htmlFor="fullName" required>
-                      Nama lengkap sesuai KTP
+                      Nama lengkap
                     </FieldLabel>
                     <input
                       id="fullName"
@@ -479,67 +459,6 @@ export default function RegistrationFormClient({
                     />
                   </FieldShell>
 
-                  <FieldShell>
-                    <FieldLabel htmlFor="nik" required>
-                      Nomor Induk Kependudukan (NIK)
-                    </FieldLabel>
-                    <input
-                      id="nik"
-                      type="text"
-                      value={nik}
-                      onChange={(e) => setNik(e.target.value)}
-                      required
-                      maxLength={16}
-                      placeholder="16 digit NIK KTP Anda"
-                      className={inputClassName}
-                    />
-                  </FieldShell>
-
-                  <FieldShell>
-                    <FieldLabel htmlFor="fatherName" required>
-                      Nama ayah
-                    </FieldLabel>
-                    <input
-                      id="fatherName"
-                      type="text"
-                      value={fatherName}
-                      onChange={(e) => setFatherName(e.target.value)}
-                      required
-                      placeholder="Contoh: Abdullah"
-                      className={inputClassName}
-                    />
-                  </FieldShell>
-
-                  <FieldShell>
-                    <FieldLabel htmlFor="gender" required>
-                      Jenis kelamin
-                    </FieldLabel>
-                    <select
-                      id="gender"
-                      value={gender}
-                      onChange={(e) => setGender(e.target.value)}
-                      required
-                      className={inputClassName}
-                    >
-                      <option value="">Pilih jenis kelamin</option>
-                      <option value="laki-laki">Laki-laki</option>
-                      <option value="perempuan">Perempuan</option>
-                    </select>
-                  </FieldShell>
-
-                  <FieldShell>
-                    <FieldLabel htmlFor="birthDate" required>
-                      Tanggal lahir
-                    </FieldLabel>
-                    <input
-                      id="birthDate"
-                      type="date"
-                      value={birthDate}
-                      onChange={(e) => setBirthDate(e.target.value)}
-                      required
-                      className={inputClassName}
-                    />
-                  </FieldShell>
                 </div>
               </section>
 
@@ -587,55 +506,36 @@ export default function RegistrationFormClient({
                       className={inputClassName}
                     />
                   </FieldShell>
-                </div>
-              </section>
 
-              <section className={panelClassName}>
-                <div className="mb-6 space-y-2">
-                  <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                    4. Document upload
-                  </div>
-                  <h2 className="text-2xl font-bold text-text">Unggah file KTP untuk pemeriksaan awal</h2>
-                  <p className="max-w-2xl text-sm leading-7 text-muted">
-                    File ini membantu admin memeriksa data awal pendaftar. Dokumen lanjutan tetap akan dibicarakan secara langsung bila diperlukan.
-                  </p>
-                </div>
-
-                <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-                  <FieldShell>
-                    <FieldLabel htmlFor="ktpFile" required>
-                      File KTP
-                    </FieldLabel>
-                    <div className="rounded-[20px] border border-dashed border-primary/25 bg-primary-soft/30 p-4">
-                      <input
-                        id="ktpFile"
-                        type="file"
-                        accept=".jpg,.jpeg,.png,.pdf"
-                        required
-                        onChange={(e) => setKtpFile(e.target.files?.[0] ?? null)}
-                        className="focus-ring w-full rounded-[12px] border border-border bg-surface px-4 py-3 text-sm text-text file:mr-4 file:rounded-[12px] file:border-0 file:bg-primary file:px-4 file:py-2 file:font-semibold file:text-white"
-                      />
-                      <div className="mt-3 text-xs leading-6 text-muted">
-                        Format yang diterima: JPG, PNG, atau PDF. Ukuran maksimal 2 MB.
-                      </div>
-                    </div>
+                  <FieldShell className="md:col-span-2">
+                    <FieldLabel htmlFor="message">Catatan untuk tim Mazaya</FieldLabel>
+                    <textarea
+                      id="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      maxLength={255}
+                      placeholder="Contoh: berangkat bersama orang tua, ingin tanya kamar, atau masih menyesuaikan jadwal."
+                      className={`${inputClassName} min-h-28`}
+                    />
                   </FieldShell>
 
-                  <div className="rounded-[16px] border border-border bg-surface-subtle px-5 py-5">
-                    <div className="text-sm font-semibold text-primary">Yang perlu diperhatikan</div>
-                    <ul className="mt-3 grid gap-2 text-sm leading-7 text-text-secondary">
-                      <li>Pastikan file dapat dibaca dengan jelas.</li>
-                      <li>Nama file bebas, selama dokumen sesuai identitas pendaftar.</li>
-                      <li>Jika kesulitan upload, Anda tetap bisa konsultasi dulu via WhatsApp.</li>
-                    </ul>
-                  </div>
+                  <input
+                    aria-hidden="true"
+                    autoComplete="off"
+                    className="hidden"
+                    name="website"
+                    tabIndex={-1}
+                    type="text"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
                 </div>
               </section>
 
               <section className={panelClassName}>
                 <div className="mb-6 space-y-2">
                   <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                    5. Consent & confirmation
+                    4. Persetujuan dan pengiriman
                   </div>
                   <h2 className="text-2xl font-bold text-text">Persetujuan penggunaan data</h2>
                   <p className="max-w-2xl text-sm leading-7 text-muted">
@@ -697,8 +597,8 @@ export default function RegistrationFormClient({
                 </div>
                 <div className="grid gap-3">
                   <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
-                    <div className="text-sm font-semibold text-text">Siapkan KTP lebih dulu</div>
-                    <div className="mt-1 text-sm leading-7 text-muted">Membantu Anda menyelesaikan pengisian dalam satu alur tanpa bolak-balik.</div>
+                    <div className="text-sm font-semibold text-text">Dokumen dibicarakan setelah paket jelas</div>
+                    <div className="mt-1 text-sm leading-7 text-muted">Jangan mengirim KTP melalui form awal. Tim akan menjelaskan jalur administrasi yang tepat setelah jadwal dikonfirmasi.</div>
                   </div>
                   <div className="rounded-[16px] border border-border bg-surface-subtle px-4 py-4">
                     <div className="text-sm font-semibold text-text">Gunakan nomor WhatsApp pribadi</div>

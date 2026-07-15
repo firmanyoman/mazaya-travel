@@ -165,7 +165,7 @@ export default async function Home() {
         slug: pkg.slug,
         packageSummary: pkg.packageSummary,
       }))
-    : defaultPackages.map((pkg) => ({
+    : defaultPackages.filter((pkg) => pkg.departureDate >= new Date().toISOString().slice(0, 10)).map((pkg) => ({
         title: pkg.title,
         tier: pkg.tier,
         price: pkg.price,

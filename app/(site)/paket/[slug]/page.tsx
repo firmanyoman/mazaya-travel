@@ -84,6 +84,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${pkg.seoTitle || pkg.title} - Mazaya Travel`,
     description: pkg.seoDescription || pkg.packageSummary,
+    alternates: { canonical: `/paket/${pkg.slug}` },
+    openGraph: {
+      title: pkg.seoTitle || pkg.title,
+      description: pkg.seoDescription || pkg.packageSummary,
+      images: pkg.ogImage ? [pkg.ogImage] : undefined,
+    },
   }
 }
 
@@ -244,6 +250,7 @@ export default async function PackageDetailPage({ params }: Props) {
                         <div className="mt-1 text-base font-semibold text-text">{pkg.departureCity}</div>
                       </div>
                     </div>
+                    <p className="text-xs leading-6 text-muted">Data paket terakhir diperbarui {pkg.updatedAt ? formatDate(pkg.updatedAt.toISOString()) : 'sesuai jadwal yang tercantum'}. Harga, hotel, maskapai, dan kursi dapat berubah sebelum pembayaran diterima.</p>
                   </div>
                   <div className="rounded-[20px] border border-primary/10 bg-primary p-6 text-white shadow-[var(--shadow-2)]">
                     <div className="text-sm font-semibold text-white/72">Jika ingin lanjut</div>

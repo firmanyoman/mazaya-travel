@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
     title: `Daftar ${selectedPackage.title} - Mazaya Travel`,
     description:
       `Lengkapi formulir pendaftaran untuk ${selectedPackage.title}. Tim Mazaya akan meninjau data awal dan menghubungi Anda lewat WhatsApp sesuai paket yang dipilih.`,
+    robots: { index: false, follow: false },
   }
 }
 

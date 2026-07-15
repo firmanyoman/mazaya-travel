@@ -3,160 +3,75 @@ import { db } from '@/db'
 import { leads } from '@/db/schema'
 
 type LeadRequestBody = {
-  leadType?: string
+  leadType?: 'consultation' | 'registration'
   packageId?: string | number | null
   fullName?: string
   phone?: string
-  nik?: string | null
-  fatherName?: string | null
   city?: string | null
-  gender?: string | null
-  birthDate?: string | null
   message?: string | null
-  ktpFile?: string | null
+  sourcePage?: string | null
+  sourceCampaign?: string | null
+  website?: string
   privacyConsentGiven?: boolean
 }
 
+const attempts = new Map<string, number[]>()
+const windowMs = 10 * 60 * 1000
+const maxAttempts = 5
+
+function limited(ip: string) {
+  const now = Date.now()
+  const recent = (attempts.get(ip) || []).filter((time) => now - time < windowMs)
+  recent.push(now)
+  attempts.set(ip, recent)
+  return recent.length > maxAttempts
+}
+
 export async function POST(req: NextRequest) {
+  let body: LeadRequestBody
   try {
-    const body: LeadRequestBody = await req.json()
-    const {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Data formulir tidak valid' }, { status: 400 })
+  }
+
+  if (body.website) return new NextResponse(null, { status: 204 })
+
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  if (limited(ip)) {
+    return NextResponse.json({ error: 'Terlalu banyak pengiriman. Silakan tunggu beberapa menit.' }, { status: 429 })
+  }
+
+  const fullName = body.fullName?.trim()
+  const phone = body.phone?.replace(/[\s-]/g, '')
+  const city = body.city?.trim() || null
+  const message = body.message?.trim() || null
+  const leadType = body.leadType === 'consultation' ? 'consultation' : 'registration'
+  const packageId = body.packageId ? Number(body.packageId) : null
+
+  if (!fullName || !phone) return NextResponse.json({ error: 'Nama lengkap dan nomor WhatsApp wajib diisi.' }, { status: 400 })
+  if (fullName.length > 255 || (city?.length ?? 0) > 100 || (message?.length ?? 0) > 255) return NextResponse.json({ error: 'Data formulir terlalu panjang.' }, { status: 400 })
+  if (!/^\+?\d{10,15}$/.test(phone)) return NextResponse.json({ error: 'Nomor WhatsApp tidak valid.' }, { status: 400 })
+  if (leadType === 'registration' && !Number.isInteger(packageId)) return NextResponse.json({ error: 'Pilih paket keberangkatan terlebih dulu.' }, { status: 400 })
+  if (!body.privacyConsentGiven) return NextResponse.json({ error: 'Persetujuan kebijakan privasi wajib disetujui.' }, { status: 400 })
+
+  try {
+    const [lead] = await db.insert(leads).values({
       leadType,
-      packageId,
+      packageId: packageId ? String(packageId) : null,
       fullName,
       phone,
-      nik,
-      fatherName,
       city,
-      gender,
-      birthDate,
       message,
-      ktpFile,
-      privacyConsentGiven,
-    } = body
-
-    if (!fullName || !phone) {
-      return NextResponse.json(
-        { error: 'Nama Lengkap dan No. WhatsApp wajib diisi' },
-        { status: 400 }
-      )
-    }
-
-    if (!/^\+?\d{10,15}$/.test(phone.replace(/[\s-]/g, ''))) {
-      return NextResponse.json(
-        { error: 'Nomor WhatsApp tidak valid' },
-        { status: 400 }
-      )
-    }
-
-    if (leadType === 'registration' && (!packageId || !nik || !fatherName || !city || !birthDate || !gender || !ktpFile)) {
-      return NextResponse.json(
-        { error: 'Semua field wajib pendaftaran harus diisi, termasuk upload KTP' },
-        { status: 400 }
-      )
-    }
-
-    if (leadType === 'registration' && !/^\d{16}$/.test((nik || '').trim())) {
-      return NextResponse.json(
-        { error: 'NIK harus terdiri dari 16 digit' },
-        { status: 400 }
-      )
-    }
-
-    if (leadType === 'registration') {
-      try {
-        const parsedKtpFile = JSON.parse(ktpFile || '{}') as {
-          type?: string
-          size?: number
-        }
-
-        const allowedKtpTypes = ['image/jpeg', 'image/png', 'application/pdf']
-        const maxKtpFileSize = 2 * 1024 * 1024
-
-        if (
-          !parsedKtpFile.type ||
-          !allowedKtpTypes.includes(parsedKtpFile.type) ||
-          typeof parsedKtpFile.size !== 'number' ||
-          parsedKtpFile.size > maxKtpFileSize
-        ) {
-          return NextResponse.json(
-            { error: 'File KTP harus berupa JPG, PNG, atau PDF dengan ukuran maksimal 2 MB' },
-            { status: 400 }
-          )
-        }
-      } catch {
-        return NextResponse.json(
-          { error: 'Data upload KTP tidak valid' },
-          { status: 400 }
-        )
-      }
-    }
-
-    if (!privacyConsentGiven) {
-      return NextResponse.json(
-        { error: 'Persetujuan kebijakan privasi wajib disetujui' },
-        { status: 400 }
-      )
-    }
-
-    const normalizedPackageId = typeof packageId === 'number'
-      ? packageId
-      : packageId
-        ? parseInt(String(packageId), 10)
-        : null
-
-    const normalizedBirthDate = birthDate ? new Date(`${birthDate}T00:00:00.000Z`) : null
-
-    if (birthDate && Number.isNaN(normalizedBirthDate?.getTime())) {
-      return NextResponse.json(
-        { error: 'Tanggal lahir tidak valid' },
-        { status: 400 }
-      )
-    }
-
-    const insertLead = {
-      leadType: (leadType || 'registration') as 'consultation' | 'registration',
-      packageId: Number.isFinite(normalizedPackageId) ? String(normalizedPackageId) : null,
-      fullName,
-      phone,
-      nik: nik || null,
-      fatherName: fatherName || null,
-      city: city || null,
-      gender: (gender || null) as 'laki-laki' | 'perempuan' | null,
-      birthDate: normalizedBirthDate,
-      message: message || null,
-      ktpFile,
+      sourcePage: body.sourcePage?.slice(0, 255) || null,
+      sourceCampaign: body.sourceCampaign?.slice(0, 255) || null,
       privacyConsentGiven: true,
       privacyConsentAt: new Date(),
       submittedAt: new Date(),
-    }
+    }).returning({ id: leads.id, status: leads.status })
 
-    const [lead] = await db
-      .insert(leads)
-      .values(insertLead)
-      .returning({
-        id: leads.id,
-        leadType: leads.leadType,
-        packageId: leads.packageId,
-        fullName: leads.fullName,
-        phone: leads.phone,
-        status: leads.status,
-        submittedAt: leads.submittedAt,
-      })
-
-    return NextResponse.json({
-      success: true,
-      lead,
-    })
-  } catch (error: unknown) {
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error
-            ? error.message
-            : 'Terjadi kesalahan pada server',
-      },
-      { status: 500 }
-    )
+    return NextResponse.json({ success: true, lead }, { status: 201 })
+  } catch {
+    return NextResponse.json({ error: 'Data belum dapat disimpan. Silakan coba lagi atau hubungi Mazaya melalui WhatsApp.' }, { status: 503 })
   }
 }

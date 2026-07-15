@@ -7,7 +7,8 @@ import RegistrationFormClient from './RegistrationFormClient'
 export const metadata: Metadata = {
   title: 'Pendaftaran Umrah | Isi Data Awal dan Tunggu Konfirmasi',
   description:
-    'Isi formulir pendaftaran Umrah Mazaya Travel untuk mengirim data awal jemaah, memilih paket, dan menunggu tindak lanjut dari tim via WhatsApp.',
+    'Isi formulir pendaftaran Umrah Mazaya Travel untuk mengirim data awal jemaah, memilih paket, dan menunggu konfirmasi tim melalui WhatsApp.',
+  robots: { index: false, follow: false },
 }
 interface Props {
   searchParams: Promise<{ package?: string }>
