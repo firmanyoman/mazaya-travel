@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/db'
 import { leads } from '@/db/schema'
+import { notifyNewLead } from '@/app/lib/lead-notification'
 
 type LeadRequestBody = {
   leadType?: 'consultation' | 'registration'
@@ -69,6 +70,18 @@ export async function POST(req: NextRequest) {
       privacyConsentAt: new Date(),
       submittedAt: new Date(),
     }).returning({ id: leads.id, status: leads.status })
+
+    void notifyNewLead({
+      id: lead.id,
+      leadType,
+      fullName,
+      phone,
+      city,
+      message,
+      packageId: packageId ? String(packageId) : null,
+      sourcePage: body.sourcePage?.slice(0, 255) || null,
+      sourceCampaign: body.sourceCampaign?.slice(0, 255) || null,
+    })
 
     return NextResponse.json({ success: true, lead }, { status: 201 })
   } catch {

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/layout/Container'
 import { SectionShell } from '@/components/layout/SectionShell'
 import { Button } from '@/components/ui/Button'
@@ -411,9 +412,9 @@ export default async function Home() {
                         <span className="h-1 w-1 rounded-full bg-brand-yellow" />
                         <span>{pkg.tier} class</span>
                       </div>
-                      <a href={`/paket/${pkg.slug}`} className="block transition-colors hover:text-primary">
+                      <Link href={`/paket/${pkg.slug}`} className="block transition-colors hover:text-primary">
                         <h3 className="text-2xl font-bold leading-snug text-text line-clamp-2">{pkg.title}</h3>
-                      </a>
+                      </Link>
                       <p className="text-sm leading-7 text-muted line-clamp-3">{pkg.packageSummary}</p>
                     </div>
 

@@ -358,7 +358,7 @@ export default function RegistrationFormClient({
                 <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="space-y-2">
                     <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                      1. Paket selection
+                      1. Pilih paket
                     </div>
                     <h2 className="text-2xl font-bold text-text">Tentukan paket yang ingin didaftarkan</h2>
                     <p className="max-w-2xl text-sm leading-7 text-muted">
@@ -465,7 +465,7 @@ export default function RegistrationFormClient({
               <section className={panelClassName}>
                 <div className="mb-6 space-y-2">
                   <div className="inline-flex rounded-full bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                    3. Contact & domisili
+                    3. Kontak dan domisili
                   </div>
                   <h2 className="text-2xl font-bold text-text">Nomor aktif dan kota domisili</h2>
                   <p className="max-w-2xl text-sm leading-7 text-muted">

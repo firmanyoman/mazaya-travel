@@ -22,6 +22,11 @@ async function run() {
   })
   assert.equal(missingPackage.status, 400, 'registration needs a package')
 
+  const noConsent = await post({
+    leadType: 'registration', fullName: 'Test Lead', phone: '081234567890', packageId: 1, city: 'Bone', privacyConsentGiven: false,
+  })
+  assert.equal(noConsent.status, 400, 'privacy consent is required')
+
   console.log('lead guard tests passed')
 }
 
